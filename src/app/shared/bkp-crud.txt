@@ -1,0 +1,110 @@
+
+  constructor(private http: Http) {
+    super();
+  }
+
+  private headers = new Headers({'Content-type': 'application/json'});
+
+  private usersUrl = RoutesServerUtil.URL_API + RoutesClientUtil.USER_REGISTER;
+  private clientUrl = RoutesServerUtil.URL_API + RoutesClientUtil.CLIENT_REGISTER;
+
+
+  create(user: User): Promise<User>{
+    return this.http.post(this.clientUrl, JSON.stringify({user: user}), {headers: this.headers})
+      .toPromise().then(res => res.json().data).catch(this.handleError);
+  }
+
+  getAllUsers(): Promise<User[]> {
+    return this.http.get(this.usersUrl)
+      .toPromise()
+      .then(response => response.json().data as User[])
+      .catch(this.handleError);
+  }
+
+  getUser(id: number): Promise<User> {
+    return this.getAllUsers()
+      .then(users => users.find(user => user.id === id));
+  }
+
+  delete(id: number): Promise<void> {
+    const url = `${this.usersUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
+
+  update(user: User): Promise<User> {
+    const url = `${this.usersUrl}/${user.id}`;
+    return this.http
+      .put(url, JSON.stringify(user), {headers: this.headers})
+      .toPromise()
+      .then(() => user)
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
+
+ onSubmit(){
+    // this.gunService.save(this.gunSelected).subscribe(
+    //   g => {
+        alert("sucesso");
+    //   }, error => this.errorMessage = <any> error
+    // );
+  }
+
+  /**
+  import { Injectable } from '@angular/core';
+  import {Gun} from '../model/gun';
+  import {Headers, Http} from '@angular/http';
+  import {RoutesServerUtil} from '../routes-server.util';
+  import {RoutesClientUtil} from '../routes-cient.util';
+  import {Observable} from "rxjs";
+
+
+  @Injectable()
+  export class GunService {
+    private headers = new Headers({'Content-type': 'application/json'});
+    private gunsUrl = RoutesServerUtil.URL_API + RoutesClientUtil.GUNS;
+
+    constructor(private http: Http, private gunService: GunService) {
+    }
+
+    // getAllGuns(){
+    //   return this.http.get(this.gunsUrl).map(res => res.json());
+    // }
+    //
+    // getGun(id){
+    //   return this.http.get(this.getGunUrl(id)).map(res => res.json());
+    // }
+
+    // save(gun: Gun): Observable<Gun>{
+    //   return this.http.post(this.gunsUrl, JSON.stringify(gun)).map(res => {
+    //     var body = res.json();
+    //     return body || {};
+    //   });
+    // }
+
+    // updateUser(gun){
+    //   return this.http.put(this.getGunUrl(gun.id), JSON.stringify(gun)).map(res => res.json());
+    // }
+    //
+    // delete(id){
+    //   return this.http.delete(this.getGunUrl(id)).map(res => res.json());
+    // }
+    //
+    // private getGunUrl(id){
+    //   return this.gunsUrl + "/" + id;
+    // }
+
+    //
+    // private handleError(error: any): Promise<any> {
+    //   console.error('Um erro aconteceu :(', error);
+    //   return Promise.reject(error.message || error);
+    // }
+  }
+

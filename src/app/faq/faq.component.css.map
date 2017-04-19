@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,iBAAiB;EACb,UAAU,EAAE,WAAW;;AAG3B,+CAA+C;EAC7C,eAAe,EAAE,OAAO",
+"sources": ["faq.component.scss"],
+"names": [],
+"file": "faq.component.css"
+}

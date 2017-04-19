@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="card">
+    <div class="card-title">
+      <h4>Cadastro cliente</h4>
+    </div>
+    <div class="card-content">
+      <form (ngSubmit)="onSubmit()">
+
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="model.name" name="name" id="name">
+
+        <button class="btn" type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
