@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DelegateHomeComponent } from './delegate-home/delegate-home.component';
 import { DelegateSidebarComponent } from './delegate-sidebar/delegate-sidebar.component';
 import {DelegateRoutingModule} from "./delegate.routing";
+import { MenuComponent } from './delegate-sidebar/menu/menu.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import {DelegateRoutingModule} from "./delegate.routing";
   ],
   declarations: [
     DelegateHomeComponent,
-    DelegateSidebarComponent
+    DelegateSidebarComponent,
+    MenuComponent
   ]
 })
 export class DelegateModule { }

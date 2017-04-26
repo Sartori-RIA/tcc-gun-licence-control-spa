@@ -1,12 +1,9 @@
+<!-- Element Showed -->
+<a id="menu" class="grey darken-1 btn btn-floating" onclick="$('.tap-target').tapTarget('open')" ><i class="material-icons">menu</i></a>
 
-<div class="card black">
-  <div class="card-action">
-    <ul>
-      <li class=""><a class="" routerLink="agendamento" routerLinkActive="active">Agendamentos</a></li>
-      <li class=""><a class="" routerLink="exames" routerLinkActive="active">Exames</a></li>
-      <li class=""><a class="" routerLink="perfil" routerLinkActive="active">Meus Dados</a></li>
-      <li class=""><a class="" routerLink="licencas" routerLinkActive="active">Minhas Licenças</a></li>
-      <li class=""><a class="" routerLink="cadastro" routerLinkActive="active">Cadastro de Usuário</a></li>
-    </ul>
+<!-- Tap Target Structure -->
+<div class="grey darken-1 tap-target" data-activates="menu">
+  <div class="tap-target-content">
+    <app-menu></app-menu>
   </div>
 </div>

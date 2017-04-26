@@ -8,8 +8,9 @@ import { ClientRegisterComponent } from './client-register/client-register.compo
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientLicenceComponent } from './client-licence/client-licence.component';
 import { ClientExamsComponent } from './client-exams/client-exams.component';
-import {ClientRoutingModule} from "./client.routing";
+import { ClientRoutingModule } from "./client.routing";
 import { ClientSidebarComponent } from './client-sidebar/client-sidebar.component';
+import { MenuComponent } from './client-sidebar/menu/menu.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ClientSidebarComponent } from './client-sidebar/client-sidebar.componen
   ClientProfileComponent,
   ClientLicenceComponent,
   ClientExamsComponent,
-  ClientSidebarComponent
+  ClientSidebarComponent,
+  MenuComponent
   ]
 })
 export class ClientModule { }

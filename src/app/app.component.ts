@@ -14,18 +14,10 @@ export class AppComponent implements AfterViewInit{
   }
 
   ngAfterViewInit():any {
-
-
-
     jQuery(this.elRef.nativeElement).find('.button-collapse').sideNav();
     jQuery(this.elRef.nativeElement).find('select').material_select();
     jQuery(this.elRef.nativeElement).find('.collapsible').collapsible();
-
+    jQuery(this.elRef.nativeElement).find('.tap-target').tapTarget('open');
+    jQuery(this.elRef.nativeElement).find('.tap-target').tapTarget('close');
   }
-
-  // $('.button-collapse').sideNav();
-  // $('.collapsible').collapsible('open', 0);
-  //
-  // // Close
-  // $('.collapsible').collapsible('close', 0);
 }
