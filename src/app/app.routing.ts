@@ -10,6 +10,9 @@ const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent},
     { path: 'usuario', loadChildren: 'app/client/client.module#ClientModule'},
+    { path: 'instrutor', loadChildren: 'app/instructor/instructor.module#InstructorModule'},
+    { path: 'delegado', loadChildren: 'app/delegate/delegate.module#DelegateModule'},
+    { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},
     { path: 'validador', component: ValidatorComponent},
     { path: 'duvidas', component: FaqComponent},
     { path: '**', component: NotFoundComponent }
