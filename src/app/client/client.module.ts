@@ -11,6 +11,7 @@ import { ClientExamsComponent } from './client-exams/client-exams.component';
 import { ClientRoutingModule } from "./client.routing";
 import { ClientSidebarComponent } from './client-sidebar/client-sidebar.component';
 import { MenuComponent } from './client-sidebar/menu/menu.component';
+import { ClientFormComponent } from './client-form/client-form.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { MenuComponent } from './client-sidebar/menu/menu.component';
   ClientLicenceComponent,
   ClientExamsComponent,
   ClientSidebarComponent,
-  MenuComponent
+  MenuComponent,
+  ClientFormComponent
   ]
 })
 export class ClientModule { }

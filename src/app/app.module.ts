@@ -19,6 +19,9 @@ import {CamelCasePipe} from "./shared/pipes/camel-case.pipe";
 import {MenuComponent} from "./navbar/menu/menu.component";
 import {ClientModule} from "./client/client.module";
 import {ClientService} from "./shared/services/client.service";
+import {AdminModule} from "./admin/admin.module";
+import {InstructorModule} from "./instructor/instructor.module";
+import {DelegateModule} from "./delegate/delegate.module";
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import {ClientService} from "./shared/services/client.service";
     HttpModule,
     RoutingModule,
     ValidatorModule,
-    ClientModule
+    ClientModule,
+    AdminModule,
+    InstructorModule,
+    DelegateModule
   ],
   providers: [
     RoutesServerUtil,
