@@ -19,7 +19,7 @@ export class ClientRegisterComponent implements OnInit {
 
 
   onSubmit(){
-    this.clientService.save(this.model).subscribe(
+    this.clientService.create(this.model).subscribe(
       g => {
         alert('sucesso');
       }, error => {

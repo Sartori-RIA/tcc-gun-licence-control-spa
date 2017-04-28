@@ -13,15 +13,42 @@ export class ClientService {
 
   constructor(private  http: Http) { }
 
-  save(client: Client): Observable<Client>{
+  create(client: Client): Observable<Client>{
     alert(JSON.stringify(client));
-    let headers = new Headers({'Content-type': 'application/json'});
-    let option = new RequestOptions({headers: headers});
+    let option = new RequestOptions({headers: this.headers});
     return this.http.post(this.clientUrl, JSON.stringify(client), option)
       .map(res => {
         let body = res.json();
         return body || {};
       });
   }
+
+
+  index(){
+    return this.http.get(this.clientUrl).map(res => res.json());
+  }
+
+  show(id){
+    return this.http.get(this.getClientUrl(id)).map(res => res.json());
+  }
+
+  edit(client){
+    return this.http.put(this.getClientUrl(client.id), JSON.stringify(client)).map(res => res.json());
+  }
+
+  destroy(id){
+    return this.http.delete(this.getClientUrl(id)).map(res => res.json());
+  }
+
+  private getClientUrl(id){
+    return this.clientUrl + "/" + id;
+  }
+
+
+  private handleError(error: any): Promise<any> {
+    console.error('Um erro aconteceu :(', error);
+    return Promise.reject(error.message || error);
+  }
+
 
 }
