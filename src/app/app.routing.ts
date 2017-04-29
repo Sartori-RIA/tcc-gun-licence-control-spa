@@ -11,6 +11,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'usuario', loadChildren: 'app/client/client.module#ClientModule'},
     { path: 'instrutor', loadChildren: 'app/instructor/instructor.module#InstructorModule'},
+    { path: 'psicologo', loadChildren: 'app/psychologist/psychologist.module#PsychologistModule'},
     { path: 'delegado', loadChildren: 'app/delegate/delegate.module#DelegateModule'},
     { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},
     { path: 'validador', component: ValidatorComponent},

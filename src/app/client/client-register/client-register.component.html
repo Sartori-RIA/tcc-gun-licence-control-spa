@@ -20,7 +20,7 @@
         <input type="text" [(ngModel)]="model.address" name="address" id="address">
 
         <label for="dateOfBirth">Data de nascimento</label>
-        <input type="text" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" id="dateOfBirth">
+        <input type="date" class="datepicker" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" id="dateOfBirth">
 
         <label for="cpf">CPF</label>
         <input type="text" [(ngModel)]="model.cpf" name="cpf" id="cpf">
@@ -36,6 +36,8 @@
 
         <label for="addressNumber">Número da residencia</label>
         <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber">
+
+
 
         <button class="btn" type="submit">Cadastrar</button>
       </form>

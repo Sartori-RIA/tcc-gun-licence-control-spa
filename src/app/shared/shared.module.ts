@@ -6,6 +6,7 @@ import {RoutesClientUtil} from "./routes-api/routes-cient.util";
 import {ClientService} from "./services/client.service";
 import { FormComponent } from './form/form.component';
 import {CamelCasePipe} from "./pipes/camel-case.pipe";
+import { ListsComponent } from './lists/lists.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {CamelCasePipe} from "./pipes/camel-case.pipe";
   ],
   declarations: [
     FormComponent,
-    CamelCasePipe
+    CamelCasePipe,
+    ListsComponent
   ],
   providers: [
     RoutesServerUtil,
@@ -22,7 +24,8 @@ import {CamelCasePipe} from "./pipes/camel-case.pipe";
   ],
   exports: [
     FormComponent,
-    CamelCasePipe
+    CamelCasePipe,
+    ListsComponent
   ]
 })
 export class SharedModule { }

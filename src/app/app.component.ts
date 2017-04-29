@@ -19,5 +19,6 @@ export class AppComponent implements AfterViewInit{
     jQuery(this.elRef.nativeElement).find('.collapsible').collapsible();
     jQuery(this.elRef.nativeElement).find('.tap-target').tapTarget('open');
     jQuery(this.elRef.nativeElement).find('.tap-target').tapTarget('close');
+    jQuery(this.elRef.nativeElement).find('.datepicker').pickadate();
   }
 }

@@ -19,6 +19,7 @@ import {AdminModule} from "./admin/admin.module";
 import {InstructorModule} from "./instructor/instructor.module";
 import {DelegateModule} from "./delegate/delegate.module";
 import {SharedModule} from "./shared/shared.module";
+import {PsychologistModule} from "./psychologist/psychologist.module";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {SharedModule} from "./shared/shared.module";
     FooterComponent,
     NotFoundComponent,
     FaqComponent,
-    MenuComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +43,7 @@ import {SharedModule} from "./shared/shared.module";
     AdminModule,
     InstructorModule,
     DelegateModule,
+    PsychologistModule,
     SharedModule
   ],
   providers: [
