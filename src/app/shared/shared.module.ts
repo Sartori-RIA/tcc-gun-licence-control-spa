@@ -7,10 +7,12 @@ import {ClientService} from "./services/client.service";
 import { FormComponent } from './components/form/form.component';
 import {CamelCasePipe} from "./pipes/camel-case.pipe";
 import { ListsComponent } from './components/lists/lists.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     FormComponent,
