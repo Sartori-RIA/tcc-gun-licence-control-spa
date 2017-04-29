@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import {RoutesServerUtil} from "./routes-api/routes-server.util";
 import {RoutesClientUtil} from "./routes-api/routes-cient.util";
 import {ClientService} from "./services/client.service";
-import { FormComponent } from './form/form.component';
+import { FormComponent } from './components/form/form.component';
 import {CamelCasePipe} from "./pipes/camel-case.pipe";
-import { ListsComponent } from './lists/lists.component';
+import { ListsComponent } from './components/lists/lists.component';
 
 @NgModule({
   imports: [

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,+CAA+C;EAC7C,gBAAgB,EAAE,wBAAwB;;AAG5C,mFAAoF;EAClF,gBAAgB,EAAE,wBAAwB;;AAG5C,0CAA2C;EACzC,KAAK,EAAE,wBAAwB",
+"sources": ["client-register.component.scss"],
 "names": [],
 "file": "client-register.component.css"
 }

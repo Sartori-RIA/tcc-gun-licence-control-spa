@@ -6,38 +6,60 @@
     <div class="card-content">
       <form #form="ngForm" (ngSubmit)="onSubmit()">
 
+        <div class="row">
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="name">Nome Completo</label>
+            <input type="text" [(ngModel)]="model.name" name="name" id="name">
+          </div>
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="passwd">Senha</label>
+            <input type="password" [(ngModel)]="model.passwd" name="passwd" id="passwd">
+          </div>
+        </div>
 
-        <label for="name">Nome Completo</label>
-        <input type="text" [(ngModel)]="model.name" name="name" id="name">
+        <div class="row">
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="sex">Sexo</label>
+            <input type="text" [(ngModel)]="model.sex" name="sex" id="sex">
+          </div>
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="address">Endereço</label>
+            <input type="text" [(ngModel)]="model.address" name="address" id="address">
+          </div>
+        </div>
 
-        <label for="passwd">Senha</label>
-        <input type="password" [(ngModel)]="model.passwd" name="passwd" id="passwd">
+        <div class="row">
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="dateOfBirth">Data de nascimento</label><br>
+            <input type="date" class="datepicker" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" id="dateOfBirth">
+          </div>
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="cpf">CPF</label>
+            <input type="text" [(ngModel)]="model.cpf" name="cpf" id="cpf">
+          </div>
+        </div>
 
-        <label for="sex">Sexo</label>
-        <input type="text" [(ngModel)]="model.sex" name="sex" id="sex">
+        <div class="row">
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="cep">CEP</label>
+            <input type="text" [(ngModel)]="model.cep" name="cep" id="cep">
+          </div>
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="city">Cidade</label>
+            <input type="text" [(ngModel)]="model.city" name="sex" id="city">
+          </div>
+        </div>
 
-        <label for="address">Endereço</label>
-        <input type="text" [(ngModel)]="model.address" name="address" id="address">
-
-        <label for="dateOfBirth">Data de nascimento</label>
-        <input type="date" class="datepicker" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" id="dateOfBirth">
-
-        <label for="cpf">CPF</label>
-        <input type="text" [(ngModel)]="model.cpf" name="cpf" id="cpf">
-
-        <label for="cep">CEP</label>
-        <input type="text" [(ngModel)]="model.cep" name="cep" id="cep">
-
-        <label for="city">Cidade</label>
-        <input type="text" [(ngModel)]="model.city" name="sex" id="city">
-
-        <label for="neighborhood">Bairro</label>
-        <input type="text" [(ngModel)]="model.neighborhood" name="neighborhood" id="neighborhood">
-
-        <label for="addressNumber">Número da residencia</label>
-        <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber">
-
-
+        <div class="row">
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="neighborhood">Bairro</label>
+            <input type="text" [(ngModel)]="model.neighborhood" name="neighborhood" id="neighborhood">
+          </div>
+          <div class="input-field col s12 m6 l6 xl6">
+            <label for="addressNumber">Número da residencia</label>
+            <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber">
+          </div>
+        </div>
 
         <button class="btn" type="submit">Cadastrar</button>
       </form>

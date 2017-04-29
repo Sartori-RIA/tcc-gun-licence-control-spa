@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+.fixed{
+  width: 200px;
+  margin-top: 65px;
+}
+
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+

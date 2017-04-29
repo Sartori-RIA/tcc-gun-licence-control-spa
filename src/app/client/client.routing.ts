@@ -14,7 +14,7 @@ const clientsRoutes: Routes = [
     { path: 'perfil', component: ClientProfileComponent},
     { path: 'licencas', component: ClientLicenceComponent},
     { path: 'exames', component: ClientExamsComponent},
-    { path: 'cadastro', component: ClientRegisterComponent}
+    { path: 'novo', component: ClientRegisterComponent}
   ]}
 ];
 
