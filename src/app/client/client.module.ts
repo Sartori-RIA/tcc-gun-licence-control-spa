@@ -11,24 +11,26 @@ import { ClientExamsComponent } from './client-exams/client-exams.component';
 import { ClientRoutingModule } from "./client.routing";
 import { ClientSidebarComponent } from './client-sidebar/client-sidebar.component';
 import { MenuComponent } from './client-sidebar/menu/menu.component';
-import { ClientFormComponent } from './client-form/client-form.component';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    SharedModule
   ],
   declarations: [
-  ClientHomeComponent,
-  ClientRegisterComponent,
-  ClientProfileComponent,
-  ClientLicenceComponent,
-  ClientExamsComponent,
-  ClientSidebarComponent,
-  MenuComponent,
-  ClientFormComponent
+    ClientHomeComponent,
+    ClientRegisterComponent,
+    ClientProfileComponent,
+    ClientLicenceComponent,
+    ClientExamsComponent,
+    ClientSidebarComponent,
+    MenuComponent
+  ],
+  exports: [
   ]
 })
 export class ClientModule { }

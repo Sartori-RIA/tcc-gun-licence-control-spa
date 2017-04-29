@@ -4,25 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
 
-import  './shared/rxjs.extensions';
 import { AppComponent } from './app.component';
 import {RoutingModule} from "./app.routing";
 import {ValidatorModule} from "./validator/validator.module";
-import {RoutesServerUtil} from "./shared/routes-api/routes-server.util";
-import {RoutesClientUtil} from "./shared/routes-api/routes-cient.util";
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {FooterComponent} from "./footer/footer.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {FaqComponent} from "./faq/faq.component";
-import {CamelCasePipe} from "./shared/pipes/camel-case.pipe";
 import {MenuComponent} from "./navbar/menu/menu.component";
 import {ClientModule} from "./client/client.module";
-import {ClientService} from "./shared/services/client.service";
 import {AdminModule} from "./admin/admin.module";
 import {InstructorModule} from "./instructor/instructor.module";
 import {DelegateModule} from "./delegate/delegate.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -33,8 +29,7 @@ import {DelegateModule} from "./delegate/delegate.module";
     FooterComponent,
     NotFoundComponent,
     FaqComponent,
-    CamelCasePipe,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,12 +41,14 @@ import {DelegateModule} from "./delegate/delegate.module";
     ClientModule,
     AdminModule,
     InstructorModule,
-    DelegateModule
+    DelegateModule,
+    SharedModule
   ],
   providers: [
-    RoutesServerUtil,
-    RoutesClientUtil,
-    ClientService
+
+  ],
+  exports: [
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })

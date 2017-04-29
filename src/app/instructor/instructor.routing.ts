@@ -4,11 +4,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {InstructorHomeComponent} from "./instructor-home/instructor-home.component";
+import {InstructorRegisterComponent} from "./instructor-register/instructor-register.component";
 
 
 const instructorRoutes: Routes = [
   { path: '', component: InstructorHomeComponent, children : [
-
+    { path: 'novo', component: InstructorRegisterComponent}
   ]}
 ];
 

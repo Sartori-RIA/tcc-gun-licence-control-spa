@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Client} from "../../shared/model/Client";
+import {ClientService} from "../../shared/services/client.service";
+
 
 @Component({
   selector: 'app-client-profile',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientProfileComponent implements OnInit {
 
-  constructor() { }
+  errorMessage: string;
+  model: Client = new Client();
+
+  constructor(private clientService: ClientService) { }
 
   ngOnInit() {
   }
