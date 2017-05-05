@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, ElementRef} from '@angular/core';
-import * as $ from 'jquery';
 declare let jQuery:any;
 
 @Component({
