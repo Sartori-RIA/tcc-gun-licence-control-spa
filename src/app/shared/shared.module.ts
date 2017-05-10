@@ -8,6 +8,7 @@ import { FormComponent } from './components/form/form.component';
 import {CamelCasePipe} from "./pipes/camel-case.pipe";
 import { ListsComponent } from './components/lists/lists.component';
 import {FormsModule} from "@angular/forms";
+import { CampoControlErrorComponent } from './components/campo-control-error/campo-control-error.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     FormComponent,
     CamelCasePipe,
-    ListsComponent
+    ListsComponent,
+    CampoControlErrorComponent
   ],
   providers: [
     RoutesServerUtil,

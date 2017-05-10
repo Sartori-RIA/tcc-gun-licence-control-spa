@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-shared-lists',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lists.component.scss']
 })
 export class ListsComponent implements OnInit {
+  @Input() model: string;
 
   constructor() { }
 

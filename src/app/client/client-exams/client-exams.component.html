@@ -1,3 +1,4 @@
-<p>
-  client-exams works!
-</p>
+
+<div class="collection" *ngFor="let model of models">
+  <app-shared-lists [model]="model.cpf" ></app-shared-lists>
+</div>

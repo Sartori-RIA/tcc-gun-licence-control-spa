@@ -17,6 +17,16 @@ export class ClientRegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  verificaValidTouched(campo){
+    return !campo.valid && campo.touched
+  }
+
+  aplicaCssErro(campo){
+    return {
+      'has-error' : this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo),
+    }
+  }
 
   onSubmit(){
     this.clientService.create(this.model).subscribe(

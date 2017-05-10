@@ -9,7 +9,7 @@
         <div class="row">
           <div class="input-field col s12 m6 l6 xl6">
             <label for="name">Nome Completo</label>
-            <input type="text" [(ngModel)]="model.name" name="name" id="name">
+            <input type="text" [(ngModel)]="model.name" name="name" id="name" data-error="Errado" data-success="aee" required>
           </div>
           <div class="input-field col s12 m6 l6 xl6">
             <label for="passwd">Senha</label>
@@ -55,13 +55,13 @@
             <label for="neighborhood">Bairro</label>
             <input type="text" [(ngModel)]="model.neighborhood" name="neighborhood" id="neighborhood">
           </div>
-          <div class="input-field col s12 m6 l6 xl6">
+          <div class="input-field col s12 m6 l6 xl6" [ngClass]="aplicaCssErro(addressNumber)">
             <label for="addressNumber">Número da residencia</label>
             <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber">
           </div>
         </div>
 
-        <button class="btn" type="submit">Cadastrar</button>
+        <button class="btn" [disabled]="!form.valid" type="submit">Cadastrar</button>
       </form>
     </div>
   </div>

@@ -15,5 +15,14 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   }
 
-  nome: string = 'LUCAS SARTORI';
+  verificaValidTouched(campo){
+    return !campo.valid && campo.touched
+  }
+
+  aplicaCssErro(campo){
+    return {
+      'has-error' : this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo),
+    }
+  }
 }

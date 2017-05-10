@@ -1,1 +1,4 @@
-<app-shared-lists></app-shared-lists>
+
+<div class="collection" *ngFor="let model of models">
+  <app-shared-lists [model]="model.cpf" ></app-shared-lists>
+</div>

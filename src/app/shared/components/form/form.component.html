@@ -47,8 +47,9 @@
     <label for="neighborhood">Bairro</label>
     <input type="text" [(ngModel)]="model.neighborhood" name="neighborhood" id="neighborhood">
   </div>
-  <div class="input-field col s12 m6 l6 xl6">
+  <div class="input-field col s12 m6 l6 xl6" [ngClass]="aplicaCssErro(addressNumber)">
     <label for="addressNumber">Número da residencia</label>
     <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber">
+    <app-campo-control-error [showErro]="aplicaCssErro(addressNumber)" msgErro="Numero de endereco obrigatório" ></app-campo-control-error>
   </div>
 </div>
