@@ -17,7 +17,9 @@ export class Client {
     public city?: string,
     public neighborhood?: string,
     public addressNumber?: string,
-    public id?: number
+    public id?: number,
+    public passwd?: string,
+    public email?: string
   ) {
 
   }

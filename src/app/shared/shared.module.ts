@@ -9,6 +9,7 @@ import {CamelCasePipe} from "./pipes/camel-case.pipe";
 import { ListsComponent } from './components/lists/lists.component';
 import {FormsModule} from "@angular/forms";
 import { CampoControlErrorComponent } from './components/campo-control-error/campo-control-error.component';
+import { FormDebugComponent } from './components/form-debug/form-debug.component';
 
 @NgModule({
   imports: [

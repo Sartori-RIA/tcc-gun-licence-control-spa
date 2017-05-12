@@ -8,7 +8,7 @@ import {Client} from "../../model/Client";
 })
 export class FormComponent implements OnInit {
 
-  @Input() model: Client = new Client;
+  @Input() model: Client = new Client();
 
   constructor() { }
 

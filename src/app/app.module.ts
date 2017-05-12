@@ -16,10 +16,9 @@ import {FaqComponent} from "./faq/faq.component";
 import {MenuComponent} from "./navbar/menu/menu.component";
 import {ClientModule} from "./client/client.module";
 import {AdminModule} from "./admin/admin.module";
-import {InstructorModule} from "./instructor/instructor.module";
 import {DelegateModule} from "./delegate/delegate.module";
 import {SharedModule} from "./shared/shared.module";
-import {PsychologistModule} from "./psychologist/psychologist.module";
+import {ExaminatorModule} from "./examinator/examinator.module";
 
 @NgModule({
   declarations: [
@@ -41,10 +40,9 @@ import {PsychologistModule} from "./psychologist/psychologist.module";
     ValidatorModule,
     ClientModule,
     AdminModule,
-    InstructorModule,
     DelegateModule,
-    PsychologistModule,
-    SharedModule
+    SharedModule,
+    ExaminatorModule
   ],
   providers: [
 
