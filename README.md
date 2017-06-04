@@ -1,6 +1,6 @@
 # TccClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2
 
 ## Development server
 
@@ -34,8 +34,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 + angular-cli >= 1.0.0-rc.4
 
 
-##Atualizando Angular-cli
+## Atualizando Angular-cli
 
 + `npm uninstall -g @angular/cli`
 + `npm cache clean`
 + `npm install -g @angular/cli@latest`
+
+# Versao do angular
++ 4.x

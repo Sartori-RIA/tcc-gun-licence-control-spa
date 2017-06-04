@@ -4,5 +4,6 @@
 export class RoutesClientUtil {
   public static GUNS = 'guns/';
   public static CLIENTS: string = "clients/";
+  public static EXAMINATORS: string = "examinators/";
 
 }

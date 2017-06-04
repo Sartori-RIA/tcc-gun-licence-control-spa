@@ -9,71 +9,79 @@
         <div class="row">
           <div class="input-field col s12 m6 l6 xl6">
             <label for="name">Nome Completo</label>
-            <input type="text" [(ngModel)]="model.name" name="name" id="name" data-error="Errado" data-success="aee" required>
+            <input type="text" [(ngModel)]="model.name" name="name" id="name" data-error="Errado"
+                   data-success="aee" required>
           </div>
 
           <div class="input-field col s12 m6 l6 xl6">
-            <label for="sex">Sexo</label>
-            <select  [(ngModel)]="model.sex" name="sex" id="sex">
-              <option value="M">Masculino</option>
-              <option value="F">Feminino</option>
+
+            <label>Sexo</label><br/><br>
+            <select class="browser-default">
+              <option value="" disabled selected>Informe seu Sexo</option>
+              <option *ngFor="let sexo of sexos" [ngValue]="sexo">
+                {{ sexo.name }}
+              </option>
             </select>
           </div>
 
         </div>
 
         <div class="row">
+
           <div class="input-field col s12 m6 l6 xl6">
             <label for="passwd">Senha</label>
-            <input type="password" [(ngModel)]="model.passwd" name="passwd" id="passwd">
+            <input type="password" [(ngModel)]="model.passwd" name="passwd" id="passwd" required>
           </div>
+
           <div class="input-field col s12 m6 l6 xl6">
             <label for="email">Email</label>
-            <input type="text" [(ngModel)]="model.email" email name="email" id="email">
+            <input type="text" [(ngModel)]="model.email" email name="email" id="email" required>
           </div>
+
         </div>
 
         <div class="row">
           <div class="input-field col s12 m6 l6 xl6">
+
             <label for="dateOfBirth">Data de nascimento</label><br>
-            <input type="date" class="datepicker" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" id="dateOfBirth">
+            <input type="date" class="datepicker" [(ngModel)]="model.dateOfBirth"
+                   name="dateOfBirth" id="dateOfBirth" value="{{model.dateOfBirth | date}}" required>
           </div>
           <div class="input-field col s12 m6 l6 xl6">
             <label for="cpf">CPF</label>
-            <input type="text" [(ngModel)]="model.cpf" name="cpf" id="cpf">
+            <input type="text" [(ngModel)]="model.cpf" name="cpf" id="cpf" required>
           </div>
         </div>
-
 
         <div ngModelGroup="endereco">
           <h3 class="center">Seu endereço</h3>
           <div class="row">
             <div class="input-field col s12 m6 l6 xl6">
               <label for="cep">CEP</label>
-              <input type="text" [(ngModel)]="model.cep" name="cep" id="cep">
+              <input type="text" [(ngModel)]="model.cep" name="cep" id="cep" required>
             </div>
             <div class="input-field col s12 m6 l6 xl6">
               <label for="city">Cidade</label>
-              <input type="text" [(ngModel)]="model.city" name="sex" id="city">
+              <input type="text" [(ngModel)]="model.city" name="city" id="city" required>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12 m6 l6 xl6">
               <label for="address">Endereço</label>
-              <input type="text" [(ngModel)]="model.address" name="address" id="address">
+              <input type="text" [(ngModel)]="model.address" name="address" id="address" required>
             </div>
             <div class="input-field col s12 m6 l6 xl6">
               <label for="neighborhood">Bairro</label>
-              <input type="text" [(ngModel)]="model.neighborhood" name="neighborhood" id="neighborhood">
+              <input type="text" [(ngModel)]="model.neighborhood" name="neighborhood" id="neighborhood" required>
             </div>
-            <div class="input-field col s12 m6 l6 xl6" [ngClass]="aplicaCssErro(addressNumber)">
+            <div class="input-field col s12 m6 l6 xl6">
               <label for="addressNumber">Número da residencia</label>
-              <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber">
+              <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber" required>
             </div>
           </div>
         </div>
 
-        <button class="btn" [disabled]="!form.valid" type="submit">Cadastrar</button>
+        <button class="btn" type="submit">Cadastrar</button>
         <app-form-debug [form]="form"></app-form-debug>
       </form>
     </div>

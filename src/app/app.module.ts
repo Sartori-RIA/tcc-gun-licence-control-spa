@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import 'materialize-css';
+import 'hammerjs';
 import { MaterializeModule } from 'angular2-materialize';
-
 import { AppComponent } from './app.component';
-import {RoutingModule} from "./app.routing";
+import {AppRoutingModule} from "./app-routing.module";
 import {ValidatorModule} from "./validator/validator.module";
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
@@ -33,10 +35,11 @@ import {ExaminatorModule} from "./examinator/examinator.module";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     MaterializeModule,
-    RoutingModule,
+    AppRoutingModule,
     ValidatorModule,
     ClientModule,
     AdminModule,
