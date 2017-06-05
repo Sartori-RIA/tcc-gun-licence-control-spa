@@ -1,97 +1,75 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-  <div class="row">
-    <div class="input-field col s12 m6 l6 xl6">
-      <label for="name">Nome Completo</label>
-      <input type="text" [(ngModel)]="model.name" name="name" id="name"required>
-    </div>
 
-    <div class="input-field col s12 m6 l6 xl6">
 
-      <md-select placeholder="Informe o Sexo" [(ngModel)]="model.sex"  id="sex" name="sex">
-        <md-option *ngFor="let sexo of sexos" [value]="sexo.abbrev">{{ sexo.name }}</md-option>
-      </md-select>
+  <md-input-container class="full-width">
+    <input mdInput [(ngModel)]="model.name" name="name" id="name" placeholder="Nome Completo">
+  </md-input-container>
 
-    </div>
-  </div>
+  <md-select placeholder="Informe o Sexo" [(ngModel)]="model.sex"  id="sex">
+    <md-option *ngFor="let sexo of sexos" [value]="sexo.abbrev">{{ sexo.name }}</md-option>
+  </md-select>
 
-  <div class="row">
+  <md-input-container class="midle-width">
+    <input mdInput [(ngModel)]="model.passwd" name="passwd" id="passwd" required  placeholder="Senha">
+  </md-input-container>
 
-    <div class="input-field col s12 m6 l6 xl6">
-      <label for="passwd">Senha</label>
-      <input type="password" [(ngModel)]="model.passwd" name="passwd" id="passwd" required>
-    </div>
+  <md-input-container class="midle-width">
+    <input mdInput [(ngModel)]="model.email" email name="email" id="email" required  placeholder="Email">
+  </md-input-container>
 
-    <div class="input-field col s12 m6 l6 xl6">
-      <label for="email">Email</label>
-      <input type="text" [(ngModel)]="model.email" email name="email" id="email" required>
-    </div>
+  <md-input-container class="">
+    <input mdInput #cpf [(ngModel)]="model.cpf" minlength="11" maxlength="11" name="cpf" id="cpf" required  placeholder="CPF">
+    <md-hint align="end">{{cpf.value.length}} / 11</md-hint>
+  </md-input-container>
 
-  </div>
-
-  <div class="row">
-    <div class="input-field col s12 m6 l6 xl6">
-
-      <label for="dateOfBirth">Data de nascimento</label><br>
-      <input type="date" class="datepicker" [(ngModel)]="model.dateOfBirth"
-             name="dateOfBirth" id="dateOfBirth" value="{{model.dateOfBirth | date}}" required>
-
-    </div>
-    <div class="input-field col s12 m6 l6 xl6">
-      <label for="cpf">CPF</label>
-      <input type="text" [(ngModel)]="model.cpf" name="cpf" id="cpf" required>
-    </div>
-  </div>
+  <md-input-container>
+    <input mdInput [mdDatepicker]="picker" [(ngModel)]="model.dateOfBirth"
+           value="{{model.dateOfBirth | date}}" placeholder="Data de nascimento"
+           name="dateOfBirth" id="dateOfBirth">
+    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+  </md-input-container>
+  <md-datepicker #picker></md-datepicker>
 
   <div ngModelGroup="endereco">
     <h3 class="center">Seu endereço</h3>
-    <div class="row">
-      <div class="input-field col s12 m6 l6 xl6">
-        <label for="cep">CEP</label>
-        <input type="text" [(ngModel)]="model.cep" name="cep" id="cep" required (blur)="getCEP($event.target.value, form )">
-      </div>
-      <div class="input-field col s12 m6 l6 xl6">
-        <label for="cidade">Cidade</label>
-        <input type="text" [(ngModel)]="model.city" name="cidade" id="cidade" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12 m6 l6 xl6">
-        <label for="estado">Estado</label>
-        <input type="text" [(ngModel)]="model.state" name="estado" id="estado" required>
-      </div>
-      <div class="input-field col s12 m6 l6 xl6">
-        <label for="rua">Endereço</label>
-        <input type="text" [(ngModel)]="model.address" name="rua" id="rua" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12 m6 l6 xl6">
-        <label for="bairro">Bairro</label>
-        <input type="text" [(ngModel)]="model.bairro" name="bairro" id="bairro" required>
-      </div>
-      <div class="input-field col s12 m6 l6 xl6">
-        <label for="complemento">Complemento</label>
-        <input type="text" [(ngModel)]="model.complemento" name="complemento" id="complemento" required>
-      </div>
-      <div class="input-field col s12 m6 l6 xl6">
-        <label for="addressNumber">Número da residencia</label>
-        <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber" required>
-      </div>
-    </div>
+
+    <md-input-container class="">
+      <input mdInput #postalCode maxlength="8" placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
+             required (blur)="getCEP($event.target.value, form )">
+      <md-hint align="end">{{postalCode.value.length}} / 8</md-hint>
+    </md-input-container>
+
+    <md-input-container class="">
+      <input mdInput  [(ngModel)]="model.bairro" name="bairro" id="bairro" required placeholder="Bairro">
+    </md-input-container>
+
+    <md-input-container class="">
+      <input mdInput [(ngModel)]="model.complemento" name="complemento" id="complemento" required placeholder="Complemento">
+    </md-input-container>
+
+    <md-input-container class="">
+      <input mdInput [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber" required placeholder="Numero">
+    </md-input-container>
+
+    <md-input-container class="">
+      <input mdInput [(ngModel)]="model.state" name="estado" id="estado" required placeholder="Estado">
+    </md-input-container>
+
+    <md-input-container class="full-width">
+      <input mdInput [(ngModel)]="model.city" name="cidade" id="cidade" required placeholder="Cidade">
+    </md-input-container>
+
+    <md-input-container class="full-width">
+      <input mdInput [(ngModel)]="model.address" name="rua" id="rua" required placeholder="Endereço">
+    </md-input-container>
+
   </div>
-
-  <!--<div class="input-field col s12 m6 l6 xl6">-->
-    <!--<label>Tipo de usuário</label><br>-->
-    <!--<input (click)="changeType(3)" [(ngModel)]="model.type" name="type" type="radio" id="type" />-->
-    <!--<label for="type">Psicologo</label>-->
-
-    <!--<input (click)="changeType(2)" [(ngModel)]="model.type" class="with-gap" name="type" type="radio" id="type"  />-->
-    <!--<label for="type">Instrutor</label>-->
-
-    <!--<input (click)="changeType(1)" [(ngModel)]="model.type" name="type" type="radio" id="type" />-->
-    <!--<label for="type">Delegado</label>-->
-  <!--</div>-->
+  <!--<md-radio-group class="" [(ngModel)]="model.type" id="type" >-->
+    <!--<md-radio-button class="" *ngFor="let type of types" [value]="type.id">-->
+      <!--{{type.name}}-->
+    <!--</md-radio-button>-->
+  <!--</md-radio-group>-->
 
   <button class="btn" type="submit">Cadastrar</button>
 </form>

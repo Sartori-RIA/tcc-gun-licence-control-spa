@@ -16,10 +16,13 @@ import { ExaminatorService } from "./services/examinator.service";
 import { FormUserInfoComponent } from './components/form-user-info/form-user-info.component';
 import { FormUserAddressComponent } from './components/form-user-address/form-user-address.component';
 import { FormUserTypeComponent } from './components/form-user-type/form-user-type.component';
-import { MdDatepickerModule,
-  MdInputModule,
-  MdNativeDateModule,
-  MdSelectModule
+import {
+  MdButtonModule, MdCardModule,
+  MdCoreModule,
+  MdDatepickerModule, MdIconModule,
+  MdInputModule, MdMenuModule,
+  MdNativeDateModule, MdRadioModule,
+  MdSelectModule, MdSidenavModule, MdTabsModule, MdTextareaAutosize, MdToolbarModule
 } from "@angular/material";
 
 
@@ -31,7 +34,16 @@ import { MdDatepickerModule,
     MdSelectModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    MdInputModule
+    MdInputModule,
+    MdMenuModule,
+    MdRadioModule,
+    MdSidenavModule,
+    MdCoreModule,
+    MdButtonModule,
+    MdCardModule,
+    MdTabsModule,
+    MdToolbarModule,
+    MdIconModule
   ],
   declarations: [
     FormComponent,
@@ -52,10 +64,19 @@ import { MdDatepickerModule,
     FormComponent,
     CamelCasePipe,
     ListsComponent,
+    MdSelectModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    MdSelectModule,
-    MdInputModule
+    MdInputModule,
+    MdMenuModule,
+    MdRadioModule,
+    MdSidenavModule,
+    MdCoreModule,
+    MdButtonModule,
+    MdCardModule,
+    MdTabsModule,
+    MdToolbarModule,
+    MdIconModule
   ]
 })
 export class SharedModule { }

@@ -6,6 +6,7 @@ import {Sex} from "../../model/sex";
 import {Cep} from "../../model/cep";
 import {Client} from "../../model/client";
 import {MdDatepicker} from "@angular/material";
+import {UserType} from "../../model/user-type";
 @Component({
   selector: 'app-shared-form',
   templateUrl: './form.component.html',
@@ -16,8 +17,8 @@ export class FormComponent implements OnInit, AfterViewInit {
   @Input() model: Client = new Client;
   errorMessage: string;
   sexos:Sex[] = [];
+  types: UserType[] = [];
   @Input() cep: Cep = new Cep();
-  @ViewChild(MdDatepicker) dp: MdDatepicker<Date>;
   ngAfterViewInit(): void {
 
   }
@@ -28,6 +29,12 @@ export class FormComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.sexos.push(new Sex("Masculino", "M"));
     this.sexos.push(new Sex("Feminino", "F"));
+
+    this.types.push(new UserType("Admin",0));
+    this.types.push(new UserType("Delegado",1));
+    this.types.push(new UserType("Instrutor",2));
+    this.types.push(new UserType("Psicologo",3));
+    this.types.push(new UserType("Civil",4));
   }
 
   onSubmit(){
