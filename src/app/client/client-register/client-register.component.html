@@ -1,90 +1,68 @@
-<div class="row">
-  <div class="card">
-    <div class="card-title">
-      <h4>Cadastro cliente</h4>
-    </div>
-    <div class="card-content">
-      <form #form="ngForm" (ngSubmit)="onSubmit()">
+<form #form="ngForm" (ngSubmit)="onSubmit()">
 
-        <div class="row">
-          <div class="input-field col s12 m6 l6 xl6">
-            <label for="name">Nome Completo</label>
-            <input type="text" [(ngModel)]="model.name" name="name" id="name" data-error="Errado"
-                   data-success="aee" required>
-          </div>
+  <md-input-container class="full-width">
+    <input mdInput [(ngModel)]="model.name" required  type="text" name="name" id="name" placeholder="Nome Completo">
+  </md-input-container>
 
-          <div class="input-field col s12 m6 l6 xl6">
+  <md-select placeholder="Informe o Sexo" required  [(ngModel)]="model.sex" name="sex" id="sex">
+    <md-option *ngFor="let sexo of sexos" [value]="sexo.abbrev">{{ sexo.name }}</md-option>
+  </md-select>
 
-            <label>Sexo</label><br/><br>
-            <select class="browser-default">
-              <option value="" disabled selected>Informe seu Sexo</option>
-              <option *ngFor="let sexo of sexos" [ngValue]="sexo">
-                {{ sexo.name }}
-              </option>
-            </select>
-          </div>
+  <md-input-container class="midle-width">
+    <input mdInput [(ngModel)]="model.passwd" type="password" name="passwd" id="passwd" required  placeholder="Senha">
+  </md-input-container>
 
-        </div>
+  <md-input-container class="midle-width">
+    <input mdInput [(ngModel)]="model.email" type="email" email name="email" id="email" required  placeholder="Email">
+  </md-input-container>
 
-        <div class="row">
+  <md-input-container class="">
+    <input mdInput #cpf [(ngModel)]="model.cpf"   maxlength="11" name="cpf" id="cpf" required  placeholder="CPF">
+    <md-hint align="end">{{cpf.value.length}} / 11</md-hint>
+  </md-input-container>
 
-          <div class="input-field col s12 m6 l6 xl6">
-            <label for="passwd">Senha</label>
-            <input type="password" [(ngModel)]="model.passwd" name="passwd" id="passwd" required>
-          </div>
+  <md-input-container>
+    <input mdInput [mdDatepicker]="picker" [(ngModel)]="model.dateOfBirth"
+           value="{{model.dateOfBirth | date}}" required  placeholder="Data de nascimento"
+           name="dateOfBirth" id="dateOfBirth">
+    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+  </md-input-container>
+  <md-datepicker #picker></md-datepicker>
 
-          <div class="input-field col s12 m6 l6 xl6">
-            <label for="email">Email</label>
-            <input type="text" [(ngModel)]="model.email" email name="email" id="email" required>
-          </div>
+  <div ngModelGroup="endereco">
+    <h3 class="center">Seu endereço</h3>
 
-        </div>
+    <md-input-container class="">
+      <input mdInput #postalCode maxlength="8"  placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
+             required (blur)="getCEP($event.target.value, form )">
+      <md-hint align="end">{{postalCode.value.length}} / 8</md-hint>
+    </md-input-container>
 
-        <div class="row">
-          <div class="input-field col s12 m6 l6 xl6">
+    <md-input-container class="">
+      <input mdInput  [(ngModel)]="model.bairro" name="bairro" id="bairro" required placeholder="Bairro">
+    </md-input-container>
 
-            <label for="dateOfBirth">Data de nascimento</label><br>
-            <input type="date" class="datepicker" [(ngModel)]="model.dateOfBirth"
-                   name="dateOfBirth" id="dateOfBirth" value="{{model.dateOfBirth | date}}" required>
-          </div>
-          <div class="input-field col s12 m6 l6 xl6">
-            <label for="cpf">CPF</label>
-            <input type="text" [(ngModel)]="model.cpf" name="cpf" id="cpf" required>
-          </div>
-        </div>
+    <md-input-container class="">
+      <input mdInput [(ngModel)]="model.complemento" name="complemento" id="complemento" required placeholder="Complemento">
+    </md-input-container>
 
-        <div ngModelGroup="endereco">
-          <h3 class="center">Seu endereço</h3>
-          <div class="row">
-            <div class="input-field col s12 m6 l6 xl6">
-              <label for="cep">CEP</label>
-              <input type="text" [(ngModel)]="model.cep" name="cep" id="cep" required>
-            </div>
-            <div class="input-field col s12 m6 l6 xl6">
-              <label for="city">Cidade</label>
-              <input type="text" [(ngModel)]="model.city" name="city" id="city" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m6 l6 xl6">
-              <label for="address">Endereço</label>
-              <input type="text" [(ngModel)]="model.address" name="address" id="address" required>
-            </div>
-            <div class="input-field col s12 m6 l6 xl6">
-              <label for="neighborhood">Bairro</label>
-              <input type="text" [(ngModel)]="model.neighborhood" name="neighborhood" id="neighborhood" required>
-            </div>
-            <div class="input-field col s12 m6 l6 xl6">
-              <label for="addressNumber">Número da residencia</label>
-              <input type="text" [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber" required>
-            </div>
-          </div>
-        </div>
+    <md-input-container class="">
+      <input mdInput [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber" required placeholder="Numero">
+    </md-input-container>
 
-        <button class="btn" type="submit">Cadastrar</button>
-        <app-form-debug [form]="form"></app-form-debug>
-      </form>
-    </div>
+    <md-input-container class="">
+      <input mdInput [(ngModel)]="model.state" name="estado" id="estado" required placeholder="Estado">
+    </md-input-container>
+
+    <md-input-container class="full-width">
+      <input mdInput [(ngModel)]="model.city" name="cidade" id="cidade" required placeholder="Cidade">
+    </md-input-container>
+
+    <md-input-container class="full-width">
+      <input mdInput [(ngModel)]="model.address" name="rua" id="rua" required placeholder="Endereço">
+    </md-input-container>
+
   </div>
-</div>
 
+  <button class="btn" type="submit">Cadastrar</button>
+</form>

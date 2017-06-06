@@ -1,25 +1,23 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-
-
   <md-input-container class="full-width">
-    <input mdInput [(ngModel)]="model.name" name="name" id="name" placeholder="Nome Completo">
+    <input mdInput [(ngModel)]="model.name" type="text" name="name" id="name" placeholder="Nome Completo">
   </md-input-container>
 
-  <md-select placeholder="Informe o Sexo" [(ngModel)]="model.sex"  id="sex">
+  <md-select placeholder="Informe o Sexo" [(ngModel)]="model.sex" name="sex" id="sex">
     <md-option *ngFor="let sexo of sexos" [value]="sexo.abbrev">{{ sexo.name }}</md-option>
   </md-select>
 
   <md-input-container class="midle-width">
-    <input mdInput [(ngModel)]="model.passwd" name="passwd" id="passwd" required  placeholder="Senha">
+    <input mdInput [(ngModel)]="model.passwd" type="password" name="passwd" id="passwd" required  placeholder="Senha">
   </md-input-container>
 
   <md-input-container class="midle-width">
-    <input mdInput [(ngModel)]="model.email" email name="email" id="email" required  placeholder="Email">
+    <input mdInput [(ngModel)]="model.email" type="email" email name="email" id="email" required  placeholder="Email">
   </md-input-container>
 
   <md-input-container class="">
-    <input mdInput #cpf [(ngModel)]="model.cpf" minlength="11" maxlength="11" name="cpf" id="cpf" required  placeholder="CPF">
+    <input mdInput #cpf [(ngModel)]="model.cpf" minlength="11" type="number" maxlength="11" name="cpf" id="cpf" required  placeholder="CPF">
     <md-hint align="end">{{cpf.value.length}} / 11</md-hint>
   </md-input-container>
 
@@ -35,7 +33,7 @@
     <h3 class="center">Seu endereço</h3>
 
     <md-input-container class="">
-      <input mdInput #postalCode maxlength="8" placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
+      <input mdInput #postalCode maxlength="8"  placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
              required (blur)="getCEP($event.target.value, form )">
       <md-hint align="end">{{postalCode.value.length}} / 8</md-hint>
     </md-input-container>
@@ -65,11 +63,11 @@
     </md-input-container>
 
   </div>
-  <!--<md-radio-group class="" [(ngModel)]="model.type" id="type" >-->
-    <!--<md-radio-button class="" *ngFor="let type of types" [value]="type.id">-->
-      <!--{{type.name}}-->
-    <!--</md-radio-button>-->
-  <!--</md-radio-group>-->
+  <md-radio-group class="" [(ngModel)]="model.type" name="type" id="type" >
+    <md-radio-button class="" *ngFor="let type of types" [value]="type.id">
+      {{type.name}}
+    </md-radio-button>
+  </md-radio-group>
 
   <button class="btn" type="submit">Cadastrar</button>
 </form>

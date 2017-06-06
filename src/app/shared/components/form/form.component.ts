@@ -15,13 +15,12 @@ import {UserType} from "../../model/user-type";
 export class FormComponent implements OnInit, AfterViewInit {
 
   @Input() model: Client = new Client;
+  @Input() cep: Cep = new Cep();
   errorMessage: string;
   sexos:Sex[] = [];
   types: UserType[] = [];
-  @Input() cep: Cep = new Cep();
-  ngAfterViewInit(): void {
 
-  }
+  ngAfterViewInit(): void {}
 
   constructor(private examinatorService: ExaminatorService,
               private http: Http) { }
@@ -30,11 +29,11 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.sexos.push(new Sex("Masculino", "M"));
     this.sexos.push(new Sex("Feminino", "F"));
 
-    this.types.push(new UserType("Admin",0));
-    this.types.push(new UserType("Delegado",1));
-    this.types.push(new UserType("Instrutor",2));
-    this.types.push(new UserType("Psicologo",3));
-    this.types.push(new UserType("Civil",4));
+    this.types.push(new UserType("Admin","0"));
+    this.types.push(new UserType("Delegado","1"));
+    this.types.push(new UserType("Instrutor","2"));
+    this.types.push(new UserType("Psicologo","3"));
+    this.types.push(new UserType("Civil","4"));
   }
 
   onSubmit(){

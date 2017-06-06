@@ -43,7 +43,7 @@ import {
     MdCardModule,
     MdTabsModule,
     MdToolbarModule,
-    MdIconModule
+    MdIconModule,
   ],
   declarations: [
     FormComponent,
