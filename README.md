@@ -1,7 +1,6 @@
-# TccClient
-## Author: Lucas Antonio Ramos Sartori
+# Pf.Gov.Br
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
 ## Development server
 
@@ -9,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
 ## Build
 
@@ -27,19 +26,3 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-# REQUISITOS
-
-+ nodejs >= 8.1.1
-+ npm >= 5.3.0
-+ angular-cli >= 1.0.2
-
-
-## Atualizando Angular-cli
-
-+ `npm uninstall -g @angular/cli`
-+ `npm cache clean`
-+ `npm install -g @angular/cli@latest`
-
-# Versao do angular
-+ 4.x

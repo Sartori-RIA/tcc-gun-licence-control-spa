@@ -1,5 +1,5 @@
 <div class="container">
-<form #form="ngForm" (ngSubmit)="onSubmit()">
+<form #form="ngForm" (ngSubmit)="onSubmit()" disabled="disable">
 
   <md-input-container class="midle-width">
     <input mdInput [(ngModel)]="model.name" type="text" name="name" id="name" placeholder="Nome Completo">

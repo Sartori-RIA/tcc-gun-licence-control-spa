@@ -3,7 +3,7 @@ import {Headers, Http, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs";
 import {RoutesServerUtil} from "../routes-api/routes-server.util";
 import {RoutesClientUtil} from "../routes-api/routes-cient.util";
-import {Client} from "../model/Client";
+import {Client} from "../model/user";
 
 @Injectable()
 export class ClientService {

@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class TccClientPage {
+export class Pf.Gov.BrPage {
   navigateTo() {
     return browser.get('/');
   }

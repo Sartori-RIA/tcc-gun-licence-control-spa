@@ -1,12 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ExaminatorHomeComponent} from "./examinator-home/examinator-home.component";
 
-const routes: Routes = [
-  { path: '', component: ExaminatorHomeComponent, children:[
-
-  ]}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

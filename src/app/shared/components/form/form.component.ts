@@ -4,9 +4,11 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Sex} from "../../model/sex";
 import {Cep} from "../../model/cep";
-import {Client} from "../../model/client";
+import {Client} from "../../model/user";
 import {MdDatepicker} from "@angular/material";
 import {UserType} from "../../model/user-type";
+import {LocalizationService} from "../../services/localization.service";
+import {StateBR} from "../../model/stateBR";
 @Component({
   selector: 'app-shared-form',
   templateUrl: './form.component.html',
@@ -17,15 +19,18 @@ export class FormComponent implements OnInit, AfterViewInit {
   @Input() model: Client = new Client;
   @Input() cep: Cep = new Cep();
   errorMessage: string;
-  sexos:Sex[] = [];
+  sexos: Sex[] = [];
   types: UserType[] = [];
-
+  states: StateBR[];
   ngAfterViewInit(): void {}
 
   constructor(private examinatorService: ExaminatorService,
-              private http: Http) { }
+              private http: Http,
+              private localizationService: LocalizationService
+  ) { }
 
   ngOnInit() {
+    this.localizationService.getStatesBR().subscribe(dados => this.states = dados);
     this.sexos.push(new Sex("Masculino", "M"));
     this.sexos.push(new Sex("Feminino", "F"));
     this.types.push(new UserType("Admin","0"));

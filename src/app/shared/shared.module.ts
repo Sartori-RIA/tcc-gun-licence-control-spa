@@ -1,30 +1,26 @@
-import './rxjs.extensions';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from "@angular/http";
-import { RoutesServerUtil } from "./routes-api/routes-server.util";
-import { RoutesClientUtil } from "./routes-api/routes-cient.util";
-import { ClientService } from "./services/client.service";
-import { FormComponent } from './components/form/form.component';
-import { CamelCasePipe } from "./pipes/camel-case.pipe";
-import { ListsComponent } from './components/lists/lists.component';
-import { FormsModule } from "@angular/forms";
-import { CampoControlErrorComponent } from './components/campo-control-error/campo-control-error.component';
-
-import { ExaminatorService } from "./services/examinator.service";
-import { FormUserInfoComponent } from './components/form-user-info/form-user-info.component';
-import { FormUserAddressComponent } from './components/form-user-address/form-user-address.component';
-import { FormUserTypeComponent } from './components/form-user-type/form-user-type.component';
+import {FormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import './rxjs.extensions';
 import {
   MdButtonModule, MdCardModule,
   MdCoreModule,
-  MdDatepickerModule, MdIconModule,
-  MdInputModule, MdMenuModule,
-  MdNativeDateModule, MdRadioModule,
-  MdSelectModule, MdSidenavModule, MdTabsModule, MdTextareaAutosize, MdToolbarModule
+  MdDatepickerModule, MdIconModule, MdInputModule, MdMenuModule, MdNativeDateModule, MdRadioModule,
+  MdSelectModule, MdSidenavModule, MdTabsModule, MdToolbarModule
 } from "@angular/material";
-
+import {ListsComponent} from "./components/lists/lists.component";
+import {CamelCasePipe} from "./pipes/camel-case.pipe";
+import {FormComponent} from "./components/form/form.component";
+import {ExaminatorService} from "./services/examinator.service";
+import {ClientService} from "./services/client.service";
+import {RoutesClientUtil} from "./routes-api/routes-cient.util";
+import {RoutesServerUtil} from "./routes-api/routes-server.util";
+import {CampoControlErrorComponent} from "./components/campo-control-error/campo-control-error.component";
+import {FormUserInfoComponent} from "./components/form-user-info/form-user-info.component";
+import {FormUserAddressComponent} from "./components/form-user-address/form-user-address.component";
+import {FormUserTypeComponent} from "./components/form-user-type/form-user-type.component";
+import {LocalizationService} from "./services/localization.service";
 
 @NgModule({
   imports: [
@@ -43,7 +39,7 @@ import {
     MdCardModule,
     MdTabsModule,
     MdToolbarModule,
-    MdIconModule,
+    MdIconModule
   ],
   declarations: [
     FormComponent,
@@ -58,9 +54,13 @@ import {
     RoutesServerUtil,
     RoutesClientUtil,
     ClientService,
-    ExaminatorService
+    ExaminatorService,
+    LocalizationService
   ],
   exports: [
+    CommonModule,
+    FormsModule,
+    HttpModule,
     FormComponent,
     CamelCasePipe,
     ListsComponent,

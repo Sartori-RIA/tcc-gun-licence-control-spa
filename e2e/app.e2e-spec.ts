@@ -1,14 +1,14 @@
-import { TccClientPage } from './app.po';
+import { Pf.Gov.BrPage } from './app.po';
 
-describe('tcc-client App', () => {
-  let page: TccClientPage;
+describe('pf.gov.br App', () => {
+  let page: Pf.Gov.BrPage;
 
   beforeEach(() => {
-    page = new TccClientPage();
+    page = new Pf.Gov.BrPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
