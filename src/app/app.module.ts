@@ -21,6 +21,7 @@ import {AdminModule} from "./admin/admin.module";
 import {DelegateModule} from "./delegate/delegate.module";
 import {SharedModule} from "./shared/shared.module";
 import {ExaminatorModule} from "./examinator/examinator.module";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {ExaminatorModule} from "./examinator/examinator.module";
     AdminModule,
     DelegateModule,
     SharedModule,
-    ExaminatorModule
+    ExaminatorModule,
+    AuthModule
   ],
   providers: [
 

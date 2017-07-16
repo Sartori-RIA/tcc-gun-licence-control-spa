@@ -1,7 +1,13 @@
+$size: 100%;
 .full-width{
-  width: 100%;
+  width: $size;
 }
 
 .midle-width{
-  width: 50%;
+  width: $size - 50%;
 }
+
+.two-quarts-width{
+  width: $size - 75%;
+}
+

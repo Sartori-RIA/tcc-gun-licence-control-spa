@@ -1,4 +1,5 @@
 # TccClient
+## Author: Lucas Antonio Ramos Sartori
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2
 
@@ -29,9 +30,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # REQUISITOS
 
-+ nodejs >= 6.10
-+ npm >= 3.10.10
-+ angular-cli >= 1.0.0-rc.4
++ nodejs >= 8.1.1
++ npm >= 5.3.0
++ angular-cli >= 1.0.2
 
 
 ## Atualizando Angular-cli

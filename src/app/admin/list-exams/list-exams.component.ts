@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientService} from "../../shared/services/client.service";
-import {Client} from "../../shared/model/Client";
 
 @Component({
   selector: 'app-list-exams',
@@ -9,16 +7,11 @@ import {Client} from "../../shared/model/Client";
 })
 export class ListExamsComponent implements OnInit {
 
-  models: Client[];
-  constructor(private clientService: ClientService) { }
 
-  ngOnInit() {
-   this.index();
+  constructor() {
   }
 
-  index(){
-    this.clientService.index()
-      .subscribe(data => this.models = data);
-  }
 
+  ngOnInit(): void {
+  }
 }

@@ -28,7 +28,6 @@ export class FormComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.sexos.push(new Sex("Masculino", "M"));
     this.sexos.push(new Sex("Feminino", "F"));
-
     this.types.push(new UserType("Admin","0"));
     this.types.push(new UserType("Delegado","1"));
     this.types.push(new UserType("Instrutor","2"));

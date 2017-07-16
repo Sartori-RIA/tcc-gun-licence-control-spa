@@ -1,6 +1,7 @@
+<div class="container">
 <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-  <md-input-container class="full-width">
+  <md-input-container class="midle-width">
     <input mdInput [(ngModel)]="model.name" type="text" name="name" id="name" placeholder="Nome Completo">
   </md-input-container>
 
@@ -8,7 +9,7 @@
     <md-option *ngFor="let sexo of sexos" [value]="sexo.abbrev">{{ sexo.name }}</md-option>
   </md-select>
 
-  <md-input-container class="midle-width">
+  <md-input-container class="two-quarts-width">
     <input mdInput [(ngModel)]="model.passwd" type="password" name="passwd" id="passwd" required  placeholder="Senha">
   </md-input-container>
 
@@ -54,16 +55,16 @@
       <input mdInput [(ngModel)]="model.state" name="estado" id="estado" required placeholder="Estado">
     </md-input-container>
 
-    <md-input-container class="full-width">
+    <md-input-container class="midle-width">
       <input mdInput [(ngModel)]="model.city" name="cidade" id="cidade" required placeholder="Cidade">
     </md-input-container>
 
-    <md-input-container class="full-width">
+    <md-input-container class="midle-width">
       <input mdInput [(ngModel)]="model.address" name="rua" id="rua" required placeholder="Endereço">
     </md-input-container>
 
   </div>
-  <md-radio-group class="" [(ngModel)]="model.type" name="type" id="type" >
+  <md-radio-group class="right" [(ngModel)]="model.type" name="type" id="type" >
     <md-radio-button class="" *ngFor="let type of types" [value]="type.id">
       {{type.name}}
     </md-radio-button>
@@ -71,3 +72,4 @@
 
   <button class="btn" type="submit">Cadastrar</button>
 </form>
+</div>

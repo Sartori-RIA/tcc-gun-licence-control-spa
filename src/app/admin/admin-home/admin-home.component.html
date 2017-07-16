@@ -1,9 +1,11 @@
-<h1>tela do admin</h1>
-<div class="row">
-  <div class="col s3 m3 l3">
-    <app-admin-sidebar></app-admin-sidebar>
+
+  <h1>Painel administrativo</h1>
+  <div class="row">
+    <div class="col s2 m2 l2">
+      <app-admin-sidebar></app-admin-sidebar>
+    </div>
+    <div class="col s10 m10 l10">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div class="col s9 m9 l9">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+

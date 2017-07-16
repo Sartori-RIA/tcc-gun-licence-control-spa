@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ExaminatorService} from "../../shared/services/examinator.service";
+import {Examinator} from "../../shared/model/examinator";
 
 @Component({
   selector: 'app-list-psychologist',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPsychologistComponent implements OnInit {
 
-  constructor() { }
+  models: Examinator[];
+
+  constructor(private examinatorService: ExaminatorService) { }
 
   ngOnInit() {
+    this.index();
+  }
+
+  index(){
+    this.examinatorService.index()
+      .subscribe(data => this.models = data);
   }
 
 }

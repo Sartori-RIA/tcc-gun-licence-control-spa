@@ -13,6 +13,7 @@ import { ClientSidebarComponent } from './client-sidebar/client-sidebar.componen
 import { MenuComponent } from './client-sidebar/menu/menu.component';
 import { SharedModule} from "../shared/shared.module";
 import { FormDebugComponent} from "../shared/components/form-debug/form-debug.component";
+import { ClientAgendaComponent } from './client-agenda/client-agenda.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { FormDebugComponent} from "../shared/components/form-debug/form-debug.co
     ClientExamsComponent,
     ClientSidebarComponent,
     MenuComponent,
-    FormDebugComponent
+    FormDebugComponent,
+    ClientAgendaComponent
   ],
   exports: [
   ]

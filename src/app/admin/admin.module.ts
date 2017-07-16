@@ -6,11 +6,7 @@ import {AdminRoutingModule} from "./admin.routing";
 import { MenuComponent } from './admin-sidebar/menu/menu.component';
 import {SharedModule} from "../shared/shared.module";
 import { RegisterDelegateComponent } from './register-delegate/register-delegate.component';
-import { RegisterInstructorComponent } from './register-instructor/register-instructor.component';
-import { RegisterPsychologistComponent } from './register-psychologist/register-psychologist.component';
-import { ListInstructorComponent } from './list-instructor/list-instructor.component';
 import { ListPsychologistComponent } from './list-psychologist/list-psychologist.component';
-import { ListDelegateComponent } from './list-delegate/list-delegate.component';
 import { ListExamsComponent } from './list-exams/list-exams.component';
 
 @NgModule({
@@ -24,11 +20,7 @@ import { ListExamsComponent } from './list-exams/list-exams.component';
     AdminSidebarComponent,
     MenuComponent,
     RegisterDelegateComponent,
-    RegisterInstructorComponent,
-    RegisterPsychologistComponent,
-    ListInstructorComponent,
     ListPsychologistComponent,
-    ListDelegateComponent,
     ListExamsComponent
   ]
 })
