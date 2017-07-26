@@ -6,7 +6,7 @@
   </md-input-container>
 
   <md-select placeholder="Informe o Sexo" [(ngModel)]="model.sex" name="sex" id="sex">
-    <md-option *ngFor="let sexo of sexos" [value]="sexo.abbrev">{{ sexo.name }}</md-option>
+    <md-option *ngFor="let sexo of sexos" [value]="sexo.id">{{ sexo.description }}</md-option>
   </md-select>
 
   <md-input-container class="two-quarts-width">
@@ -36,7 +36,7 @@
     <md-input-container class="">
       <input mdInput #postalCode maxlength="8"  placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
              required (blur)="getCEP($event.target.value, form )">
-      <md-hint align="end">{{postalCode.value.length}} / 8</md-hint>
+      <md-hint align="end">{{postalCode.value.length}} / 9</md-hint>
     </md-input-container>
 
     <md-input-container class="">
@@ -66,7 +66,7 @@
   </div>
   <md-radio-group class="right" [(ngModel)]="model.type" name="type" id="type" >
     <md-radio-button class="" *ngFor="let type of types" [value]="type.id">
-      {{type.name}}
+      {{type.description}}
     </md-radio-button>
   </md-radio-group>
 

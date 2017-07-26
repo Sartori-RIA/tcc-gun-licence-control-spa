@@ -18,7 +18,7 @@ export class Client {
     public id?: number,
     public passwd?: string,
     public email?: string,
-    public type?: string
+    public type?: number
   ){
 
   }

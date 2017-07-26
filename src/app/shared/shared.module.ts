@@ -14,13 +14,17 @@ import {CamelCasePipe} from "./pipes/camel-case.pipe";
 import {FormComponent} from "./components/form/form.component";
 import {ExaminatorService} from "./services/examinator.service";
 import {ClientService} from "./services/client.service";
-import {RoutesClientUtil} from "./routes-api/routes-cient.util";
+import {RoutesClientUtil} from "./routes-api/routes-client.util";
 import {RoutesServerUtil} from "./routes-api/routes-server.util";
 import {CampoControlErrorComponent} from "./components/campo-control-error/campo-control-error.component";
 import {FormUserInfoComponent} from "./components/form-user-info/form-user-info.component";
 import {FormUserAddressComponent} from "./components/form-user-address/form-user-address.component";
 import {FormUserTypeComponent} from "./components/form-user-type/form-user-type.component";
-import {LocalizationService} from "./services/localization.service";
+import {ExamCategoryService} from "./services/exam-category.service";
+import {LicenceCategoryService} from "./services/licence-category.service";
+import {SexService} from "./services/sex.service";
+import {UserCategoryService} from "./services/user-category.service";
+import {AbstractService} from "./services/abstract.service";
 
 @NgModule({
   imports: [
@@ -55,7 +59,11 @@ import {LocalizationService} from "./services/localization.service";
     RoutesClientUtil,
     ClientService,
     ExaminatorService,
-    LocalizationService
+    ExamCategoryService,
+    LicenceCategoryService,
+    SexService,
+    UserCategoryService,
+    AbstractService,
   ],
   exports: [
     CommonModule,

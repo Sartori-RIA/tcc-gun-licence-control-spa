@@ -1,10 +1,12 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Client} from "../../shared/model/user";
+import {Client} from "../../shared/model/client";
 import {Sex} from "../../shared/model/sex";
 import {Cep} from "../../shared/model/cep";
 import {UserType} from "../../shared/model/user-type";
 import {ClientService} from "../../shared/services/client.service";
 import {Http} from "@angular/http";
+import {SexService} from "../../shared/services/sex.service";
+import {UserCategoryService} from "../../shared/services/user-category.service";
 
 @Component({
   selector: 'app-register',
@@ -17,45 +19,31 @@ export class RegisterComponent implements OnInit, AfterViewInit{
   cep: Cep = new Cep();
   errorMessage: string;
   sexos: Sex[] = [];
-  types: UserType = new UserType("Civil","4");
+  types: UserType;
 
   ngAfterViewInit(): void {}
 
   constructor(private clientService: ClientService,
+              private sexService: SexService,
+              private userCategoryService: UserCategoryService,
               private http: Http) { }
 
   ngOnInit() {
-    this.sexos.push(new Sex("Masculino", "M"));
-    this.sexos.push(new Sex("Feminino", "F"));
-
-    this.types = new UserType("Civil","4");
+    this.sexService.index().subscribe(res => this.sexos = res);
+    this.userCategoryService.index().subscribe(res => this.types[4]);
   }
 
   onSubmit(){
     this.model.type = this.types.id;
-    this.clientService.create(this.model).subscribe(
-      g => {
-        alert('sucesso');
-      }, error => {
-        this.errorMessage = <any> error;
-        alert(this.errorMessage);
-      }
-    );
-  }
-
-  changeType(type){
-    this.model.type = type;
+    this.clientService.create(this.model).subscribe();
   }
 
   getCEP(cep , form){
     cep = cep.replace(/\D/g, '');
     if ( cep != '') {
-      //Expressão regular para validar o CEP.
       let validacep = /^[0-9]{8}$/;
-      //valida o formado do CEP
       if (validacep.test(cep)){
         this.resetForm(form);
-        //Consulta o webservice viacep.com.br/
         this.http.get(`//viacep.com.br/ws/${cep}/json/`).map(dados => dados.json()).subscribe(dados => this.populaDados(dados, form));
 
       }

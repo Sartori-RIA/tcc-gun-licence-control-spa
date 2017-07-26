@@ -1,5 +1,5 @@
 export class UserType {
 
-  constructor(public name: string, public id: string) {
+  constructor(public description?: string, public id?: number) {
   }
 }

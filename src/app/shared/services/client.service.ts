@@ -1,54 +1,36 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http, RequestOptions} from "@angular/http";
+import {Http} from "@angular/http";
 import {Observable} from "rxjs";
 import {RoutesServerUtil} from "../routes-api/routes-server.util";
-import {RoutesClientUtil} from "../routes-api/routes-cient.util";
-import {Client} from "../model/user";
+import {RoutesClientUtil} from "../routes-api/routes-client.util";
+import {AbstractService} from "./abstract.service";
 
 @Injectable()
-export class ClientService {
+export class ClientService extends AbstractService{
 
-  private headers = new Headers({'Content-type': 'application/json'});
-  private clientUrl = RoutesServerUtil.URL_API + RoutesClientUtil.CLIENTS;
+  private url = RoutesServerUtil.URL_API + RoutesClientUtil.CLIENTS;
 
-  constructor(private  http: Http) { }
-
-  create(client: Client): Observable<Client>{
-    alert(JSON.stringify(client));
-    let option = new RequestOptions({headers: this.headers});
-    return this.http.post(this.clientUrl, JSON.stringify(client), option)
-      .map(res => {
-        let body = res.json();
-        return body || {};
-      });
+  constructor(http: Http) {
+    super(http);
   }
 
-
-  index(){
-    return this.http.get(this.clientUrl).map(res => res.json());
+  create(model: any): Observable<any> {
+    return super.create(this.url, model);
   }
 
-  show(id){
-    return this.http.get(this.getClientUrl(id)).map(res => res.json());
+  index(): Observable<any> {
+    return super.index(this.url);
   }
 
-  edit(client){
-    return this.http.put(this.getClientUrl(client.id), JSON.stringify(client)).map(res => res.json());
+  show(id: any): Observable<any> {
+    return super.show(this.url, id);
   }
 
-  destroy(id){
-    return this.http.delete(this.getClientUrl(id)).map(res => res.json());
+  edit(client: any): Observable<any> {
+    return super.edit(this.url, client);
   }
 
-  private getClientUrl(id){
-    return this.clientUrl + "/" + id;
+  destroy(id: any): Observable<any> {
+    return super.destroy(this.url, id);
   }
-
-
-  private handleError(error: any): Promise<any> {
-    console.error('Um erro aconteceu :(', error);
-    return Promise.reject(error.message || error);
-  }
-
-
 }

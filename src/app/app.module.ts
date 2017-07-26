@@ -19,6 +19,9 @@ import {AuthModule} from "./auth/auth.module";
 import {SharedModule} from "./shared/shared.module";
 import {ClientModule} from "./client/client.module";
 import {LoginModule} from "./login/login.module";
+import {AdminModule} from "./admin/admin.module";
+import {DelegateModule} from "./delegate/delegate.module";
+import {ExaminatorModule} from "./examinator/examinator.module";
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import {LoginModule} from "./login/login.module";
     AuthModule,
     SharedModule,
     ClientModule,
-    LoginModule
+    LoginModule,
+    AdminModule,
+    DelegateModule,
+    ExaminatorModule
   ],
   exports: [
     SharedModule
