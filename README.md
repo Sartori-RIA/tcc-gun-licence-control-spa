@@ -1,28 +1,26 @@
 # Pf.Gov.Br
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
+Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Instalar as dependencias
++ **npm install`**
 
-## Code scaffolding
+## Executar o servidor
+`ng serve` para executar o servidor em `localhost:4200`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+## Antes de iniciar o servidor
++ **Database MySQL `sinarm_db` criado**
++ **Iniciar a API Java**
 
-## Build
+## pré-requisitos 
++ **NodeJs >= 8.1.1**
++ **npm >= 5.3.0**
++ **Angular-CLI >= 1.2.1**
++ **JDK 1.8**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+# Author
++ **Lucas Antonio Ramos Sartori**
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#IDE Utilizada
++ **Intellij IDEA Ultimate**

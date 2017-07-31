@@ -2,10 +2,10 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()" disabled="disable">
 
   <md-input-container class="midle-width">
-    <input mdInput [(ngModel)]="model.name" type="text" name="name" id="name" placeholder="Nome Completo">
+    <input mdInput [(ngModel)]="model.name" required type="text" name="name" id="name" placeholder="Nome Completo">
   </md-input-container>
 
-  <md-select placeholder="Informe o Sexo" [(ngModel)]="model.sex" name="sex" id="sex">
+  <md-select placeholder="Informe o Sexo" required [(ngModel)]="model.sex" name="sex" id="sex">
     <md-option *ngFor="let sexo of sexos" [value]="sexo.id">{{ sexo.description }}</md-option>
   </md-select>
 
@@ -18,12 +18,12 @@
   </md-input-container>
 
   <md-input-container class="">
-    <input mdInput #cpf [(ngModel)]="model.cpf" minlength="11" type="number" maxlength="11" name="cpf" id="cpf" required  placeholder="CPF">
+    <input mdInput #cpf [(ngModel)]="model.cpf" minlength="11" type="text" (keypress)="_keyPress($event)" maxlength="11" name="cpf" id="cpf" required  placeholder="CPF">
     <md-hint align="end">{{cpf.value.length}} / 11</md-hint>
   </md-input-container>
 
   <md-input-container>
-    <input mdInput [mdDatepicker]="picker" [(ngModel)]="model.dateOfBirth"
+    <input mdInput [mdDatepicker]="picker" required [(ngModel)]="model.dateOfBirth"
            value="{{model.dateOfBirth | date}}" placeholder="Data de nascimento"
            name="dateOfBirth" id="dateOfBirth">
     <button mdSuffix [mdDatepickerToggle]="picker"></button>
@@ -34,7 +34,7 @@
     <h3 class="center">Seu endereço</h3>
 
     <md-input-container class="">
-      <input mdInput #postalCode maxlength="8"  placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
+      <input mdInput #postalCode maxlength="9"  placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
              required (blur)="getCEP($event.target.value, form )">
       <md-hint align="end">{{postalCode.value.length}} / 9</md-hint>
     </md-input-container>

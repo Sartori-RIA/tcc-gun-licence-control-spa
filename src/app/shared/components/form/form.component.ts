@@ -67,4 +67,16 @@ export class FormComponent implements OnInit, AfterViewInit {
   resetForm(formulario){
     this.cep = null;
   }
+
+  /** digitar apenas numeros
+   */
+  _keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+
+    if (!pattern.test(inputChar)) {
+      // invalid character, prevent input
+      event.preventDefault();
+    }
+  }
 }

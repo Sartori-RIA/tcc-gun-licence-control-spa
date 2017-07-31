@@ -1,8 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~@angular/material/theming';
+@include mat-core();
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/********************************
+ * TEMA
+ */
+$primary-color: black!important;
+$secondary-color: #e1ad62!important;
 
+$candy-app-primary: mat-palette($mat-amber);
+$candy-app-accent:  mat-palette($mat-blue, A200, A100, A400);
+$candy-app-warn:    mat-palette($mat-red);
+
+
+$collection-active-bg-color: mat-palette($mat-red);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+
+@include angular-material-theme($candy-app-theme);
+
+
+/********************************
+ * LISTAS SIDE BAR
+ */
+.collection {
+  .collection-item {
+    color: $primary-color;
+  }
+  .collection-item.active {
+    background-color: $secondary-color;
+    color: white!important;
+  }
+}
+/********************************
+ * FOOTER
+ */
+
+
+/********************************
+ * BOTOES
+ */
+button{
+  background-color: $secondary-color;
+}
+
+/********************************
+ * NAVBAR
+ */
+
+
+/********************************
+ * RESPONSIVIDADE
+ */
 @media only screen and (max-width : 992px) {
   header, main, footer {
     padding-left: 0;

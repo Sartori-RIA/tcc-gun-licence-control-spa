@@ -11,13 +11,13 @@ export class CamelCasePipe implements PipeTransform {
     let result = '';
 
     for (let v of values){
-      result += this.capitalize(v) + ' ';
+      result += CamelCasePipe.capitalize(v) + ' ';
     }
 
     return result;
   }
 
-  capitalize(value: string){
+  static capitalize(value: string){
     return value.substr(0,1).toUpperCase() +
       value.substr(1).toLowerCase();
   }

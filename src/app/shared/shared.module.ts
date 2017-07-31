@@ -25,6 +25,9 @@ import {LicenceCategoryService} from "./services/licence-category.service";
 import {SexService} from "./services/sex.service";
 import {UserCategoryService} from "./services/user-category.service";
 import {AbstractService} from "./services/abstract.service";
+import { CpfPipe } from './pipes/cpf.pipe';
+import { CpfDirective } from './directives/cpf.directive';
+import { FlashMessageComponent } from './components/flash-message/flash-message.component';
 
 @NgModule({
   imports: [
@@ -52,7 +55,10 @@ import {AbstractService} from "./services/abstract.service";
     CampoControlErrorComponent,
     FormUserInfoComponent,
     FormUserAddressComponent,
-    FormUserTypeComponent
+    FormUserTypeComponent,
+    CpfPipe,
+    CpfDirective,
+    FlashMessageComponent
   ],
   providers: [
     RoutesServerUtil,
@@ -84,7 +90,9 @@ import {AbstractService} from "./services/abstract.service";
     MdCardModule,
     MdTabsModule,
     MdToolbarModule,
-    MdIconModule
+    MdIconModule,
+    CpfPipe,
+    CpfDirective,
   ]
 })
 export class SharedModule { }

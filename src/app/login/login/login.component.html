@@ -6,14 +6,14 @@
         <form class=" card-content">
           <div class="row">
             <div class="input-field col s12">
-              <input [(ngModel)]="user.cpf" id="cpf" type="number" class="validate">
+              <input [(ngModel)]="user.cpf" name="cpf" id="cpf" type="text" class="validate">
               <label for="cpf">CPF</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input [(ngModel)]="user.passwd" id="pass" type="password" class="validate">
-              <label for="pass">SENHA</label>
+              <input [(ngModel)]="user.passwd" name="passwd" id="passwd" type="password" class="validate">
+              <label for="passwd">SENHA</label>
             </div>
           </div>
           <div class="row">

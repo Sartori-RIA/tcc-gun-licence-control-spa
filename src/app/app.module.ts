@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import 'materialize-css';
@@ -13,7 +13,6 @@ import { MenuComponent } from './navbar/menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
-import { ValidatorComponent } from './validator/validator.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {AuthModule} from "./auth/auth.module";
 import {SharedModule} from "./shared/shared.module";
@@ -22,6 +21,7 @@ import {LoginModule} from "./login/login.module";
 import {AdminModule} from "./admin/admin.module";
 import {DelegateModule} from "./delegate/delegate.module";
 import {ExaminatorModule} from "./examinator/examinator.module";
+import {ValidatorModule} from "./validator/validator.module";
 
 @NgModule({
   declarations: [
@@ -31,7 +31,6 @@ import {ExaminatorModule} from "./examinator/examinator.module";
     FooterComponent,
     FaqComponent,
     HomeComponent,
-    ValidatorComponent,
     NotFoundComponent
   ],
   imports: [
@@ -47,12 +46,13 @@ import {ExaminatorModule} from "./examinator/examinator.module";
     LoginModule,
     AdminModule,
     DelegateModule,
-    ExaminatorModule
+    ExaminatorModule,
+    ValidatorModule,
   ],
   exports: [
     SharedModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
