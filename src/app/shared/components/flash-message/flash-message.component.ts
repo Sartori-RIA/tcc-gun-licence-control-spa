@@ -12,10 +12,15 @@ export class FlashMessageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.hasError()
   }
 
-  hasErrors(){
-    if(this.errorMessage > 0 || this.errorMessage == null )
+  hasError(){
+    if (this.errorMessage > 0 || this.errorMessage != null)
       return true;
+  }
+
+  close(){
+    this.errorMessage = null;
   }
 }

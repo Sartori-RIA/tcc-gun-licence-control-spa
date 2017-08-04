@@ -29,6 +29,8 @@ import { CpfPipe } from './pipes/cpf.pipe';
 import { CpfDirective } from './directives/cpf.directive';
 import { FlashMessageComponent } from './components/flash-message/flash-message.component';
 import { SearchComponent } from './components/search/search.component';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   imports: [
@@ -60,7 +62,9 @@ import { SearchComponent } from './components/search/search.component';
     CpfPipe,
     CpfDirective,
     FlashMessageComponent,
-    SearchComponent
+    SearchComponent,
+    ReversePipe,
+    FilterPipe
   ],
   providers: [
     RoutesServerUtil,
@@ -95,7 +99,9 @@ import { SearchComponent } from './components/search/search.component';
     MdIconModule,
     CpfPipe,
     CpfDirective,
-    SearchComponent
+    SearchComponent,
+    ReversePipe,
+    FilterPipe,
   ]
 })
 export class SharedModule { }

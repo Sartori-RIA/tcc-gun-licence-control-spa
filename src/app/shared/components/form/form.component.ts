@@ -79,4 +79,11 @@ export class FormComponent implements OnInit, AfterViewInit {
       event.preventDefault();
     }
   }
+  /**
+   * enviar formulario pressionando enter
+   */
+  keyBlurFunction(e) {
+    if(e.keyCode == 13)
+      this.onSubmit();
+  }
 }
