@@ -28,6 +28,7 @@ import {AbstractService} from "./services/abstract.service";
 import { CpfPipe } from './pipes/cpf.pipe';
 import { CpfDirective } from './directives/cpf.directive';
 import { FlashMessageComponent } from './components/flash-message/flash-message.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { FlashMessageComponent } from './components/flash-message/flash-message.
     FormUserTypeComponent,
     CpfPipe,
     CpfDirective,
-    FlashMessageComponent
+    FlashMessageComponent,
+    SearchComponent
   ],
   providers: [
     RoutesServerUtil,
@@ -93,6 +95,7 @@ import { FlashMessageComponent } from './components/flash-message/flash-message.
     MdIconModule,
     CpfPipe,
     CpfDirective,
+    SearchComponent
   ]
 })
 export class SharedModule { }

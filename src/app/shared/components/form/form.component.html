@@ -70,6 +70,6 @@
     </md-radio-button>
   </md-radio-group>
 
-  <button class="btn" type="submit">Cadastrar</button>
+  <button class="btn" [disabled]="!form.valid" type="submit">Cadastrar</button>
 </form>
 </div>

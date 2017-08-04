@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { ExaminatorRoutingModule } from './examinator-routing.module';
+import { HomeComponent } from './home/home.component';
+import { ListComponent } from './list/list.component';
+import { EvaluateComponent } from './evaluate/evaluate.component';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     ExaminatorRoutingModule
   ],
-  declarations: []
+  declarations: [
+    HomeComponent,
+    ListComponent,
+    EvaluateComponent
+  ]
 })
 export class ExaminatorModule { }
