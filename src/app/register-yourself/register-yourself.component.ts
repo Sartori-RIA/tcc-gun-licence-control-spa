@@ -1,28 +1,27 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Client} from "../../shared/model/client";
-import {Sex} from "../../shared/model/sex";
-import {Cep} from "../../shared/model/cep";
-import {UserType} from "../../shared/model/user-type";
-import {ClientService} from "../../shared/services/client.service";
+import { Component, OnInit } from '@angular/core';
+import {Client} from "../shared/model/client";
+import {Cep} from "../shared/model/cep";
+import {Sex} from "../shared/model/sex";
+import {UserRole} from "../shared/model/user-role";
+import {ClientService} from "../shared/services/client.service";
+import {SexService} from "../shared/services/sex.service";
+import {UserCategoryService} from "../shared/services/user-category.service";
 import {Http} from "@angular/http";
-import {SexService} from "../../shared/services/sex.service";
-import {UserCategoryService} from "../../shared/services/user-category.service";
+import {FormCanDeactivate} from "../shared/model/form-can-deactivate";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-register-yourself',
+  templateUrl: './register-yourself.component.html',
+  styleUrls: ['./register-yourself.component.scss']
 })
-export class RegisterComponent implements OnInit, AfterViewInit{
+export class RegisterYourselfComponent implements OnInit, FormCanDeactivate {
 
   model: Client = new Client;
   cep: Cep = new Cep();
   errorMessage: string;
   sexos: Sex[] = [];
-  types: UserType;
-
-  ngAfterViewInit(): void {}
-
+  roles: UserRole[] = [];
+  formChange: boolean = false;
   constructor(private clientService: ClientService,
               private sexService: SexService,
               private userCategoryService: UserCategoryService,
@@ -30,11 +29,15 @@ export class RegisterComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
     this.sexService.index().subscribe(res => this.sexos = res);
-    this.userCategoryService.index().subscribe(res => this.types[4]);
+    this.userCategoryService.index().subscribe(res => this.roles[4]);
+  }
+
+
+  canDesactive() {
+    this.formChange = true;
   }
 
   onSubmit(){
-    this.model.type = this.types.id;
     this.clientService.create(this.model).subscribe();
   }
 
@@ -67,4 +70,5 @@ export class RegisterComponent implements OnInit, AfterViewInit{
   resetForm(formulario){
     this.cep = null;
   }
+
 }

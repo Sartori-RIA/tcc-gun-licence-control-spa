@@ -2,7 +2,7 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()" disabled="disable">
 
     <md-input-container class="midle-width">
-      <input mdInput [(ngModel)]="model.name" required type="text" name="name" (input)="onInput()" id="name" placeholder="Nome Completo">
+      <input mdInput [(ngModel)]="model.name" required type="text" name="name" id="name" placeholder="Nome Completo">
     </md-input-container>
 
     <md-select placeholder="Informe o Sexo" required [(ngModel)]="model.sex" name="sex" id="sex">
@@ -10,7 +10,8 @@
     </md-select>
 
     <md-input-container class="two-quarts-width">
-      <input mdInput [(ngModel)]="model.password" type="password" name="password" id="password" required placeholder="Senha">
+      <input mdInput [(ngModel)]="model.password" type="password" name="password" id="password" required
+             placeholder="Senha">
     </md-input-container>
 
     <md-input-container class="midle-width">
@@ -67,11 +68,6 @@
       </md-input-container>
 
     </div>
-
-    <md-select placeholder="Informe o nível de acesso" required [(ngModel)]="model.role" name="type" id="type">
-      <md-option *ngFor="let type of roles" [value]="type">{{type.description}}</md-option>
-    </md-select>
-
     <button class="btn" [disabled]="!form.valid" type="submit">Cadastrar</button>
   </form>
 </div>

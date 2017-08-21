@@ -9,6 +9,9 @@ export class RoutesClientUtil {
   public static LICENCES: string = 'licencas/';
   public static LICENCES_TYPES: string = 'licencas/categorias/';
   public static EXAMS: string = 'exames/';
-  public static EXAMS_TYPES: string = 'exames/categorias/'
+  public static EXAMS_TYPES: string = 'exames/categorias/';
 
+ /**   /find/property/{property}/value/{value}
+ *    /property/{property}/value/{value}
+ * */
 }

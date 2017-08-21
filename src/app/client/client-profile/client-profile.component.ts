@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Client} from "../../shared/model/client";
 import {ClientService} from "../../shared/services/client.service";
+import {FormCanDeactivate} from "../../shared/model/form-can-deactivate";
 
 
 @Component({
@@ -8,14 +9,20 @@ import {ClientService} from "../../shared/services/client.service";
   templateUrl: './client-profile.component.html',
   styleUrls: ['./client-profile.component.scss']
 })
-export class ClientProfileComponent implements OnInit {
+export class ClientProfileComponent implements OnInit, FormCanDeactivate {
 
   errorMessage: string;
   model: Client = new Client();
+  formChange: boolean = false;
 
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService) {
+  }
 
   ngOnInit() {
   }
 
+
+  canDesactive() {
+    this.formChange = true;
+  }
 }

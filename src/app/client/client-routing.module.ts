@@ -5,10 +5,11 @@ import {ClientProfileComponent} from "./client-profile/client-profile.component"
 import {ClientLicenceComponent} from "./client-licence/client-licence.component";
 import {ClientExamsComponent} from "./client-exams/client-exams.component";
 import {ClientAgendaComponent} from "./client-agenda/client-agenda.component";
+import {DeactivateGuard} from "../shared/guards/deactivate.guard";
 
 const routes: Routes = [
   { path: '', component: ClientHomeComponent, children : [
-    { path: 'perfil', component: ClientProfileComponent},
+    { path: 'perfil', component: ClientProfileComponent, canDeactivate: [DeactivateGuard]},
     { path: 'licencas', component: ClientLicenceComponent},
     { path: 'exames', component: ClientExamsComponent},
     { path: 'agendamento', component: ClientAgendaComponent}

@@ -11,19 +11,19 @@
     <div class="card">
       <h2 class="card-title center-align">Validador</h2>
       <div class="row">
-        <form class="card-content">
+        <form #form="ngForm" class="card-content" (ngSubmit)="onSubmit()">
 
           <div class="row">
             <div class="input-field">
-              <input id="serial" type="text" class="validate">
-              <label for="serial">Número da licença</label>
+              <input  [(ngModel)]="model.serial" name="serial" id="serial" type="text" class="validate">
+              <label  for="serial">Número da licença</label>
             </div>
           </div>
 
           <div class="row">
             <div class="">
               <p class="center-align">
-                <button class="btn btn-large  waves-effect waves-light" type="button" name="action">Verificar</button>
+                <button class="btn btn-large  waves-effect waves-light" type="submit" name="action">Verificar</button>
               </p>
             </div>
           </div>
@@ -31,12 +31,12 @@
       </div>
     </div>
   </div>
-  <!--<div class="col s4 offset-s4 center-align truncate">-->
-  <!--<app-aproved></app-aproved>-->
-  <!--</div>-->
-  <!--<div class="col s4 offset-s4 center-align truncate">-->
-  <!--<app-denied></app-denied>-->
-  <!--</div>-->
+  <div *ngIf="isValid" class="col s4 offset-s4 center-align truncate">
+  <app-licence-valid></app-licence-valid>
+  </div>
+  <div *ngIf="!isValid"  class="col s4 offset-s4 center-align truncate">
+  <app-licence-invalid></app-licence-invalid>
+  </div>
 </div>
 
 

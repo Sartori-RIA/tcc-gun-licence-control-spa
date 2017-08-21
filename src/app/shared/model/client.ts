@@ -1,13 +1,16 @@
-
 /**
  * Created by sartori on 19/04/17.
  */
+
+import {UserRole} from "./user-role";
+import {Sex} from "./sex";
+
 export class Client {
 
   constructor(
     public name?: string,
-    public sex?: string,
-    public address?: string,
+    public sex?: Sex,
+    public street?: string,
     public dateOfBirth?: string,
     public cpf?: string,
     public cep?: string,
@@ -16,9 +19,10 @@ export class Client {
     public neighborhood?: string,
     public addressNumber?: string,
     public id?: number,
-    public passwd?: string,
+    public password?: string,
     public email?: string,
-    public type?: number
+    public role?: Array<UserRole>,
+    public complement?: string
   ){
 
   }

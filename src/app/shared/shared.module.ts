@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import './rxjs.extensions';
@@ -24,13 +24,13 @@ import {ExamCategoryService} from "./services/exam-category.service";
 import {LicenceCategoryService} from "./services/licence-category.service";
 import {SexService} from "./services/sex.service";
 import {UserCategoryService} from "./services/user-category.service";
-import {AbstractService} from "./services/abstract.service";
-import { CpfPipe } from './pipes/cpf.pipe';
-import { CpfDirective } from './directives/cpf.directive';
-import { FlashMessageComponent } from './components/flash-message/flash-message.component';
-import { SearchComponent } from './components/search/search.component';
-import { ReversePipe } from './pipes/reverse.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
+import {CpfPipe} from './pipes/cpf.pipe';
+import {CpfDirective} from './directives/cpf.directive';
+import {FlashMessageComponent} from './components/flash-message/flash-message.component';
+import {SearchComponent} from './components/search/search.component';
+import {ReversePipe} from './pipes/reverse.pipe';
+import {FilterPipe} from './pipes/filter.pipe';
+import {DeactivateGuard} from "./guards/deactivate.guard";
 
 @NgModule({
   imports: [
@@ -49,7 +49,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     MdCardModule,
     MdTabsModule,
     MdToolbarModule,
-    MdIconModule
+    MdIconModule,
   ],
   declarations: [
     FormComponent,
@@ -75,7 +75,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     LicenceCategoryService,
     SexService,
     UserCategoryService,
-    AbstractService,
+    DeactivateGuard
   ],
   exports: [
     CommonModule,
@@ -104,4 +104,5 @@ import { FilterPipe } from './pipes/filter.pipe';
     FilterPipe,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

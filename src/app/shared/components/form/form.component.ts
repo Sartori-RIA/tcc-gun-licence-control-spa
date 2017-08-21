@@ -5,44 +5,52 @@ import 'rxjs/add/operator/map';
 import {Sex} from "../../model/sex";
 import {Cep} from "../../model/cep";
 import {Client} from "../../model/client";
-import {UserType} from "../../model/user-type";
+import {UserRole} from "../../model/user-role";
 import {SexService} from "../../services/sex.service";
 import {UserCategoryService} from "../../services/user-category.service";
+import {FormCanDeactivate} from "../../model/form-can-deactivate";
+
 @Component({
   selector: 'app-shared-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit, AfterViewInit {
+export class FormComponent implements OnInit, FormCanDeactivate{
 
   model: Client = new Client;
   cep: Cep = new Cep();
   errorMessage: string;
   sexos: Sex[] = [];
-  types: UserType;
-  ngAfterViewInit(): void {}
+  roles: UserRole[] = [];
+  formChange: boolean = false;
 
   constructor(private examinatorService: ExaminatorService,
               private http: Http,
               private sexService: SexService,
-              private userCategoryService: UserCategoryService
-  ) { }
+              private userCategoryService: UserCategoryService) {
+  }
+
+  onInput(){
+    this.formChange = true;
+  }
+
+  canDesactive() {
+  }
 
   ngOnInit() {
     this.sexService.index().subscribe(res => this.sexos = res);
-    this.userCategoryService.index().subscribe(res => this.types = res)
+    this.userCategoryService.index().subscribe(res => this.roles = res)
   }
 
-  onSubmit(){
-    this.model.type = this.types.id;
+  onSubmit() {
     this.examinatorService.create(this.model).subscribe();
   }
 
-  getCEP(cep , form){
+  getCEP(cep, form) {
     cep = cep.replace(/\D/g, '');
-    if ( cep != '') {
+    if (cep != '') {
       let validacep = /^[0-9]{8}$/;
-      if (validacep.test(cep)){
+      if (validacep.test(cep)) {
         this.resetForm(form);
         this.http.get(`//viacep.com.br/ws/${cep}/json/`).map(dados => dados.json()).subscribe(dados => this.populaDados(dados, form));
 
@@ -64,7 +72,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     });
   }
 
-  resetForm(formulario){
+  resetForm(formulario) {
     this.cep = null;
   }
 
@@ -79,11 +87,14 @@ export class FormComponent implements OnInit, AfterViewInit {
       event.preventDefault();
     }
   }
+
   /**
    * enviar formulario pressionando enter
    */
   keyBlurFunction(e) {
-    if(e.keyCode == 13)
+    if (e.keyCode == 13)
       this.onSubmit();
   }
+
+
 }

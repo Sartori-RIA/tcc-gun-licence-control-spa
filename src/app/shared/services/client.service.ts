@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
-import {Observable} from "rxjs";
 import {RoutesServerUtil} from "../routes-api/routes-server.util";
 import {RoutesClientUtil} from "../routes-api/routes-client.util";
 import {AbstractService} from "./abstract.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class ClientService extends AbstractService{
-
+export class ClientService extends AbstractService {
   private url = RoutesServerUtil.URL_API + RoutesClientUtil.CLIENTS;
 
   constructor(http: Http) {
@@ -26,8 +25,8 @@ export class ClientService extends AbstractService{
     return super.show(this.url, id);
   }
 
-  edit(client: any): Observable<any> {
-    return super.edit(this.url, client);
+  edit(model: any): Observable<any> {
+    return super.edit(this.url, model);
   }
 
   destroy(id: any): Observable<any> {

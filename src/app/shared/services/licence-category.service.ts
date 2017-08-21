@@ -17,5 +17,4 @@ export class LicenceCategoryService extends AbstractService{
   index(): Observable<any> {
     return super.index(this.url);
   }
-
 }
