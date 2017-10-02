@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ExaminatorService} from "../../services/examinator.service";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Sex} from "../../model/sex";
 import {Cep} from "../../model/cep";
-import {Client} from "../../model/client";
+import {User} from "../../model/user";
 import {UserRole} from "../../model/user-role";
 import {SexService} from "../../services/sex.service";
 import {UserCategoryService} from "../../services/user-category.service";
@@ -17,7 +17,7 @@ import {FormCanDeactivate} from "../../model/form-can-deactivate";
 })
 export class FormComponent implements OnInit, FormCanDeactivate{
 
-  model: Client = new Client;
+  model: User = new User();
   cep: Cep = new Cep();
   errorMessage: string;
   sexos: Sex[] = [];
@@ -52,13 +52,12 @@ export class FormComponent implements OnInit, FormCanDeactivate{
       let validacep = /^[0-9]{8}$/;
       if (validacep.test(cep)) {
         this.resetForm(form);
-        this.http.get(`//viacep.com.br/ws/${cep}/json/`).map(dados => dados.json()).subscribe(dados => this.populaDados(dados, form));
-
+        this.http.get(`//viacep.com.br/ws/${cep}/json/`).map(dados => dados.json()).subscribe(dados => FormComponent.populaDados(dados, form));
       }
     }
   }
 
-  populaDados(dados, formulario) {
+  static populaDados(dados, formulario) {
     formulario.form.patchValue({
       endereco: {
         cep: dados.cep,
@@ -79,7 +78,7 @@ export class FormComponent implements OnInit, FormCanDeactivate{
   /** digitar apenas numeros
    */
   _keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
+    const pattern = /[0-9+\-]/;
     let inputChar = String.fromCharCode(event.charCode);
 
     if (!pattern.test(inputChar)) {

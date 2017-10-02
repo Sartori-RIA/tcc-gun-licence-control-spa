@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Client} from "../../shared/model/client";
-import {ClientService} from "../../shared/services/client.service";
+import {User} from "../../shared/model/user";
+import {ClientService} from "../../shared/services/user.service";
 import {FormCanDeactivate} from "../../shared/model/form-can-deactivate";
 
 
@@ -12,7 +12,7 @@ import {FormCanDeactivate} from "../../shared/model/form-can-deactivate";
 export class ClientProfileComponent implements OnInit, FormCanDeactivate {
 
   errorMessage: string;
-  model: Client = new Client();
+  model: User = new User();
   formChange: boolean = false;
 
   constructor(private clientService: ClientService) {

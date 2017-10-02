@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Licence} from "../../shared/model/licence";
 
 @Component({
   selector: 'app-validator',
@@ -8,8 +7,7 @@ import {Licence} from "../../shared/model/licence";
 })
 export class ValidatorComponent implements OnInit {
 
-  private model: Licence = new Licence();
-  private isValid: boolean;
+  private valid: boolean;
 
   constructor() { }
 
@@ -17,8 +15,6 @@ export class ValidatorComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.model.serial = "123")
-      return this.isValid = true;
-    return this.isValid = false;
+
   }
 }

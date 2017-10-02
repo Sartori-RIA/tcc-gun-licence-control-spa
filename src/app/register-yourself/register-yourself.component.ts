@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Client} from "../shared/model/client";
+import {Component, OnInit} from '@angular/core';
+import {User} from "../shared/model/user";
 import {Cep} from "../shared/model/cep";
 import {Sex} from "../shared/model/sex";
 import {UserRole} from "../shared/model/user-role";
-import {ClientService} from "../shared/services/client.service";
+import {ClientService} from "../shared/services/user.service";
 import {SexService} from "../shared/services/sex.service";
 import {UserCategoryService} from "../shared/services/user-category.service";
 import {Http} from "@angular/http";
@@ -16,16 +16,18 @@ import {FormCanDeactivate} from "../shared/model/form-can-deactivate";
 })
 export class RegisterYourselfComponent implements OnInit, FormCanDeactivate {
 
-  model: Client = new Client;
+  model: User = new User();
   cep: Cep = new Cep();
   errorMessage: string;
   sexos: Sex[] = [];
   roles: UserRole[] = [];
   formChange: boolean = false;
+
   constructor(private clientService: ClientService,
               private sexService: SexService,
               private userCategoryService: UserCategoryService,
-              private http: Http) { }
+              private http: Http) {
+  }
 
   ngOnInit() {
     this.sexService.index().subscribe(res => this.sexos = res);
@@ -37,15 +39,15 @@ export class RegisterYourselfComponent implements OnInit, FormCanDeactivate {
     this.formChange = true;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.clientService.create(this.model).subscribe();
   }
 
-  getCEP(cep , form){
+  getCEP(cep, form) {
     cep = cep.replace(/\D/g, '');
-    if ( cep != '') {
+    if (cep != '') {
       let validacep = /^[0-9]{8}$/;
-      if (validacep.test(cep)){
+      if (validacep.test(cep)) {
         this.resetForm(form);
         this.http.get(`//viacep.com.br/ws/${cep}/json/`).map(dados => dados.json()).subscribe(dados => this.populaDados(dados, form));
 
@@ -67,7 +69,7 @@ export class RegisterYourselfComponent implements OnInit, FormCanDeactivate {
     });
   }
 
-  resetForm(formulario){
+  resetForm(formulario) {
     this.cep = null;
   }
 

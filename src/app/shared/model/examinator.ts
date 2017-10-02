@@ -1,6 +1,6 @@
-import {Client} from "./client";
+import {User} from "./user";
 
-export class Examinator extends Client{
+export class Examinator extends User{
   constructor(){
     super();
   }

@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {tokenNotExpired} from 'angular2-jwt';
-import {Client} from "../shared/model/client";
+import {User} from "../shared/model/user";
 import {Router} from "@angular/router";
 
 @Injectable()
@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private router: Router) {
   }
 
-  makeLogin(model: Client) {
+  makeLogin(model: User) {
     if (model.cpf == '123' && model.password == '123') {
       this.autenticado = true;
       this.showMenu.emit(true);
@@ -24,7 +24,7 @@ export class AuthService {
     }
   }
 
-  usuarioEstaAutenticado(){
+  usuarioEstaAutenticado() {
     return this.autenticado;
   }
 

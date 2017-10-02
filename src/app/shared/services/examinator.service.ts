@@ -3,6 +3,7 @@ import {RoutesServerUtil} from "../routes-api/routes-server.util";
 import {RoutesClientUtil} from "../routes-api/routes-client.util";
 import {Http} from "@angular/http";
 import {AbstractService} from "./abstract.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ExaminatorService extends AbstractService {
@@ -13,4 +14,8 @@ export class ExaminatorService extends AbstractService {
     super(http);
   }
 
+
+  create(model: any): Observable<any> {
+    return super.create(this.url, model);
+  }
 }

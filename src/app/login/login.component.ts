@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {Client} from "../shared/model/client";
+import {User} from "../shared/model/user";
 import {AuthService} from "../auth/auth.service";
 
 @Component({
@@ -7,16 +7,17 @@ import {AuthService} from "../auth/auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
-  private model: Client = new Client();
+  private model: User = new User();
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
   }
 
-  makeLogin(){
+  makeLogin() {
     this.authService.makeLogin(this.model)
   }
 }

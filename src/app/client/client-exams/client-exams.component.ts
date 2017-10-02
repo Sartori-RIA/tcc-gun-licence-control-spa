@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Client} from "../../shared/model/client";
-import {ClientService} from "../../shared/services/client.service";
+import {Component, OnInit} from '@angular/core';
+import {User} from "../../shared/model/user";
+import {ClientService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-client-exams',
@@ -9,14 +9,16 @@ import {ClientService} from "../../shared/services/client.service";
 })
 export class ClientExamsComponent implements OnInit {
 
-  models: Client[];
-  constructor(private clientService: ClientService) { }
+  models: User[];
+
+  constructor(private clientService: ClientService) {
+  }
 
   ngOnInit() {
     this.index();
   }
 
-  index(){
+  index() {
     this.clientService.index()
       .subscribe(data => this.models = data);
   }

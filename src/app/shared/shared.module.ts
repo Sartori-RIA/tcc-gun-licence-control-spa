@@ -13,7 +13,7 @@ import {ListsComponent} from "./components/lists/lists.component";
 import {CamelCasePipe} from "./pipes/camel-case.pipe";
 import {FormComponent} from "./components/form/form.component";
 import {ExaminatorService} from "./services/examinator.service";
-import {ClientService} from "./services/client.service";
+import {ClientService} from "./services/user.service";
 import {RoutesClientUtil} from "./routes-api/routes-client.util";
 import {RoutesServerUtil} from "./routes-api/routes-server.util";
 import {CampoControlErrorComponent} from "./components/campo-control-error/campo-control-error.component";

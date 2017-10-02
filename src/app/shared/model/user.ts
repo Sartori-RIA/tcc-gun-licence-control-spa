@@ -5,7 +5,7 @@
 import {UserRole} from "./user-role";
 import {Sex} from "./sex";
 
-export class Client {
+export class User {
 
   constructor(
     public name?: string,
