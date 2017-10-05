@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ExaminatorService} from "../../services/examinator.service";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
@@ -17,6 +17,7 @@ import {FormCanDeactivate} from "../../model/form-can-deactivate";
 })
 export class FormComponent implements OnInit, FormCanDeactivate{
 
+  @Input() isClient: boolean = false;
   model: User = new User();
   cep: Cep = new Cep();
   errorMessage: string;
