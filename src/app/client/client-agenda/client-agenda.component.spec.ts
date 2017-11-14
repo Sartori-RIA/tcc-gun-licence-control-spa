@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ClientAgendaComponent } from './client-agenda.component';
+import {ClientAgendaComponent} from './client-agenda.component';
 
 describe('ClientAgendaComponent', () => {
   let component: ClientAgendaComponent;
@@ -8,9 +8,9 @@ describe('ClientAgendaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClientAgendaComponent ]
+      declarations: [ClientAgendaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

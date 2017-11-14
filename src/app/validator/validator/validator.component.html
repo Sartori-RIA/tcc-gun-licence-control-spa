@@ -15,8 +15,8 @@
 
           <div class="row">
             <div class="input-field">
-              <input  [(ngModel)]="model.serial" name="serial" id="serial" type="text" class="validate">
-              <label  for="serial">Número da licença</label>
+              <input [(ngModel)]="model.serial" name="serial" id="serial" type="text" class="validate">
+              <label for="serial">Número da licença</label>
             </div>
           </div>
 
@@ -32,10 +32,10 @@
     </div>
   </div>
   <div *ngIf="isValid" class="col s4 offset-s4 center-align truncate">
-  <app-licence-valid></app-licence-valid>
+    <app-licence-valid></app-licence-valid>
   </div>
-  <div *ngIf="!isValid"  class="col s4 offset-s4 center-align truncate">
-  <app-licence-invalid></app-licence-invalid>
+  <div *ngIf="!isValid" class="col s4 offset-s4 center-align truncate">
+    <app-licence-invalid></app-licence-invalid>
   </div>
 </div>
 

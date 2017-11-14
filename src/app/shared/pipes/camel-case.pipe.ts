@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform} from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 
 @Pipe({
@@ -10,15 +10,15 @@ export class CamelCasePipe implements PipeTransform {
     let values = value.split(' ');
     let result = '';
 
-    for (let v of values){
+    for (let v of values) {
       result += CamelCasePipe.capitalize(v) + ' ';
     }
 
     return result;
   }
 
-  static capitalize(value: string){
-    return value.substr(0,1).toUpperCase() +
+  static capitalize(value: string) {
+    return value.substr(0, 1).toUpperCase() +
       value.substr(1).toLowerCase();
   }
 

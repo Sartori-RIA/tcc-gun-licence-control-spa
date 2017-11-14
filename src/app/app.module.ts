@@ -24,6 +24,7 @@ import {LoginComponent} from './login/login.component';
 import {RegisterYourselfComponent} from './register-yourself/register-yourself.component';
 import {AuthGuard} from "./auth/auth.guard";
 import {AuthModule} from "./auth/auth.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import {AuthModule} from "./auth/auth.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     MaterializeModule,
     SharedModule,
     ClientModule,

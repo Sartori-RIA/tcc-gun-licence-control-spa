@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-validator',
@@ -9,12 +9,13 @@ export class ValidatorComponent implements OnInit {
 
   private valid: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
 
   }
 }

@@ -11,7 +11,7 @@ export class RoutesClientUtil {
   public static EXAMS: string = 'exames/';
   public static EXAMS_TYPES: string = 'exames/categorias/';
 
- /**   /find/property/{property}/value/{value}
- *    /property/{property}/value/{value}
- * */
+  /**   /find/property/{property}/value/{value}
+   *    /property/{property}/value/{value}
+   * */
 }

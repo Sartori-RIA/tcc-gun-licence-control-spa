@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {isString} from "util";
 
 @Pipe({
@@ -6,8 +6,7 @@ import {isString} from "util";
 })
 export class ReversePipe implements PipeTransform {
 
-  transform(input: any): any
-  {
+  transform(input: any): any {
     if (isString(input)) {
       return input.split('').reverse().join('');
     }

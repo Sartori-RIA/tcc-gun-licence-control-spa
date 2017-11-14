@@ -10,7 +10,8 @@ export class FormDebugComponent implements OnInit {
 
   @Input() form;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

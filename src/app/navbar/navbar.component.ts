@@ -9,7 +9,8 @@ export class NavbarComponent implements OnInit {
 
   @Input() showMenu;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

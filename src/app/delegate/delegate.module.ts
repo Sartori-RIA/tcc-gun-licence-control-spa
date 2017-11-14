@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { DelegateRoutingModule } from './delegate-routing.module';
+import {DelegateRoutingModule} from './delegate-routing.module';
 import {SharedModule} from "../shared/shared.module";
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   imports: [
@@ -11,4 +11,5 @@ import { HomeComponent } from './home/home.component';
   ],
   declarations: [HomeComponent]
 })
-export class DelegateModule { }
+export class DelegateModule {
+}

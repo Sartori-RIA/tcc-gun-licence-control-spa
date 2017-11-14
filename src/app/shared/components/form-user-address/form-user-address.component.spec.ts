@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormUserAddressComponent } from './form-user-address.component';
+import {FormUserAddressComponent} from './form-user-address.component';
 
 describe('FormUserAddressComponent', () => {
   let component: FormUserAddressComponent;
@@ -8,9 +8,9 @@ describe('FormUserAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormUserAddressComponent ]
+      declarations: [FormUserAddressComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from "./home/home.component";
-import {FaqComponent} from "./faq/faq.component";
-import {NotFoundComponent} from "./not-found/not-found.component";
-import {LoginComponent} from "./login/login.component";
-import {RegisterYourselfComponent} from "./register-yourself/register-yourself.component";
-import {AuthGuard} from "./auth/auth.guard";
-import {DeactivateGuard} from "./shared/guards/deactivate.guard";
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {FaqComponent} from './faq/faq.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterYourselfComponent} from './register-yourself/register-yourself.component';
+import {AuthGuard} from './auth/auth.guard';
+import {DeactivateGuard} from './shared/guards/deactivate.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

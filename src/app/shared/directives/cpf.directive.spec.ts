@@ -1,4 +1,4 @@
-import { CpfDirective } from './cpf.directive';
+import {CpfDirective} from './cpf.directive';
 
 describe('CpfDirective', () => {
   it('should create an instance', () => {

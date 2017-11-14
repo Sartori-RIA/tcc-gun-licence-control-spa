@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { LicenceCategoryService } from './licence-category.service';
+import {LicenceCategoryService} from './licence-category.service';
 
 describe('LicenceCategoryService', () => {
   beforeEach(() => {

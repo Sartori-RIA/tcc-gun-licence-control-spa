@@ -1,7 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
-import { CamelCasePipe } from './camel-case.pipe';
+import {CamelCasePipe} from './camel-case.pipe';
 
 describe('CamelCasePipe', () => {
   it('create an instance', () => {

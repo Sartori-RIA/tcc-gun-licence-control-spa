@@ -8,7 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ListsComponent implements OnInit {
   @Input() model: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

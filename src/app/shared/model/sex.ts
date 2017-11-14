@@ -1,6 +1,5 @@
 export class Sex {
-    constructor(
-        public description: string,
-        public id: number
-    ){}
+  constructor(public description: string,
+              public id: number) {
+  }
 }

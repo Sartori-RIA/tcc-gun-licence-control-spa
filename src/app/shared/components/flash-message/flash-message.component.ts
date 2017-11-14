@@ -9,18 +9,19 @@ export class FlashMessageComponent implements OnInit {
 
   @Input() errorMessage: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.hasError()
   }
 
-  hasError(){
+  hasError() {
     if (this.errorMessage > 0 || this.errorMessage != null)
       return true;
   }
 
-  close(){
+  close() {
     this.errorMessage = null;
   }
 }

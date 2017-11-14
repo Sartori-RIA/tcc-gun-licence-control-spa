@@ -1,8 +1,8 @@
 <div *ngIf="hasError()" class="yellow darken-2">
   <div class="container">
-    <button class="waves-effect waves-light btn right"  (click)="close()">X</button>
-    <h2 md-dialog-title>Ocorreu um erro <i class="material-icons">sentiment_very_dissatisfied</i></h2>
-    <md-dialog-content>{{errorMessage?._body | uppercase}}</md-dialog-content>
+    <button class="waves-effect waves-light btn right" (click)="close()">X</button>
+    <h2 mat-dialog-title>Ocorreu um erro <i class="material-icons">sentiment_very_dissatisfied</i></h2>
+    <!--<mat-dialog-content>{{errorMessage?._body | uppercase}}</mat-dialog-content>-->
   </div>
 </div>
 

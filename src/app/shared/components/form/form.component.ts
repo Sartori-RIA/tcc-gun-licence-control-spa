@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ExaminatorService} from "../../services/examinator.service";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
@@ -15,7 +15,7 @@ import {FormCanDeactivate} from "../../model/form-can-deactivate";
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit, FormCanDeactivate{
+export class FormComponent implements OnInit, FormCanDeactivate {
 
   @Input() isClient: boolean = false;
   model: User = new User();
@@ -31,7 +31,7 @@ export class FormComponent implements OnInit, FormCanDeactivate{
               private userCategoryService: UserCategoryService) {
   }
 
-  onInput(){
+  onInput() {
     this.formChange = true;
   }
 
