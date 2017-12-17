@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -8,43 +7,34 @@ const httpOptions = {
 };
 
 @Injectable()
-export abstract class AbstractService {
+export abstract class AbstractService<T> {
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private url: string) {
   }
 
-  create(url: string, model: any): Observable<any> {
+  create(model: T): Observable<T> {
     alert(JSON.stringify(model));
-    return this.http.post(url, JSON.stringify(model), httpOptions)
-      .map(res => {
-        let body = res;
-        return body || {};
-      });
+    return this.http.post<T>(this.url, JSON.stringify(model), httpOptions);
   }
 
-  index(url: string) {
-    return this.http.get(url).map(res => res);
+  index(): Observable<T[]> {
+    return this.http.get<T[]>(this.url);
   }
 
-  show(url: string, id: any) {
-    return this.http.get(AbstractService.getUrl(url, id)).map(res => res);
+  show(id: any): Observable<T> {
+    return this.http.get<T>(AbstractService.getUrl(this.url, id));
   }
 
-  edit(url: string, model: any) {
-    return this.http.put(AbstractService.getUrl(url, model.id), JSON.stringify(model)).map(res => res);
+  edit(model: any): Observable<any> {
+    return this.http.put<any>(AbstractService.getUrl(this.url, model.id), JSON.stringify(model));
   }
 
-  destroy(url: string, id: any) {
-    return this.http.delete(AbstractService.getUrl(url, id)).map(res => res);
+  destroy(id: any) {
+    return this.http.delete(AbstractService.getUrl(this.url, id)).map(res => res);
   }
 
   private static getUrl(url: any, id: any) {
     return url + '/' + id;
-  }
-
-  private static handleError(error: any): Promise<any> {
-    console.error('Um erro aconteceu :(', error);
-    return Promise.reject(error.message || error);
   }
 }

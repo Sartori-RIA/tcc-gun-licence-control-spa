@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ExaminatorService} from "../../services/examinator.service";
-import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Sex} from "../../model/sex";
 import {Cep} from "../../model/cep";
@@ -9,6 +8,8 @@ import {UserRole} from "../../model/user-role";
 import {SexService} from "../../services/sex.service";
 import {UserCategoryService} from "../../services/user-category.service";
 import {FormCanDeactivate} from "../../model/form-can-deactivate";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CepService} from "../../services/cep.service";
 
 @Component({
   selector: 'app-shared-form',
@@ -23,16 +24,13 @@ export class FormComponent implements OnInit, FormCanDeactivate {
   errorMessage: string;
   sexos: Sex[] = [];
   roles: UserRole[] = [];
-  formChange: boolean = false;
+  form: FormGroup;
 
-  constructor(private examinatorService: ExaminatorService,
-              private http: Http,
+  constructor(private formBuilder: FormBuilder,
+              private examinatorService: ExaminatorService,
               private sexService: SexService,
-              private userCategoryService: UserCategoryService) {
-  }
-
-  onInput() {
-    this.formChange = true;
+              private userCategoryService: UserCategoryService,
+              private cepService: CepService) {
   }
 
   canDesactive() {
@@ -41,60 +39,63 @@ export class FormComponent implements OnInit, FormCanDeactivate {
   ngOnInit() {
     this.sexService.index().subscribe(res => this.sexos = res);
     this.userCategoryService.index().subscribe(res => this.roles = res)
+
+    this.form = this.formBuilder.group({
+      name: [null, Validators.required],
+      sex: [null, Validators.required],
+      password: [null, Validators.required],
+      email: [null, Validators.required],
+      cpf: [null, Validators.required],
+      dateOfBirth: [null, Validators.required],
+      cep: [null, Validators.required],
+      neighborhood: [null, Validators.required],
+      complement: [null, Validators.required],
+      addressNumber: [null, Validators.required],
+      state: [null, Validators.required],
+      city: [null, Validators.required],
+      street: [null, Validators.required],
+      role: [null, Validators.required]
+    })
   }
 
   onSubmit() {
-    this.examinatorService.create(this.model).subscribe();
+    if (this.form.valid) {
+      this.examinatorService.create(this.model).subscribe(res => {
+        window.location.reload();
+      }, error => alert('ocorreu um erro' + error));
+    } else this.formDirty(this.form);
   }
 
-  getCEP(cep, form) {
-    cep = cep.replace(/\D/g, '');
-    if (cep != '') {
-      let validacep = /^[0-9]{8}$/;
-      if (validacep.test(cep)) {
-        this.resetForm(form);
-        this.http.get(`//viacep.com.br/ws/${cep}/json/`).map(dados => dados.json()).subscribe(dados => FormComponent.populaDados(dados, form));
-      }
-    }
+  getCEP() {
+    this.cepService.getCEP(this.form.value.cep).subscribe(res => this.populateAddress(res))
   }
 
-  static populaDados(dados, formulario) {
-    formulario.form.patchValue({
-      endereco: {
-        cep: dados.cep,
-        rua: dados.logradouro,
-        numero: null,
-        complemento: dados.complemento,
-        bairro: dados.bairro,
-        cidade: dados.localidade,
-        estado: dados.uf
-      }
+  private populateAddress(dados) {
+    this.form.patchValue({
+      cep: dados.cep,
+      street: dados.logradouro,
+      addressNumber: null,
+      complement: dados.complemento,
+      neighborhood: dados.bairro,
+      city: dados.localidade,
+      state: dados.uf
     });
   }
 
-  resetForm(formulario) {
-    this.cep = null;
+  private resetAddess(){
+    this.form.patchValue({
+      cep: null,
+      street: null,
+      addressNumber: null,
+      complement: null,
+      neighborhood: null,
+      city: null,
+      state: null
+    });
   }
 
-  /** digitar apenas numeros
-   */
-  _keyPress(event: any) {
-    const pattern = /[0-9+\-]/;
-    let inputChar = String.fromCharCode(event.charCode);
-
-    if (!pattern.test(inputChar)) {
-      // invalid character, prevent input
-      event.preventDefault();
-    }
+  private formDirty(form: FormGroup): void {
+    Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
   }
-
-  /**
-   * enviar formulario pressionando enter
-   */
-  keyBlurFunction(e) {
-    if (e.keyCode == 13)
-      this.onSubmit();
-  }
-
 
 }

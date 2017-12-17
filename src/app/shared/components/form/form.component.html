@@ -1,94 +1,90 @@
 <div class="container">
-  <form #form="ngForm" (ngSubmit)="onSubmit()" disabled="disable">
+  <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <mat-input-container class="midle-width">
-      <input matInput [(ngModel)]="model.name" required type="text" name="name" (input)="onInput()" id="name"
+      <input matInput type="text" id="name" formControlName="name"
              placeholder="Nome Completo">
     </mat-input-container>
 
     <mat-form-field>
-      <mat-select placeholder="Informe o Sexo" required [(ngModel)]="model.sex" name="sex" id="sex">
+      <mat-select placeholder="Informe o Sexo" formArrayName="sex"   id="sex">
         <mat-option *ngFor="let sexo of sexos" [value]="sexo">{{ sexo?.description }}</mat-option>
       </mat-select>
     </mat-form-field>
+
     <mat-form-field>
       <mat-input-container class="two-quarts-width">
-        <input matInput [(ngModel)]="model.password" type="password" name="password" id="password" required
+        <input matInput  type="password" formControlName="password"  id="password"
                placeholder="Senha">
       </mat-input-container>
     </mat-form-field>
+
     <mat-form-field>
       <mat-input-container class="midle-width">
-        <input matInput [(ngModel)]="model.email" type="email" email name="email" id="email" required
+        <input matInput type="email" id="email"  formControlName="email"
                placeholder="Email">
       </mat-input-container>
     </mat-form-field>
+
     <mat-form-field>
-      <input matInput #cpf [(ngModel)]="model.cpf" minlength="11" type="text" maxlength="11" name="cpf" id="cpf"
-             required
+      <input matInput #cpf minlength="11" type="text" maxlength="11" id="cpf" formControlName="cpf"
              placeholder="CPF">
       <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <input matInput [matDatepicker]="picker"  formControlName="dateOfBirth"
+             value="{{model.dateOfBirth}}" placeholder="Data de nascimento"
+             id="dateOfBirth">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-<!--    <mat-form-field>
-      <input matInput [matDatepicker]="picker" required [(ngModel)]="model.dateOfBirth"
-             value="{{model.dateOfBirth}}" placeholder="Data de nascimento"
-             name="dateOfBirth" id="dateOfBirth">
-      <mat-datepicker-content matSuffix [matDatepickerToggle]="picker"></mat-datepicker-content>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>-->
 
-
-    <div ngModelGroup="endereco">
+    <div>
       <h3 class="center">Seu endereço</h3>
 
       <mat-form-field>
-        <input matInput #postalCode maxlength="9" placeholder="CEP" [(ngModel)]="model.cep" name="cep" id="cep"
-               required (blur)="getCEP($event.target.value, form )">
+        <input matInput #postalCode maxlength="9" placeholder="CEP"  id="cep" formControlName="cep"
+                (blur)="getCEP()">
         <mat-hint align="end">{{postalCode.value.length}} / 9</mat-hint>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="model.neighborhood" name="bairro" id="bairro" required placeholder="Bairro">
+        <input matInput id="bairro" formControlName="neighborhood"  placeholder="Bairro">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="model.complement" name="complemento" id="complemento" required
+        <input matInput formControlName="complement" id="complemento"
                placeholder="Complemento">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="model.addressNumber" name="addressNumber" id="addressNumber" required
+        <input matInput id="addressNumber"  formControlName="addressNumber"
                placeholder="Numero">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="model.state" name="estado" id="estado" required placeholder="Estado">
+        <input matInput id="estado"  placeholder="Estado" formControlName="state">
       </mat-form-field>
 
       <mat-form-field class="midle-width">
-        <input matInput [(ngModel)]="model.city" name="cidade" id="cidade" required placeholder="Cidade">
+        <input matInput id="cidade"  placeholder="Cidade" formControlName="city">
       </mat-form-field>
 
       <mat-form-field class="midle-width">
-        <input matInput [(ngModel)]="model.street" name="rua" id="rua" required placeholder="Endereço">
+        <input matInput id="rua"  placeholder="Endereço" formControlName="street">
       </mat-form-field>
     </div>
 
     <div *ngIf="isClient">
       <mat-form-field>
-        <mat-select placeholder="Informe o nível de acesso" required [(ngModel)]="model.role" name="type"
+        <mat-select placeholder="Informe o nível de acesso"  formControlName="sex"
                     id="type">
           <mat-option *ngFor="let type of roles" [value]="type">{{type.description}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <button class="btn" [disabled]="!form.valid" type="submit">Cadastrar</button>
+    <button class="btn" type="submit">Cadastrar</button>
   </form>
 </div>

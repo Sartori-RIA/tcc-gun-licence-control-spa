@@ -1,13 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import './rxjs.extensions';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatDatepickerModule, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatRadioModule,
-  MatSelectModule, MatSidenavModule, MatTabsModule, MatToolbarModule
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatMenuModule,
+  MatNativeDateModule, MatRadioModule, MatSelectModule, MatSidenavModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import {ListsComponent} from './components/lists/lists.component';
 import {CamelCasePipe} from './pipes/camel-case.pipe';
@@ -32,12 +29,14 @@ import {ReversePipe} from './pipes/reverse.pipe';
 import {FilterPipe} from './pipes/filter.pipe';
 import {DeactivateGuard} from './guards/deactivate.guard';
 import {HttpClientModule} from "@angular/common/http";
+import {CepService} from "./services/cep.service";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -75,13 +74,15 @@ import {HttpClientModule} from "@angular/common/http";
     LicenceCategoryService,
     SexService,
     UserCategoryService,
-    DeactivateGuard
+    DeactivateGuard,
+    CepService,
   ],
   exports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     FormComponent,
+    ReactiveFormsModule,
     CamelCasePipe,
     ListsComponent,
     MatSelectModule,
