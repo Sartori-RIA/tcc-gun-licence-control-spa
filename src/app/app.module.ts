@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import 'materialize-css';
 import 'hammerjs';
 import {MaterializeModule} from 'angular2-materialize';
@@ -22,7 +21,6 @@ import {ExaminatorModule} from "./examinator/examinator.module";
 import {ValidatorModule} from "./validator/validator.module";
 import {LoginComponent} from './login/login.component';
 import {RegisterYourselfComponent} from './register-yourself/register-yourself.component';
-import {AuthGuard} from "./auth/auth.guard";
 import {AuthModule} from "./auth/auth.module";
 import {HttpClientModule} from "@angular/common/http";
 
@@ -57,7 +55,6 @@ import {HttpClientModule} from "@angular/common/http";
     SharedModule
   ],
   providers: [
-    AuthGuard,
     {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })

@@ -1,35 +1,25 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import {tokenNotExpired} from 'angular2-jwt';
-import {User} from "../shared/model/user";
-import {Router} from "@angular/router";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {RoutesClientUtil} from "../shared/routes-api/routes-client.util";
+import {Observable} from "rxjs/Observable";
+import {Token} from "./token";
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-type': 'application/json'
+  })
+};
 
 @Injectable()
 export class AuthService {
 
-  private autenticado: boolean = false;
 
-  showMenu = new EventEmitter<boolean>();
-
-  constructor(private router: Router) {
+  constructor(private http: HttpClient) {
   }
 
-  makeLogin(model: User) {
-    if (model.cpf == '123' && model.password == '123') {
-      this.autenticado = true;
-      this.showMenu.emit(true);
-      this.router.navigate(['/'])
-    } else {
-      alert("ERROOU");
-      console.log(model)
-    }
-  }
-
-  usuarioEstaAutenticado() {
-    return this.autenticado;
-  }
-
-  loggedIn() {
-    return tokenNotExpired();
+  makeLogin(model): Observable<Token> {
+    let url = RoutesClientUtil.LOGIN;
+    return this.http.post<Token>(url, JSON.stringify(model), httpOptions)
   }
 
 }

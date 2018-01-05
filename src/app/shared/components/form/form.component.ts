@@ -38,8 +38,24 @@ export class FormComponent implements OnInit, FormCanDeactivate {
 
   ngOnInit() {
     this.sexService.index().subscribe(res => this.sexos = res);
-    this.userCategoryService.index().subscribe(res => this.roles = res)
+    this.userCategoryService.index().subscribe(res => this.roles = res);
+    this.buildResctiveForm();
+  }
 
+  onSubmit(): void {
+    if (this.form.valid) {
+      this.converFormBuilderToModel();
+      this.examinatorService.create(this.model).subscribe(res => {
+        window.location.reload();
+      }, error => alert('ocorreu um erro' + error));
+    } else this.formDirty(this.form);
+  }
+
+  getCEP(): void {
+    this.cepService.getCEP(this.form.value.cep).subscribe(res => this.populateAddress(res))
+  }
+
+  private buildResctiveForm(): void {
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
       sex: [null, Validators.required],
@@ -58,19 +74,24 @@ export class FormComponent implements OnInit, FormCanDeactivate {
     })
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      this.examinatorService.create(this.model).subscribe(res => {
-        window.location.reload();
-      }, error => alert('ocorreu um erro' + error));
-    } else this.formDirty(this.form);
+  private converFormBuilderToModel(): void {
+    this.model.name = this.form.value.name;
+    this.model.sex = this.form.value.sex;
+    this.model.street = this.form.value.street;
+    this.model.dateOfBirth = this.form.value.dateOfBirth;
+    this.model.cpf = this.form.value.cpf;
+    this.model.cep = this.form.value.cep;
+    this.model.state = this.form.value.state;
+    this.model.city = this.form.value.city;
+    this.model.neighborhood = this.form.value.neighborhood;
+    this.model.addressNumber = this.form.value.addressNumber;
+    this.model.password = this.form.value.password;
+    this.model.email = this.form.value.email;
+    this.model.role = this.form.value.role;
+    this.model.complement = this.form.value.complement;
   }
 
-  getCEP() {
-    this.cepService.getCEP(this.form.value.cep).subscribe(res => this.populateAddress(res))
-  }
-
-  private populateAddress(dados) {
+  private populateAddress(dados): void {
     this.form.patchValue({
       cep: dados.cep,
       street: dados.logradouro,
@@ -82,7 +103,7 @@ export class FormComponent implements OnInit, FormCanDeactivate {
     });
   }
 
-  private resetAddess(){
+  private resetAddess(): void {
     this.form.patchValue({
       cep: null,
       street: null,

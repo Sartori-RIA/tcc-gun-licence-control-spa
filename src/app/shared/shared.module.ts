@@ -12,7 +12,6 @@ import {FormComponent} from './components/form/form.component';
 import {ExaminatorService} from './services/examinator.service';
 import {ClientService} from './services/user.service';
 import {RoutesClientUtil} from './routes-api/routes-client.util';
-import {RoutesServerUtil} from './routes-api/routes-server.util';
 import {CampoControlErrorComponent} from './components/campo-control-error/campo-control-error.component';
 import {FormUserInfoComponent} from './components/form-user-info/form-user-info.component';
 import {FormUserAddressComponent} from './components/form-user-address/form-user-address.component';
@@ -66,7 +65,6 @@ import {CepService} from "./services/cep.service";
     FilterPipe
   ],
   providers: [
-    RoutesServerUtil,
     RoutesClientUtil,
     ClientService,
     ExaminatorService,
