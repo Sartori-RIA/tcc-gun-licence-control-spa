@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {RoutesClientUtil} from '../routes-api/routes-client.util';
 import {AbstractService} from './abstract.service';
-import {Sex} from "../model/sex";
+import {Gender} from "../model/gender";
 import {HttpClient} from "@angular/common/http";
 
 const url = RoutesClientUtil.SEX;
 
 @Injectable()
-export class SexService extends AbstractService<Sex> {
+export class SexService extends AbstractService<Gender> {
 
 
   constructor(http: HttpClient) {

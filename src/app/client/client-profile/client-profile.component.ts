@@ -19,6 +19,7 @@ export class ClientProfileComponent implements OnInit, FormCanDeactivate {
   }
 
   ngOnInit() {
+    this.clientService.show(localStorage.getItem("currentUserID")).subscribe(res => this.model = res);
   }
 
 

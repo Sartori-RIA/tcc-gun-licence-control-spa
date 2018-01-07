@@ -1,7 +1,9 @@
 <div class="right">
   <li routerLinkActive="active"><a routerLink="/duvidas">Duvidas?</a></li>
   <li routerLinkActive="active"><a routerLink="/validador">Validador</a></li>
-  <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+  <li routerLinkActive="active"><a routerLink="/login" (click)="onClick()">
+    {{ authService.checkLogin() ? 'Logout' : 'Login'}}
+  </a>
 </div>
 <div class="left">
   <li routerLinkActive="active"><a routerLink="/usuario">usuarios</a></li>

@@ -37,6 +37,6 @@ export abstract class AbstractService<T> {
   }
 
   private static getUrl(url: any, id: any) {
-    return url + '/' + id;
+    return url + id;
   }
 }

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ExaminatorService} from "../../services/examinator.service";
 import 'rxjs/add/operator/map';
-import {Sex} from "../../model/sex";
+import {Gender} from "../../model/gender";
 import {Cep} from "../../model/cep";
 import {User} from "../../model/user";
 import {UserRole} from "../../model/user-role";
@@ -22,7 +22,7 @@ export class FormComponent implements OnInit, FormCanDeactivate {
   model: User = new User();
   cep: Cep = new Cep();
   errorMessage: string;
-  sexos: Sex[] = [];
+  sexos: Gender[] = [];
   roles: UserRole[] = [];
   form: FormGroup;
 

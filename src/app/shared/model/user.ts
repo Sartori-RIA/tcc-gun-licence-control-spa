@@ -3,14 +3,14 @@
  */
 
 import {UserRole} from "./user-role";
-import {Sex} from "./sex";
+import {Gender} from "./gender";
 
 export class User {
 
   constructor(public name?: string,
-              public sex?: Sex,
+              public gender?: Gender,
               public street?: string,
-              public dateOfBirth?: string,
+              public dateOfBirth?: Date,
               public cpf?: string,
               public cep?: string,
               public state?: string,

@@ -11,6 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
+  currentUserName: string;
   private model: User = new User();
 
   constructor(private authService: AuthService,
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.buildResctiveForm();
+    this.currentUserName = localStorage.getItem("currentUserName");
   }
 
   onSubmit() {
@@ -28,6 +30,10 @@ export class LoginComponent implements OnInit {
     this.authService.makeLogin(this.model).subscribe(
       res => {
         localStorage.setItem("token", res.token);
+        this.authService.getCurrentUser(this.model.cpf).subscribe(res => {
+          localStorage.setItem("currentUserName", res.name);
+          localStorage.setItem("currentUserID", res.id.toString());
+        })
       }, error => console.log("ERRRRROR =>" + JSON.stringify(error))
     )
   }
