@@ -20,7 +20,7 @@ export class User {
               public id?: number,
               public password?: string,
               public email?: string,
-              public role?: Array<UserRole>,
+              public role?: UserRole,
               public complement?: string) {
 
   }

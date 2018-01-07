@@ -7,22 +7,23 @@ import 'hammerjs';
 import {MaterializeModule} from 'angular2-materialize';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {MenuComponent} from './navbar/menu/menu.component';
-import {FooterComponent} from './footer/footer.component';
-import {FaqComponent} from './faq/faq.component';
-import {HomeComponent} from './home/home.component';
-import {NotFoundComponent} from './not-found/not-found.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {MenuComponent} from './components/navbar/menu/menu.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {FaqComponent} from './components/faq/faq.component';
+import {HomeComponent} from './components/home/home.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 import {SharedModule} from "./shared/shared.module";
 import {ClientModule} from "./client/client.module";
 import {AdminModule} from "./admin/admin.module";
 import {DelegateModule} from "./delegate/delegate.module";
-import {ExaminatorModule} from "./examinator/examinator.module";
 import {ValidatorModule} from "./validator/validator.module";
-import {LoginComponent} from './login/login.component';
-import {RegisterYourselfComponent} from './register-yourself/register-yourself.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegisterYourselfComponent} from './components/register-yourself/register-yourself.component';
 import {AuthModule} from "./auth/auth.module";
 import {HttpClientModule} from "@angular/common/http";
+import {InstructorModule} from "./instructor/instructor.module";
+import {PsychologistModule} from "./psychologist/psychologist.module";
 
 @NgModule({
   declarations: [
@@ -47,9 +48,10 @@ import {HttpClientModule} from "@angular/common/http";
     ClientModule,
     AdminModule,
     DelegateModule,
-    ExaminatorModule,
     ValidatorModule,
     AuthModule,
+    InstructorModule,
+    PsychologistModule
   ],
   exports: [
     SharedModule

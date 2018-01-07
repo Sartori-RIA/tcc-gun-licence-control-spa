@@ -58,7 +58,7 @@ export class FormComponent implements OnInit, FormCanDeactivate {
   private buildResctiveForm(): void {
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
-      sex: [null, Validators.required],
+      gender: [null, Validators.required],
       password: [null, Validators.required],
       email: [null, Validators.required],
       cpf: [null, Validators.required],
@@ -76,7 +76,7 @@ export class FormComponent implements OnInit, FormCanDeactivate {
 
   private converFormBuilderToModel(): void {
     this.model.name = this.form.value.name;
-    this.model.sex = this.form.value.sex;
+    this.model.gender = this.form.value.gender;
     this.model.street = this.form.value.street;
     this.model.dateOfBirth = this.form.value.dateOfBirth;
     this.model.cpf = this.form.value.cpf;

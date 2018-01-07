@@ -7,7 +7,7 @@
     </mat-input-container>
 
     <mat-form-field>
-      <mat-select placeholder="Informe o Sexo" formArrayName="sex"   id="sex">
+      <mat-select placeholder="Informe o Sexo" formArrayName="gender"   id="sex">
         <mat-option *ngFor="let sexo of sexos" [value]="sexo">{{ sexo?.description }}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -79,7 +79,7 @@
 
     <div *ngIf="isClient">
       <mat-form-field>
-        <mat-select placeholder="Informe o nível de acesso"  formControlName="sex"
+        <mat-select placeholder="Informe o nível de acesso"  formControlName="role"
                     id="type">
           <mat-option *ngFor="let type of roles" [value]="type">{{type.description}}</mat-option>
         </mat-select>

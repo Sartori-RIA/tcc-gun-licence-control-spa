@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-validator',
@@ -7,15 +8,23 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ValidatorComponent implements OnInit {
 
-  private valid: boolean;
+  form: FormGroup;
+  valid: boolean;
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.buildReactiveForm();
   }
 
   onSubmit() {
 
+  }
+
+  private buildReactiveForm(): void {
+    this.form = this.formBuilder.group({
+      serial: [null, Validators.required],
+    })
   }
 }

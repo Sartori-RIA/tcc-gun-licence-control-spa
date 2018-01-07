@@ -11,11 +11,11 @@
     <div class="card">
       <h2 class="card-title center-align">Validador</h2>
       <div class="row">
-        <form #form="ngForm" class="card-content" (ngSubmit)="onSubmit()">
+        <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
 
           <div class="row">
             <div class="input-field">
-              <input [(ngModel)]="model.serial" name="serial" id="serial" type="text" class="validate">
+              <input formControlName="serial" id="serial" type="text" class="validate">
               <label for="serial">Número da licença</label>
             </div>
           </div>

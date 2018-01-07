@@ -26,9 +26,13 @@ import {FlashMessageComponent} from './components/flash-message/flash-message.co
 import {SearchComponent} from './components/search/search.component';
 import {ReversePipe} from './pipes/reverse.pipe';
 import {FilterPipe} from './pipes/filter.pipe';
-import {DeactivateGuard} from './guards/deactivate.guard';
 import {HttpClientModule} from "@angular/common/http";
 import {CepService} from "./services/cep.service";
+import {AuthAdminGuard} from "./guards/auth-admin.guard";
+import {AuthClientGuard} from "./guards/auth-client.guard";
+import {AuthDelegateGuard} from "./guards/auth-delegate.guard";
+import {AuthInstructorGuard} from "./guards/auth-instructor.guard";
+import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
 
 @NgModule({
   imports: [
@@ -72,8 +76,12 @@ import {CepService} from "./services/cep.service";
     LicenceCategoryService,
     SexService,
     UserCategoryService,
-    DeactivateGuard,
     CepService,
+    AuthAdminGuard,
+    AuthClientGuard,
+    AuthDelegateGuard,
+    AuthInstructorGuard,
+    AuthPsychologistGuard,
   ],
   exports: [
     CommonModule,
