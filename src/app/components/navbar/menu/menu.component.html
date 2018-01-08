@@ -6,9 +6,9 @@
   </a>
 </div>
 <div class="left">
-  <li routerLinkActive="active"><a routerLink="/usuario">usuarios</a></li>
-  <li routerLinkActive="active"><a routerLink="/instrutor">Instrutor</a></li>
-  <li routerLinkActive="active"><a routerLink="/psicologo">Psicologo</a></li>
-  <li routerLinkActive="active"><a routerLink="/delegado">Delegado</a></li>
-  <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
+  <li *ngIf="isCivil()" routerLinkActive="active"><a routerLink="/civil">Minha página</a></li>
+  <li *ngIf="isInstructor()" routerLinkActive="active"><a routerLink="/instrutor">Minha página</a></li>
+  <li *ngIf="isPsychologist()" routerLinkActive="active"><a routerLink="/psicologo">Minha página</a></li>
+  <li *ngIf="isDelegate()" routerLinkActive="active"><a routerLink="/delegado">Minha página</a></li>
+  <li *ngIf="isAdmin()" routerLinkActive="active"><a routerLink="/admin">Minha página</a></li>
 </div>

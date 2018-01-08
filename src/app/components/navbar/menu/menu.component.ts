@@ -21,4 +21,24 @@ export class MenuComponent implements OnInit {
       this.authService.logout();
   }
 
+  isCivil(): boolean {
+    return localStorage.getItem("currentUserRole") == "CIVIL";
+  }
+
+  isDelegate(): boolean {
+    return localStorage.getItem("currentUserRole") == "DELEGADO";
+  }
+
+  isPsychologist(): boolean {
+    return localStorage.getItem("currentUserRole") == "PSICOLOGO";
+  }
+
+  isInstructor(): boolean {
+    return localStorage.getItem("currentUserRole") == "INSTRUTOR";
+  }
+
+  isAdmin(): boolean {
+    return localStorage.getItem("currentUserRole") == "ADMIN";
+  }
+
 }

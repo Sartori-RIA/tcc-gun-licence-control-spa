@@ -14,7 +14,7 @@ import {AuthPsychologistGuard} from "./shared/guards/auth-psychologist.guard";
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {
-    path: 'usuario',
+    path: 'civil',
     loadChildren: 'app/client/client.module#ClientModule',
     canActivate: [AuthClientGuard]
   },

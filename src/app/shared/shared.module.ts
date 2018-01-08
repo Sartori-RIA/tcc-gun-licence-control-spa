@@ -33,6 +33,7 @@ import {AuthClientGuard} from "./guards/auth-client.guard";
 import {AuthDelegateGuard} from "./guards/auth-delegate.guard";
 import {AuthInstructorGuard} from "./guards/auth-instructor.guard";
 import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
     FlashMessageComponent,
     SearchComponent,
     ReversePipe,
-    FilterPipe
+    FilterPipe,
+    UserDetailComponent
   ],
   providers: [
     RoutesClientUtil,
@@ -108,6 +110,7 @@ import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
     SearchComponent,
     ReversePipe,
     FilterPipe,
+    UserDetailComponent
   ]
 })
 export class SharedModule {

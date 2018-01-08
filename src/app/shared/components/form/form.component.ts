@@ -47,6 +47,7 @@ export class FormComponent implements OnInit, FormCanDeactivate {
       this.converFormBuilderToModel();
       this.examinatorService.create(this.model).subscribe(res => {
         window.location.reload();
+        console.log(res)
       }, error => alert('ocorreu um erro' + error));
     } else this.formDirty(this.form);
   }
