@@ -1,9 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "./home/home.component";
+import {DelegateHomeComponent} from "./delegate-home/delegate-home.component";
+import {DelegateProfileComponent} from "./delegate-profile/delegate-profile.component";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent}
+  {
+    path: '', component: DelegateHomeComponent, children: [
+      {path: 'perfil', component: DelegateProfileComponent}
+    ]
+  }
 ];
 
 @NgModule({

@@ -36,15 +36,15 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("currentUserID", res.id.toString());
           localStorage.setItem("currentUserCPF", res.cpf);
           localStorage.setItem("currentUserRole", res.role.description);
-          if(res.role.description == "ADMIN")
+          if (res.role.description == "ADMIN")
             this.router.navigate(['/admin']);
           if (res.role.description == "DELEGADO")
             this.router.navigate(['/delegado']);
-          if(res.role.description == "INSTRUTOR")
+          if (res.role.description == "INSTRUTOR")
             this.router.navigate(['/instrutor']);
-          if(res.role.description == "PSICOLOGO")
+          if (res.role.description == "PSICOLOGO")
             this.router.navigate(['/psicologo']);
-          if(res.role.description == "CIVIL")
+          if (res.role.description == "CIVIL")
             this.router.navigate(['/civil']);
 
         })

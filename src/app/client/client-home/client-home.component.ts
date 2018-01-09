@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class ClientHomeComponent implements OnInit {
 
   currentUserName: string;
+
   constructor() {
   }
 

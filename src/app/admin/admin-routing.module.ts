@@ -1,15 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {RegisterUserComponent} from './register-user/register-user.component';
-import {ReportsComponent} from './reports/reports.component';
+import {AdminProfileComponent} from "./admin-profile/admin-profile.component";
+import {AdminHomeComponent} from "./admin-home/admin-home.component";
+import {AdminRegisterUserComponent} from "./admin-register-user/admin-register-user.component";
+import {AdminReportsComponent} from "./admin-reports/admin-reports.component";
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent, children: [
-    {path: 'cadastro/usuario', component: RegisterUserComponent},
-    {path: 'relatorios', component: ReportsComponent}
-  ]
+    path: '', component: AdminHomeComponent, children: [
+      {path: 'cadastro/usuario', component: AdminRegisterUserComponent},
+      {path: 'relatorios', component: AdminReportsComponent},
+      {path: 'perfil', component: AdminProfileComponent},
+    ]
   }
 ];
 

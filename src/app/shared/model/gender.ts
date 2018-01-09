@@ -1,5 +1,5 @@
 export class Gender {
-  constructor(public description: string,
-              public id: number) {
+  constructor(public id?: number,
+              public description?: string) {
   }
 }

@@ -3,12 +3,11 @@ import {RoutesClientUtil} from '../routes-api/routes-client.util';
 import {AbstractService} from './abstract.service';
 import {User} from "../model/user";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
 
 const url = RoutesClientUtil.CLIENTS;
 
 @Injectable()
-export class ClientService extends AbstractService<User> {
+export class UserService extends AbstractService<User> {
 
 
   constructor(http: HttpClient) {

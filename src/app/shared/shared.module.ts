@@ -6,24 +6,20 @@ import {
   MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatMenuModule,
   MatNativeDateModule, MatRadioModule, MatSelectModule, MatSidenavModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
-import {ListsComponent} from './components/lists/lists.component';
+import {SharedListsComponent} from './components/shared-lists/shared-lists.component';
 import {CamelCasePipe} from './pipes/camel-case.pipe';
-import {FormComponent} from './components/form/form.component';
+import {SharedFormComponent} from './components/shared-form/shared-form.component';
 import {ExaminatorService} from './services/examinator.service';
-import {ClientService} from './services/user.service';
+import {UserService} from './services/user.service';
 import {RoutesClientUtil} from './routes-api/routes-client.util';
-import {CampoControlErrorComponent} from './components/campo-control-error/campo-control-error.component';
-import {FormUserInfoComponent} from './components/form-user-info/form-user-info.component';
-import {FormUserAddressComponent} from './components/form-user-address/form-user-address.component';
-import {FormUserTypeComponent} from './components/form-user-type/form-user-type.component';
+import {CampoControlErrorComponent} from './components/shared-campo-control-error/shared-campo-control-error.component';
 import {ExamCategoryService} from './services/exam-category.service';
 import {LicenceCategoryService} from './services/licence-category.service';
-import {SexService} from './services/sex.service';
+import {GenderService} from './services/gender.service';
 import {UserCategoryService} from './services/user-category.service';
 import {CpfPipe} from './pipes/cpf.pipe';
 import {CpfDirective} from './directives/cpf.directive';
-import {FlashMessageComponent} from './components/flash-message/flash-message.component';
-import {SearchComponent} from './components/search/search.component';
+import {SharedFlashMessageComponent} from './components/shared-flash-message/shared-flash-message.component';
 import {ReversePipe} from './pipes/reverse.pipe';
 import {FilterPipe} from './pipes/filter.pipe';
 import {HttpClientModule} from "@angular/common/http";
@@ -33,7 +29,7 @@ import {AuthClientGuard} from "./guards/auth-client.guard";
 import {AuthDelegateGuard} from "./guards/auth-delegate.guard";
 import {AuthInstructorGuard} from "./guards/auth-instructor.guard";
 import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import {SharedUserDetailComponent} from './components/shared-user-detail/shared-user-detail.component';
 
 @NgModule({
   imports: [
@@ -55,28 +51,24 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     MatIconModule,
   ],
   declarations: [
-    FormComponent,
     CamelCasePipe,
-    ListsComponent,
     CampoControlErrorComponent,
-    FormUserInfoComponent,
-    FormUserAddressComponent,
-    FormUserTypeComponent,
     CpfPipe,
     CpfDirective,
-    FlashMessageComponent,
-    SearchComponent,
     ReversePipe,
     FilterPipe,
-    UserDetailComponent
+    SharedUserDetailComponent,
+    SharedFlashMessageComponent,
+    SharedFormComponent,
+    SharedListsComponent,
   ],
   providers: [
     RoutesClientUtil,
-    ClientService,
+    UserService,
     ExaminatorService,
     ExamCategoryService,
     LicenceCategoryService,
-    SexService,
+    GenderService,
     UserCategoryService,
     CepService,
     AuthAdminGuard,
@@ -89,10 +81,8 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     CommonModule,
     FormsModule,
     HttpClientModule,
-    FormComponent,
     ReactiveFormsModule,
     CamelCasePipe,
-    ListsComponent,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -107,10 +97,12 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     MatIconModule,
     CpfPipe,
     CpfDirective,
-    SearchComponent,
     ReversePipe,
     FilterPipe,
-    UserDetailComponent
+    SharedUserDetailComponent,
+    SharedFlashMessageComponent,
+    SharedFormComponent,
+    SharedListsComponent,
   ]
 })
 export class SharedModule {

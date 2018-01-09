@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../shared/model/user";
-import {ClientService} from "../../shared/services/user.service";
-import {FormCanDeactivate} from "../../shared/model/form-can-deactivate";
+import {UserService} from "../../shared/services/user.service";
+import {GenderService} from "../../shared/services/gender.service";
+import {Gender} from "../../shared/model/gender";
 
 
 @Component({
@@ -9,21 +10,20 @@ import {FormCanDeactivate} from "../../shared/model/form-can-deactivate";
   templateUrl: './client-profile.component.html',
   styleUrls: ['./client-profile.component.scss']
 })
-export class ClientProfileComponent implements OnInit, FormCanDeactivate {
+export class ClientProfileComponent implements OnInit {
 
   errorMessage: string;
   model: User = new User();
-  formChange: boolean = false;
+  gender: Gender = new Gender();
 
-  constructor(private clientService: ClientService) {
+  constructor(private userService: UserService,
+              private genderService: GenderService) {
   }
 
   ngOnInit() {
-    this.clientService.show(localStorage.getItem("currentUserID")).subscribe(res => this.model = res);
-  }
-
-
-  canDesactive() {
-    this.formChange = true;
+    this.userService.show(localStorage.getItem("currentUserID")).subscribe(res => {
+      this.model = res;
+      this.genderService.show(res.gender.id).subscribe(res => this.gender = res);
+    });
   }
 }

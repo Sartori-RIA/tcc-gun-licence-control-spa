@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import {UserRole} from "../model/user-role";
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 import {AuthService} from "../../auth/auth.service";
 
 @Injectable()
@@ -11,14 +10,13 @@ export class AuthPsychologistGuard implements CanActivate {
               private router: Router) {
   }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(next: ActivatedRouteSnapshot,
+              state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkLogin()) {
       let role = localStorage.getItem("currentUserRole");
       if (role === 'PSICOLOGO')
         return true;
-      else{
+      else {
         this.router.navigate(['/login']);
         return false;
       }

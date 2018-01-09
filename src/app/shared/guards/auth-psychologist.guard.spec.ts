@@ -1,6 +1,6 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { AuthPsychologistGuard } from './auth-psychologist.guard';
+import {AuthPsychologistGuard} from './auth-psychologist.guard';
 
 describe('AuthPsychologistGuard', () => {
   beforeEach(() => {

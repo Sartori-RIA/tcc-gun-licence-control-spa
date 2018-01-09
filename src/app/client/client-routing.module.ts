@@ -9,11 +9,11 @@ import {ClientAgendaComponent} from "./client-agenda/client-agenda.component";
 const routes: Routes = [
   {
     path: '', component: ClientHomeComponent, children: [
-    {path: 'perfil', component: ClientProfileComponent},
-    {path: 'licencas', component: ClientLicenceComponent},
-    {path: 'exames', component: ClientExamsComponent},
-    {path: 'agendamento', component: ClientAgendaComponent}
-  ]
+      {path: 'perfil', component: ClientProfileComponent},
+      {path: 'licencas', component: ClientLicenceComponent},
+      {path: 'exames', component: ClientExamsComponent},
+      {path: 'agendamento', component: ClientAgendaComponent}
+    ]
   }
 ];
 

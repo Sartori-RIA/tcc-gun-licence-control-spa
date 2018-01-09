@@ -16,6 +16,10 @@ export abstract class AbstractService<T> {
   constructor(private http: HttpClient, private url: string) {
   }
 
+  private static getUrl(url: any, id: any) {
+    return url + id;
+  }
+
   create(model: T): Observable<T> {
     return this.http.post<T>(this.url, JSON.stringify(model), httpOptions);
   }
@@ -34,9 +38,5 @@ export abstract class AbstractService<T> {
 
   destroy(id: any) {
     return this.http.delete(AbstractService.getUrl(this.url, id), httpOptions).map(res => res);
-  }
-
-  private static getUrl(url: any, id: any) {
-    return url + id;
   }
 }

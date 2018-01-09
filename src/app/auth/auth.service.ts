@@ -4,7 +4,6 @@ import {RoutesClientUtil} from "../shared/routes-api/routes-client.util";
 import {Observable} from "rxjs/Observable";
 import {Token} from "./token";
 import {User} from "../shared/model/user";
-import {UserRole} from "../shared/model/user-role";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -41,7 +40,7 @@ export class AuthService {
     localStorage.clear();
   }
 
-  checkRole():any {
+  checkRole(): any {
     let url = RoutesClientUtil.CLIENTS + 'find/property/cpf/value/' + localStorage.getItem("currenUserCPF");
     let user = this.http.get<User>(url, httpOptionsToken);
     user.subscribe(res => {

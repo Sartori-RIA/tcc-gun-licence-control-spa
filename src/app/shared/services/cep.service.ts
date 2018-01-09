@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {ViaCep} from "../model/via-cep";
@@ -6,9 +6,10 @@ import {ViaCep} from "../model/via-cep";
 @Injectable()
 export class CepService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getCEP(cep: string) : Observable<ViaCep>{
+  getCEP(cep: string): Observable<ViaCep> {
     cep = cep.replace(/\D/g, '');
     if (cep != '') {
       let validacep = /^[0-9]{8}$/;
