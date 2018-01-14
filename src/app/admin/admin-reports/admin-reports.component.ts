@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
+import {User} from "../../shared/model/user";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-admin-reports',
@@ -7,10 +9,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdminReportsComponent implements OnInit {
 
-  constructor() {
+  modelList: User[];
+  @Output() modelDetail: User;
+
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.index().subscribe(res => this.modelList = res)
   }
 
+  onClickUser(model: User){
+    this.modelDetail = model;
+  }
 }

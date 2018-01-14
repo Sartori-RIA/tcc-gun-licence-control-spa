@@ -30,6 +30,7 @@ import {AuthDelegateGuard} from "./guards/auth-delegate.guard";
 import {AuthInstructorGuard} from "./guards/auth-instructor.guard";
 import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
 import {SharedUserDetailComponent} from './components/shared-user-detail/shared-user-detail.component';
+import {LicenseValidatorService} from "./services/license-validator.service";
 
 @NgModule({
   imports: [
@@ -71,6 +72,7 @@ import {SharedUserDetailComponent} from './components/shared-user-detail/shared-
     GenderService,
     UserCategoryService,
     CepService,
+    LicenseValidatorService,
     AuthAdminGuard,
     AuthClientGuard,
     AuthDelegateGuard,

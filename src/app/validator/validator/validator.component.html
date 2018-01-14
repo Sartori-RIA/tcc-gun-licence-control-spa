@@ -31,11 +31,8 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isValid" class="col s4 offset-s4 center-align truncate">
-    <app-licence-valid></app-licence-valid>
-  </div>
-  <div *ngIf="!isValid" class="col s4 offset-s4 center-align truncate">
-    <app-licence-invalid></app-licence-invalid>
+  <div *ngIf="valid" class="col s4 offset-s4 center-align truncate">
+    <app-license-valid [model]="model"></app-license-valid>
   </div>
 </div>
 

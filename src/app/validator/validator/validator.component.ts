@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {LicenseValidatorService} from "../../shared/services/license-validator.service";
+import {User} from "../../shared/model/user";
+import {License} from "../../shared/model/license";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-validator',
@@ -9,20 +13,44 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class ValidatorComponent implements OnInit {
 
   form: FormGroup;
-  valid: boolean;
+  model: User;
+  license: License;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private licenseValidatorService: LicenseValidatorService,
+              private formBuilder: FormBuilder,
+              private router: Router) {
+  }
+
+  private _valid: boolean;
+
+  get valid(): boolean {
+    return this._valid;
+  }
+
+  set valid(value: boolean) {
+    this._valid = value;
   }
 
   ngOnInit() {
+    this.model = new User();
+    this.license = new License();
     this.buildReactiveForm();
   }
 
   onSubmit() {
-
+    if (this.form.valid) {
+      this.license.serial = this.form.value.serial;
+      this.licenseValidatorService.validateLicense(this.license).subscribe(res => {
+        this.model = res;
+        this.valid = true;
+      }, error2 => {
+        this.valid = false;
+        return this.router.navigate(['/validador/invalida'])
+      });
+    }
   }
 
-  private buildReactiveForm(): void {
+  buildReactiveForm(): void {
     this.form = this.formBuilder.group({
       serial: [null, Validators.required],
     })

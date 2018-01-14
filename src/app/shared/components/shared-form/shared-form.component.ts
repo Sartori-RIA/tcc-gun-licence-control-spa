@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ExaminatorService} from "../../services/examinator.service";
 import 'rxjs/add/operator/map';
 import {Gender} from "../../model/gender";
 import {Cep} from "../../model/cep";
@@ -10,6 +9,7 @@ import {UserCategoryService} from "../../services/user-category.service";
 import {FormCanDeactivate} from "../../model/form-can-deactivate";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CepService} from "../../services/cep.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-shared-form',
@@ -27,7 +27,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private examinatorService: ExaminatorService,
+              private userService: UserService,
               private genderService: GenderService,
               private userCategoryService: UserCategoryService,
               private cepService: CepService) {
@@ -39,13 +39,13 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   ngOnInit() {
     this.genderService.index().subscribe(res => this.genders = res);
     this.userCategoryService.index().subscribe(res => this.roles = res);
-    this.buildResctiveForm();
+    this.buildReactiveForm();
   }
 
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
-      this.examinatorService.create(this.model).subscribe(res => {
+      this.userService.create(this.model).subscribe(res => {
         window.location.reload();
         console.log(res)
       }, error => alert('ocorreu um erro' + error));
@@ -56,7 +56,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
     this.cepService.getCEP(this.form.value.cep).subscribe(res => this.populateAddress(res))
   }
 
-  private buildResctiveForm(): void {
+  private buildReactiveForm(): void {
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
       gender: [null, Validators.required],

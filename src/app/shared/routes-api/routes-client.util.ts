@@ -3,13 +3,15 @@
  */
 export class RoutesClientUtil {
   public static URL_API = 'http://localhost:8080/sinarm/api/';
-  public static GUNS = RoutesClientUtil.URL_API + 'armas/';
-  public static CLIENTS = RoutesClientUtil.URL_API + 'usuarios/';
-  public static SEX = RoutesClientUtil.URL_API + 'generos/';
-  public static LVL_ACCESS = RoutesClientUtil.URL_API + 'usuarios-niveis-acessos/';
-  public static LICENCES = RoutesClientUtil.URL_API + 'licencas/';
-  public static LICENCES_TYPES = RoutesClientUtil.URL_API + 'licencas-categorias/';
-  public static EXAMS = RoutesClientUtil.URL_API + 'exames/';
-  public static EXAMS_TYPES = RoutesClientUtil.URL_API + 'exames-categorias/';
+
+  public static CLIENTS = RoutesClientUtil.URL_API + 'users/';
+  public static EXAMS = RoutesClientUtil.URL_API + 'exams/';
+  public static EXAMS_TYPES = RoutesClientUtil.URL_API + 'exams-types/';
+  public static GUNS = RoutesClientUtil.URL_API + 'guns/';
+  public static LICENCES = RoutesClientUtil.URL_API + 'licenses/';
+  public static LICENCES_TYPES = RoutesClientUtil.URL_API + 'licences-types/';
   public static LOGIN = RoutesClientUtil.URL_API + 'login/';
+  public static LVL_ACCESS = RoutesClientUtil.URL_API + 'users-roles/';
+  public static SEX = RoutesClientUtil.URL_API + 'genders/';
+  public static VALIDATOR = RoutesClientUtil.URL_API + 'validator/';
 }
