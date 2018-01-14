@@ -1,5 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {User} from "../../shared/model/user";
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../shared/services/user.service";
 
 @Component({
@@ -9,17 +8,41 @@ import {UserService} from "../../shared/services/user.service";
 })
 export class AdminReportsComponent implements OnInit {
 
-  modelList: User[];
-  @Output() modelDetail: User;
-
   constructor(private userService: UserService) {
   }
 
-  ngOnInit() {
-    this.userService.index().subscribe(res => this.modelList = res)
+  private _listUsers: boolean;
+
+  get listUsers(): boolean {
+    return this._listUsers;
   }
 
-  onClickUser(model: User){
-    this.modelDetail = model;
+  set listUsers(value: boolean) {
+    this._listUsers = value;
+  }
+
+  private _listLicenses: boolean;
+
+  get listLicenses(): boolean {
+    return this._listLicenses;
+  }
+
+  set listLicenses(value: boolean) {
+    this._listLicenses = value;
+  }
+
+  ngOnInit() {
+
+  }
+
+  onChange(event) {
+    if (event == 'listLicenses') {
+      this.listLicenses = true;
+      this.listUsers = false;
+    }
+    if (event == 'listUsers') {
+      this.listUsers = true;
+      this.listLicenses = false;
+    }
   }
 }

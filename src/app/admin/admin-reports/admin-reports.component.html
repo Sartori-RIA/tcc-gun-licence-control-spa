@@ -1,22 +1,5 @@
-<div class="col s5 left">
-  <table class="responsive-table">
-    <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Estado</th>
-      <th>Categoria</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let model of modelList">
-      <td><a (click)="onClickUser(model)" class="collection-item">{{model.name}}</a></td>
-      <td><a (click)="onClickUser(model)" class="collection-item">{{model.state}}</a></td>
-      <td><a (click)="onClickUser(model)" class="collection-item">{{model.role.description}}</a></td>
-    </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <mat-button-toggle (click)="onChange('listLicenses')">Listar Licenças</mat-button-toggle>
+  <mat-button-toggle (click)="onChange('listUsers')">Listar Usuario</mat-button-toggle>
 </div>
-
-<div *ngIf="modelDetail != null" class="col s7 right">
-  <app-shared-user-detail [gender]="modelDetail.gender" [model]="modelDetail"></app-shared-user-detail>
-</div>
+<app-shared-report-users-list *ngIf="listUsers"></app-shared-report-users-list>

@@ -45,7 +45,7 @@ export class ValidatorComponent implements OnInit {
         this.valid = true;
       }, error2 => {
         this.valid = false;
-        return this.router.navigate(['/validador/invalida'])
+//TODO  redirecionar para uma rota com a mensagem de erro OU conseguir carregar abaixo a mensagem de erro
       });
     }
   }

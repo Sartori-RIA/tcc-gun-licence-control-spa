@@ -7,7 +7,7 @@
     </mat-input-container>
 
     <mat-form-field>
-      <mat-select placeholder="Informe o Sexo" formArrayName="gender" id="gender">
+      <mat-select placeholder="Informe o Sexo" formControlName="gender" id="gender">
         <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender?.description }}</mat-option>
       </mat-select>
     </mat-form-field>

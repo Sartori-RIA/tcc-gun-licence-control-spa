@@ -45,6 +45,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
+      console.log(JSON.stringify(this.model));
       this.userService.create(this.model).subscribe(res => {
         window.location.reload();
         console.log(res)

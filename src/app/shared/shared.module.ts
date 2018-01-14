@@ -3,7 +3,8 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import './rxjs.extensions';
 import {
-  MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatMenuModule,
+  MatButtonModule, MatButtonToggleModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule,
+  MatMenuModule,
   MatNativeDateModule, MatRadioModule, MatSelectModule, MatSidenavModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import {SharedListsComponent} from './components/shared-lists/shared-lists.component';
@@ -31,6 +32,7 @@ import {AuthInstructorGuard} from "./guards/auth-instructor.guard";
 import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
 import {SharedUserDetailComponent} from './components/shared-user-detail/shared-user-detail.component';
 import {LicenseValidatorService} from "./services/license-validator.service";
+import { SharedReportUsersListComponent } from './components/shared-report-users-list/shared-report-users-list.component';
 
 @NgModule({
   imports: [
@@ -62,6 +64,7 @@ import {LicenseValidatorService} from "./services/license-validator.service";
     SharedFlashMessageComponent,
     SharedFormComponent,
     SharedListsComponent,
+    SharedReportUsersListComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -93,6 +96,7 @@ import {LicenseValidatorService} from "./services/license-validator.service";
     MatRadioModule,
     MatSidenavModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatCardModule,
     MatTabsModule,
     MatToolbarModule,
@@ -105,6 +109,7 @@ import {LicenseValidatorService} from "./services/license-validator.service";
     SharedFlashMessageComponent,
     SharedFormComponent,
     SharedListsComponent,
+    SharedReportUsersListComponent,
   ]
 })
 export class SharedModule {
