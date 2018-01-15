@@ -33,6 +33,10 @@ import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
 import {SharedUserDetailComponent} from './components/shared-user-detail/shared-user-detail.component';
 import {LicenseValidatorService} from "./services/license-validator.service";
 import { SharedReportUsersListComponent } from './components/shared-report-users-list/shared-report-users-list.component';
+import {CountryService} from "./services/country.service";
+import {StateService} from "./services/state.service";
+import {CityService} from "./services/city.service";
+import { SharedFormAddressComponent } from './components/shared-form-address/shared-form-address.component';
 
 @NgModule({
   imports: [
@@ -65,6 +69,7 @@ import { SharedReportUsersListComponent } from './components/shared-report-users
     SharedFormComponent,
     SharedListsComponent,
     SharedReportUsersListComponent,
+    SharedFormAddressComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -76,6 +81,9 @@ import { SharedReportUsersListComponent } from './components/shared-report-users
     UserCategoryService,
     CepService,
     LicenseValidatorService,
+    CountryService,
+    StateService,
+    CityService,
     AuthAdminGuard,
     AuthClientGuard,
     AuthDelegateGuard,
@@ -110,6 +118,7 @@ import { SharedReportUsersListComponent } from './components/shared-report-users
     SharedFormComponent,
     SharedListsComponent,
     SharedReportUsersListComponent,
+    SharedFormAddressComponent,
   ]
 })
 export class SharedModule {

@@ -14,4 +14,8 @@ export class RoutesClientUtil {
   public static LVL_ACCESS = RoutesClientUtil.URL_API + 'users-roles/';
   public static SEX = RoutesClientUtil.URL_API + 'genders/';
   public static VALIDATOR = RoutesClientUtil.URL_API + 'validator/';
+
+  public static COUNTRIES = RoutesClientUtil.URL_API + 'countries/';
+  public static STATES = RoutesClientUtil.URL_API + 'states/';
+  public static CITIES = RoutesClientUtil.URL_API + 'cities/';
 }

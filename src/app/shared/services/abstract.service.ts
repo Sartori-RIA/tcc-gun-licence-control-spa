@@ -32,6 +32,21 @@ export abstract class AbstractService<T> {
     return this.http.get<T>(AbstractService.getUrl(this.url, id), httpOptions);
   }
 
+  searchByOneProperty(propert: string, value: string) {
+
+  }
+
+  searchByTwoProperty(propertOne: string, valueOne: string,
+                      propertTwo: string, valueTwo: string) {
+
+  }
+
+  searchByThreeProperty(propertOne: string, valueOne: string,
+                        propertTwo: string, valueTwo: string,
+                        propertThree: string, valueThree: string) {
+
+  }
+
   edit(model: any): Observable<any> {
     return this.http.put<any>(AbstractService.getUrl(this.url, model.id), JSON.stringify(model), httpOptions);
   }

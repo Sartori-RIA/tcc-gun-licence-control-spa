@@ -1,0 +1,51 @@
+<div>
+  <h3 class="center">Seu endereço</h3>
+
+
+  <mat-form-field>
+    <mat-select placeholder="Informe o Pais" formControlName="country" id="country">
+      <mat-option *ngFor="let country of countries" (change)="onCountryChose(country)" [value]="country">{{
+        country?.description }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Informe o Estado" formControlName="state" id="state">
+      <mat-option *ngFor="let state of states" (change)="onStateChose(state)" [value]="state">{{ state?.description
+        }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Informe a Cidade" formControlName="city" id="city">
+      <mat-option *ngFor="let city of cities" [value]="city">{{ city?.description }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput #postalCode maxlength="9" placeholder="CEP" id="cep" formControlName="cep"
+           (blur)="getCEP()">
+    <mat-hint align="end">{{postalCode.value.length}} / 9</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput id="bairro" formControlName="neighborhood" placeholder="Bairro">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="complement" id="complemento"
+           placeholder="Complemento">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput id="addressNumber" formControlName="addressNumber"
+           placeholder="Numero">
+  </mat-form-field>
+
+  <mat-form-field class="midle-width">
+    <input matInput id="rua" placeholder="Endereço" formControlName="street">
+  </mat-form-field>
+</div>
+<!-- TODO ADICIONAR O ENDERECO A UMA LISTA, COLOCAR UM BTN DE ADD ADDRESS AQUI-->
