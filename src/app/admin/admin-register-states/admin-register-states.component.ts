@@ -35,11 +35,11 @@ export class AdminRegisterStatesComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid)
-      this.countryService.show(this.form.value.country.id).subscribe(country => {
+      this.countryService.getById(this.form.value.country.id).subscribe(country => {
         this.model.country = country;
         this.model.description = this.form.value.name;
         this.model.abbrev = this.form.value.abbrev;
-        this.stateService.create(this.model).subscribe(res => {
+        this.stateService.save(this.model).subscribe(res => {
           window.location.reload();
         }, error2 => alert(JSON.stringify(error2)));
       });

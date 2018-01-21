@@ -20,9 +20,9 @@ export class InstructorProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.show(localStorage.getItem("currentUserID")).subscribe(res => {
+    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => {
       this.model = res;
-      this.genderService.show(res.gender.id).subscribe(res => this.gender = res);
+      this.genderService.getById(res.gender.id).subscribe(res => this.gender = res);
     });
   }
 }

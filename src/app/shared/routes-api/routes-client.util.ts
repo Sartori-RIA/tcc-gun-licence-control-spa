@@ -18,4 +18,5 @@ export class RoutesClientUtil {
   public static COUNTRIES = RoutesClientUtil.URL_API + 'countries/';
   public static STATES = RoutesClientUtil.URL_API + 'states/';
   public static CITIES = RoutesClientUtil.URL_API + 'cities/';
+  public static ADDRESS= RoutesClientUtil.URL_API + 'address/';
 }

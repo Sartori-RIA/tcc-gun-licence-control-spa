@@ -18,7 +18,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Informe a Cidade" formControlName="city" id="city">
+      <mat-select (change)="onCityChose()" placeholder="Informe a Cidade" formControlName="city" id="city">
         <mat-option *ngFor="let city of cities" [value]="city">{{ city?.description }}</mat-option>
       </mat-select>
     </mat-form-field>

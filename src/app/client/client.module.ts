@@ -10,6 +10,7 @@ import {ClientSidebarComponent} from './client-sidebar/client-sidebar.component'
 import {MenuComponent} from './client-sidebar/menu/menu.component';
 import {ClientAgendaComponent} from './client-agenda/client-agenda.component';
 import { ClientAddressComponent } from './client-address/client-address.component';
+import { ClientUpdateComponent } from './client-update/client-update.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ClientAddressComponent } from './client-address/client-address.componen
     ClientSidebarComponent,
     MenuComponent,
     ClientAgendaComponent,
-    ClientAddressComponent
+    ClientAddressComponent,
+    ClientUpdateComponent
   ]
 })
 export class ClientModule {

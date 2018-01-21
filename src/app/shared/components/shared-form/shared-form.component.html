@@ -40,7 +40,7 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <div *ngIf="isClient">
+    <div *ngIf="!isClient">
       <mat-form-field>
         <mat-select placeholder="Informe o nível de acesso" formControlName="role"
                     id="type">
@@ -49,7 +49,8 @@
       </mat-form-field>
     </div>
     <div class="row center">
-      <button class="btn" type="submit">Cadastrar</button>
+      <button class="btn" type="submit" *ngIf="!makeUpdate">Cadastrar</button>
+      <button class="btn" type="submit" *ngIf="makeUpdate">Atualizar</button>
     </div>
   </form>
 </div>

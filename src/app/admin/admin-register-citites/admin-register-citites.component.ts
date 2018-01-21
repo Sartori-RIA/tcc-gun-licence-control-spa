@@ -38,10 +38,10 @@ export class AdminRegisterCititesComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid)
-      this.stateService.show(this.form.value.state.id).subscribe(state => {
+      this.stateService.getById(this.form.value.state.id).subscribe(state => {
         this.model.state = state;
         this.model.description = this.form.value.city;
-        this.cityService.create(this.model).subscribe(res => {
+        this.cityService.save(this.model).subscribe(res => {
           window.location.reload();
         }, error2 => alert(JSON.stringify(error2)));
       });

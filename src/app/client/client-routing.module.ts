@@ -6,6 +6,7 @@ import {ClientLicenceComponent} from "./client-licence/client-licence.component"
 import {ClientExamsComponent} from "./client-exams/client-exams.component";
 import {ClientAgendaComponent} from "./client-agenda/client-agenda.component";
 import {ClientAddressComponent} from "./client-address/client-address.component";
+import {ClientUpdateComponent} from "./client-update/client-update.component";
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       {path: 'licencas', component: ClientLicenceComponent},
       {path: 'exames', component: ClientExamsComponent},
       {path: 'agendamento', component: ClientAgendaComponent},
-      {path: 'enderecos', component: ClientAddressComponent}
+      {path: 'enderecos', component: ClientAddressComponent},
+      {path: 'atualizar', component: ClientUpdateComponent}
     ]
   }
 ];

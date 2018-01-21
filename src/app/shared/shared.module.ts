@@ -38,6 +38,8 @@ import {StateService} from "./services/state.service";
 import {CityService} from "./services/city.service";
 import { SharedFormAddressComponent } from './components/shared-form-address/shared-form-address.component';
 import { SharedUserAddressListComponent } from './components/shared-user-address-list/shared-user-address-list.component';
+import {AddressService} from "./services/address.service";
+import { SharedUserUpdateComponent } from './components/shared-user-update/shared-user-update.component';
 
 @NgModule({
   imports: [
@@ -72,6 +74,7 @@ import { SharedUserAddressListComponent } from './components/shared-user-address
     SharedReportUsersListComponent,
     SharedFormAddressComponent,
     SharedUserAddressListComponent,
+    SharedUserUpdateComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -86,6 +89,7 @@ import { SharedUserAddressListComponent } from './components/shared-user-address
     CountryService,
     StateService,
     CityService,
+    AddressService,
     AuthAdminGuard,
     AuthClientGuard,
     AuthDelegateGuard,
@@ -121,7 +125,8 @@ import { SharedUserAddressListComponent } from './components/shared-user-address
     SharedListsComponent,
     SharedReportUsersListComponent,
     SharedFormAddressComponent,
-    SharedUserAddressListComponent
+    SharedUserAddressListComponent,
+    SharedUserUpdateComponent
   ]
 })
 export class SharedModule {

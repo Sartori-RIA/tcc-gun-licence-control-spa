@@ -9,7 +9,7 @@ import {UserCategoryService} from "../../services/user-category.service";
 import {FormCanDeactivate} from "../../model/form-can-deactivate";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
-import {Address} from "../../model/address";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shared-form',
@@ -29,7 +29,8 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private genderService: GenderService,
-              private userCategoryService: UserCategoryService) {
+              private userCategoryService: UserCategoryService,
+              private route: Router) {
   }
 
   canDesactive() {
@@ -44,10 +45,11 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
-      this.userService.create(this.model).subscribe(res => {
-        window.location.reload();
-        console.log(res)
-      }, error => alert('ocorreu um erro' + error));
+        this.userService.save(this.model).subscribe(() => {
+          if (this.isClient)
+            this.route.navigate(['/login']);
+          else window.location.reload();
+        });
     } else this.formDirty(this.form);
   }
 
@@ -61,7 +63,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
       cpf: [null, Validators.required],
       dateOfBirth: [null, Validators.required],
       role: [null]
-    })
+    });
   }
 
   private converFormBuilderToModel(): void {

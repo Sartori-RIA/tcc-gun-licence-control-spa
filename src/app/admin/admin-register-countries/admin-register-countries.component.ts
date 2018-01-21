@@ -27,7 +27,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
   onSubmit(): void {
     if(this.form.valid){
       this.model.description = this.form.value.name;
-      this.countryService.create(this.model).subscribe(res =>{
+      this.countryService.save(this.model).subscribe(res =>{
         window.location.reload();
       }, error2 => alert(JSON.stringify(error2)))
     }else{

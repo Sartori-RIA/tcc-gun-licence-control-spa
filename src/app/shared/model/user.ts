@@ -16,7 +16,6 @@ export class User {
               public password?: string,
               public email?: string,
               public role?: UserRole,
-              public address?: Address[]) {
-
+              public addressList?: Address[]) {
   }
 }

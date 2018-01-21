@@ -10,6 +10,9 @@ import {GenderService} from "../../services/gender.service";
 import {CityService} from "../../services/city.service";
 import {UserCategoryService} from "../../services/user-category.service";
 import {UserService} from "../../services/user.service";
+import {Address} from "../../model/address";
+import {User} from "../../model/user";
+import {AddressService} from "../../services/address.service";
 
 @Component({
   selector: 'app-shared-form-address',
@@ -22,6 +25,8 @@ export class SharedFormAddressComponent implements OnInit {
   countries: Country[];
   states: State[];
   cities: City[];
+  private address: Address;
+  private user: User;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -30,18 +35,33 @@ export class SharedFormAddressComponent implements OnInit {
               private cepService: CepService,
               private countryService: CountryService,
               private stateService: StateService,
-              private cityService: CityService) {
+              private cityService: CityService,
+              private addressService: AddressService) {
   }
 
   ngOnInit() {
+    this.address = new Address();
+    this.user = new User();
     this.countryService.index().subscribe(res => this.countries = res);
     this.buildReactiveForm();
   }
 
   addAddress() {
     if (this.form.valid) {
-
-    } else this.formDirty(this.form);
+      this.mountAddress();
+      this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => this.user = res);
+      this.addressService.save(this.address).subscribe(res => {
+        if (this.user.addressList == null)
+          this.user.addressList = [];
+        this.user.addressList.push(res);
+        console.log(JSON.stringify(this.user));
+        this.userService.update(this.user).subscribe(() => {
+          window.location.reload();
+        }, error2 => console.log("deu ruim", JSON.stringify(error2)))
+      });
+    } else {
+      this.formDirty(this.form);
+    }
   }
 
   onCountryChose(country) {
@@ -50,6 +70,10 @@ export class SharedFormAddressComponent implements OnInit {
 
   onStateChose(state) {
     this.cityService.listByOneProperty('state.id', state.value.id).subscribe(res => this.cities = res);
+  }
+
+  onCityChose(){
+    this.resetAddess();
   }
 
   getCEP(): void {
@@ -91,5 +115,14 @@ export class SharedFormAddressComponent implements OnInit {
 
   formDirty(form: FormGroup): void {
     Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
+  }
+
+  private mountAddress() {
+    this.address.city = this.form.value.city;
+    this.address.complement = this.form.value.complement;
+    this.address.addressNumber = this.form.value.addressNumber;
+    this.address.street = this.form.value.street;
+    this.address.neighborhood = this.form.value.neighborhood;
+    this.address.cep = this.form.value.cep;
   }
 }

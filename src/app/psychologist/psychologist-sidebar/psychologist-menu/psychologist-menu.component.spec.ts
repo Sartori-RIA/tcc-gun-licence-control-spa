@@ -19,7 +19,7 @@ describe('PsychologistMenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should save', () => {
     expect(component).toBeTruthy();
   });
 });
