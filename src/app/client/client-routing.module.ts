@@ -5,6 +5,7 @@ import {ClientProfileComponent} from "./client-profile/client-profile.component"
 import {ClientLicenceComponent} from "./client-licence/client-licence.component";
 import {ClientExamsComponent} from "./client-exams/client-exams.component";
 import {ClientAgendaComponent} from "./client-agenda/client-agenda.component";
+import {ClientAddressComponent} from "./client-address/client-address.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
       {path: 'perfil', component: ClientProfileComponent},
       {path: 'licencas', component: ClientLicenceComponent},
       {path: 'exames', component: ClientExamsComponent},
-      {path: 'agendamento', component: ClientAgendaComponent}
+      {path: 'agendamento', component: ClientAgendaComponent},
+      {path: 'enderecos', component: ClientAddressComponent}
     ]
   }
 ];

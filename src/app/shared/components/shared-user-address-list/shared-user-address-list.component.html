@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title>Endereço</mat-card-title>
+  <mat-card-content>
+    <p> CEP: {{model.cep}}</p>
+    <p> Pais: {{model.city.state.country.description}}</p>
+    <p> Estado: {{model.city.state.description}}</p>
+    <p> Cidade: {{model.city}}</p>
+    <p> Bairro: {{model.neighborhood}}</p>
+    <p> Rua: {{model.street}}</p>
+    <p> Nº: {{model.addressNumber}}</p>
+    <p> Complemento: {{model.complement}}</p>
+  </mat-card-content>
+</mat-card>

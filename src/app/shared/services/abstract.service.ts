@@ -21,6 +21,8 @@ export abstract class AbstractService<T> {
   }
 
   create(model: T): Observable<T> {
+    alert(JSON.stringify(model));
+    console.log(this.url);
     return this.http.post<T>(this.url, JSON.stringify(model), httpOptions);
   }
 

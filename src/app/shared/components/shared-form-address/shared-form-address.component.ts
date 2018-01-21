@@ -39,32 +39,37 @@ export class SharedFormAddressComponent implements OnInit {
   }
 
   addAddress() {
+    if (this.form.valid) {
+
+    } else this.formDirty(this.form);
   }
 
   onCountryChose(country) {
-    this.stateService.listByOneProperty('country', country).subscribe(res => this.states = res);
+    this.stateService.listByOneProperty('country.id', country.value.id).subscribe(res => this.states = res);
   }
 
   onStateChose(state) {
-    this.cityService.listByOneProperty('state', state).subscribe(res => this.cities = res);
+    this.cityService.listByOneProperty('state.id', state.value.id).subscribe(res => this.cities = res);
   }
 
   getCEP(): void {
     this.cepService.getCEP(this.form.value.cep).subscribe(res => this.populateAddress(res))
   }
 
-  private buildReactiveForm(): void {
+  buildReactiveForm(): void {
     this.form = this.formBuilder.group({
       neighborhood: [null, Validators.required],
-      complement: [null, Validators.required],
+      complement: [null],
       addressNumber: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
-      street: [null, Validators.required]
+      street: [null, Validators.required],
+      country: [null, Validators.required],
+      cep: [null, Validators.required]
     })
   }
 
-  private populateAddress(dados): void {
+  populateAddress(dados): void {
     this.form.patchValue({
       cep: dados.cep,
       street: dados.logradouro,
@@ -74,7 +79,7 @@ export class SharedFormAddressComponent implements OnInit {
     });
   }
 
-  private resetAddess(): void {
+  resetAddess(): void {
     this.form.patchValue({
       cep: null,
       street: null,
@@ -84,7 +89,7 @@ export class SharedFormAddressComponent implements OnInit {
     });
   }
 
-  private formDirty(form: FormGroup): void {
+  formDirty(form: FormGroup): void {
     Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
   }
 }

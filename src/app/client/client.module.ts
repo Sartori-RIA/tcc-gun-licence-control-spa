@@ -9,6 +9,7 @@ import {ClientExamsComponent} from './client-exams/client-exams.component';
 import {ClientSidebarComponent} from './client-sidebar/client-sidebar.component';
 import {MenuComponent} from './client-sidebar/menu/menu.component';
 import {ClientAgendaComponent} from './client-agenda/client-agenda.component';
+import { ClientAddressComponent } from './client-address/client-address.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {ClientAgendaComponent} from './client-agenda/client-agenda.component';
     ClientExamsComponent,
     ClientSidebarComponent,
     MenuComponent,
-    ClientAgendaComponent
+    ClientAgendaComponent,
+    ClientAddressComponent
   ]
 })
 export class ClientModule {

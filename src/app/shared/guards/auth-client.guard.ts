@@ -14,7 +14,7 @@ export class AuthClientGuard implements CanActivate {
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkLogin()) {
       let role = localStorage.getItem("currentUserRole");
-      if (role === 'CLIENT')
+      if (role === 'CIVIL')
         return true;
       else {
         this.router.navigate(['/login']);

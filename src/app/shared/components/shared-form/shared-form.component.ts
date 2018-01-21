@@ -25,7 +25,6 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   genders: Gender[] = [];
   roles: UserRole[] = [];
   form: FormGroup;
-  addressList: Address[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -61,7 +60,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
       email: [null, Validators.required],
       cpf: [null, Validators.required],
       dateOfBirth: [null, Validators.required],
-      role: [null, Validators.required]
+      role: [null]
     })
   }
 

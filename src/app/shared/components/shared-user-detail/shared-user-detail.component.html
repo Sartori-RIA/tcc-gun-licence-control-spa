@@ -1,7 +1,6 @@
 <div class="card">
   <h2 class="card-title">Dados de: {{model.name}}</h2>
   <div class="card-content">
-
     <h2 class="card-title">Dados pessoais</h2>
     <div class="container">
       <p> CPF: {{model.cpf}}</p>
@@ -9,15 +8,6 @@
       <p> Data de Nascimento: {{model.dateOfBirth}}</p>
       <p> E-mail: {{model.email}}</p>
     </div>
-    <h2 class="card-title">Endereço</h2>
-    <div class="container">
-      <p> CEP: {{model.cep}}</p>
-      <p> Estado: {{model.state}}</p>
-      <p> Cidade: {{model.city}}</p>
-      <p> Bairro: {{model.neighborhood}}</p>
-      <p> Rua: {{model.street}}</p>
-      <p> Nº: {{model.addressNumber}}</p>
-      <p> Complemento: {{model.complement}}</p>
-    </div>
+    <app-shared-user-address-list [model]="mode.address" ></app-shared-user-address-list>
   </div>
 </div>

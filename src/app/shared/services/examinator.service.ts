@@ -4,7 +4,7 @@ import {AbstractService} from './abstract.service';
 import {Examinator} from "../model/examinator";
 import {HttpClient} from "@angular/common/http";
 
-const url = RoutesClientUtil.CLIENTS;
+const url = RoutesClientUtil.USERS;
 
 @Injectable()
 export class ExaminatorService extends AbstractService<Examinator> {

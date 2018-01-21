@@ -4,7 +4,7 @@
 export class RoutesClientUtil {
   public static URL_API = 'http://localhost:8080/sinarm/api/';
 
-  public static CLIENTS = RoutesClientUtil.URL_API + 'users/';
+  public static USERS = RoutesClientUtil.URL_API + 'users/';
   public static EXAMS = RoutesClientUtil.URL_API + 'exams/';
   public static EXAMS_TYPES = RoutesClientUtil.URL_API + 'exams-types/';
   public static GUNS = RoutesClientUtil.URL_API + 'guns/';

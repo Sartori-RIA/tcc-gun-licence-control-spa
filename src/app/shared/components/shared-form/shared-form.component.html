@@ -39,8 +39,6 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-W
-    <app-shared-form-address></app-shared-form-address>
 
     <div *ngIf="isClient">
       <mat-form-field>
@@ -50,6 +48,8 @@ W
         </mat-select>
       </mat-form-field>
     </div>
-    <button class="btn" type="submit">Cadastrar</button>
+    <div class="row center">
+      <button class="btn" type="submit">Cadastrar</button>
+    </div>
   </form>
 </div>

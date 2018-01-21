@@ -4,7 +4,7 @@ import {AbstractService} from './abstract.service';
 import {User} from "../model/user";
 import {HttpClient} from "@angular/common/http";
 
-const url = RoutesClientUtil.CLIENTS;
+const url = RoutesClientUtil.USERS;
 
 @Injectable()
 export class UserService extends AbstractService<User> {

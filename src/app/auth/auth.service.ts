@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   getCurrentUser(cpf: string): Observable<User> {
-    let url = RoutesClientUtil.CLIENTS + 'find/property/cpf/value/' + cpf;
+    let url = RoutesClientUtil.USERS + 'find/property/cpf/value/' + cpf;
     return this.http.get<User>(url, httpOptionsToken);
   }
 
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   checkRole(): any {
-    let url = RoutesClientUtil.CLIENTS + 'find/property/cpf/value/' + localStorage.getItem("currenUserCPF");
+    let url = RoutesClientUtil.USERS + 'find/property/cpf/value/' + localStorage.getItem("currenUserCPF");
     let user = this.http.get<User>(url, httpOptionsToken);
     user.subscribe(res => {
       return res.role
