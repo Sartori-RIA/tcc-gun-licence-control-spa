@@ -9,6 +9,7 @@ import {UserCategoryService} from "../../services/user-category.service";
 import {FormCanDeactivate} from "../../model/form-can-deactivate";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
+import {Address} from "../../model/address";
 
 @Component({
   selector: 'app-shared-form',
@@ -24,6 +25,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   genders: Gender[] = [];
   roles: UserRole[] = [];
   form: FormGroup;
+  addressList: Address[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,

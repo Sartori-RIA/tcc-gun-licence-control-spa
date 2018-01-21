@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("currentUserID", res.id.toString());
           localStorage.setItem("currentUserCPF", res.cpf);
           localStorage.setItem("currentUserRole", res.role.description);
+          console.log(res.role.description);
           if (res.role.description == "ADMIN")
             this.router.navigate(['/admin']);
           if (res.role.description == "DELEGADO")

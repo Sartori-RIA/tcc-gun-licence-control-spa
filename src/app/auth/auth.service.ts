@@ -32,7 +32,6 @@ export class AuthService {
 
   getCurrentUser(cpf: string): Observable<User> {
     let url = RoutesClientUtil.CLIENTS + 'find/property/cpf/value/' + cpf;
-    console.log(url);
     return this.http.get<User>(url, httpOptionsToken);
   }
 

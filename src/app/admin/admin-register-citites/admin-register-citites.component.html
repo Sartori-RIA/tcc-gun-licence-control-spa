@@ -1,0 +1,28 @@
+<div class="container">
+  <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      <mat-select (change)="onChoseCountry($event)" placeholder="Selecione um Pais" formControlName="country" id="country">
+        <mat-option *ngFor="let country of countries"
+                    [value]="country">{{ country?.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select  placeholder="Selecione um Estado" formControlName="state" id="state">
+        <mat-option *ngFor="let state of states"
+                    [value]="state">{{ state?.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-input-container class="midle-width">
+      <input matInput type="text" id="city" formControlName="city"
+             placeholder="Nome da Cidade">
+    </mat-input-container>
+
+    <button class="btn" type="submit">Cadastrar</button>
+
+  </form>
+</div>

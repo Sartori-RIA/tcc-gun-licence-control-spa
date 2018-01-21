@@ -7,6 +7,9 @@ import {AdminSidebarComponent} from "./admin-sidebar/admin-sidebar.component";
 import {AdminMenuComponent} from "./admin-sidebar/admin-menu/admin-menu.component";
 import {AdminRegisterUserComponent} from "./admin-register-user/admin-register-user.component";
 import {AdminReportsComponent} from "./admin-reports/admin-reports.component";
+import { AdminRegisterCountriesComponent } from './admin-register-countries/admin-register-countries.component';
+import { AdminRegisterStatesComponent } from './admin-register-states/admin-register-states.component';
+import { AdminRegisterCititesComponent } from './admin-register-citites/admin-register-citites.component';
 
 @NgModule({
   imports: [
@@ -19,7 +22,10 @@ import {AdminReportsComponent} from "./admin-reports/admin-reports.component";
     AdminMenuComponent,
     AdminRegisterUserComponent,
     AdminReportsComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    AdminRegisterCountriesComponent,
+    AdminRegisterStatesComponent,
+    AdminRegisterCititesComponent
   ]
 })
 export class AdminModule {

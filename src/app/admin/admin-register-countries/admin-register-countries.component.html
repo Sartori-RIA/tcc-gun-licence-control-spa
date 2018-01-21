@@ -1,0 +1,11 @@
+<div class="container">
+  <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-input-container class="midle-width">
+      <input matInput type="text" id="name" formControlName="name"
+             placeholder="Nome do pais">
+    </mat-input-container>
+
+    <button class="btn" type="submit">Cadastrar</button>
+  </form>
+</div>

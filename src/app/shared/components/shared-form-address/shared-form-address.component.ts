@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Country} from "../../model/country";
 import {City} from "../../model/city";
 import {State} from "../../model/state";
@@ -30,19 +30,27 @@ export class SharedFormAddressComponent implements OnInit {
               private cepService: CepService,
               private countryService: CountryService,
               private stateService: StateService,
-              private cityService: CityService) { }
+              private cityService: CityService) {
+  }
 
   ngOnInit() {
     this.countryService.index().subscribe(res => this.countries = res);
     this.buildReactiveForm();
   }
 
+  addAddress() {
+  }
+
   onCountryChose(country) {
-    console.log(country);
+    this.stateService.listByOneProperty('country', country).subscribe(res => this.states = res);
   }
 
   onStateChose(state) {
-    console.log(state);
+    this.cityService.listByOneProperty('state', state).subscribe(res => this.cities = res);
+  }
+
+  getCEP(): void {
+    this.cepService.getCEP(this.form.value.cep).subscribe(res => this.populateAddress(res))
   }
 
   private buildReactiveForm(): void {
@@ -56,10 +64,6 @@ export class SharedFormAddressComponent implements OnInit {
     })
   }
 
-  getCEP(): void {
-    this.cepService.getCEP(this.form.value.cep).subscribe(res => this.populateAddress(res))
-  }
-
   private populateAddress(dados): void {
     this.form.patchValue({
       cep: dados.cep,
@@ -67,8 +71,6 @@ export class SharedFormAddressComponent implements OnInit {
       addressNumber: null,
       complement: dados.complemento,
       neighborhood: dados.bairro,
-      city: dados.localidade,
-      state: dados.uf
     });
   }
 
@@ -79,8 +81,6 @@ export class SharedFormAddressComponent implements OnInit {
       addressNumber: null,
       complement: null,
       neighborhood: null,
-      city: null,
-      state: null
     });
   }
 

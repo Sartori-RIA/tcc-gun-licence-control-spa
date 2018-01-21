@@ -32,18 +32,45 @@ export abstract class AbstractService<T> {
     return this.http.get<T>(AbstractService.getUrl(this.url, id), httpOptions);
   }
 
-  searchByOneProperty(propert: string, value: string) {
+  findByOneProperty(propert: string, value: string): Observable<T> {
+    return this.http.get<T>(this.url + 'find/property/' + propert + '/value/' + value)
+  }
+
+  listByOneProperty(propert: string, value: string): Observable<T[]> {
+    return this.http.get<T[]>(this.url + 'property/' + propert + '/value/' + value)
+  }
+
+  findByTwoProperty(propertOne: string, valueOne: string,
+                    propertTwo: string, valueTwo: string): Observable<T> {
+    return this.http.get<T>(this.url +
+      'find/property/' + propertOne + '/value/' + valueOne +
+      '/property/' + propertTwo + '/value/' + valueTwo)
+  }
+
+  listByTwoProperty(propertOne: string, valueOne: string,
+                    propertTwo: string, valueTwo: string): Observable<T[]> {
+    return this.http.get<T[]>(this.url +
+      'property/' + propertOne + '/value/' + valueOne +
+      '/property/' + propertTwo + '/value/' + valueTwo)
+  }
+
+  findByThreeProperty(propertOne: string, valueOne: string,
+                      propertTwo: string, valueTwo: string,
+                      propertThree: string, valueThree: string): Observable<T> {
+    return this.http.get<T>(this.url +
+      'find/property/' + propertOne + '/value/' + valueOne +
+      '/property/' + propertTwo + '/value/' + valueTwo +
+      '/property/' + propertThree + '/value/' + valueThree)
 
   }
 
-  searchByTwoProperty(propertOne: string, valueOne: string,
-                      propertTwo: string, valueTwo: string) {
-
-  }
-
-  searchByThreeProperty(propertOne: string, valueOne: string,
-                        propertTwo: string, valueTwo: string,
-                        propertThree: string, valueThree: string) {
+  listByThreeProperty(propertOne: string, valueOne: string,
+                      propertTwo: string, valueTwo: string,
+                      propertThree: string, valueThree: string): Observable<T[]> {
+    return this.http.get<T[]>(this.url +
+      'property/' + propertOne + '/value/' + valueOne +
+      '/property/' + propertTwo + '/value/' + valueTwo +
+      '/property/' + propertThree + '/value/' + valueThree)
 
   }
 
