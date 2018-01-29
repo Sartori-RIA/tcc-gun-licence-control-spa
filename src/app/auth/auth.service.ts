@@ -4,6 +4,7 @@ import {RoutesClientUtil} from "../shared/routes-api/routes-client.util";
 import {Observable} from "rxjs/Observable";
 import {Token} from "./token";
 import {User} from "../shared/model/user";
+import {UserService} from "../shared/services/user.service";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,7 +15,7 @@ const httpOptions = {
 const httpOptionsToken = {
   headers: new HttpHeaders({
     'Content-type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem("token")
+    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
   })
 };
 
@@ -22,7 +23,8 @@ const httpOptionsToken = {
 export class AuthService {
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private userService: UserService) {
   }
 
   makeLogin(model): Observable<Token> {
@@ -36,24 +38,25 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
   checkRole(): any {
-    let url = RoutesClientUtil.USERS + 'find/property/cpf/value/' + localStorage.getItem("currenUserCPF");
-    let user = this.http.get<User>(url, httpOptionsToken);
-    user.subscribe(res => {
-      return res.role
-    }, () => {
-      return null
-    })
+    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+      .subscribe(res => {
+        return res.role
+      }, () => {
+        return null
+      })
   }
 
   checkLogin(): boolean {
-    return localStorage.getItem("currentUserName") != null
-      && localStorage.getItem("currentUserName") != ''
-      && localStorage.getItem("token") != null
-      && localStorage.getItem("token") != '';
+    return sessionStorage.getItem("currentUserName") != null
+      && sessionStorage.getItem("currentUserName") != ''
+      && sessionStorage.getItem("currentUserCPF") != null
+      && sessionStorage.getItem("currentUserCPF") != ''
+      && sessionStorage.getItem("token") != null
+      && sessionStorage.getItem("token") != '';
   }
 
 }

@@ -13,7 +13,7 @@ export class AuthDelegateGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkLogin()) {
-      let role = localStorage.getItem("currentUserRole");
+      let role = sessionStorage.getItem("currentUserRole");
       if (role === 'DELEGADO')
         return true;
       else {

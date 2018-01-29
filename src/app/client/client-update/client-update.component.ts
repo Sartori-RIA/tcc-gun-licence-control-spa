@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../shared/model/user";
 import {UserService} from "../../shared/services/user.service";
 
@@ -11,10 +11,13 @@ import {UserService} from "../../shared/services/user.service";
 export class ClientUpdateComponent implements OnInit {
 
   model: User;
-  constructor(private userService: UserService) { }
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
-    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => this.model = res);
+    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+      .subscribe(res => this.model = res)
   }
 
 }

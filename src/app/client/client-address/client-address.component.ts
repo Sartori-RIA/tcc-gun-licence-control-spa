@@ -19,7 +19,7 @@ export class ClientAddressComponent implements OnInit {
   ngOnInit() {
     this.listAddress = false;
     this.addAddress = false;
-    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res =>{
+    this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res =>{
       this.addressList = res.addressList;
     })
   }

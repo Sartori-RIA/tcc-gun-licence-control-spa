@@ -22,23 +22,23 @@ export class MenuComponent implements OnInit {
   }
 
   isCivil(): boolean {
-    return localStorage.getItem("currentUserRole") == "CIVIL";
+    return sessionStorage.getItem("currentUserRole") == "CIVIL";
   }
 
   isDelegate(): boolean {
-    return localStorage.getItem("currentUserRole") == "DELEGADO";
+    return sessionStorage.getItem("currentUserRole") == "DELEGADO";
   }
 
   isPsychologist(): boolean {
-    return localStorage.getItem("currentUserRole") == "PSICOLOGO";
+    return sessionStorage.getItem("currentUserRole") == "PSICOLOGO";
   }
 
   isInstructor(): boolean {
-    return localStorage.getItem("currentUserRole") == "INSTRUTOR";
+    return sessionStorage.getItem("currentUserRole") == "INSTRUTOR";
   }
 
   isAdmin(): boolean {
-    return localStorage.getItem("currentUserRole") == "ADMIN";
+    return sessionStorage.getItem("currentUserRole") == "ADMIN";
   }
 
 }

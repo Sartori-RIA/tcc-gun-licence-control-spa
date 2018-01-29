@@ -13,7 +13,7 @@ export class ClientHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUserName = localStorage.getItem("currentUserName")
+    this.currentUserName = sessionStorage.getItem("currentUserName")
   }
 
 }

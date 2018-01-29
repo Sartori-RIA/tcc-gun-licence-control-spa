@@ -49,7 +49,7 @@ export class SharedFormAddressComponent implements OnInit {
   addAddress() {
     if (this.form.valid) {
       this.mountAddress();
-      this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => this.user = res);
+      this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => this.user = res);
       this.addressService.save(this.address).subscribe(res => {
         if (this.user.addressList == null)
           this.user.addressList = [];

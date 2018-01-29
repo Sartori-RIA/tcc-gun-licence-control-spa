@@ -11,7 +11,7 @@ const url = RoutesClientUtil.USERS;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem("token")
+    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
   })
 };
 

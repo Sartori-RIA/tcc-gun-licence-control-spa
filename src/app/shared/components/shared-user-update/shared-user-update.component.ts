@@ -1,5 +1,8 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../model/user";
+import {UserService} from "../../services/user.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shared-user-update',
@@ -9,11 +12,42 @@ import {User} from "../../model/user";
 })
 export class SharedUserUpdateComponent implements OnInit {
 
-  @Input() model: User;
+  model: User;
+  form: FormGroup;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private route: Router) {
   }
 
+  ngOnInit() {
+    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+      .subscribe(res => {
+        this.model = res;
+        this.form.patchValue({
+          email: res.email
+        })
+      });
+    this.buildForm();
+  }
+
+  updateUser() {
+    if (this.form.valid) {
+      if (this.form.value.password != null)
+        this.model.password = this.form.value.password;
+      this.model.email = this.form.value.email;
+      this.userService.update(this.model).subscribe(res => {
+        this.route.navigate(['/civil/perfil'])
+      }, error2 => alert(JSON.stringify(error2)))
+    } else Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
+  }
+
+  private buildForm(): void {
+    this.form = this.formBuilder.group({
+      email: [null, Validators.required],
+      passwordOld: [null],
+      passwordNew: [null],
+      passwordConfirm: [null]
+    })
+  }
 }
