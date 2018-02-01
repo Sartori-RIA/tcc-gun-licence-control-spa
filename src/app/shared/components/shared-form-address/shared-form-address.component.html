@@ -2,7 +2,9 @@
   <h3 class="center">Seu endereço</h3>
   <form disabled="disable" [formGroup]="form" (ngSubmit)="addAddress()">
     <mat-form-field>
-      <mat-select (change)="onCountryChose($event)" placeholder="Informe o Pais" formControlName="country" id="country">
+      <mat-select (change)="onCountryChose($event)"
+                  placeholder="Informe o Pais"
+                  formControlName="country" id="country">
         <mat-option *ngFor="let country of countries"
                     [value]="country">{{country?.description }}
         </mat-option>
@@ -10,7 +12,9 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select (change)="onStateChose($event)" placeholder="Informe o Estado" formControlName="state" id="state">
+      <mat-select (change)="onStateChose($event)"
+                  placeholder="Informe o Estado"
+                  formControlName="state" id="state">
         <mat-option *ngFor="let state of states"
                     [value]="state">{{state?.description}}
         </mat-option>
@@ -18,8 +22,11 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select (change)="onCityChose()" placeholder="Informe a Cidade" formControlName="city" id="city">
-        <mat-option *ngFor="let city of cities" [value]="city">{{ city?.description }}</mat-option>
+      <mat-select (change)="onCityChose()"
+                  placeholder="Informe a Cidade"
+                  formControlName="city" id="city">
+        <mat-option *ngFor="let city of cities"
+                    [value]="city">{{ city?.description }}</mat-option>
       </mat-select>
     </mat-form-field>
 

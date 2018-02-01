@@ -8,6 +8,6 @@
       <p> Data de Nascimento: {{model.dateOfBirth}}</p>
       <p> E-mail: {{model.email}}</p>
     </div>
-    <app-shared-user-address-list *ngFor="let address of model.addressList" [model]="address" ></app-shared-user-address-list>
   </div>
 </div>
+<app-shared-user-address-list *ngFor="let address of model.addressList" [model]="address" ></app-shared-user-address-list>

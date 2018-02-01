@@ -54,7 +54,6 @@ export class SharedFormAddressComponent implements OnInit {
         if (this.user.addressList == null)
           this.user.addressList = [];
         this.user.addressList.push(res);
-        console.log(JSON.stringify(this.user));
         this.userService.update(this.user).subscribe(() => {
           window.location.reload();
         }, error2 => console.log("deu ruim", JSON.stringify(error2)))
@@ -65,14 +64,16 @@ export class SharedFormAddressComponent implements OnInit {
   }
 
   onCountryChose(country) {
-    this.stateService.listByOneProperty('country.id', country.value.id).subscribe(res => this.states = res);
+    this.stateService.listByOneProperty('country.id',
+      country.value.id).subscribe(res => this.states = res);
   }
 
   onStateChose(state) {
-    this.cityService.listByOneProperty('state.id', state.value.id).subscribe(res => this.cities = res);
+    this.cityService.listByOneProperty('state.id',
+      state.value.id).subscribe(res => this.cities = res);
   }
 
-  onCityChose(){
+  onCityChose() {
     this.resetAddess();
   }
 
