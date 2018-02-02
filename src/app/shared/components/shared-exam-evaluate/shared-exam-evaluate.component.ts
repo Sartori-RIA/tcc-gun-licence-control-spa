@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ExamCategoryService} from "../../services/exam-category.service";
 import {User} from "../../model/user";
@@ -18,7 +18,7 @@ export class SharedExamEvaluateComponent implements OnInit {
   form: FormGroup;
   examForm: FormGroup;
   model: User;
-  examCategories: ExamCategory[];
+  examCategories: ExamCategory[] = [];
   exam: Exam;
   examinator: User;
   examStatusList = [
@@ -43,24 +43,28 @@ export class SharedExamEvaluateComponent implements OnInit {
       status: [null, Validators.required],
       resultDescription: [null, Validators.required]
     });
-    this.examCategoryService.index().subscribe(res => this.examCategories = res);
+    this.examCategoryService.index().subscribe(res => {
+      for (let item of res)
+        if (item.role.description == sessionStorage.getItem("currentUserRole"))
+          this.examCategories.push(item)
+    });
     this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => {
       this.examinator = res;
     });
   }
 
-  searchByCPF(){
-    this.userService.findByOneProperty("cpf",this.form.value.cpf).subscribe( res =>{
+  searchByCPF() {
+    this.userService.findByOneProperty("cpf", this.form.value.cpf).subscribe(res => {
       this.model = res;
     });
   }
 
-  sendExam(){
-    if(this.form.valid) {
+  sendExam() {
+    if (this.form.valid) {
       this.mountExam();
-      this.examService.save(this.exam).subscribe(res =>{
+      this.examService.save(this.exam).subscribe(res => {
         window.location.reload();
-      },error2 => console.log(JSON.stringify(error2)))
+      }, error2 => console.log(JSON.stringify(error2)))
     }
   }
 

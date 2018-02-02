@@ -7,6 +7,12 @@
                placeholder="Nome do Exame">
       </mat-input-container>
 
+      <mat-form-field>
+        <mat-select placeholder="Informe o nível de acesso" formControlName="role"
+                    id="type">
+          <mat-option *ngFor="let type of roles" [value]="type">{{type.description}}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <button class="btn" type="submit">Cadastrar</button>
     </form>
   </div>
@@ -15,4 +21,6 @@
       <p class="collection-item" *ngFor="let exam of exams">{{exam.description}}</p>
     </div>
   </div>
+
+
 </div>

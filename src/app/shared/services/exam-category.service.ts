@@ -3,11 +3,12 @@ import {RoutesClientUtil} from '../routes-api/routes-client.util';
 import {AbstractService} from './abstract.service';
 import {HttpClient} from '@angular/common/http';
 import {Exam} from "../model/exam";
+import {ExamCategory} from "../model/exam-category";
 
 const url = RoutesClientUtil.EXAMS_TYPES;
 
 @Injectable()
-export class ExamCategoryService extends AbstractService<Exam> {
+export class ExamCategoryService extends AbstractService<ExamCategory> {
 
 
   constructor(http: HttpClient) {
