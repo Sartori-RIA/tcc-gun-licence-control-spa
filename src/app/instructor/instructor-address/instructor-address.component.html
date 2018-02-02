@@ -1,0 +1,13 @@
+<div class="row">
+  <mat-button-toggle (click)="onChange('listAddress')">Listar Endereços</mat-button-toggle>
+  <mat-button-toggle (click)="onChange('addAddress')">Adicionar Endereço</mat-button-toggle>
+</div>
+
+<app-shared-form-address *ngIf="addAddress">
+</app-shared-form-address>
+
+<div *ngIf="listAddress">
+  <div *ngFor="let address of addressList">
+    <app-shared-user-address-list [model]="address"></app-shared-user-address-list>
+  </div>
+</div>

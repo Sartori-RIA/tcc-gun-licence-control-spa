@@ -6,6 +6,7 @@ import {DelegateHomeComponent} from './delegate-home/delegate-home.component';
 import {DelegateProfileComponent} from './delegate-profile/delegate-profile.component';
 import {DelegateSidebarComponent} from './delegate-sidebar/delegate-sidebar.component';
 import {DelegateMenuComponent} from './delegate-sidebar/delegate-menu/delegate-menu.component';
+import { DelegateAddressComponent } from './delegate-address/delegate-address.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {DelegateMenuComponent} from './delegate-sidebar/delegate-menu/delegate-m
     DelegateHomeComponent,
     DelegateProfileComponent,
     DelegateSidebarComponent,
-    DelegateMenuComponent
+    DelegateMenuComponent,
+    DelegateAddressComponent
   ]
 })
 export class DelegateModule {

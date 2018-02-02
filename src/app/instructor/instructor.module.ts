@@ -8,6 +8,8 @@ import {InstructorProfileComponent} from './instructor-profile/instructor-profil
 import {InstructorSidebarComponent} from './instructor-sidebar/instructor-sidebar.component';
 import {InstructorMenuComponent} from './instructor-sidebar/instructor-menu/instructor-menu.component';
 import {SharedModule} from "../shared/shared.module";
+import { InstructorAddressComponent } from './instructor-address/instructor-address.component';
+import { InstructorReportComponent } from './instructor-report/instructor-report.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import {SharedModule} from "../shared/shared.module";
     InstructorListComponent,
     InstructorProfileComponent,
     InstructorSidebarComponent,
-    InstructorMenuComponent
+    InstructorMenuComponent,
+    InstructorAddressComponent,
+    InstructorReportComponent
   ]
 })
 export class InstructorModule {

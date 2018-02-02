@@ -40,6 +40,7 @@ import { SharedFormAddressComponent } from './components/shared-form-address/sha
 import { SharedUserAddressListComponent } from './components/shared-user-address-list/shared-user-address-list.component';
 import {AddressService} from "./services/address.service";
 import { SharedUserUpdateComponent } from './components/shared-user-update/shared-user-update.component';
+import {ExamService} from "./services/exam.service";
 
 @NgModule({
   imports: [
@@ -90,6 +91,7 @@ import { SharedUserUpdateComponent } from './components/shared-user-update/share
     StateService,
     CityService,
     AddressService,
+    ExamService,
     AuthAdminGuard,
     AuthClientGuard,
     AuthDelegateGuard,

@@ -8,6 +8,7 @@ import {PsychologistProfileComponent} from './psychologist-profile/psychologist-
 import {PsychologistSidebarComponent} from './psychologist-sidebar/psychologist-sidebar.component';
 import {PsychologistMenuComponent} from './psychologist-sidebar/psychologist-menu/psychologist-menu.component';
 import {SharedModule} from "../shared/shared.module";
+import { PsychologistAddressComponent } from './psychologist-address/psychologist-address.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {SharedModule} from "../shared/shared.module";
     PsychologistEvaluateComponent,
     PsychologistProfileComponent,
     PsychologistSidebarComponent,
-    PsychologistMenuComponent]
+    PsychologistMenuComponent,
+    PsychologistAddressComponent]
 })
 export class PsychologistModule {
 }
