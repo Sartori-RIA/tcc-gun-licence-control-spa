@@ -21,7 +21,6 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   @Input() isClient: boolean = false;
   model: User = new User();
   cep: Cep = new Cep();
-  errorMessage: string;
   genders: Gender[] = [];
   roles: UserRole[] = [];
   form: FormGroup;
@@ -59,7 +58,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
       name: [null, Validators.required],
       gender: [null, Validators.required],
       password: [null, Validators.required],
-      email: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
       cpf: [null, Validators.required],
       dateOfBirth: [null, Validators.required],
       role: [null]

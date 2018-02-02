@@ -41,6 +41,7 @@ import { SharedUserAddressListComponent } from './components/shared-user-address
 import {AddressService} from "./services/address.service";
 import { SharedUserUpdateComponent } from './components/shared-user-update/shared-user-update.component';
 import {ExamService} from "./services/exam.service";
+import { SharedExamEvaluateComponent } from './components/shared-exam-evaluate/shared-exam-evaluate.component';
 
 @NgModule({
   imports: [
@@ -76,6 +77,7 @@ import {ExamService} from "./services/exam.service";
     SharedFormAddressComponent,
     SharedUserAddressListComponent,
     SharedUserUpdateComponent,
+    SharedExamEvaluateComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -128,7 +130,8 @@ import {ExamService} from "./services/exam.service";
     SharedReportUsersListComponent,
     SharedFormAddressComponent,
     SharedUserAddressListComponent,
-    SharedUserUpdateComponent
+    SharedUserUpdateComponent,
+    SharedExamEvaluateComponent,
   ]
 })
 export class SharedModule {

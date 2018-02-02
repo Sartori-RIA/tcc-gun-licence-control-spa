@@ -1,0 +1,66 @@
+<form disabled="disable" [formGroup]="form" (ngSubmit)="searchByCPF()">
+  <div class="row">
+    <mat-form-field>
+      <span matPrefix>CPF</span>
+      <input (change)="onResetForm()" formControlName="cpf" matInput type="number" class="example-right-align">
+    </mat-form-field>
+    <button class="btn" type="submit">Buscar</button>
+  </div>
+</form>
+
+<div *ngIf="model != null">
+  <div class="col s4 m4">
+    <div class="card">
+      <div class="card-content">
+        <h2 class="card-title">Dados pessoais</h2>
+        <div class="container">
+          <p> Nome: {{model.name}}</p>
+          <p> CPF: {{model.cpf}}</p>
+          <p> Sexo: {{model.gender.description}}</p>
+          <p> Data de Nascimento: {{model.dateOfBirth}}</p>
+          <p> E-mail: {{model.email}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s8 m8">
+    <div class="card">
+      <div class="card-content">
+        <h2 class="card-title">Dados do exame</h2>
+        <form disabled="disable" [formGroup]="examForm" (ngSubmit)="sendExam()">
+          <div class="container">
+            <div class="row">
+              <mat-form-field>
+                <span matPrefix>Exame: </span>
+                <mat-select formControlName="examType" id="exam">
+                  <mat-option *ngFor="let exam  of examCategories" [value]="exam">{{ exam?.description }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <span matPrefix>Resultado: </span>
+                <mat-select formControlName="status" id="status">
+                  <mat-option *ngFor="let status of examStatusList" [value]="status.value">
+                    {{ status.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <textarea matInput formControlName="resultDescription" placeholder="Autosize textarea"
+                          matTextareaAutosize matAutosizeMinRows="2"
+                          matAutosizeMaxRows="5">
+                </textarea>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <button mat-button="primary" type="submit">Finalizar Exame</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
