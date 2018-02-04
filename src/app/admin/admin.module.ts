@@ -11,6 +11,7 @@ import { AdminRegisterCountriesComponent } from './admin-register-countries/admi
 import { AdminRegisterStatesComponent } from './admin-register-states/admin-register-states.component';
 import { AdminRegisterCititesComponent } from './admin-register-citites/admin-register-citites.component';
 import { AdminRegisterExamsComponent } from './admin-register-exams/admin-register-exams.component';
+import { AdminRegisterLicensesComponent } from './admin-register-licenses/admin-register-licenses.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { AdminRegisterExamsComponent } from './admin-register-exams/admin-regist
     AdminRegisterStatesComponent,
     AdminRegisterCititesComponent,
     AdminRegisterExamsComponent,
+    AdminRegisterLicensesComponent,
   ]
 })
 export class AdminModule {

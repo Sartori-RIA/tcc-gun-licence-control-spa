@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../shared/services/user.service";
+import {LicenseCategoryService} from "../../shared/services/license-category.service";
+import {RequirementService} from "../../shared/services/requirement.service";
+import {LicenseCategory} from "../../shared/model/license-category";
 
 @Component({
   selector: 'app-admin-reports',
@@ -8,41 +11,40 @@ import {UserService} from "../../shared/services/user.service";
 })
 export class AdminReportsComponent implements OnInit {
 
-  constructor(private userService: UserService) {
-  }
+  licensesCategories: LicenseCategory[];
+  listUsers: boolean = false;
+  listLicenses: boolean = false;
+  listLicensesCategories: boolean = false;
 
-  private _listUsers: boolean;
-
-  get listUsers(): boolean {
-    return this._listUsers;
-  }
-
-  set listUsers(value: boolean) {
-    this._listUsers = value;
-  }
-
-  private _listLicenses: boolean;
-
-  get listLicenses(): boolean {
-    return this._listLicenses;
-  }
-
-  set listLicenses(value: boolean) {
-    this._listLicenses = value;
+  constructor(private userService: UserService,
+              private licenseCategoryService: LicenseCategoryService,
+              private requirementService: RequirementService) {
   }
 
   ngOnInit() {
 
   }
 
+  loadLicensesCategories(){
+    this.licenseCategoryService.index().subscribe(res => this.licensesCategories = res);
+  }
+
   onChange(event) {
+    if (event == 'listLicensesCategories') {
+      this.listLicenses = false;
+      this.listUsers = false;
+      this.listLicensesCategories = true;
+      this.loadLicensesCategories();
+    }
     if (event == 'listLicenses') {
       this.listLicenses = true;
       this.listUsers = false;
+      this.listLicensesCategories = false;
     }
     if (event == 'listUsers') {
       this.listUsers = true;
       this.listLicenses = false;
+      this.listLicensesCategories = false;
     }
   }
 }

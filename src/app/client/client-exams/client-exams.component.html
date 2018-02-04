@@ -1,3 +1,14 @@
-<div class="collection" *ngFor="let model of models">
-  <app-shared-lists [model]="model.cpf"></app-shared-lists>
+<div class="col s4 l4 " *ngFor="let exam of exams">
+  <mat-card>
+    <mat-card-title>
+      {{exam.examCategory.description}}
+    </mat-card-title>
+    <mat-card-content>
+      <p><strong>Aplicador do exame: </strong>{{exam.examinator.name}}</p>
+      <p><strong>Examinado: </strong>{{exam.civil.name}}</p>
+      <p><strong>Laudo: </strong>{{exam.resultDescription}}</p>
+      <p *ngIf="!exam.status" class="red white-text"><strong>Resultado Final: </strong> Indeferido</p>
+      <p *ngIf="exam.status" class="green white-text"><strong>Resultado Final: </strong>Deferido</p>
+    </mat-card-content>
+  </mat-card>
 </div>

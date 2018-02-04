@@ -3,9 +3,19 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import './rxjs.extensions';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatIconModule,
+  MatInputModule,
   MatMenuModule,
-  MatNativeDateModule, MatRadioModule, MatSelectModule, MatSidenavModule, MatTabsModule, MatToolbarModule
+  MatNativeDateModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatToolbarModule
 } from '@angular/material';
 import {SharedListsComponent} from './components/shared-lists/shared-lists.component';
 import {CamelCasePipe} from './pipes/camel-case.pipe';
@@ -15,7 +25,7 @@ import {UserService} from './services/user.service';
 import {RoutesClientUtil} from './routes-api/routes-client.util';
 import {CampoControlErrorComponent} from './components/shared-campo-control-error/shared-campo-control-error.component';
 import {ExamCategoryService} from './services/exam-category.service';
-import {LicenceCategoryService} from './services/licence-category.service';
+import {LicenseCategoryService} from './services/license-category.service';
 import {GenderService} from './services/gender.service';
 import {UserCategoryService} from './services/user-category.service';
 import {CpfPipe} from './pipes/cpf.pipe';
@@ -32,16 +42,17 @@ import {AuthInstructorGuard} from "./guards/auth-instructor.guard";
 import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
 import {SharedUserDetailComponent} from './components/shared-user-detail/shared-user-detail.component';
 import {LicenseValidatorService} from "./services/license-validator.service";
-import { SharedReportUsersListComponent } from './components/shared-report-users-list/shared-report-users-list.component';
+import {SharedReportUsersListComponent} from './components/shared-report-users-list/shared-report-users-list.component';
 import {CountryService} from "./services/country.service";
 import {StateService} from "./services/state.service";
 import {CityService} from "./services/city.service";
-import { SharedFormAddressComponent } from './components/shared-form-address/shared-form-address.component';
-import { SharedUserAddressListComponent } from './components/shared-user-address-list/shared-user-address-list.component';
+import {SharedFormAddressComponent} from './components/shared-form-address/shared-form-address.component';
+import {SharedUserAddressListComponent} from './components/shared-user-address-list/shared-user-address-list.component';
 import {AddressService} from "./services/address.service";
-import { SharedUserUpdateComponent } from './components/shared-user-update/shared-user-update.component';
+import {SharedUserUpdateComponent} from './components/shared-user-update/shared-user-update.component';
 import {ExamService} from "./services/exam.service";
-import { SharedExamEvaluateComponent } from './components/shared-exam-evaluate/shared-exam-evaluate.component';
+import {SharedExamEvaluateComponent} from './components/shared-exam-evaluate/shared-exam-evaluate.component';
+import {RequirementService} from "./services/requirement.service";
 
 @NgModule({
   imports: [
@@ -84,7 +95,7 @@ import { SharedExamEvaluateComponent } from './components/shared-exam-evaluate/s
     UserService,
     ExaminatorService,
     ExamCategoryService,
-    LicenceCategoryService,
+    LicenseCategoryService,
     GenderService,
     UserCategoryService,
     CepService,
@@ -94,6 +105,7 @@ import { SharedExamEvaluateComponent } from './components/shared-exam-evaluate/s
     CityService,
     AddressService,
     ExamService,
+    RequirementService,
     AuthAdminGuard,
     AuthClientGuard,
     AuthDelegateGuard,

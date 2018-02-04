@@ -3,11 +3,12 @@ import {RoutesClientUtil} from '../routes-api/routes-client.util';
 import {AbstractService} from './abstract.service';
 import {License} from "../model/license";
 import {HttpClient} from "@angular/common/http";
+import {LicenseCategory} from "../model/license-category";
 
 const url = RoutesClientUtil.LICENCES_TYPES;
 
 @Injectable()
-export class LicenceCategoryService extends AbstractService<License> {
+export class LicenseCategoryService extends AbstractService<LicenseCategory> {
 
   constructor(http: HttpClient) {
     super(http, url);

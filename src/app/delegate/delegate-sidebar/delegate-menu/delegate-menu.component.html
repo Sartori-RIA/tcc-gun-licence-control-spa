@@ -1,4 +1,7 @@
-<a class="collection-item" routerLink="perfil" routerLinkActive="active">Meus Dados</a>
-<a class="collection-item" routerLink="delegate" routerLinkActive="active">Meus Endereços</a>
-
+<a *ngFor="let menuItem of menu"
+   class="collection-item"
+   routerLink="{{menuItem.route}}"
+   routerLinkActive="active">
+  {{menuItem.title}}
+</a>
 

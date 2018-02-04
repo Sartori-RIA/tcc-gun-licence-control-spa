@@ -1,0 +1,31 @@
+<div class="container">
+  <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-input-container class="midle-width">
+      <span matPrefix>Tipo da Licença: </span>
+      <input matInput type="text" id="name" formControlName="description">
+    </mat-input-container>
+
+    <mat-input-container class="midle-width">
+      <span matPrefix>Idade Minima: </span>
+      <input matInput type="text" id="minimalAge" formControlName="minimalAge">
+    </mat-input-container>
+
+    <div formArrayName="exams">
+      <div *ngFor="let exam of form.controls.exams.controls; let i = index">
+
+        <mat-form-field>
+          <span matPrefix>Exame: </span>
+          <mat-select formControlName="{{i}}" id="exam_{{i}}">
+            <mat-option  placeholder="Exame Necessário" *ngFor="let exam  of examsCategories"
+                         [value]="exam">{{ exam?.description }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+    </div>
+    <button class="btn" type="submit">Cadastrar</button>
+  </form>
+
+  <button class="btn" (click)="onAddExam()">Adicionar Exame</button>
+</div>

@@ -1,6 +1,6 @@
-<a class="collection-item" routerLink="agendamento" routerLinkActive="active">Agendamentos</a>
-<a class="collection-item" routerLink="exames" routerLinkActive="active">Exames</a>
-<a class="collection-item" routerLink="perfil" routerLinkActive="active">Meus Dados</a>
-<a class="collection-item" routerLink="enderecos" routerLinkActive="active">Meus Endereços</a>
-<a class="collection-item" routerLink="licencas" routerLinkActive="active">Minhas Licenças</a>
-<a class="collection-item" routerLink="atualizar" routerLinkActive="active">Atualizar meus dados</a>
+<a *ngFor="let menuItem of menu"
+   class="collection-item"
+   routerLink="{{menuItem.route}}"
+   routerLinkActive="active">
+  {{menuItem.title}}
+</a>

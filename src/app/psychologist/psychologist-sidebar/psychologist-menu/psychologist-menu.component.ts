@@ -14,4 +14,10 @@ export class PsychologistMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  menu = [
+    {route: 'enderecos', title: 'Meus Endereços'},
+    {route: 'avaliacoes', title: 'Avaliações'},
+    {route: 'relatorios', title: 'Relatórios'},
+    {route: 'perfil', title: 'Meus Dados'},
+  ]
 }

@@ -3,14 +3,12 @@
     <thead>
     <tr>
       <th>Nome</th>
-      <th>Estado</th>
       <th>Categoria</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let model of modelList">
       <td><a (click)="onClickUser(model)" class="collection-item">{{model.name}}</a></td>
-      <td><a (click)="onClickUser(model)" class="collection-item">{{model.state}}</a></td>
       <td><a (click)="onClickUser(model)" class="collection-item">{{model.role.description}}</a></td>
     </tr>
     </tbody>

@@ -8,15 +8,21 @@ import {AdminRegisterCountriesComponent} from "./admin-register-countries/admin-
 import {AdminRegisterStatesComponent} from "./admin-register-states/admin-register-states.component";
 import {AdminRegisterCititesComponent} from "./admin-register-citites/admin-register-citites.component";
 import {AdminRegisterExamsComponent} from "./admin-register-exams/admin-register-exams.component";
+import {AdminRegisterLicensesComponent} from "./admin-register-licenses/admin-register-licenses.component";
 
 const routes: Routes = [
   {
     path: '', component: AdminHomeComponent, children: [
-      {path: 'cadastro/usuario', component: AdminRegisterUserComponent},
-      {path: 'cadastro/paises', component: AdminRegisterCountriesComponent},
-      {path: 'cadastro/estados', component: AdminRegisterStatesComponent},
-      {path: 'cadastro/cidades', component: AdminRegisterCititesComponent},
-      {path: 'cadastro/exames', component: AdminRegisterExamsComponent},
+      {
+        path: 'cadastro', children: [
+          {path: 'usuario', component: AdminRegisterUserComponent},
+          {path: 'paises', component: AdminRegisterCountriesComponent},
+          {path: 'estados', component: AdminRegisterStatesComponent},
+          {path: 'cidades', component: AdminRegisterCititesComponent},
+          {path: 'exames', component: AdminRegisterExamsComponent},
+          {path: 'licencas', component: AdminRegisterLicensesComponent}
+        ]
+      },
       {path: 'relatorios', component: AdminReportsComponent},
       {path: 'perfil', component: AdminProfileComponent},
     ]

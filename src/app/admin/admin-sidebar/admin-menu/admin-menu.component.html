@@ -1,7 +1,6 @@
-<a class="collection-item" routerLink="cadastro/usuario" routerLinkActive="active">Cadastro de Usuário</a>
-<a class="collection-item" routerLink="cadastro/paises" routerLinkActive="active">Cadastro de Paises</a>
-<a class="collection-item" routerLink="cadastro/estados" routerLinkActive="active">Cadastro de Estados</a>
-<a class="collection-item" routerLink="cadastro/cidades" routerLinkActive="active">Cadastro de Cidades</a>
-<a class="collection-item" routerLink="cadastro/exames" routerLinkActive="active">Cadastro de Exames</a>
-<a class="collection-item" routerLink="relatorios" routerLinkActive="active">Relatórios</a>
-<a class="collection-item" routerLink="perfil" routerLinkActive="active">Meus Dados</a>
+<a *ngFor="let menuItem of menu"
+   class="collection-item"
+   routerLink="{{menuItem.route}}"
+   routerLinkActive="active">
+  {{menuItem.title}}
+</a>
