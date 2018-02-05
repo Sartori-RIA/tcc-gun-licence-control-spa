@@ -53,6 +53,7 @@ import {SharedUserUpdateComponent} from './components/shared-user-update/shared-
 import {ExamService} from "./services/exam.service";
 import {SharedExamEvaluateComponent} from './components/shared-exam-evaluate/shared-exam-evaluate.component';
 import {RequirementService} from "./services/requirement.service";
+import {LicenseService} from "./services/license.service";
 
 @NgModule({
   imports: [
@@ -106,6 +107,7 @@ import {RequirementService} from "./services/requirement.service";
     AddressService,
     ExamService,
     RequirementService,
+    LicenseService,
     AuthAdminGuard,
     AuthClientGuard,
     AuthDelegateGuard,

@@ -1,3 +1,37 @@
-<p>
-  client-license works!
-</p>
+<button mat-button (click)="newLicense()">Nova Licensa</button>
+<button mat-button (click)="myLicensesAproved()">Licenças Aprovadas</button>
+<button mat-button (click)="myLicensesProgress()">Processos de Licença em Andamento</button>
+
+<div class="row"></div>
+
+<div *ngIf="licenseNew">
+
+  <div class="row">
+    <div class="container">
+      <mat-card class="col s12 m5 l5 offset-m1 offset-l1" *ngFor="let licenseCategory of licensesCategories">
+        <mat-card-title>{{licenseCategory.description}}</mat-card-title>
+        <mat-card-content>
+          <h3>Requisitos:</h3>
+          <p><strong>Idade Minima: </strong>{{licenseCategory.requirement.minimalAge}}</p>
+          <p><strong>Exames requeridos: </strong></p>
+          <ul>
+            <li *ngFor="let exam of licenseCategory.requirement.exams">{{exam.description}}</li>
+          </ul>
+          <button mat-button (click)="initLicense(licenseCategory)" class="green">Iniciar processo</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="licensesAproved"><h1>LICENSA APROVADA</h1></div>
+
+
+<div *ngIf="licensesInProgress">
+
+  <ul *ngFor="let license of myProgressLicenses">
+    <li>{{license.category.description}}</li>
+  </ul>
+
+</div>

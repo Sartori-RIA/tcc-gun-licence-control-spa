@@ -18,6 +18,7 @@ export class AdminRegisterLicensesComponent implements OnInit {
   form: FormGroup;
   requirements: Requirement;
   examsCategories: ExamCategory[];
+  licensesCategoriesList: LicenseCategory[];
 
   constructor(private licenseCategoryService: LicenseCategoryService,
               private examCategoryService: ExamCategoryService,
@@ -38,6 +39,7 @@ export class AdminRegisterLicensesComponent implements OnInit {
     this.examCategoryService.index().subscribe(res => {
       this.examsCategories = res
     });
+    this.licenseCategoryService.index().subscribe(res => this.licensesCategoriesList = res);
   }
 
   onAddExam() {

@@ -22,7 +22,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
     this.model = new Country();
     this.form = this.formBuilder.group({
       name: [null, Validators.required]
-    })
+    });
     this.countryService.index().subscribe(res => this.countryList = res);
   }
 

@@ -5,7 +5,7 @@ import {License} from "../model/license";
 import {HttpClient} from "@angular/common/http";
 import {LicenseCategory} from "../model/license-category";
 
-const url = RoutesClientUtil.LICENCES_TYPES;
+const url = RoutesClientUtil.LICENSES_TYPES;
 
 @Injectable()
 export class LicenseCategoryService extends AbstractService<LicenseCategory> {
