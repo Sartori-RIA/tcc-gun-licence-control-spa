@@ -16,7 +16,7 @@ export class AdminRegisterStatesComponent implements OnInit {
   form: FormGroup;
   model: State;
   countries: Country[];
-
+  statesList: State[];
 
   constructor(private formBuilder: FormBuilder,
               private stateService: StateService,
@@ -31,6 +31,10 @@ export class AdminRegisterStatesComponent implements OnInit {
       name: [null, Validators.required],
       abbrev: [null, Validators.required]
     })
+  }
+
+  onCountryClick(country: Country): void {
+    this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => this.statesList = res);
   }
 
   onSubmit(): void {

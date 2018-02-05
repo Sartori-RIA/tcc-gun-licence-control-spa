@@ -18,6 +18,8 @@ export class AdminRegisterCititesComponent implements OnInit {
   form: FormGroup;
   countries: Country[] = [];
   states: State[] = [];
+  statesList: State[];
+  citiesList: City[];
   model: City;
 
   constructor(private formBuilder: FormBuilder,
@@ -52,4 +54,12 @@ export class AdminRegisterCititesComponent implements OnInit {
   onChoseCountry(country): void {
     this.stateService.listByOneProperty("country.id", country.value.id).subscribe(res => this.states = res);
   }
+
+  onCountryClick(country: Country): void {
+    this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => this.statesList = res);
+  }
+  onStateClick(state: State): void {
+    this.cityService.listByOneProperty("state.id", String(state.id)).subscribe(res => this.citiesList = res);
+  }
+
 }

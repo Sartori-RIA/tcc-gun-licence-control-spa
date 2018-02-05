@@ -11,6 +11,7 @@ import {Country} from "../../shared/model/country";
 })
 export class AdminRegisterCountriesComponent implements OnInit {
 
+  countryList: Country[];
   form: FormGroup;
   private model: Country;
   constructor(private formBuilder: FormBuilder,
@@ -22,6 +23,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [null, Validators.required]
     })
+    this.countryService.index().subscribe(res => this.countryList = res);
   }
 
   onSubmit(): void {
