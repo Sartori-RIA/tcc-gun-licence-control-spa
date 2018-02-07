@@ -1,28 +1,24 @@
-<div class="row">
-  <mat-button-toggle (click)="onChange('listLicensesCategories')">Listar Categorias de Licenças</mat-button-toggle>
-  <mat-button-toggle (click)="onChange('listLicenses')">Listar Licenças</mat-button-toggle>
-  <mat-button-toggle (click)="onChange('listUsers')">Listar Usuario</mat-button-toggle>
-</div>
-<app-shared-report-users-list *ngIf="listUsers"></app-shared-report-users-list>
+<mat-tab-group>
+  <mat-tab (click)="onChange('listLicensesCategories')" label="Listar Categorias de Licenças">
+    <div *ngIf="licensesCategories !=null">
+      <div class="col s5 left">
+        <mat-list role="list">
+          <mat-list-item *ngFor="let model of licensesCategories" role="listitem">{{model.description}}</mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Listar Licenças"></mat-tab>
+
+  <mat-tab label="Listar Usuario">
+    <app-shared-report-users-list></app-shared-report-users-list>
+  </mat-tab>
+</mat-tab-group>
 
 
-<div *ngIf="licensesCategories !=null">
-  <div class="col s5 left">
-    <table class="responsive-table">
-      <thead>
-      <tr>
-        <th>Descriçao</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let model of licensesCategories">
-        <td><a class="collection-item">{{model.description}}</a></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
 
-  <!--<div *ngIf="modelDetail != null" class="col s7 right">-->
-  <!--<app-shared-user-detail [gender]="modelDetail.gender" [model]="modelDetail"></app-shared-user-detail>-->
-  <!--</div>-->
-</div>
+<!--<div *ngIf="modelDetail != null" class="col s7 right">-->
+<!--<app-shared-user-detail [gender]="modelDetail.gender" [model]="modelDetail"></app-shared-user-detail>-->
+<!--</div>-->
+

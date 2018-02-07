@@ -22,29 +22,10 @@ export class AdminReportsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.loadLicensesCategories();
   }
 
   loadLicensesCategories(){
     this.licenseCategoryService.index().subscribe(res => this.licensesCategories = res);
-  }
-
-  onChange(event) {
-    if (event == 'listLicensesCategories') {
-      this.listLicenses = false;
-      this.listUsers = false;
-      this.listLicensesCategories = true;
-      this.loadLicensesCategories();
-    }
-    if (event == 'listLicenses') {
-      this.listLicenses = true;
-      this.listUsers = false;
-      this.listLicensesCategories = false;
-    }
-    if (event == 'listUsers') {
-      this.listUsers = true;
-      this.listLicenses = false;
-      this.listLicensesCategories = false;
-    }
   }
 }

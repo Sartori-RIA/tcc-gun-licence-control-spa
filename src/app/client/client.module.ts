@@ -7,7 +7,6 @@ import {ClientProfileComponent} from './client-profile/client-profile.component'
 import {ClientLicenceComponent} from './client-licence/client-licence.component';
 import {ClientExamsComponent} from './client-exams/client-exams.component';
 import {ClientSidebarComponent} from './client-sidebar/client-sidebar.component';
-import {MenuComponent} from './client-sidebar/menu/menu.component';
 import {ClientAgendaComponent} from './client-agenda/client-agenda.component';
 import { ClientAddressComponent } from './client-address/client-address.component';
 import { ClientUpdateComponent } from './client-update/client-update.component';
@@ -23,7 +22,6 @@ import { ClientUpdateComponent } from './client-update/client-update.component';
     ClientLicenceComponent,
     ClientExamsComponent,
     ClientSidebarComponent,
-    MenuComponent,
     ClientAgendaComponent,
     ClientAddressComponent,
     ClientUpdateComponent

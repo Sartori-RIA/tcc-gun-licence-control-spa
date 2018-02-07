@@ -6,7 +6,6 @@ import {InstructorHomeComponent} from './instructor-home/instructor-home.compone
 import {InstructorListComponent} from './instructor-list/instructor-list.component';
 import {InstructorProfileComponent} from './instructor-profile/instructor-profile.component';
 import {InstructorSidebarComponent} from './instructor-sidebar/instructor-sidebar.component';
-import {InstructorMenuComponent} from './instructor-sidebar/instructor-menu/instructor-menu.component';
 import {SharedModule} from "../shared/shared.module";
 import { InstructorAddressComponent } from './instructor-address/instructor-address.component';
 import { InstructorReportComponent } from './instructor-report/instructor-report.component';
@@ -22,7 +21,6 @@ import { InstructorReportComponent } from './instructor-report/instructor-report
     InstructorListComponent,
     InstructorProfileComponent,
     InstructorSidebarComponent,
-    InstructorMenuComponent,
     InstructorAddressComponent,
     InstructorReportComponent
   ]

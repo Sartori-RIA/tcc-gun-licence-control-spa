@@ -4,7 +4,6 @@ import {AdminRoutingModule} from './admin-routing.module';
 import {AdminProfileComponent} from './admin-profile/admin-profile.component';
 import {AdminHomeComponent} from "./admin-home/admin-home.component";
 import {AdminSidebarComponent} from "./admin-sidebar/admin-sidebar.component";
-import {AdminMenuComponent} from "./admin-sidebar/admin-menu/admin-menu.component";
 import {AdminRegisterUserComponent} from "./admin-register-user/admin-register-user.component";
 import {AdminReportsComponent} from "./admin-reports/admin-reports.component";
 import { AdminRegisterCountriesComponent } from './admin-register-countries/admin-register-countries.component';
@@ -21,7 +20,6 @@ import { AdminRegisterLicensesComponent } from './admin-register-licenses/admin-
   declarations: [
     AdminHomeComponent,
     AdminSidebarComponent,
-    AdminMenuComponent,
     AdminRegisterUserComponent,
     AdminReportsComponent,
     AdminProfileComponent,

@@ -1,3 +1,7 @@
-<div class="collection">
-  <app-psychologist-menu></app-psychologist-menu>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav-content *ngFor="let menuItem of menu"
+                       routerLink="{{menuItem.route}}"
+                       routerLinkActive="active">
+    {{menuItem.title}}
+  </mat-sidenav-content>
+</mat-sidenav-container>
