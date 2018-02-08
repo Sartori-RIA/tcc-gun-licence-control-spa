@@ -1,24 +1,26 @@
 <form disabled="disable" [formGroup]="form" (ngSubmit)="updateUser()">
   <div class="row">
-    <mat-input-container class="midle-width">
+    <mat-form-field>
       <input matInput type="password" id="password" formControlName="passwordOld"
              placeholder="Senha Atual">
-    </mat-input-container>
-    <mat-input-container class="midle-width">
+    </mat-form-field>
+
+    <mat-form-field>
       <input matInput type="password" id="passwordNew" formControlName="passwordNew"
              placeholder="Nova Senha">
-    </mat-input-container>
+    </mat-form-field>
 
-    <mat-input-container class="midle-width">
+    <mat-form-field>
       <input matInput type="password" id="passwordConfirm" formControlName="passwordConfirm"
              placeholder="Confirmar Nova Senha">
-    </mat-input-container>
+    </mat-form-field>
   </div>
   <div class="row">
-    <mat-input-container class="midle-width">
+    <mat-form-field>
       <input matInput type="text" id="email" formControlName="email"
              placeholder="email">
-    </mat-input-container>
+    </mat-form-field>
+
     <button class="btn" type="submit">Atualizar</button>
   </div>
 </form>

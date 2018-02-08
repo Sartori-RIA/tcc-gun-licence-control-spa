@@ -1,7 +1,8 @@
 <mat-sidenav-container>
   <mat-sidenav-content *ngFor="let menuItem of menu"
                        routerLink="{{menuItem.route}}"
-                       routerLinkActive="active">
+                       routerLinkActive="collection-item active">
     {{menuItem.title}}
   </mat-sidenav-content>
 </mat-sidenav-container>
+
