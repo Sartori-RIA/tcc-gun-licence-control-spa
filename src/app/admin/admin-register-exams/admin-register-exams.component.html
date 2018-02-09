@@ -1,12 +1,10 @@
-<div class="container">
-  <div class="col s6 m6">
+<mat-card>
+  <mat-card-content>
     <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
-
-
-      <mat-input-container class="midle-width">
+      <mat-form-field>
         <input matInput type="text" id="name" formControlName="description"
                placeholder="Nome do Exame">
-      </mat-input-container>
+      </mat-form-field>
 
       <mat-form-field>
         <mat-select placeholder="Informe o nível de acesso" formControlName="role"
@@ -14,14 +12,10 @@
           <mat-option *ngFor="let type of roles" [value]="type">{{type.description}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button class="btn" type="submit">Cadastrar</button>
+      <button mat-button="primary" type="submit">Cadastrar</button>
     </form>
-  </div>
-  <div class="col s6 m6">
-    <div class="collection" *ngIf="exams != null">
-      <p class="collection-item" *ngFor="let exam of exams">{{exam.description}}</p>
-    </div>
-  </div>
-
-
-</div>
+  </mat-card-content>
+</mat-card>
+<mat-list *ngIf="exams != null">
+  <mat-list-item *ngFor="let exam of exams">{{exam.description}}</mat-list-item>
+</mat-list>

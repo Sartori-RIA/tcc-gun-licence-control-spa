@@ -1,37 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="center-align">
-      <h5>O Sistema Nacional de Armas - SINARM, instituído no Ministério da Justiça, no âmbito da Polícia Federal,
-        com circunscrição em todo o território nacional, é responsável pelo controle de armas de fogo
-        em poder da população, conforme previsto na Lei
-        <a href="http://www.planalto.gov.br/ccivil_03/leis/2003/L10.826compilado.htm">
-          10.826/03 (Estatuto do Desarmamento)</a></h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s12 m3 l3">
-      <h4>Validador de licenças</h4>
-      <p>Deseja saber se a licença ainda esta na validade ou se é verdadeira? E ainda caso ela seja verdadeira também
-        saberá sua categoria e portador<br>
-        <a class="" routerLink="/validador" routerLinkActive="active">Mais detalhes &raquo;</a></p>
-    </div>
-    <div class="col s12 m3 l3">
-      <h4>Duvidas?</h4>
-      <p>Ficou com alguma duvida sobre o sistema, como é o processo para a obtenção das licenças, ou alguma outra duvida
-        relacionada ao assunto?<br/>
-        <a class="" routerLink="/duvidas" routerLinkActive="active">Mais detalhes &raquo;</a></p>
-    </div>
-    <div class="col s12 m3 l3">
-      <h4>Login</h4>
-      <p>Efetue o login no sistema para que possa realizar divesas tarefas como: Agendamento de exames, impressão das
-        licencas que possui, laudo dos exames realizados e muitas outras<br>
-        <a class="" href="#" role="button" routerLink="/login" routerLinkActive="active">Mais detalhes &raquo;</a></p>
-    </div>
-    <div class="col s12 m3 l3">
-      <h4>Cadastro</h4>
-      <p>Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
-        <a class="" href="#" role="button" routerLink="/usuario/cadastro" routerLinkActive="active">Mais
-          detalhes &raquo;</a></p>
-    </div>
-  </div>
-</div>
+<h5>O Sistema Nacional de Armas - SINARM, instituído no Ministério da Justiça, no âmbito da Polícia Federal,
+  com circunscrição em todo o território nacional, é responsável pelo controle de armas de fogo
+  em poder da população, conforme previsto na Lei
+  <a href="http://www.planalto.gov.br/ccivil_03/leis/2003/L10.826compilado.htm">
+    10.826/03 (Estatuto do Desarmamento)</a></h5>
+<mat-grid-list cols="4" rowHeight="500px">
+  <mat-grid-tile *ngFor="let element of elements">
+    <mat-card>
+      <mat-card-title>{{element.title}}</mat-card-title>
+      <mat-card-content [innerHTML]="element.content"></mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

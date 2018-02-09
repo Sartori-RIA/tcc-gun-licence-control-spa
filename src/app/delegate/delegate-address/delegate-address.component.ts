@@ -23,15 +23,4 @@ export class DelegateAddressComponent implements OnInit {
       this.addressList = res.addressList;
     })
   }
-
-  onChange(event) {
-    if (event == 'listAddress') {
-      this.listAddress = true;
-      this.addAddress = false;
-    }
-    if (event == 'addAddress') {
-      this.listAddress = false;
-      this.addAddress = true;
-    }
-  }
 }

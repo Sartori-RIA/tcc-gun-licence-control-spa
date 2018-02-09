@@ -1,5 +1,5 @@
 <form disabled="disable" [formGroup]="form" (ngSubmit)="updateUser()">
-  <div class="row">
+
     <mat-form-field>
       <input matInput type="password" id="password" formControlName="passwordOld"
              placeholder="Senha Atual">
@@ -14,13 +14,13 @@
       <input matInput type="password" id="passwordConfirm" formControlName="passwordConfirm"
              placeholder="Confirmar Nova Senha">
     </mat-form-field>
-  </div>
-  <div class="row">
+
+
     <mat-form-field>
       <input matInput type="text" id="email" formControlName="email"
              placeholder="email">
     </mat-form-field>
 
-    <button class="btn" type="submit">Atualizar</button>
-  </div>
+    <button mat-button="primary" type="submit">Atualizar</button>
+
 </form>

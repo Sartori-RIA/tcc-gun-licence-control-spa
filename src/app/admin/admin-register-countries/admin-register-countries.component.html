@@ -1,15 +1,17 @@
-<div class="container">
-  <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
+<mat-card>
+  <mat-card-content>
+    <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <mat-input-container class="midle-width">
-      <input matInput type="text" id="name" formControlName="name"
-             placeholder="Nome do pais">
-    </mat-input-container>
+      <mat-form-field>
+        <input matInput type="text" id="name" formControlName="name"
+               placeholder="Nome do pais">
+      </mat-form-field>
 
-    <button class="btn" type="submit">Cadastrar</button>
-  </form>
-</div>
+      <button mat-button="primary" type="submit">Cadastrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-list>
+  <mat-list-item *ngFor="let country of countryList"> {{country.description}}</mat-list-item>
+</mat-list>
 
-<ul class="collection">
-  <li *ngFor="let country of countryList" class="collection-item">{{country.description}}</li>
-</ul>

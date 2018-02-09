@@ -1,15 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT');
 
-$font: 'Old Standard TT', serif;
 $background_color: #e1ad62;
 $text_color: rgba(255, 255, 255, 0.8);
 
-.footer {
-  font-family: $font;
-}
-
-footer.page-footer .footer-copyright {
-  padding: 10px 0px;
-  color: $text_color;
-  background-color: $background_color;
+.page-footer .footer-copyright {
+  padding: 10px 0!important;
+  color: $text_color!important;
+  font-size: 10%!important;
+  background-color: $background_color!important;
 }

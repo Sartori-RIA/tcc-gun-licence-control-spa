@@ -2,9 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import 'materialize-css';
-import 'hammerjs';
-import {MaterializeModule} from 'angular2-materialize';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -24,6 +21,7 @@ import {AuthModule} from "./auth/auth.module";
 import {HttpClientModule} from "@angular/common/http";
 import {InstructorModule} from "./instructor/instructor.module";
 import {PsychologistModule} from "./psychologist/psychologist.module";
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -43,7 +41,6 @@ import {PsychologistModule} from "./psychologist/psychologist.module";
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    MaterializeModule,
     SharedModule,
     ClientModule,
     AdminModule,
