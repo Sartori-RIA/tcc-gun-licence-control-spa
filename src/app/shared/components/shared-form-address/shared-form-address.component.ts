@@ -13,6 +13,8 @@ import {UserService} from "../../services/user.service";
 import {Address} from "../../model/address";
 import {User} from "../../model/user";
 import {AddressService} from "../../services/address.service";
+import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-shared-form-address',
@@ -36,7 +38,8 @@ export class SharedFormAddressComponent implements OnInit {
               private countryService: CountryService,
               private stateService: StateService,
               private cityService: CityService,
-              private addressService: AddressService) {
+              private addressService: AddressService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -55,9 +58,10 @@ export class SharedFormAddressComponent implements OnInit {
           this.user.addressList = [];
         this.user.addressList.push(res);
         this.userService.update(this.user).subscribe(() => {
-          window.location.reload();
-        }, error2 => console.log("deu ruim", JSON.stringify(error2)))
-      });
+          this.openDialog("Sucesso", "Endereço Adicionado com Sucesso", "OK");
+          this.resetAddess();
+        }, () => this.openDialog("Erro", "Nao foi possivel adicionar o endereco", "OK"))
+      }, () => this.openDialog("Erro", "Nao foi possivel adicionar o endereco", "OK"));
     } else {
       this.formDirty(this.form);
     }
@@ -101,6 +105,16 @@ export class SharedFormAddressComponent implements OnInit {
       addressNumber: null,
       complement: dados.complemento,
       neighborhood: dados.bairro,
+    });
+  }
+
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
     });
   }
 

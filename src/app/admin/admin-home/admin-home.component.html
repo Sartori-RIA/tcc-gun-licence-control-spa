@@ -1,13 +1,13 @@
-<div class="container">
-  <h3>Olá {{currentUserName}}</h3>
-</div>
-<div class="row">
-  <mat-grid-list cols="12" rowHeight="200px">
-    <mat-grid-tile [colspan]="3">
-      <app-admin-sidebar></app-admin-sidebar>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="9">
-      <router-outlet></router-outlet>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+<mat-card>
+  <app-shared-hello [currentUserName]="currentUserName"></app-shared-hello>
+  <mat-card-content>
+    <mat-grid-list cols="12" rowHeight="40em">
+      <mat-grid-tile [colspan]="3">
+        <app-admin-sidebar></app-admin-sidebar>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="9">
+        <router-outlet></router-outlet>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

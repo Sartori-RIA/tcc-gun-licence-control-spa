@@ -6,6 +6,8 @@ import {UserService} from "../../services/user.service";
 import {ExamCategory} from "../../model/exam-category";
 import {Exam} from "../../model/exam";
 import {ExamService} from "../../services/exam.service";
+import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-shared-exam-evaluate',
@@ -30,7 +32,8 @@ export class SharedExamEvaluateComponent implements OnInit {
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
               private examCategoryService: ExamCategoryService,
-              private examService: ExamService) {
+              private examService: ExamService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -86,4 +89,13 @@ export class SharedExamEvaluateComponent implements OnInit {
     })
   }
 
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
+  }
 }

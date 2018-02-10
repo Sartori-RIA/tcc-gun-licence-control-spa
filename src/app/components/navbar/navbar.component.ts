@@ -10,10 +10,35 @@ export class NavbarComponent implements OnInit {
 
   @Input() showMenu;
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit() {
     this.showMenu = this.authService.checkLogin();
+  }
+
+  onClick() {
+    if (this.authService.checkLogin())
+      this.authService.logout();
+  }
+
+  isCivil(): boolean {
+    return sessionStorage.getItem("currentUserRole") == "CIVIL";
+  }
+
+  isDelegate(): boolean {
+    return sessionStorage.getItem("currentUserRole") == "DELEGADO";
+  }
+
+  isPsychologist(): boolean {
+    return sessionStorage.getItem("currentUserRole") == "PSICOLOGO";
+  }
+
+  isInstructor(): boolean {
+    return sessionStorage.getItem("currentUserRole") == "INSTRUTOR";
+  }
+
+  isAdmin(): boolean {
+    return sessionStorage.getItem("currentUserRole") == "ADMIN";
   }
 }

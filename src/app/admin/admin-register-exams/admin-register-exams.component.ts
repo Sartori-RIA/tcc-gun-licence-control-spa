@@ -1,12 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Country} from "../../shared/model/country";
-import {Exam} from "../../shared/model/exam";
 import {ExamCategoryService} from "../../shared/services/exam-category.service";
 import {ExamCategory} from "../../shared/model/exam-category";
 import {UserRole} from "../../shared/model/user-role";
 import {UserCategoryService} from "../../shared/services/user-category.service";
-import {copyStyles} from "@angular/animations/browser/src/util";
+import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-admin-register-exams',
@@ -17,13 +16,14 @@ import {copyStyles} from "@angular/animations/browser/src/util";
 export class AdminRegisterExamsComponent implements OnInit {
 
   form: FormGroup;
-  private model: ExamCategory;
   exams: ExamCategory[];
   roles: UserRole[];
+  private model: ExamCategory;
 
   constructor(private formBuilder: FormBuilder,
               private examCategoryService: ExamCategoryService,
-              private userCategoryService: UserCategoryService) {
+              private userCategoryService: UserCategoryService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -41,11 +41,24 @@ export class AdminRegisterExamsComponent implements OnInit {
       this.model.description = this.form.value.description;
       this.model.role = this.form.value.role;
       this.examCategoryService.save(this.model).subscribe(() => {
-        window.location.reload();
-      }, error2 => alert(JSON.stringify(error2)))
+        this.form.patchValue({
+          description: null,
+          role: null
+        });
+        this.openDialog("Sucesso", "Exame Salvo com Sucesso", "OK")
+      }, () => this.openDialog("Erro", "Erro ao Salvar", "OK"))
     } else {
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }
   }
 
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
+  }
 }

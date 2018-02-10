@@ -1,13 +1,19 @@
-<h5>O Sistema Nacional de Armas - SINARM, instituído no Ministério da Justiça, no âmbito da Polícia Federal,
-  com circunscrição em todo o território nacional, é responsável pelo controle de armas de fogo
-  em poder da população, conforme previsto na Lei
-  <a href="http://www.planalto.gov.br/ccivil_03/leis/2003/L10.826compilado.htm">
-    10.826/03 (Estatuto do Desarmamento)</a></h5>
-<mat-grid-list cols="4" rowHeight="500px">
-  <mat-grid-tile *ngFor="let element of elements">
-    <mat-card>
-      <mat-card-title>{{element.title}}</mat-card-title>
-      <mat-card-content [innerHTML]="element.content"></mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-card>
+  <mat-card-header>
+    O Sistema Nacional de Armas - SINARM, instituído no Ministério da Justiça, no âmbito da Polícia Federal,
+    com circunscrição em todo o território nacional, é responsável pelo controle de armas de fogo
+    em poder da população, conforme previsto na Lei
+    <a href="http://www.planalto.gov.br/ccivil_03/leis/2003/L10.826compilado.htm">
+      10.826/03 (Estatuto do Desarmamento)</a>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="4" rowHeight="20em">
+      <mat-grid-tile [colspan]="2" *ngFor="let element of elements">
+        <mat-card>
+          <mat-card-title>{{element.title}}</mat-card-title>
+          <mat-card-content [innerHTML]="element.content"></mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

@@ -1,11 +1,13 @@
-<div class="container">
-  <h3>Olá {{currentUserName}}</h3>
-</div>
-<div class="row">
-  <div class="col s3 m3 l3">
-    <app-delegate-sidebar></app-delegate-sidebar>
-  </div>
-  <div class="col s9 m9 l9">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+<mat-card>
+  <app-shared-hello [currentUserName]="currentUserName"></app-shared-hello>
+  <mat-card-content>
+    <mat-grid-list cols="12" rowHeight="40em">
+      <mat-grid-tile [colspan]="3">
+        <app-delegate-sidebar></app-delegate-sidebar>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="9">
+        <router-outlet></router-outlet>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

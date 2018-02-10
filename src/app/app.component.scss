@@ -1,10 +1,13 @@
-.div-agora-vai {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+div#bottom {
+  position: fixed;
+  bottom: 0;
+  /* And if you want the div to be full-width: */
+  left: 0;
+  right: 0;
 }
 
-main {
-  flex: 1 0 auto;
+div#fixedTop{
+  left: 0;
+  right: 0;
+  top: 0;
 }
-

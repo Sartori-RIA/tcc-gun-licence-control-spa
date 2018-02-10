@@ -6,6 +6,8 @@ import {City} from "../../shared/model/city";
 import {CountryService} from "../../shared/services/country.service";
 import {StateService} from "../../shared/services/state.service";
 import {CityService} from "../../shared/services/city.service";
+import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-admin-register-citites',
@@ -18,14 +20,15 @@ export class AdminRegisterCititesComponent implements OnInit {
   form: FormGroup;
   countries: Country[] = [];
   states: State[] = [];
-  statesList: State[];
-  citiesList: City[];
+  statesList: State[] = [];
+  citiesList: City[] = [];
   model: City;
 
   constructor(private formBuilder: FormBuilder,
               private countryService: CountryService,
               private stateService: StateService,
-              private cityService: CityService) {
+              private cityService: CityService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -44,8 +47,14 @@ export class AdminRegisterCititesComponent implements OnInit {
         this.model.state = state;
         this.model.description = this.form.value.city;
         this.cityService.save(this.model).subscribe(res => {
-          window.location.reload();
-        }, error2 => alert(JSON.stringify(error2)));
+         this.citiesList.push(res);
+         this.form.patchValue({
+           country: null,
+           state: null,
+           city: null
+         });
+         this.openDialog("Sucesso","Cidade Cadastrada com Sucesso", "OK")
+        }, () => this.openDialog("ERRO","Erro ao Cadastrar", "OK"));
       });
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
@@ -60,6 +69,16 @@ export class AdminRegisterCititesComponent implements OnInit {
   }
   onStateClick(state: State): void {
     this.cityService.listByOneProperty("state.id", String(state.id)).subscribe(res => this.citiesList = res);
+  }
+
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
   }
 
 }

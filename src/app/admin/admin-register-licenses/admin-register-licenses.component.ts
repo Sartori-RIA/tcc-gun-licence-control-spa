@@ -6,6 +6,8 @@ import {Requirement} from "../../shared/model/requirement";
 import {ExamCategoryService} from "../../shared/services/exam-category.service";
 import {ExamCategory} from "../../shared/model/exam-category";
 import {RequirementService} from "../../shared/services/requirement.service";
+import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-admin-register-licenses',
@@ -23,7 +25,8 @@ export class AdminRegisterLicensesComponent implements OnInit {
   constructor(private licenseCategoryService: LicenseCategoryService,
               private examCategoryService: ExamCategoryService,
               private requirementService: RequirementService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -54,14 +57,28 @@ export class AdminRegisterLicensesComponent implements OnInit {
         this.model.requirement = res;
         console.log(JSON.stringify(this.model));
         this.licenseCategoryService.save(this.model).subscribe(
-          () => window.location.reload(),
-          error2 => console.log("ERRO NA LICENÇA"+ JSON.stringify(error2)))
-      }, error => {
-        console.log("ERRO NOS REQUISITOS"+ JSON.stringify(error))
-      })
-
+          () => {
+            this.form.patchValue({
+              description: null,
+              minimalAge: null,
+              exams: null
+            });
+            this.openDialog("Sucesso", "Licença Salva com Sucesso", "OK")
+          },
+          () => this.openDialog("Erro", "Erro ao Salvar", "OK"));
+      }, () => this.openDialog("Erro", "Erro nos requisitos da licençå", "OK"))
 
     } else Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
+  }
+
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
   }
 
   private mountModel() {

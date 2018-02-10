@@ -3,6 +3,8 @@ import {User} from "../../model/user";
 import {UserService} from "../../services/user.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-shared-user-update',
@@ -17,7 +19,8 @@ export class SharedUserUpdateComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private route: Router) {
+              private route: Router,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -49,5 +52,15 @@ export class SharedUserUpdateComponent implements OnInit {
       passwordNew: [null],
       passwordConfirm: [null]
     })
+  }
+
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
   }
 }

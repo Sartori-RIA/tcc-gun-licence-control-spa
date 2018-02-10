@@ -4,6 +4,8 @@ import {State} from "../../shared/model/state";
 import {StateService} from "../../shared/services/state.service";
 import {CountryService} from "../../shared/services/country.service";
 import {Country} from "../../shared/model/country";
+import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-admin-register-states',
@@ -20,7 +22,8 @@ export class AdminRegisterStatesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private stateService: StateService,
-              private countryService: CountryService) {
+              private countryService: CountryService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -44,11 +47,26 @@ export class AdminRegisterStatesComponent implements OnInit {
         this.model.description = this.form.value.name;
         this.model.abbrev = this.form.value.abbrev;
         this.stateService.save(this.model).subscribe(res => {
-          window.location.reload();
-        }, error2 => alert(JSON.stringify(error2)));
+          this.statesList.push(res);
+          this.form.patchValue({
+            country: null,
+            name: null,
+            abbrev: null
+          });
+          this.openDialog("Sucesso","Estado Salvo com Sucesso","OK")
+        }, () => this.openDialog("Erro","Erro ao Salvar","OK"));
       });
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }
 
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
+  }
 }

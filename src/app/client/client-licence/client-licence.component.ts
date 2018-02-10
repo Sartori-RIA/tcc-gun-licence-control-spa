@@ -9,6 +9,8 @@ import {UserService} from "../../shared/services/user.service";
 import {DateConverter} from "../../shared/util/date-converter";
 import {Exam} from "../../shared/model/exam";
 import {ExamService} from "../../shared/services/exam.service";
+import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-client-licence',
@@ -29,7 +31,8 @@ export class ClientLicenceComponent implements OnInit {
               private licenseCategoryService: LicenseCategoryService,
               private userService: UserService,
               private examService: ExamService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -72,5 +75,15 @@ export class ClientLicenceComponent implements OnInit {
     this.user;
     this.license;
     this.exams;
+  }
+
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
   }
 }

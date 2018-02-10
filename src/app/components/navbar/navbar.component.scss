@@ -1,16 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-$font_navbar: 'Open Sans', serif;
-$background_color: #e1ad62;
-$text_color: white;
-
-.nav-content {
-  color: $text_color;
-  background-color: $background_color;
-  font-family: $font_navbar;
-  width: 100%;
-  height: 40px;
-  //line-height: 56px;
-  text-align: justify;
+.go-to-right {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
 }
-

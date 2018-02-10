@@ -10,6 +10,8 @@ import {FormCanDeactivate} from "../../model/form-can-deactivate";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
+import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-shared-form',
@@ -29,7 +31,8 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
               private userService: UserService,
               private genderService: GenderService,
               private userCategoryService: UserCategoryService,
-              private route: Router) {
+              private route: Router,
+              private dialog: MatDialog) {
   }
 
   canDesactive() {
@@ -44,14 +47,37 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
-        this.userService.save(this.model).subscribe(() => {
-          if (this.isClient)
-            this.route.navigate(['/login']);
-          else window.location.reload();
+      this.userService.save(this.model).subscribe(() => {
+        if (this.isClient)
+          this.route.navigate(['/login']);
+        this.form.patchValue({
+          name: null,
+          gender: null,
+          password: null,
+          email: null,
+          cpf: null,
+          dateOfBirth: null,
+          role: null
         });
-    } else this.formDirty(this.form);
+        this.openDialog("Sucesso", "Cadastrado com sucesso", "OK")
+
+      }, () => this.openDialog("Erro", "Erro ao Cadastrar Usuario", "OK"));
+    } else {
+      this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
+      this.formDirty(this.form);
+    }
   }
 
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(() => {
+
+    });
+  }
 
   private buildReactiveForm(): void {
     this.form = this.formBuilder.group({
@@ -78,5 +104,4 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   private formDirty(form: FormGroup): void {
     Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
   }
-
 }

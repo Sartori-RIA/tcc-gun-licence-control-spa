@@ -1,13 +1,14 @@
 <mat-card>
   <mat-card-content>
-    <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form disabled="disable" [formGroup]="form">
 
       <mat-form-field>
         <input matInput type="text" id="name" formControlName="name"
                placeholder="Nome do pais">
       </mat-form-field>
 
-      <button mat-button="primary" type="submit">Cadastrar</button>
+      <button mat-button="primary" (click)="onSubmit()" type="submit">Cadastrar</button>
+
     </form>
   </mat-card-content>
 </mat-card>

@@ -1,11 +1,9 @@
 <mat-tab-group>
   <mat-tab (click)="onChange('listLicensesCategories')" label="Listar Categorias de Licenças">
     <div *ngIf="licensesCategories !=null">
-      <div class="col s5 left">
-        <mat-list role="list">
-          <mat-list-item *ngFor="let model of licensesCategories" role="listitem">{{model.description}}</mat-list-item>
-        </mat-list>
-      </div>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let model of licensesCategories" role="listitem">{{model.description}}</mat-list-item>
+      </mat-list>
     </div>
   </mat-tab>
 

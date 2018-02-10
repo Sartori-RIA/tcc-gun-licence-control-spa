@@ -5,7 +5,6 @@ import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
-import {MenuComponent} from './components/navbar/menu/menu.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {FaqComponent} from './components/faq/faq.component';
 import {HomeComponent} from './components/home/home.component';
@@ -27,7 +26,6 @@ import 'hammerjs';
   declarations: [
     AppComponent,
     NavbarComponent,
-    MenuComponent,
     FooterComponent,
     FaqComponent,
     HomeComponent,

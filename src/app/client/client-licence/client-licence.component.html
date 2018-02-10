@@ -1,45 +1,61 @@
-<mat-tab-group>
-
-  <mat-tab label="Nova Licença">
-    <div class="row"></div>
-    <div class="col s12 l4" *ngFor="let licenseCategory of licensesCategories">
-      <mat-card>
-        <mat-card-title>{{licenseCategory.description}}</mat-card-title>
-        <mat-card-content>
-          <h3>Requisitos:</h3>
-          <p><strong>Idade Minima: </strong>{{licenseCategory.requirement.minimalAge}}</p>
-          <p><strong>Exames requeridos: </strong></p>
-          <ul>
-            <li *ngFor="let exam of licenseCategory.requirement.exams">{{exam.description}}</li>
-          </ul>
-          <button mat-button (click)="initLicense(licenseCategory)" class="green">Iniciar processo</button>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </mat-tab>
-
-  <mat-tab label="Licenças Aprovadas">
-    <div class="row"></div>
-    <h1>LICENSA APROVADA</h1>
-  </mat-tab>
-
-  <mat-tab label="Processos de Licença em Andamento">
-    <div class="row"></div>
-    <div class="col s12 l4" *ngFor="let license of myProgressLicenses">
-      <mat-card>
-        <mat-card-title>{{license.category.description}}</mat-card-title>
-        <mat-card-content>
-          <p><strong>Nome: </strong>{{license.user.name}}</p>
-          <p><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
-          <p><strong>Numero de serie: </strong>{{license.serial}}</p>
-          <p><strong>Descrição: </strong>{{license.description}}</p>
-          <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
-          <mat-card-title>Exames requeridos para a licença</mat-card-title>
-          <div *ngFor="let exam of license.category.requirement.exams">
-            <p>{{exam.description}}</p>
+<mat-card>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="Nova Licença">
+        <mat-grid-list cols="4" rowHeight="30em">
+          <div *ngFor="let licenseCategory of licensesCategories">
+            <mat-grid-tile [colspan]="2">
+              <mat-card>
+                <mat-card-title>{{licenseCategory.description}}</mat-card-title>
+                <mat-card-content>
+                  <h3>Requisitos:</h3>
+                  <p><strong>Idade Minima: </strong>{{licenseCategory.requirement.minimalAge}}</p>
+                  <p><strong>Exames requeridos: </strong></p>
+                  <ul>
+                    <li *ngFor="let exam of licenseCategory.requirement.exams">{{exam.description}}</li>
+                  </ul>
+                  <button mat-button (click)="initLicense(licenseCategory)" class="green">Iniciar processo</button>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+        </mat-grid-list>
+      </mat-tab>
+
+      <mat-tab label="Licenças Aprovadas">
+        <mat-grid-list cols="4" rowHeight="30em">
+          <mat-grid-tile-header>LICENÇAS APROVADA</mat-grid-tile-header>
+          <mat-grid-tile [colspan]="2">
+            <mat-card>
+              <mat-card-title>titulo do card</mat-card-title>
+              <mat-card-content>conteudo</mat-card-content>
+            </mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-tab>
+
+      <mat-tab label="Processos de Licença em Andamento">
+        <mat-grid-list cols="4" rowHeight="30em">
+          <div *ngFor="let license of myProgressLicenses">
+            <mat-grid-tile [colspan]="2">
+              <mat-card>
+                <mat-card-title>{{license.category.description}}</mat-card-title>
+                <mat-card-content>
+                  <p><strong>Nome: </strong>{{license.user.name}}</p>
+                  <p><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
+                  <p><strong>Numero de serie: </strong>{{license.serial}}</p>
+                  <p><strong>Descrição: </strong>{{license.description}}</p>
+                  <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
+                  <mat-card-title>Exames requeridos para a licença</mat-card-title>
+                  <div *ngFor="let exam of license.category.requirement.exams">
+                    <p>{{exam.description}}</p>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

@@ -6,9 +6,13 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
-  MatDatepickerModule, MatExpansionModule, MatGridListModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
   MatIconModule,
-  MatInputModule, MatListModule,
+  MatInputModule,
+  MatListModule,
   MatMenuModule,
   MatNativeDateModule,
   MatRadioModule,
@@ -23,7 +27,6 @@ import {SharedFormComponent} from './components/shared-form/shared-form.componen
 import {ExaminatorService} from './services/examinator.service';
 import {UserService} from './services/user.service';
 import {RoutesClientUtil} from './routes-api/routes-client.util';
-import {CampoControlErrorComponent} from './components/shared-campo-control-error/shared-campo-control-error.component';
 import {ExamCategoryService} from './services/exam-category.service';
 import {LicenseCategoryService} from './services/license-category.service';
 import {GenderService} from './services/gender.service';
@@ -54,6 +57,8 @@ import {ExamService} from "./services/exam.service";
 import {SharedExamEvaluateComponent} from './components/shared-exam-evaluate/shared-exam-evaluate.component';
 import {RequirementService} from "./services/requirement.service";
 import {LicenseService} from "./services/license.service";
+import {SharedDialogComponent} from './components/shared-dialog/shared-dialog.component';
+import {SharedHelloComponent} from './components/shared-hello/shared-hello.component';
 
 @NgModule({
   imports: [
@@ -76,10 +81,10 @@ import {LicenseService} from "./services/license.service";
     MatListModule,
     MatExpansionModule,
     MatGridListModule,
+    MatDialogModule,
   ],
   declarations: [
     CamelCasePipe,
-    CampoControlErrorComponent,
     CpfPipe,
     CpfDirective,
     ReversePipe,
@@ -93,6 +98,8 @@ import {LicenseService} from "./services/license.service";
     SharedUserAddressListComponent,
     SharedUserUpdateComponent,
     SharedExamEvaluateComponent,
+    SharedDialogComponent,
+    SharedHelloComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -117,6 +124,9 @@ import {LicenseService} from "./services/license.service";
     AuthInstructorGuard,
     AuthPsychologistGuard,
   ],
+  entryComponents: [
+    SharedDialogComponent
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -137,6 +147,7 @@ import {LicenseService} from "./services/license.service";
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatDialogModule,
     MatExpansionModule,
     MatGridListModule,
     CpfPipe,
@@ -152,6 +163,8 @@ import {LicenseService} from "./services/license.service";
     SharedUserAddressListComponent,
     SharedUserUpdateComponent,
     SharedExamEvaluateComponent,
+    SharedHelloComponent,
+    SharedDialogComponent,
   ]
 })
 export class SharedModule {

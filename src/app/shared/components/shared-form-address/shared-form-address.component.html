@@ -1,5 +1,6 @@
-<div>
-  <h3 class="center">Seu endereço</h3>
+<mat-card>
+  <mat-card-title>Seu endereço</mat-card-title>
+  <mat-card-content>
   <form disabled="disable" [formGroup]="form" (ngSubmit)="addAddress()">
     <mat-form-field>
       <mat-select (change)="onCountryChose($event)"
@@ -54,8 +55,9 @@
       <input matInput id="rua" placeholder="Endereço" formControlName="street">
     </mat-form-field>
 
-    <div class="row center">
-      <button class="btn" type="submit">Cadastrar</button>
-    </div>
+
+      <button mat-button="primary" type="submit">Cadastrar</button>
+
   </form>
-</div>
+  </mat-card-content>
+</mat-card>

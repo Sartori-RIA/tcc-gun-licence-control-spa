@@ -1,4 +1,20 @@
 <mat-toolbar color="primary">
   <span routerLink="/">TCC-TSI</span>
-  <app-menu [showMenu]="showMenu"></app-menu>
+  <span flex></span>
+  <span class="go-to-right"></span>
+  <mat-nav-list>
+    <div>
+      <span routerLinkActive="active"><a routerLink="/duvidas">Duvidas?</a></span>
+      <span routerLinkActive="active"><a routerLink="/validador">Validador</a></span>
+      <span routerLinkActive="active"><a routerLink="/login" (click)="onClick()">
+    {{ authService.checkLogin() ? 'Logout' : 'Login'}}</a></span>
+    </div>
+    <div>
+      <span *ngIf="isCivil()" routerLinkActive="active"><a routerLink="/civil">Minha página</a></span>
+      <span *ngIf="isInstructor()" routerLinkActive="active"><a routerLink="/instrutor">Minha página</a></span>
+      <span *ngIf="isPsychologist()" routerLinkActive="active"><a routerLink="/psicologo">Minha página</a></span>
+      <span *ngIf="isDelegate()" routerLinkActive="active"><a routerLink="/delegado">Minha página</a></span>
+      <span *ngIf="isAdmin()" routerLinkActive="active"><a routerLink="/admin">Minha página</a></span>
+    </div>
+  </mat-nav-list>
 </mat-toolbar>
