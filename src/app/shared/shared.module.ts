@@ -14,10 +14,10 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatNativeDateModule,
+  MatNativeDateModule, MatProgressBarModule, MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule,
+  MatSidenavModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -59,6 +59,9 @@ import {RequirementService} from "./services/requirement.service";
 import {LicenseService} from "./services/license.service";
 import {SharedDialogComponent} from './components/shared-dialog/shared-dialog.component';
 import {SharedHelloComponent} from './components/shared-hello/shared-hello.component';
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import { AddressComponent } from './components/address/address.component';
+import {DateConverter} from "./util/date-converter";
 
 @NgModule({
   imports: [
@@ -82,6 +85,10 @@ import {SharedHelloComponent} from './components/shared-hello/shared-hello.compo
     MatExpansionModule,
     MatGridListModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatTableModule,
+    NgxDatatableModule,
   ],
   declarations: [
     CamelCasePipe,
@@ -100,9 +107,11 @@ import {SharedHelloComponent} from './components/shared-hello/shared-hello.compo
     SharedExamEvaluateComponent,
     SharedDialogComponent,
     SharedHelloComponent,
+    AddressComponent,
   ],
   providers: [
     RoutesClientUtil,
+    DateConverter,
     UserService,
     ExaminatorService,
     ExamCategoryService,
@@ -150,6 +159,10 @@ import {SharedHelloComponent} from './components/shared-hello/shared-hello.compo
     MatDialogModule,
     MatExpansionModule,
     MatGridListModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatTableModule,
+    NgxDatatableModule,
     CpfPipe,
     CpfDirective,
     ReversePipe,
@@ -165,6 +178,7 @@ import {SharedHelloComponent} from './components/shared-hello/shared-hello.compo
     SharedExamEvaluateComponent,
     SharedHelloComponent,
     SharedDialogComponent,
+    AddressComponent,
   ]
 })
 export class SharedModule {

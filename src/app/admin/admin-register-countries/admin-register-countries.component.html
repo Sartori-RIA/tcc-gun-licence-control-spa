@@ -12,7 +12,11 @@
     </form>
   </mat-card-content>
 </mat-card>
-<mat-list>
-  <mat-list-item *ngFor="let country of countryList"> {{country.description}}</mat-list-item>
-</mat-list>
+
+<div>
+  <ngx-datatable
+    [rows]="rows"
+    [columns]="columns">
+  </ngx-datatable>
+</div>
 

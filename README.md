@@ -22,5 +22,15 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 # Author
 + **Lucas Antonio Ramos Sartori**
 
-#IDE Utilizada
+# IDE Utilizada
 + **Intellij IDEA Ultimate**
+
+# Ferramentas utilizadas
+
++ **Angular 5.x**
++ **TypeScript 2.4.x**
++ **Angular Material 2**
++ **Flex Layout**
++ **ngx-charts**
++ **ngx-datatable**
++ **angular2-google-chart**

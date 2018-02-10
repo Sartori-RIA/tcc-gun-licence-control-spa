@@ -17,17 +17,30 @@ export class AdminRegisterCountriesComponent implements OnInit {
   form: FormGroup;
   private model: Country;
 
+  rows:CountryTable[] = [];
+  columns = [];
+
   constructor(private formBuilder: FormBuilder,
               private countryService: CountryService,
               private dialog: MatDialog) {
   }
+
 
   ngOnInit() {
     this.model = new Country();
     this.form = this.formBuilder.group({
       name: [null, Validators.required]
     });
-    this.countryService.index().subscribe(res => this.countryList = res);
+    this.countryService.index().subscribe(res =>{
+      this.countryList = res;
+      for(let item of res)
+        this.rows.push({id: item.id, name: item.description})
+    });
+    this.columns = [
+      { prop: 'id' },
+      { name: 'description'},
+    ];
+
   }
 
   openDialog(title: string, message: string, confirmBtn: string) {
@@ -46,6 +59,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
       this.model.description = this.form.value.name;
       this.countryService.save(this.model).subscribe(res => {
         this.countryList.push(res);
+        this.rows.push({id: res.id, name: res.description});
         this.form.patchValue({
           name: null
         });
@@ -56,4 +70,9 @@ export class AdminRegisterCountriesComponent implements OnInit {
     }
   }
 
+}
+
+export interface CountryTable{
+  id: number;
+  name: string;
 }

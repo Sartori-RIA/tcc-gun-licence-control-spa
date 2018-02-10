@@ -8,6 +8,7 @@ import {Exam} from "../../model/exam";
 import {ExamService} from "../../services/exam.service";
 import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {DateConverter} from "../../util/date-converter";
 
 @Component({
   selector: 'app-shared-exam-evaluate',
@@ -56,6 +57,10 @@ export class SharedExamEvaluateComponent implements OnInit {
     });
   }
 
+  formatDate(date){
+    return DateConverter.convertDate(date);
+  }
+
   searchByCPF() {
     this.userService.findByOneProperty("cpf", this.form.value.cpf).subscribe(res => {
       this.model = res;
@@ -63,11 +68,15 @@ export class SharedExamEvaluateComponent implements OnInit {
   }
 
   sendExam() {
-    if (this.form.valid) {
+    if (this.examForm.valid) {
       this.mountExam();
       this.examService.save(this.exam).subscribe(res => {
-        window.location.reload();
-      }, error2 => console.log(JSON.stringify(error2)))
+       this.openDialog("Sucesso","Exame Salvo com Sucesso","OK");
+       this.onResetForm();
+      }, () => this.openDialog("Erro","Erro ao Salvar o Exame","OK"));
+    }else{
+      this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
+      this.formDirty(this.form);
     }
   }
 
@@ -78,6 +87,10 @@ export class SharedExamEvaluateComponent implements OnInit {
     this.exam.status = this.examForm.value.status;
     this.exam.civil = this.model;
     this.exam.examinator = this.examinator;
+  }
+
+  private formDirty(form: FormGroup): void {
+    Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
   }
 
   onResetForm() {

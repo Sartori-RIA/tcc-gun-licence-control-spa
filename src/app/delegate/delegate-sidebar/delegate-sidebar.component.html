@@ -1,7 +1,7 @@
-<mat-sidenav-container>
-  <mat-sidenav-content *ngFor="let menuItem of menu"
+<mat-nav-list appAccordion>
+  <mat-list-item *ngFor="let menuItem of menu"
                        routerLink="{{menuItem.route}}"
                        routerLinkActive="active">
     {{menuItem.title}}
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-list-item>
+</mat-nav-list>

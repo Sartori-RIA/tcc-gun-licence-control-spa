@@ -24,19 +24,16 @@
 </mat-card>
 <mat-grid-list cols="4">
   <mat-grid-tile [colspan]="2">
-    <mat-list>
-      <mat-list-item *ngFor="let country of countries"
-                     (click)="onCountryClick(country)">
-        {{country.description}}
-      </mat-list-item>
-    </mat-list>
+      <ngx-datatable
+        [rows]="rowsCountry"
+        [columns]="columnsCountry">
+      </ngx-datatable>
+
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="2">
-    <mat-list>
-      <mat-list-item
-        *ngFor="let state of statesList">
-        {{state.description}}
-      </mat-list-item>
-    </mat-list>
+  <mat-grid-tile *ngIf="rowsState.length < 0" [colspan]="2">
+    <ngx-datatable
+      [rows]="rowsState"
+      [columns]="columnsState">
+    </ngx-datatable>
   </mat-grid-tile>
 </mat-grid-list>

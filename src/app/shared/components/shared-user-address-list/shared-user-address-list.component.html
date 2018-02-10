@@ -1,15 +1,15 @@
-<div class="col s4 m4">
-  <mat-card>
+<mat-card>
+  <mat-card-content>
     <mat-card-title>Endereço</mat-card-title>
-    <mat-card-content>
-      <p> CEP: {{model.cep}}</p>
-      <p> Pais: {{model.city.state.country.description}}</p>
-      <p> Estado: {{model.city.state.description}}</p>
-      <p> Cidade: {{model.city.description}}</p>
-      <p> Bairro: {{model.neighborhood}}</p>
-      <p> Rua: {{model.street}}</p>
-      <p> Nº: {{model.addressNumber}}</p>
-      <p> Complemento: {{model.complement}}</p>
-    </mat-card-content>
-  </mat-card>
-</div>
+
+    <p><strong>CEP:</strong> {{model.cep}}</p>
+    <p><strong>Pais:</strong> {{model.city.state.country.description}}</p>
+    <p><strong>Estado:</strong> {{model.city.state.description}}</p>
+    <p><strong>Cidade:</strong> {{model.city.description}}</p>
+    <p><strong>Bairro:</strong> {{model.neighborhood}}</p>
+    <p><strong>Rua:</strong> {{model.street}}</p>
+    <p><strong>Nº:</strong> {{model.addressNumber}}</p>
+    <p><strong>Complemento:</strong> {{model.complement}}</p>
+  </mat-card-content>
+</mat-card>
+

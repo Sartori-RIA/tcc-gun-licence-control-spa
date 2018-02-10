@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../model/user";
 import {Gender} from "../../model/gender";
+import {DateConverter} from "../../util/date-converter";
 
 @Component({
   selector: 'app-shared-user-detail',
@@ -19,4 +20,7 @@ export class SharedUserDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  formatDate(date){
+    return DateConverter.convertDate(date);
+  }
 }

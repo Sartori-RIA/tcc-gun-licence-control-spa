@@ -1,12 +1,16 @@
 <mat-card>
-  <mat-card-title>Dados pessoais</mat-card-title>
-  <mat-card-subtitle>Dados de: {{model.name}}</mat-card-subtitle>
   <mat-card-content>
+    <mat-card-title>Dados pessoais</mat-card-title>
+    <mat-card-subtitle>Dados de: {{model.name}}</mat-card-subtitle>
     <p> CPF: {{model.cpf}}</p>
     <p> Sexo: {{gender.description}}</p>
-    <p> Data de Nascimento: {{model.dateOfBirth}}</p>
+    <p> Data de Nascimento: {{formatDate(model.dateOfBirth)}}</p>
     <p> E-mail: {{model.email}}</p>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let address of model.addressList">
+        <app-shared-user-address-list [model]="address">
+        </app-shared-user-address-list>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-card-content>
 </mat-card>
-
-<app-shared-user-address-list *ngFor="let address of model.addressList" [model]="address" ></app-shared-user-address-list>

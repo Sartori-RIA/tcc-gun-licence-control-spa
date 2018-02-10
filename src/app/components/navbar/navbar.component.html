@@ -7,7 +7,7 @@
       <span routerLinkActive="active"><a routerLink="/duvidas">Duvidas?</a></span>
       <span routerLinkActive="active"><a routerLink="/validador">Validador</a></span>
       <span routerLinkActive="active"><a routerLink="/login" (click)="onClick()">
-    {{ authService.checkLogin() ? 'Logout' : 'Login'}}</a></span>
+    {{ authService.checkLogin() ? 'Sair' : 'Entrar'}}</a></span>
     </div>
     <div>
       <span *ngIf="isCivil()" routerLinkActive="active"><a routerLink="/civil">Minha página</a></span>

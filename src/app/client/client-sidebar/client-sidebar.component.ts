@@ -14,7 +14,7 @@ export class ClientSidebarComponent implements OnInit {
     {route: 'enderecos', title: 'Meus Endereços'},
     {route: 'licencas', title: 'Minhas Licenças'},
     {route: 'atualizar', title: 'Atualizar meus dados'},
-  ]
+  ];
 
   constructor() {
   }

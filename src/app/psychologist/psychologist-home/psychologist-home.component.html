@@ -1,13 +1,17 @@
-<mat-card>
-  <app-shared-hello [currentUserName]="currentUserName"></app-shared-hello>
-  <mat-card-content>
-    <mat-grid-list cols="12" rowHeight="40em">
-      <mat-grid-tile [colspan]="3">
-        <app-psychologist-sidebar></app-psychologist-sidebar>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="9">
-        <router-outlet></router-outlet>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-card-content>
-</mat-card>
+<div fxLayout="row">
+  <div fxFlex.gt-sm="100%" >
+    <mat-card>
+      <mat-card-content>
+        <app-shared-hello [currentUserName]="currentUserName"></app-shared-hello>
+        <mat-grid-list cols="4" rowHeight="30em">
+          <mat-grid-tile [colspan]="1">
+            <app-psychologist-sidebar></app-psychologist-sidebar>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="3" [rowspan]="2">
+            <router-outlet></router-outlet>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

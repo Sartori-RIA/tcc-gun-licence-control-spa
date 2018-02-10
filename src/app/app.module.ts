@@ -21,6 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {InstructorModule} from "./instructor/instructor.module";
 import {PsychologistModule} from "./psychologist/psychologist.module";
 import 'hammerjs';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import 'hammerjs';
     HomeComponent,
     NotFoundComponent,
     LoginComponent,
-    RegisterYourselfComponent
+    RegisterYourselfComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import 'hammerjs';
     ValidatorModule,
     AuthModule,
     InstructorModule,
-    PsychologistModule
+    PsychologistModule,
+    FlexLayoutModule
   ],
   exports: [
     SharedModule
