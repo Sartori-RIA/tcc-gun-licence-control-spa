@@ -13,9 +13,17 @@ export class User {
               public gender?: Gender,
               public dateOfBirth?: Date,
               public cpf?: string,
+              public rg?: string,
+              public rgIssuingBody?: string,
+              public rgUf?: string,
               public password?: string,
               public email?: string,
               public role?: UserRole,
+              public mothersName?: string,
+              public fathersName?: string,
+              public nationality?: string,
+              public naturalness?: string,
+              public criminalRecors?: boolean,
               public addressList?: Address[]) {
   }
 }

@@ -47,20 +47,12 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
+      alert(JSON.stringify(this.model));
       this.userService.save(this.model).subscribe(() => {
         if (this.isClient)
           this.route.navigate(['/login']);
-        this.form.patchValue({
-          name: null,
-          gender: null,
-          password: null,
-          email: null,
-          cpf: null,
-          dateOfBirth: null,
-          role: null
-        });
+        this.resetForm();
         this.openDialog("Sucesso", "Cadastrado com sucesso", "OK")
-
       }, () => this.openDialog("Erro", "Erro ao Cadastrar Usuario", "OK"));
     } else {
       this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
@@ -79,6 +71,25 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
     });
   }
 
+  private resetForm(): void{
+    this.form.patchValue({
+      name: null,
+      gender: null,
+      password: null,
+      email: null,
+      cpf: null,
+      dateOfBirth: null,
+      rg: null,
+      rgIssuingBody: null,
+      rgUF: null,
+      mothersName: null,
+      fathersName: null,
+      nationality: null,
+      naturalness: null,
+      role: null
+    });
+  }
+
   private buildReactiveForm(): void {
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
@@ -86,7 +97,14 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
       password: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       cpf: [null, Validators.required],
+      rg: [null, Validators.required],
+      rgIssuingBody: [null, Validators.required],
+      rgUF: [null, Validators.required],
       dateOfBirth: [null, Validators.required],
+      mothersName: [null, Validators.required],
+      fathersName: [null, Validators.required],
+      nationality: [null, Validators.required],
+      naturalness: [null, Validators.required],
       role: [null]
     });
   }
@@ -99,6 +117,13 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
     this.model.password = this.form.value.password;
     this.model.email = this.form.value.email;
     this.model.role = this.form.value.role;
+    this.model.rg = this.form.value.rg;
+    this.model.rgIssuingBody = this.form.value.rgIssuingBody;
+    this.model.rgUf = this.form.value.rgUF;
+    this.model.mothersName = this.form.value.mothersName;
+    this.model.fathersName = this.form.value.fathersName;
+    this.model.nationality = this.form.value.nationality;
+    this.model.naturalness = this.form.value.naturalness;
   }
 
   private formDirty(form: FormGroup): void {

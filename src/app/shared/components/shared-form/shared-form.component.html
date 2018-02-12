@@ -6,6 +6,14 @@
         <input matInput type="text" id="name" formControlName="name"
                placeholder="Nome Completo">
       </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" id="mothersName" formControlName="mothersName"
+               placeholder="Nome da mãe">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" id="fathersName" formControlName="fathersName"
+               placeholder="Nome do pai">
+      </mat-form-field>
 
       <mat-form-field>
         <mat-select placeholder="Informe o Sexo" formControlName="gender" id="gender">
@@ -27,6 +35,31 @@
         <input matInput #cpf minlength="11" type="text" maxlength="11" id="cpf" formControlName="cpf"
                placeholder="CPF">
         <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #rg minlength="11" type="text" maxlength="11" id="cpf" formControlName="rg"
+               placeholder="RG">
+        <mat-hint align="end">{{rg.value.length}} / 11</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" id="rgIssuingBody" formControlName="rgIssuingBody"
+               placeholder="Orgão Emissor do RG">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" id="rgUF" formControlName="rgUF"
+               placeholder="UF do RG">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" id="nationality" formControlName="nationality"
+               placeholder="Nacionalidade">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" id="naturalness" formControlName="naturalness"
+               placeholder="Naturalidade">
       </mat-form-field>
 
       <mat-form-field>
