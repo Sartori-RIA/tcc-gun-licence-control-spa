@@ -1,4 +1,5 @@
 <mat-card>
+  <mat-card-title>Cadastro de Exames</mat-card-title>
   <mat-card-content>
     <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field>
@@ -12,10 +13,42 @@
           <mat-option *ngFor="let type of roles" [value]="type">{{type.description}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-button="primary" type="submit">Cadastrar</button>
+      <button mat-raised-button color="primary"  type="submit">Cadastrar</button>
     </form>
   </mat-card-content>
 </mat-card>
-<mat-list *ngIf="exams != null">
-  <mat-list-item *ngFor="let exam of exams">{{exam.description}}</mat-list-item>
-</mat-list>
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Exames Cadastrados</mat-card-title>
+    <div class="table">
+      <div class="row">
+        <div class="cell">
+          <ngx-datatable class="material"
+                         [scrollbarV]="true"
+                         [scrollbarH]="true"
+                         [rows]="exams"
+          >
+            <ngx-datatable-column
+              name="ID"
+              prop="id"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of exams">{{row.id}}</div>
+            </ngx-datatable-column>
+            <ngx-datatable-column
+              name="Descrição"
+              prop="description"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of exams">{{row.description}}</div>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

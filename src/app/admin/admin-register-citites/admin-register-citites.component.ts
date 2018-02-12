@@ -47,14 +47,14 @@ export class AdminRegisterCititesComponent implements OnInit {
         this.model.state = state;
         this.model.description = this.form.value.city;
         this.cityService.save(this.model).subscribe(res => {
-         this.citiesList.push(res);
-         this.form.patchValue({
-           country: null,
-           state: null,
-           city: null
-         });
-         this.openDialog("Sucesso","Cidade Cadastrada com Sucesso", "OK")
-        }, () => this.openDialog("ERRO","Erro ao Cadastrar", "OK"));
+          this.citiesList.push(res);
+          this.form.patchValue({
+            country: null,
+            state: null,
+            city: null
+          });
+          this.openDialog("Sucesso", "Cidade Cadastrada com Sucesso", "OK")
+        }, () => this.openDialog("ERRO", "Erro ao Cadastrar", "OK"));
       });
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
@@ -64,11 +64,14 @@ export class AdminRegisterCititesComponent implements OnInit {
     this.stateService.listByOneProperty("country.id", country.value.id).subscribe(res => this.states = res);
   }
 
-  onCountryClick(country: Country): void {
-    this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => this.statesList = res);
+  onCountryClick(event): void {
+    for (let country of event.selected)
+      this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => this.statesList = res);
   }
-  onStateClick(state: State): void {
-    this.cityService.listByOneProperty("state.id", String(state.id)).subscribe(res => this.citiesList = res);
+
+  onStateClick(event): void {
+    for (let state of event.selected)
+      this.cityService.listByOneProperty("state.id", String(state.id)).subscribe(res => this.citiesList = res);
   }
 
   openDialog(title: string, message: string, confirmBtn: string) {

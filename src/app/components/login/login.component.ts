@@ -3,6 +3,8 @@ import {User} from "../../shared/model/user";
 import {AuthService} from "../../auth/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -36,7 +39,6 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("currentUserID", res.id.toString());
           sessionStorage.setItem("currentUserCPF", res.cpf);
           sessionStorage.setItem("currentUserRole", res.role.description);
-          console.log(res.role.description);
           if (res.role.description == "ADMIN")
             this.router.navigate(['/admin']);
           if (res.role.description == "DELEGADO")
@@ -49,8 +51,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/civil']);
 
         })
-      }, error => console.log("ERRRRROR =>" + JSON.stringify(error))
-    )
+      }, () => this.openDialog("Erro","Usuario ou Senha incorretos","OK"));
   }
 
 
@@ -60,4 +61,14 @@ export class LoginComponent implements OnInit {
       password: [null, Validators.required],
     })
   }
+
+openDialog(title: string, message: string, confirmBtn: string) {
+  let dialog = this.dialog.open(SharedDialogComponent, {
+    width: '250px',
+    data: {title: title, message: message, confirmButton: confirmBtn}
+  });
+
+  dialog.afterClosed().subscribe(result => {
+  });
+}
 }

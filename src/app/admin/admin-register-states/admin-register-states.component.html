@@ -1,4 +1,5 @@
 <mat-card>
+  <mat-card-title>Cadastro de Estados</mat-card-title>
   <mat-card-content>
     <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
 
@@ -18,22 +19,65 @@
                placeholder="Sigla do Estado">
       </mat-form-field>
 
-      <button mat-button="primary" type="submit">Cadastrar</button>
+      <button mat-raised-button color="primary"  type="submit">Cadastrar</button>
     </form>
   </mat-card-content>
 </mat-card>
-<mat-grid-list cols="4">
-  <mat-grid-tile [colspan]="2">
-      <ngx-datatable
-        [rows]="rowsCountry"
-        [columns]="columnsCountry">
-      </ngx-datatable>
 
-  </mat-grid-tile>
-  <mat-grid-tile *ngIf="rowsState.length < 0" [colspan]="2">
-    <ngx-datatable
-      [rows]="rowsState"
-      [columns]="columnsState">
-    </ngx-datatable>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Estados já cadastrados</mat-card-title>
+    <div class="table">
+      <div class="row">
+        <div class="cell">
+          <ngx-datatable class="material"
+                         [scrollbarV]="true"
+                         [scrollbarH]="true"
+                         [rows]="countries"
+                         [selectionType]="'single'"
+                         (select)="onCountryClick($event)"
+          >
+
+             <ngx-datatable-column
+                  name="Descrição"
+                  prop="description"
+                  [draggable]="true"
+                  [resizeable]="true"
+                  [canAutoResize]="true"
+                  [sortable]="true">
+
+                  <div *ngFor="let row of countries">{{row.description}}</div>
+                </ngx-datatable-column>
+
+          </ngx-datatable>
+        </div>
+        <div class="cell">
+          <ngx-datatable class="material"
+                         [scrollbarV]="true"
+                         [scrollbarH]="true"
+                         [rows]="statesList"
+          >
+            <ngx-datatable-column
+              name="Descrição"
+              prop="description"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of statesList">{{row.description}}</div>
+            </ngx-datatable-column>
+            <ngx-datatable-column
+              name="Sigla"
+              prop="abbrev"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of statesList">{{row.abbrev}}</div>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

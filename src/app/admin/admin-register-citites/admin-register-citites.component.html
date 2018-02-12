@@ -1,4 +1,5 @@
 <mat-card>
+  <mat-card-title>Cadastro de Cidades</mat-card-title>
   <mat-card-content>
     <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
 
@@ -25,37 +26,103 @@
                placeholder="Nome da Cidade">
       </mat-form-field>
 
-      <button mat-button="primary" type="submit">Cadastrar</button>
+      <button mat-raised-button color="primary" type="submit">Cadastrar</button>
 
     </form>
   </mat-card-content>
 </mat-card>
 
-<mat-grid-list cols="6">
-  <mat-grid-tile [colspan]="2">
-    <mat-list>
-      <mat-list-item
-        *ngFor="let country of countries"
-        (click)="onCountryClick(country)">
-        {{country.description}}
-      </mat-list-item>
-    </mat-list>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2">
-    <mat-list>
-      <mat-list-item
-        *ngFor="let state of statesList"
-        (click)="onStateClick(state)">
-        {{state.description}}
-      </mat-list-item>
-    </mat-list>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2">
-    <mat-list>
-      <mat-list-item
-        *ngFor="let city of citiesList">
-        {{city.description}}
-      </mat-list-item>
-    </mat-list>
-  </mat-grid-tile>
-</mat-grid-list>
+
+<mat-grid-tile [colspan]="2">
+  <mat-list>
+    <mat-list-item
+      *ngFor="let state of statesList"
+      (click)="onStateClick(state)">
+      {{state.description}}
+    </mat-list-item>
+  </mat-list>
+</mat-grid-tile>
+<mat-grid-tile [colspan]="2">
+  <mat-list>
+    <mat-list-item
+      *ngFor="let city of citiesList">
+      {{city.description}}
+    </mat-list-item>
+  </mat-list>
+</mat-grid-tile>
+
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Cidades cadastrados</mat-card-title>
+    <div class="table">
+      <div class="row">
+        <div class="cell">
+          <ngx-datatable class="material"
+                         [scrollbarV]="true"
+                         [scrollbarH]="true"
+                         [rows]="countries"
+                         [selectionType]="'single'"
+                         (select)="onCountryClick($event)"
+          >
+            <ngx-datatable-column
+              name="Descrição"
+              prop="description"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of countries">{{row.description}}</div>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+        <div class="cell">
+          <ngx-datatable class="material"
+                         [scrollbarV]="true"
+                         [scrollbarH]="true"
+                         [rows]="statesList"
+                         [selectionType]="'single'"
+                         (select)="onStateClick($event)"
+          >
+
+            <ngx-datatable-column
+              name="Sigla"
+              prop="abbrev"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of statesList">{{row.abbrev}}</div>
+            </ngx-datatable-column>
+            <ngx-datatable-column
+              name="Descrição"
+              prop="description"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of statesList">{{row.description}}</div>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+        <div class="cell">
+          <ngx-datatable class="material"
+                         [scrollbarV]="true"
+                         [scrollbarH]="true"
+                         [rows]="citiesList"
+          >
+
+            <ngx-datatable-column
+              name="Descrição"
+              prop="description"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of statesList">{{row.description}}</div>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

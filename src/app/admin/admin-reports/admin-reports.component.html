@@ -1,15 +1,23 @@
 <mat-tab-group>
   <mat-tab (click)="onChange('listLicensesCategories')" label="Listar Categorias de Licenças">
     <div *ngIf="licensesCategories !=null">
-      <mat-list role="list">
-        <mat-list-item *ngFor="let model of licensesCategories" role="listitem">{{model.description}}</mat-list-item>
-      </mat-list>
+      <mat-card>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item *ngFor="let model of licensesCategories" role="listitem">{{model.description}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
     </div>
   </mat-tab>
 
   <mat-tab label="Listar Licenças"></mat-tab>
 
   <mat-tab label="Listar Usuario">
-    <app-shared-report-users-list></app-shared-report-users-list>
+    <mat-card>
+      <mat-card-content>
+        <app-shared-report-users-list></app-shared-report-users-list>
+      </mat-card-content>
+    </mat-card>
   </mat-tab>
 </mat-tab-group>

@@ -1,5 +1,6 @@
 <mat-card>
   <mat-card-content>
+    <mat-card-title>Cadastro de Paises</mat-card-title>
     <form disabled="disable" [formGroup]="form">
 
       <mat-form-field>
@@ -7,16 +8,34 @@
                placeholder="Nome do pais">
       </mat-form-field>
 
-      <button mat-button="primary" (click)="onSubmit()" type="submit">Cadastrar</button>
+      <button mat-raised-button color="primary"  (click)="onSubmit()" type="submit">Cadastrar</button>
 
     </form>
   </mat-card-content>
 </mat-card>
-
-<div>
-  <ngx-datatable
-    [rows]="rows"
-    [columns]="columns">
-  </ngx-datatable>
-</div>
-
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Paises Cadastrados</mat-card-title>
+    <div class="table">
+      <div class="row">
+        <div class="cell">
+          <ngx-datatable class="material"
+                         [scrollbarV]="true"
+                         [scrollbarH]="true"
+                         [rows]="countryList"
+          >
+            <ngx-datatable-column
+              name="Descrição"
+              prop="description"
+              [draggable]="true"
+              [resizeable]="true"
+              [canAutoResize]="true"
+              [sortable]="true">
+              <div *ngFor="let row of countryList">{{row.description}}</div>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -17,12 +17,8 @@ export class AdminRegisterStatesComponent implements OnInit {
 
   form: FormGroup;
   model: State;
-  countries: Country[];
-  statesList: State[];
-  rowsCountry: CountryTable[] = [];
-  columnsCountry = [];
-  rowsState: StateTable[] = [];
-  columnsState = [];
+  countries: Country[] = [];
+  statesList: State[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private stateService: StateService,
@@ -32,34 +28,21 @@ export class AdminRegisterStatesComponent implements OnInit {
 
   ngOnInit() {
     this.model = new State();
-    this.countryService.index().subscribe(res =>{
+    this.countryService.index().subscribe(res => {
       this.countries = res;
-      for(let item of res)
-        this.rowsCountry.push({id: item.id, name: item.description})
     });
     this.form = this.formBuilder.group({
       country: [null, Validators.required],
       name: [null, Validators.required],
       abbrev: [null, Validators.required]
     });
-    this.columnsCountry = [
-      {prop: 'id'},
-      {name: 'description'},
-    ];
-    this.columnsState = [
-      {prop: 'id'},
-      {name: 'description'},
-      {name: 'abbrev'},
-    ];
   }
 
-   onCountryClick(country): void {
-    console.log(country)
-  //   this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => {
-  //     this.statesList = res;
-  //     for(let item of res)
-  //       this.rowsState.push({id: item.id, name: item.description, abbrev: item.abbrev })
-  //   });
+  onCountryClick(event): void {
+    for (let country of event.selected)
+      this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => {
+        this.statesList = res;
+      });
   }
 
   onSubmit(): void {
@@ -91,15 +74,6 @@ export class AdminRegisterStatesComponent implements OnInit {
     dialog.afterClosed().subscribe(result => {
     });
   }
+
 }
 
-export interface CountryTable {
-  id: number;
-  name: string;
-}
-
-export interface StateTable {
-  id: number;
-  name: string;
-  abbrev: string;
-}

@@ -1,42 +1,40 @@
-<mat-grid-list cols="12" rowHeight="100em">
-  <mat-grid-tile [colspan]="12">
-    <mat-card>
-      <mat-card-content>
-        <form disabled="disable" [formGroup]="form">
+<mat-card>
+  <mat-card-title>Cadastro de Categorias de Licenças</mat-card-title>
+  <mat-card-content>
+    <form disabled="disable" [formGroup]="form">
 
-          <mat-input-container class="midle-width">
-            <span matPrefix>Tipo da Licença: </span>
-            <input matInput type="text" id="name" formControlName="description">
-          </mat-input-container>
+      <mat-input-container class="midle-width">
+        <span matPrefix>Tipo da Licença: </span>
+        <input matInput type="text" id="name" formControlName="description">
+      </mat-input-container>
 
-          <mat-input-container class="midle-width">
-            <span matPrefix>Idade Minima: </span>
-            <input matInput type="text" id="minimalAge" formControlName="minimalAge">
-          </mat-input-container>
+      <mat-input-container class="midle-width">
+        <span matPrefix>Idade Minima: </span>
+        <input matInput type="text" id="minimalAge" formControlName="minimalAge">
+      </mat-input-container>
 
-          <div formArrayName="exams">
-            <div *ngFor="let exam of form.controls.exams.controls; let i = index">
-              <mat-form-field>
-                <span matPrefix>Exame: </span>
-                <mat-select formControlName="{{i}}" id="exam_{{i}}">
-                  <mat-option placeholder="Exame Necessário" *ngFor="let exam  of examsCategories"
-                              [value]="exam">{{ exam?.description }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <button mat-button="primary" (click)="onAddExam()">Adicionar Exame</button>
-          <button mat-button="primary" (click)="onSubmit()" type="submit">Cadastrar</button>
-        </form>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-
-  <mat-grid-tile [colspan]="12">
-    <mat-grid-list cols="4">
-      <mat-grid-tile [colspan]="2">
-        <mat-card *ngFor="let licenceCategory of licensesCategoriesList">
+      <div formArrayName="exams">
+        <div *ngFor="let exam of form.controls.exams.controls; let i = index">
+          <mat-form-field>
+            <span matPrefix>Exame: </span>
+            <mat-select formControlName="{{i}}" id="exam_{{i}}">
+              <mat-option placeholder="Exame Necessário" *ngFor="let exam  of examsCategories"
+                          [value]="exam">{{ exam?.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" (click)="onAddExam()">Adicionar Exame</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Cadastrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<div fxFlex="column">
+  <mat-list>
+    <mat-list-item *ngFor="let licenceCategory of licensesCategoriesList">
+      <div fxFlex="50%">
+        <mat-card>
           <mat-card-title>{{licenceCategory.description}}</mat-card-title>
           <mat-card-content>
             <h3>Requisitos</h3>
@@ -47,8 +45,10 @@
             </ul>
           </mat-card-content>
         </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-grid-tile>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
 
-</mat-grid-list>
+
+

@@ -55,7 +55,6 @@ export class AdminRegisterLicensesComponent implements OnInit {
       this.mountModel();
       this.requirementService.save(this.requirements).subscribe(res => {
         this.model.requirement = res;
-        console.log(JSON.stringify(this.model));
         this.licenseCategoryService.save(this.model).subscribe(
           () => {
             this.form.patchValue({
@@ -87,3 +86,4 @@ export class AdminRegisterLicensesComponent implements OnInit {
     this.requirements.minimalAge = this.form.value.minimalAge;
   }
 }
+

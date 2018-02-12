@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
 @Component({
@@ -9,11 +9,17 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 })
 export class SharedDialogComponent implements OnInit {
 
+  classTitle: string;
+
   constructor(public dialogRef: MatDialogRef<SharedDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {
+    if (this.data.title == 'Sucesso')
+      this.classTitle = "success-bg";
+    if (this.data.title == "Erro")
+      this.classTitle = "erro-bg";
   }
 
   onNoClick(): void {

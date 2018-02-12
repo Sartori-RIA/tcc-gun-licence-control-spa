@@ -6,7 +6,7 @@
         <span matPrefix>CPF: </span>
         <input (change)="onResetForm()" formControlName="cpf" matInput type="number" class="example-right-align">
       </mat-form-field>
-      <button mat-button (click)="searchByCPF()" type="submit">Buscar</button>
+      <button mat-raised-button color="primary"  (click)="searchByCPF()" type="submit">Buscar</button>
     </form>
   </mat-card-content>
 </mat-card>
@@ -49,7 +49,7 @@
                 </textarea>
         </mat-form-field>
 
-        <button (click)="sendExam()" mat-button="primary" type="submit">Finalizar Exame</button>
+        <button (click)="sendExam()" mat-raised-button color="primary"  type="submit">Finalizar Exame</button>
       </form>
     </mat-card-content>
   </mat-card>

@@ -59,8 +59,8 @@ export class ClientLicenceComponent implements OnInit {
     this.license.category = licenseCategory;
     this.license.user = this.user;
     this.licenseService.save(this.license).subscribe(res => {
-      window.location.reload();
-    }, error2 => console.log(JSON.stringify(error2)))
+        this.openDialog("Sucesso","Processo de nova Licença iniciada","OK");
+    }, error2 => this.openDialog("Erro","Não foi possivel iniciar o precesso","OK"))
   }
 
   licenseExpiration(expiration: Date) {

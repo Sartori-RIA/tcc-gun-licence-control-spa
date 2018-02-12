@@ -1,3 +1,34 @@
 @import 'assets/styles/variable';
 @import 'assets/styles/header';
 @import 'assets/styles/responsive';
+
+
+.row{
+  display: flex;
+}
+.cell{
+  flex: 1;
+  padding: 15px;
+}
+
+ngx-datatable{
+  height: 20em;
+}
+
+.datatable-body-row.active {
+  background-color: $pf-color;
+}
+
+div#bottom {
+  position: fixed;
+  bottom: 0;
+  /* And if you want the div to be full-width: */
+  left: 0;
+  right: 0;
+}
+
+div#fixedTop{
+  left: 0;
+  right: 0;
+  top: 0;
+}
