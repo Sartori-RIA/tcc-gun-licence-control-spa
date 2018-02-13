@@ -33,6 +33,8 @@ export class AdminRegisterLicensesComponent implements OnInit {
     this.form = this.formBuilder.group({
       description: [null, Validators.required],
       minimalAge: [null, [Validators.required, Validators.min(1)]],
+      criminalRecors: [null, Validators.required],
+      respondingProcess: [null, Validators.required],
       exams: this.formBuilder.array([
         new FormControl()
       ])
@@ -57,17 +59,14 @@ export class AdminRegisterLicensesComponent implements OnInit {
         this.model.requirement = res;
         this.licenseCategoryService.save(this.model).subscribe(
           () => {
-            this.form.patchValue({
-              description: null,
-              minimalAge: null,
-              exams: null
-            });
+            this.resetForm();
             this.openDialog("Sucesso", "Licença Salva com Sucesso", "OK")
-          },
-          () => this.openDialog("Erro", "Erro ao Salvar", "OK"));
-      }, () => this.openDialog("Erro", "Erro nos requisitos da licençå", "OK"))
-
-    } else Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
+          }, () => this.openDialog("Erro", "Erro ao Salvar", "OK"));
+      }, () => this.openDialog("Erro", "Erro nos requisitos da licença", "OK"))
+    } else {
+      this.openDialog("Erro", "Os Campos Precisam ser Preenchidos", "OK");
+      Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
+    }
   }
 
   openDialog(title: string, message: string, confirmBtn: string) {
@@ -80,10 +79,21 @@ export class AdminRegisterLicensesComponent implements OnInit {
     });
   }
 
+  private resetForm(){
+    this.form.patchValue({
+      description: null,
+      minimalAge: null,
+      criminalRecors: null,
+      respondingProcess: null,
+      exams: null
+    });
+  }
   private mountModel() {
     this.model.description = this.form.value.description;
     this.requirements.exams = this.form.value.exams;
     this.requirements.minimalAge = this.form.value.minimalAge;
+    this.requirements.criminalRecors = this.form.value.criminalRecors;
+    this.requirements.respondingProcess = this.form.value.respondingProcess;
   }
 }
 

@@ -13,6 +13,9 @@
         <input matInput type="text" id="minimalAge" formControlName="minimalAge">
       </mat-input-container>
 
+      <mat-checkbox formControlName="criminalRecors">Não pode possuir Antecedentes criminais</mat-checkbox>
+      <mat-checkbox formControlName="respondingProcess">Não pode estar respondendo a Processos Criminais</mat-checkbox>
+
       <div formArrayName="exams">
         <div *ngFor="let exam of form.controls.exams.controls; let i = index">
           <mat-form-field>

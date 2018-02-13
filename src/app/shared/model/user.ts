@@ -24,6 +24,7 @@ export class User {
               public nationality?: string,
               public naturalness?: string,
               public criminalRecors?: boolean,
+              public respondingProcess?: boolean,
               public addressList?: Address[]) {
   }
 }

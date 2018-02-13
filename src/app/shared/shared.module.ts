@@ -6,6 +6,7 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatCheckboxModule,
   MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
@@ -14,10 +15,13 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatNativeDateModule, MatProgressBarModule, MatProgressSpinnerModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule, MatTableModule,
+  MatSidenavModule,
+  MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -60,8 +64,9 @@ import {LicenseService} from "./services/license.service";
 import {SharedDialogComponent} from './components/shared-dialog/shared-dialog.component';
 import {SharedHelloComponent} from './components/shared-hello/shared-hello.component';
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
-import { AddressComponent } from './components/address/address.component';
+import {AddressComponent} from './components/address/address.component';
 import {DateConverter} from "./util/date-converter";
+import {RgPipe} from './pipes/rg.pipe';
 
 @NgModule({
   imports: [
@@ -89,6 +94,7 @@ import {DateConverter} from "./util/date-converter";
     MatProgressBarModule,
     MatTableModule,
     NgxDatatableModule,
+    MatCheckboxModule,
   ],
   declarations: [
     CamelCasePipe,
@@ -108,6 +114,7 @@ import {DateConverter} from "./util/date-converter";
     SharedDialogComponent,
     SharedHelloComponent,
     AddressComponent,
+    RgPipe,
   ],
   providers: [
     RoutesClientUtil,
@@ -162,8 +169,10 @@ import {DateConverter} from "./util/date-converter";
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatTableModule,
+    MatCheckboxModule,
     NgxDatatableModule,
     CpfPipe,
+    RgPipe,
     CpfDirective,
     ReversePipe,
     FilterPipe,
