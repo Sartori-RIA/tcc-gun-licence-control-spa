@@ -11,11 +11,13 @@ import { AdminRegisterStatesComponent } from './admin-register-states/admin-regi
 import { AdminRegisterCititesComponent } from './admin-register-citites/admin-register-citites.component';
 import { AdminRegisterExamsComponent } from './admin-register-exams/admin-register-exams.component';
 import { AdminRegisterLicensesComponent } from './admin-register-licenses/admin-register-licenses.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
     SharedModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FlexLayoutModule
   ],
   declarations: [
     AdminHomeComponent,

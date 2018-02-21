@@ -79,6 +79,14 @@ export class AdminRegisterLicensesComponent implements OnInit {
     });
   }
 
+  respondProcess(licence: LicenseCategory): string{
+    return licence.requirement.respondingProcess == true ? "SIM" : "NÃO";
+  }
+
+  criminalRecords(licence: LicenseCategory): string{
+    return licence.requirement.criminalRecors == true ? "SIM" : "NÃO";
+  }
+
   private resetForm(){
     this.form.patchValue({
       description: null,

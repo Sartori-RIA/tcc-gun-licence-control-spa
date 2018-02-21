@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.model.password = this.form.value.password;
     this.authService.makeLogin(this.model).subscribe(
       res => {
+        console.log(JSON.stringify(res))
         sessionStorage.setItem("token", res.token);
         this.authService.getCurrentUser(this.model.cpf).subscribe(res => {
           sessionStorage.setItem("currentUserName", res.name);

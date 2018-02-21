@@ -1,7 +1,11 @@
 <mat-nav-list appAccordion>
-  <mat-list-item *ngFor="let menuItem of menu"
-                 routerLink="{{menuItem.route}}"
-                 routerLinkActive="active">
-    {{menuItem.title}}
-  </mat-list-item>
+  <div fxLayout="column"
+  >
+    <div fxFlex *ngFor="let menuItem of menu">
+      <mat-list-item routerLink="{{menuItem.route}}"
+                     routerLinkActive="active">
+        {{menuItem.title}}
+      </mat-list-item>
+    </div>
+  </div>
 </mat-nav-list>

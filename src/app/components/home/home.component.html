@@ -7,13 +7,53 @@
       10.826/03 (Estatuto do Desarmamento)</a>
   </mat-card-header>
   <mat-card-content>
-    <mat-grid-list cols="4" rowHeight="20em">
-      <mat-grid-tile [colspan]="2" *ngFor="let element of elements">
-        <mat-card>
-          <mat-card-title>{{element.title}}</mat-card-title>
-          <mat-card-content [innerHTML]="element.content"></mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <div fxLayout.xs="column"
+         fxLayout="row"
+         fxLayoutAlign="space-around center"
+    >
+      <div fxFlex="50%">
+
+        <mat-card-title>Validador de licenças</mat-card-title>
+        <mat-card-content>
+          Deseja saber se a licença ainda esta na validade ou se é
+          verdadeira? E ainda caso ela seja verdadeira também saberá sua categoria e portador
+          <a routerLink="/validador">Mais detalhes &raquo;</a>
+        </mat-card-content>
+
+      </div>
+      <div fxFlex="50%">
+
+        <mat-card-title>Duvidas?</mat-card-title>
+        <mat-card-content>
+          Ficou com alguma duvida sobre o sistema, como é o processo para a obtenção das licenças, ou alguma outra
+          duvida relacionada ao assunto?<br/>
+          <a routerLink="/duvidas">Mais detalhes &raquo;</a>
+        </mat-card-content>
+
+      </div>
+    </div>
+    <div fxLayout.xs="column"
+         fxLayout="row"
+         fxLayoutAlign="space-around center"
+    >
+      <div fxFlex="50%">
+
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+          Efetue o login no sistema para que possa realizar divesas tarefas como: Agendamento de exames, impressão
+          das licencas que possui, laudo dos exames realizados e muitas outras<br>
+          <a routerLink="/login" role='button'>Mais detalhes &raquo;</a>
+        </mat-card-content>
+      </div>
+      <div fxFlex="50%">
+
+        <mat-card-title>Cadastro</mat-card-title>
+        <mat-card-content>
+          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
+          <a routerLink="/registre-se" role='button'>Mais detalhes &raquo;</a>
+        </mat-card-content>
+
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>

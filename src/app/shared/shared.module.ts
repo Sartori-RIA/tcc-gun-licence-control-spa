@@ -67,6 +67,7 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {AddressComponent} from './components/address/address.component';
 import {DateConverter} from "./util/date-converter";
 import {RgPipe} from './pipes/rg.pipe';
+import {CdkTableModule} from "@angular/cdk/table";
 
 @NgModule({
   imports: [
@@ -95,6 +96,7 @@ import {RgPipe} from './pipes/rg.pipe';
     MatTableModule,
     NgxDatatableModule,
     MatCheckboxModule,
+    CdkTableModule
   ],
   declarations: [
     CamelCasePipe,
@@ -188,6 +190,7 @@ import {RgPipe} from './pipes/rg.pipe';
     SharedHelloComponent,
     SharedDialogComponent,
     AddressComponent,
+    CdkTableModule,
   ]
 })
 export class SharedModule {

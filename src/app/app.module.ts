@@ -48,10 +48,10 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     AuthModule,
     InstructorModule,
     PsychologistModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   exports: [
-    SharedModule
+    SharedModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'}],

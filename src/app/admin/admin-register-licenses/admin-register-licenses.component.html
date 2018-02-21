@@ -1,47 +1,58 @@
-<mat-card>
-  <mat-card-title>Cadastro de Categorias de Licenças</mat-card-title>
-  <mat-card-content>
-    <form disabled="disable" [formGroup]="form">
+<div fxLayout="column"
+>
+  <div fxFlex="100">
+    <mat-card>
+      <mat-card-title>Cadastro de Categorias de Licenças</mat-card-title>
+      <mat-card-content>
+        <form disabled="disable" [formGroup]="form">
 
-      <mat-input-container class="midle-width">
-        <span matPrefix>Tipo da Licença: </span>
-        <input matInput type="text" id="name" formControlName="description">
-      </mat-input-container>
+          <mat-input-container class="midle-width">
+            <span matPrefix>Tipo da Licença: </span>
+            <input matInput type="text" id="name" formControlName="description">
+          </mat-input-container>
 
-      <mat-input-container class="midle-width">
-        <span matPrefix>Idade Minima: </span>
-        <input matInput type="text" id="minimalAge" formControlName="minimalAge">
-      </mat-input-container>
+          <mat-input-container class="midle-width">
+            <span matPrefix>Idade Minima: </span>
+            <input matInput type="text" id="minimalAge" formControlName="minimalAge">
+          </mat-input-container>
 
-      <mat-checkbox formControlName="criminalRecors">Não pode possuir Antecedentes criminais</mat-checkbox>
-      <mat-checkbox formControlName="respondingProcess">Não pode estar respondendo a Processos Criminais</mat-checkbox>
+          <mat-checkbox formControlName="criminalRecors">Não pode possuir Antecedentes criminais</mat-checkbox>
+          <mat-checkbox formControlName="respondingProcess">Não pode estar respondendo a Processos Criminais
+          </mat-checkbox>
 
-      <div formArrayName="exams">
-        <div *ngFor="let exam of form.controls.exams.controls; let i = index">
-          <mat-form-field>
-            <span matPrefix>Exame: </span>
-            <mat-select formControlName="{{i}}" id="exam_{{i}}">
-              <mat-option placeholder="Exame Necessário" *ngFor="let exam  of examsCategories"
-                          [value]="exam">{{ exam?.description }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <button mat-raised-button color="primary" (click)="onAddExam()">Adicionar Exame</button>
-      <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Cadastrar</button>
-    </form>
-  </mat-card-content>
-</mat-card>
-<div fxFlex="column">
-  <mat-list>
-    <mat-list-item *ngFor="let licenceCategory of licensesCategoriesList">
-      <div fxFlex="50%">
+          <div formArrayName="exams">
+            <div *ngFor="let exam of form.controls.exams.controls; let i = index">
+              <mat-form-field>
+                <span matPrefix>Exame: </span>
+                <mat-select formControlName="{{i}}" id="exam_{{i}}">
+                  <mat-option placeholder="Exame Necessário" *ngFor="let exam  of examsCategories"
+                              [value]="exam">{{ exam?.description }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <button mat-raised-button color="primary" (click)="onAddExam()">Adicionar Exame</button>
+          <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Cadastrar</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<div fxLayout="row"
+>
+  <div fxFlex>
+    <div *ngFor="let licenceCategory of licensesCategoriesList">
+      <div fxFlex="50">
         <mat-card>
           <mat-card-title>{{licenceCategory.description}}</mat-card-title>
           <mat-card-content>
             <h3>Requisitos</h3>
             <p><strong>Idade Minima: </strong>{{licenceCategory.requirement.minimalAge}} Anos</p>
+            <p><strong>Não pode responder a processo: </strong>{{respondProcess(licenceCategory)}}</p>
+            <p><strong>Não pode ter ficha criminal: </strong>{{criminalRecords(licenceCategory)}}</p>
             <p><strong>Exames: </strong></p>
             <ul>
               <li *ngFor="let exam of licenceCategory.requirement.exams">{{exam.description}}</li>
@@ -49,9 +60,6 @@
           </mat-card-content>
         </mat-card>
       </div>
-    </mat-list-item>
-  </mat-list>
+    </div>
+  </div>
 </div>
-
-
-
