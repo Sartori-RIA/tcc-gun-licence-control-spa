@@ -41,7 +41,7 @@ export class SharedUserUpdateComponent implements OnInit {
       this.model.email = this.form.value.email;
       this.userService.update(this.model).subscribe(res => {
         this.route.navigate(['/civil/perfil'])
-      }, error2 => alert(JSON.stringify(error2)))
+      }, error2 => this.openDialog("Erro","Sinto muito ocorreu um erro ao atualizar os dados","OK"))
     } else Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }
 

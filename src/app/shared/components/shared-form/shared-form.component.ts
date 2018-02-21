@@ -47,7 +47,6 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
-      alert(JSON.stringify(this.model));
       this.userService.save(this.model).subscribe(() => {
         if (this.isClient)
           this.route.navigate(['/login']);
