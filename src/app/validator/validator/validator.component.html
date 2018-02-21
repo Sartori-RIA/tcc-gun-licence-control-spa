@@ -19,7 +19,7 @@
       </mat-card-content>
     </mat-card>
 
-    <div *ngIf="valid" class="col s4 offset-s4 center-align truncate">
+    <div *ngIf="valid && model != null" class="col s4 offset-s4 center-align truncate">
       <app-license-valid [model]="model"></app-license-valid>
     </div>
 

@@ -4,7 +4,9 @@ import {ValidatorComponent} from "./validator/validator.component";
 import {LicenseInvalidComponent} from "./license-invalid/license-invalid.component";
 
 const routes: Routes = [
-  {path: '', component: ValidatorComponent}
+  {path: '', component: ValidatorComponent, children:[
+      {path:'invalida', component: LicenseInvalidComponent}
+    ]}
 ];
 
 @NgModule({

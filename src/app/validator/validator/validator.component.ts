@@ -44,8 +44,8 @@ export class ValidatorComponent implements OnInit {
         this.model = res;
         this.valid = true;
       }, error2 => {
-        this.valid = false;
-//TODO  redirecionar para uma rota com a mensagem de erro OU conseguir carregar abaixo a mensagem de erro
+        if (error2.status == 404)
+          this.valid = false;
       });
     }
   }
