@@ -31,14 +31,7 @@
       <mat-card-content>
         <mat-card-title>Historico de Exames prestados</mat-card-title>
         <mat-card *ngFor="let exam of examHistory">
-          <mat-card-content>
-            <mat-card-title>{{exam.examCategory.description}}</mat-card-title>
-            <p>Civil: {{exam.civil.name}}</p>
-            <p>Aplicador: {{exam.examinator.name}}</p>
-            <p>Data de realização: {{formatDate(exam.data)}}</p>
-            <p>Status: {{convertBoolean(exam.status)}}</p>
-            <p>Laudo: {{exam.resultDescription}}</p>
-          </mat-card-content>
+          <app-shared-user-exam-history [model]="exam"></app-shared-user-exam-history>
         </mat-card>
       </mat-card-content>
     </mat-card>

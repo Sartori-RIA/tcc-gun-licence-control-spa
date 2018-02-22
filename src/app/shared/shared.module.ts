@@ -193,6 +193,7 @@ import {SharedUserExamHistoryComponent} from './components/shared-user-exam-hist
     SharedExamEvaluateComponent,
     SharedHelloComponent,
     SharedDialogComponent,
+    SharedUserExamHistoryComponent,
     AddressComponent,
     CdkTableModule,
   ]

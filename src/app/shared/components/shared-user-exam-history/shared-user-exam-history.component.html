@@ -1,3 +1,8 @@
-<p>
-  shared-user-exam-history works!
-</p>
+<mat-card-content>
+  <mat-card-title>{{model.examCategory.description}}</mat-card-title>
+  <p>Civil: {{model.civil.name}}</p>
+  <p>Aplicador: {{model.examinator.name}}</p>
+  <p>Data de realização: {{formatDate(model.data)}}</p>
+  <p>Status: {{convertBoolean(model.status)}}</p>
+  <p>Laudo: {{model.resultDescription}}</p>
+</mat-card-content>

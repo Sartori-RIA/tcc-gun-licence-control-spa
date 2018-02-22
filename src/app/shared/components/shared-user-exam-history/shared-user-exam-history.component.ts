@@ -9,7 +9,7 @@ import {Exam} from "../../model/exam";
 })
 export class SharedUserExamHistoryComponent implements OnInit {
 
-  @Input() model: Exam[];
+  @Input() model: Exam;
 
   constructor() {
   }
