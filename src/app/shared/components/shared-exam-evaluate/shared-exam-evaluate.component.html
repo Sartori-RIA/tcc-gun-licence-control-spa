@@ -1,12 +1,16 @@
 <mat-card>
-  <mat-card-title>Buscar Usuario</mat-card-title>
+  <mat-card-title>Buscar Licença</mat-card-title>
   <mat-card-content>
     <form disabled="disable" [formGroup]="form">
       <mat-form-field>
         <span matPrefix>CPF: </span>
         <input (change)="onResetForm()" formControlName="cpf" matInput type="number" class="example-right-align">
       </mat-form-field>
-      <button mat-raised-button color="primary"  (click)="searchByCPF()" type="submit">Buscar</button>
+      <mat-form-field>
+        <span matPrefix>Licença: </span>
+        <input (change)="onResetForm()" formControlName="serial" matInput type="text" class="example-right-align">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="searchBySerial()" type="submit">Buscar</button>
     </form>
   </mat-card-content>
 </mat-card>
@@ -49,7 +53,7 @@
                 </textarea>
         </mat-form-field>
 
-        <button (click)="sendExam()" mat-raised-button color="primary"  type="submit">Finalizar Exame</button>
+        <button (click)="sendExam()" mat-raised-button color="primary" type="submit">Finalizar Exame</button>
       </form>
     </mat-card-content>
   </mat-card>

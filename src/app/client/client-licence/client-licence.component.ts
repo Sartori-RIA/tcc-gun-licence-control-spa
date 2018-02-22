@@ -11,6 +11,7 @@ import {Exam} from "../../shared/model/exam";
 import {ExamService} from "../../shared/services/exam.service";
 import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {HttpErrorService} from "../../shared/services/http-error.service";
 
 @Component({
   selector: 'app-client-licence',
@@ -32,7 +33,8 @@ export class ClientLicenceComponent implements OnInit {
               private userService: UserService,
               private examService: ExamService,
               private formBuilder: FormBuilder,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErrorService: HttpErrorService) {
   }
 
   ngOnInit() {
@@ -46,20 +48,17 @@ export class ClientLicenceComponent implements OnInit {
             if (license.shelfLife == null && !license.status) {
               this.myProgressLicenses.push(license)
             }
-        });
-      });
-
-
+        }, error2 => this.httpErrorService.verifyErrors(error2));
+      }, error2 => this.httpErrorService.verifyErrors(error2));
     this.license = new License();
-
   }
 
   initLicense(licenseCategory: LicenseCategory) {
     this.license.category = licenseCategory;
     this.license.user = this.user;
     this.licenseService.save(this.license).subscribe(res => {
-        this.openDialog("Sucesso","Processo de nova Licença iniciada","OK");
-    }, error2 => this.openDialog("Erro","Você não possui os requisitos para a licença","OK"))
+      this.openDialog("Sucesso", "Processo de nova Licença iniciada", "OK");
+    }, error2 => this.httpErrorService.verifyErrors(error2, "Você não possui os requisitos para a licença"));
   }
 
   licenseExpiration(expiration: Date) {

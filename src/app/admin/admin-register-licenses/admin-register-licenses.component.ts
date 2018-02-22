@@ -8,6 +8,7 @@ import {ExamCategory} from "../../shared/model/exam-category";
 import {RequirementService} from "../../shared/services/requirement.service";
 import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {HttpErrorService} from "../../shared/services/http-error.service";
 
 @Component({
   selector: 'app-admin-register-licenses',
@@ -26,7 +27,8 @@ export class AdminRegisterLicensesComponent implements OnInit {
               private examCategoryService: ExamCategoryService,
               private requirementService: RequirementService,
               private formBuilder: FormBuilder,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErrorService: HttpErrorService) {
   }
 
   ngOnInit() {
@@ -43,8 +45,10 @@ export class AdminRegisterLicensesComponent implements OnInit {
     this.requirements = new Requirement();
     this.examCategoryService.index().subscribe(res => {
       this.examsCategories = res
-    });
-    this.licenseCategoryService.index().subscribe(res => this.licensesCategoriesList = res);
+    }, error2 => this.httpErrorService.verifyErrors(error2));
+    this.licenseCategoryService.index()
+      .subscribe(res => this.licensesCategoriesList = res,
+        error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   onAddExam() {
@@ -61,8 +65,8 @@ export class AdminRegisterLicensesComponent implements OnInit {
           () => {
             this.resetForm();
             this.openDialog("Sucesso", "Licença Salva com Sucesso", "OK")
-          }, () => this.openDialog("Erro", "Erro ao Salvar", "OK"));
-      }, () => this.openDialog("Erro", "Erro nos requisitos da licença", "OK"))
+          }, error => this.httpErrorService.verifyErrors(error, "Erro ao Salvar"))
+      }, error => this.httpErrorService.verifyErrors(error, "Erro nos requisitos da licença"))
     } else {
       this.openDialog("Erro", "Os Campos Precisam ser Preenchidos", "OK");
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
@@ -79,15 +83,15 @@ export class AdminRegisterLicensesComponent implements OnInit {
     });
   }
 
-  respondProcess(licence: LicenseCategory): string{
+  respondProcess(licence: LicenseCategory): string {
     return licence.requirement.respondingProcess == true ? "SIM" : "NÃO";
   }
 
-  criminalRecords(licence: LicenseCategory): string{
+  criminalRecords(licence: LicenseCategory): string {
     return licence.requirement.criminalRecors == true ? "SIM" : "NÃO";
   }
 
-  private resetForm(){
+  private resetForm() {
     this.form.patchValue({
       description: null,
       minimalAge: null,
@@ -96,6 +100,7 @@ export class AdminRegisterLicensesComponent implements OnInit {
       exams: null
     });
   }
+
   private mountModel() {
     this.model.description = this.form.value.description;
     this.requirements.exams = this.form.value.exams;

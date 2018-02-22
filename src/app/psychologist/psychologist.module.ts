@@ -7,7 +7,7 @@ import {PsychologistEvaluateComponent} from './psychologist-evaluate/psychologis
 import {PsychologistProfileComponent} from './psychologist-profile/psychologist-profile.component';
 import {PsychologistSidebarComponent} from './psychologist-sidebar/psychologist-sidebar.component';
 import {SharedModule} from "../shared/shared.module";
-import { PsychologistAddressComponent } from './psychologist-address/psychologist-address.component';
+import {PsychologistAddressComponent} from './psychologist-address/psychologist-address.component';
 
 @NgModule({
   imports: [

@@ -1,4 +1,4 @@
-import { RgPipe } from './rg.pipe';
+import {RgPipe} from './rg.pipe';
 
 describe('RgPipe', () => {
   it('create an instance', () => {

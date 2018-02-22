@@ -12,18 +12,18 @@ import {Gender} from "../../shared/model/gender";
 })
 export class ClientProfileComponent implements OnInit {
 
-  errorMessage: string;
   model: User = new User();
   gender: Gender = new Gender();
 
   constructor(private userService: UserService,
-              private genderService: GenderService) {
+              private genderService: GenderService,
+              private httpErrorService) {
   }
 
   ngOnInit() {
     this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => {
       this.model = res;
-      this.genderService.getById(res.gender.id).subscribe(res => this.gender = res);
-    });
+      this.genderService.getById(res.gender.id).subscribe(res => this.gender = res, error2 => this.httpErrorService.verifyErrors(error2));
+    }, error2 => this.httpErrorService.verifyErrors(error2));
   }
 }

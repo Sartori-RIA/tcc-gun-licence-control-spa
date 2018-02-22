@@ -6,6 +6,7 @@ import {CountryService} from "../../shared/services/country.service";
 import {Country} from "../../shared/model/country";
 import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {HttpErrorService} from "../../shared/services/http-error.service";
 
 @Component({
   selector: 'app-admin-register-states',
@@ -23,26 +24,27 @@ export class AdminRegisterStatesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private stateService: StateService,
               private countryService: CountryService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErrorService: HttpErrorService) {
   }
 
   ngOnInit() {
     this.model = new State();
     this.countryService.index().subscribe(res => {
       this.countries = res;
-    });
+    }, error2 => this.httpErrorService.verifyErrors(error2));
     this.form = this.formBuilder.group({
       country: [null, Validators.required],
       name: [null, Validators.required],
       abbrev: [null, Validators.required]
-    });
+    }, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   onCountryClick(event): void {
     for (let country of event.selected)
       this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => {
         this.statesList = res;
-      });
+      }, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   onSubmit(): void {
@@ -59,8 +61,8 @@ export class AdminRegisterStatesComponent implements OnInit {
             abbrev: null
           });
           this.openDialog("Sucesso", "Estado Salvo com Sucesso", "OK")
-        }, () => this.openDialog("Erro", "Erro ao Salvar", "OK"));
-      });
+        }, error => this.httpErrorService.verifyErrors(error, "Erro ao Salvar"));
+      }, error2 => this.httpErrorService.verifyErrors(error2));
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }

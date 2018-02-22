@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SharedExamEvaluateComponent } from './shared-exam-evaluate.component';
+import {SharedExamEvaluateComponent} from './shared-exam-evaluate.component';
 
 describe('SharedExamEvaluateComponent', () => {
   let component: SharedExamEvaluateComponent;
@@ -8,9 +8,9 @@ describe('SharedExamEvaluateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SharedExamEvaluateComponent ]
+      declarations: [SharedExamEvaluateComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

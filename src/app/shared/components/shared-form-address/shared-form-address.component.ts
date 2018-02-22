@@ -15,6 +15,7 @@ import {User} from "../../model/user";
 import {AddressService} from "../../services/address.service";
 import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {HttpErrorService} from "../../services/http-error.service";
 
 @Component({
   selector: 'app-shared-form-address',
@@ -39,7 +40,8 @@ export class SharedFormAddressComponent implements OnInit {
               private stateService: StateService,
               private cityService: CityService,
               private addressService: AddressService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErroService: HttpErrorService) {
   }
 
   ngOnInit() {
@@ -60,8 +62,8 @@ export class SharedFormAddressComponent implements OnInit {
         this.userService.update(this.user).subscribe(() => {
           this.openDialog("Sucesso", "Endereço Adicionado com Sucesso", "OK");
           this.resetAddess();
-        }, () => this.openDialog("Erro", "Nao foi possivel adicionar o endereco", "OK"))
-      }, () => this.openDialog("Erro", "Nao foi possivel adicionar o endereco", "OK"));
+        }, error => this.httpErroService.verifyErrors(error, "Nao foi possivel adicionar o endereco"));
+      }, error => this.httpErroService.verifyErrors(error, "Nao foi possivel adicionar o endereco"));
     } else {
       this.formDirty(this.form);
     }
@@ -69,12 +71,12 @@ export class SharedFormAddressComponent implements OnInit {
 
   onCountryChose(country) {
     this.stateService.listByOneProperty('country.id',
-      country.value.id).subscribe(res => this.states = res);
+      country.value.id).subscribe(res => this.states = res, error2 => this.httpErroService.verifyErrors(error2));
   }
 
   onStateChose(state) {
     this.cityService.listByOneProperty('state.id',
-      state.value.id).subscribe(res => this.cities = res);
+      state.value.id).subscribe(res => this.cities = res, error2 => this.httpErroService.verifyErrors(error2));
   }
 
   onCityChose() {

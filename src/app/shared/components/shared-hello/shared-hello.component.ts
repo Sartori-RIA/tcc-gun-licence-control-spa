@@ -10,7 +10,8 @@ export class SharedHelloComponent implements OnInit {
 
   @Input() currentUserName: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

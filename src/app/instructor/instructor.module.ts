@@ -7,8 +7,8 @@ import {InstructorListComponent} from './instructor-list/instructor-list.compone
 import {InstructorProfileComponent} from './instructor-profile/instructor-profile.component';
 import {InstructorSidebarComponent} from './instructor-sidebar/instructor-sidebar.component';
 import {SharedModule} from "../shared/shared.module";
-import { InstructorAddressComponent } from './instructor-address/instructor-address.component';
-import { InstructorReportComponent } from './instructor-report/instructor-report.component';
+import {InstructorAddressComponent} from './instructor-address/instructor-address.component';
+import {InstructorReportComponent} from './instructor-report/instructor-report.component';
 
 @NgModule({
   imports: [

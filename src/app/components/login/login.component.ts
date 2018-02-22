@@ -51,9 +51,18 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/civil']);
 
         })
-      }, () => this.openDialog("Erro","Usuario ou Senha incorretos","OK"));
+      }, () => this.openDialog("Erro", "Usuario ou Senha incorretos", "OK"));
   }
 
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(SharedDialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+
+    dialog.afterClosed().subscribe(result => {
+    });
+  }
 
   private buildReactiveForm(): void {
     this.form = this.formBuilder.group({
@@ -61,14 +70,4 @@ export class LoginComponent implements OnInit {
       password: [null, Validators.required],
     })
   }
-
-openDialog(title: string, message: string, confirmBtn: string) {
-  let dialog = this.dialog.open(SharedDialogComponent, {
-    width: '250px',
-    data: {title: title, message: message, confirmButton: confirmBtn}
-  });
-
-  dialog.afterClosed().subscribe(result => {
-  });
-}
 }

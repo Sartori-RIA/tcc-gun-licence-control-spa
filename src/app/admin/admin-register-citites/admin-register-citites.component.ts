@@ -8,6 +8,7 @@ import {StateService} from "../../shared/services/state.service";
 import {CityService} from "../../shared/services/city.service";
 import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {HttpErrorService} from "../../shared/services/http-error.service";
 
 @Component({
   selector: 'app-admin-register-citites',
@@ -28,7 +29,8 @@ export class AdminRegisterCititesComponent implements OnInit {
               private countryService: CountryService,
               private stateService: StateService,
               private cityService: CityService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErrorService: HttpErrorService) {
   }
 
   ngOnInit() {
@@ -54,24 +56,27 @@ export class AdminRegisterCititesComponent implements OnInit {
             city: null
           });
           this.openDialog("Sucesso", "Cidade Cadastrada com Sucesso", "OK")
-        }, () => this.openDialog("ERRO", "Erro ao Cadastrar", "OK"));
-      });
+        }, error => this.httpErrorService.verifyErrors(error, "Erro ao Cadastrar"));
+      }, error2 => this.httpErrorService.verifyErrors(error2));
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }
 
   onChoseCountry(country): void {
-    this.stateService.listByOneProperty("country.id", country.value.id).subscribe(res => this.states = res);
+    this.stateService.listByOneProperty("country.id", country.value.id)
+      .subscribe(res => this.states = res, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   onCountryClick(event): void {
     for (let country of event.selected)
-      this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => this.statesList = res);
+      this.stateService.listByOneProperty("country.id", String(country.id))
+        .subscribe(res => this.statesList = res, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   onStateClick(event): void {
     for (let state of event.selected)
-      this.cityService.listByOneProperty("state.id", String(state.id)).subscribe(res => this.citiesList = res);
+      this.cityService.listByOneProperty("state.id", String(state.id))
+        .subscribe(res => this.citiesList = res, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   openDialog(title: string, message: string, confirmBtn: string) {

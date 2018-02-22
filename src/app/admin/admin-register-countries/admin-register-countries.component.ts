@@ -1,9 +1,10 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CountryService} from "../../shared/services/country.service";
 import {Country} from "../../shared/model/country";
 import {MatDialog} from "@angular/material";
 import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {HttpErrorService} from "../../shared/services/http-error.service";
 
 @Component({
   selector: 'app-admin-register-countries',
@@ -20,9 +21,9 @@ export class AdminRegisterCountriesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private countryService: CountryService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErrorService: HttpErrorService) {
   }
-
 
 
   ngOnInit() {
@@ -32,7 +33,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
     });
     this.countryService.index().subscribe(res => {
       this.countryList = res;
-    });
+    }, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   openDialog(title: string, message: string, confirmBtn: string) {
@@ -55,7 +56,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
           name: null
         });
         this.openDialog("Sucesso", "Pais cadastrado com Sucesso", "Ok")
-      }, () => this.openDialog("Erro", "Não foi possivel efetuar o cadastro", "Ok"));
+      }, error => this.httpErrorService.verifyErrors(error, "Não foi possivel efetuar o cadastro"));
     } else {
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }

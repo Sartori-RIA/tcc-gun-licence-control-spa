@@ -7,8 +7,8 @@
       <p><strong>Aplicador do exame: </strong>{{exam.examinator.name}}</p>
       <p><strong>Examinado: </strong>{{exam.civil.name}}</p>
       <p><strong>Laudo: </strong>{{exam.resultDescription}}</p>
-      <p *ngIf="!exam.status" ><strong>Resultado Final: </strong> Indeferido</p>
-      <p *ngIf="exam.status" ><strong>Resultado Final: </strong>Deferido</p>
+      <p *ngIf="!exam.status"><strong>Resultado Final: </strong> Indeferido</p>
+      <p *ngIf="exam.status"><strong>Resultado Final: </strong>Deferido</p>
     </mat-card-content>
   </mat-card>
 </div>

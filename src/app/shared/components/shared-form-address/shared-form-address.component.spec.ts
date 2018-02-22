@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SharedFormAddressComponent } from './shared-form-address.component';
+import {SharedFormAddressComponent} from './shared-form-address.component';
 
 describe('SharedFormAddressComponent', () => {
   let component: SharedFormAddressComponent;
@@ -8,9 +8,9 @@ describe('SharedFormAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SharedFormAddressComponent ]
+      declarations: [SharedFormAddressComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

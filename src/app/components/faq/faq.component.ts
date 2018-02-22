@@ -18,20 +18,24 @@ export class FaqComponent implements OnInit {
 
 }
 
-export interface Faq{
+export interface Faq {
   header: string;
   content: string;
 }
 
 
 const ELEMENT_DATA: Faq[] = [
-  {header: ' Como faço para atirar pela primeira vez??', content: 'Se você nunca atirou, e tem curiosidade, basta ir a um clube ou estande de tiro. Lá é o melhor local' +
+  {
+    header: ' Como faço para atirar pela primeira vez??',
+    content: 'Se você nunca atirou, e tem curiosidade, basta ir a um clube ou estande de tiro. Lá é o melhor local' +
     '          para obter informações, treinamento básico e atirar pela primeira vez.' +
     '          Não é preciso ter porte, nem registro, nem CR, nem mesmo arma. Basta ir com seu documento de' +
     '          identificação e você será bem recebido.' +
     '          Há uma <a href="http://www.defesa.org/estandes-e-clubes-de-tiro/">lista completa dos clubes' +
-    '            e estandes de tiro</a> de todo o Brasil na ong Defesa.org. É só procurar pelo mais próximo e ir!'},
-  {header: 'Como comprar uma arma legalmente', content: '<ul>' +
+    '            e estandes de tiro</a> de todo o Brasil na ong Defesa.org. É só procurar pelo mais próximo e ir!'
+  },
+  {
+    header: 'Como comprar uma arma legalmente', content: '<ul>' +
     '            <li>Ter, no mínimo, 25 anos de idade.</li>' +
     '            <li>Ter residência fixa e ocupação lícita</li>' +
     '            <li>Aptidão técnica e psicológica</li>' +
@@ -66,8 +70,12 @@ const ELEMENT_DATA: Faq[] = [
     '            <li>comprovante bancário de pagamento da taxa devida para a emissão do documento através da Guia de' +
     '              Recolhimento da União – GRU.' +
     '            </li>' +
-    '          </ul>'},
+    '          </ul>'
+  },
   {header: 'Legislação Vigente 10.826/2003', content: 'texto'},
-  {header: 'PL 3.722/2012 ', content: '<a href="http://www.defesa.org/pl-37222012/">PL3722/12</a> Projeto de lei formulado pelo deputado <a' +
-    '          class="btn-link" href="http://www.deputadopeninha.com.br/placar-pl-3722"> Rogério Peninha Mendonça</a>'}
+  {
+    header: 'PL 3.722/2012 ',
+    content: '<a href="http://www.defesa.org/pl-37222012/">PL3722/12</a> Projeto de lei formulado pelo deputado <a' +
+    '          class="btn-link" href="http://www.deputadopeninha.com.br/placar-pl-3722"> Rogério Peninha Mendonça</a>'
+  }
 ];

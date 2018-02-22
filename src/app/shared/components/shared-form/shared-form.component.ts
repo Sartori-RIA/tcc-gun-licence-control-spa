@@ -12,6 +12,7 @@ import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {HttpErrorService} from "../../services/http-error.service";
 
 @Component({
   selector: 'app-shared-form',
@@ -32,15 +33,16 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
               private genderService: GenderService,
               private userCategoryService: UserCategoryService,
               private route: Router,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErrorService: HttpErrorService) {
   }
 
   canDesactive() {
   }
 
   ngOnInit() {
-    this.genderService.index().subscribe(res => this.genders = res);
-    this.userCategoryService.index().subscribe(res => this.roles = res);
+    this.genderService.index().subscribe(res => this.genders = res, error2 => this.httpErrorService.verifyErrors(error2));
+    this.userCategoryService.index().subscribe(res => this.roles = res, error2 => this.httpErrorService.verifyErrors(error2));
     this.buildReactiveForm();
   }
 
@@ -52,7 +54,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
           this.route.navigate(['/login']);
         this.resetForm();
         this.openDialog("Sucesso", "Cadastrado com sucesso", "OK")
-      }, () => this.openDialog("Erro", "Erro ao Cadastrar Usuario", "OK"));
+      }, error => this.httpErrorService.verifyErrors(error, "Erro ao Cadastrar Usuario"));
     } else {
       this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
       this.formDirty(this.form);
@@ -64,13 +66,11 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });
-
     dialog.afterClosed().subscribe(() => {
-
     });
   }
 
-  private resetForm(): void{
+  private resetForm(): void {
     this.form.patchValue({
       name: null,
       gender: null,

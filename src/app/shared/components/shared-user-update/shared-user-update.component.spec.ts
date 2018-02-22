@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SharedUserUpdateComponent } from './shared-user-update.component';
+import {SharedUserUpdateComponent} from './shared-user-update.component';
 
 describe('SharedUserUpdateComponent', () => {
   let component: SharedUserUpdateComponent;
@@ -8,9 +8,9 @@ describe('SharedUserUpdateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SharedUserUpdateComponent ]
+      declarations: [SharedUserUpdateComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

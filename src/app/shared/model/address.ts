@@ -2,7 +2,7 @@ import {City} from "./city";
 
 export class Address {
 
-  constructor(public id?:number,
+  constructor(public id?: number,
               public cep?: string,
               public street?: string,
               public neighborhood?: string,

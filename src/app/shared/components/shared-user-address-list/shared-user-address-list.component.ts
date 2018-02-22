@@ -11,7 +11,8 @@ export class SharedUserAddressListComponent implements OnInit {
 
   @Input() model: Address;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

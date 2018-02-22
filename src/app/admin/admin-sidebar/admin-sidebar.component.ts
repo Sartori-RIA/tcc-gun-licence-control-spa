@@ -7,12 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdminSidebarComponent implements OnInit {
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
   menu = [
     {route: 'cadastro/usuario', title: 'Cadastro de Usuário'},
     {route: 'cadastro/paises', title: 'Cadastro de Paises'},
@@ -23,4 +17,10 @@ export class AdminSidebarComponent implements OnInit {
     {route: 'relatorios', title: 'Relatórios'},
     {route: 'perfil', title: 'Meus Dados'},
   ]
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 }

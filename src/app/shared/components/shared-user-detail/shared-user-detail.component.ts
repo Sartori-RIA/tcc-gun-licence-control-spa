@@ -20,7 +20,7 @@ export class SharedUserDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  formatDate(date){
+  formatDate(date) {
     return DateConverter.convertDate(date);
   }
 }

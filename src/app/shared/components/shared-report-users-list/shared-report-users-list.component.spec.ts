@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SharedReportUsersListComponent } from './shared-report-users-list.component';
+import {SharedReportUsersListComponent} from './shared-report-users-list.component';
 
 describe('SharedReportUsersListComponent', () => {
   let component: SharedReportUsersListComponent;
@@ -8,9 +8,9 @@ describe('SharedReportUsersListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SharedReportUsersListComponent ]
+      declarations: [SharedReportUsersListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

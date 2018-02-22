@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { InstructorAddressComponent } from './instructor-address.component';
+import {InstructorAddressComponent} from './instructor-address.component';
 
 describe('InstructorAddressComponent', () => {
   let component: InstructorAddressComponent;
@@ -8,9 +8,9 @@ describe('InstructorAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InstructorAddressComponent ]
+      declarations: [InstructorAddressComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

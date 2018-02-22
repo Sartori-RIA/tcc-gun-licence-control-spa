@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {SharedDialogComponent} from "../shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
+import {HttpErrorService} from "../../services/http-error.service";
 
 @Component({
   selector: 'app-shared-user-update',
@@ -20,7 +21,8 @@ export class SharedUserUpdateComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private route: Router,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private httpErrorService: HttpErrorService) {
   }
 
   ngOnInit() {
@@ -41,17 +43,8 @@ export class SharedUserUpdateComponent implements OnInit {
       this.model.email = this.form.value.email;
       this.userService.update(this.model).subscribe(res => {
         this.route.navigate(['/civil/perfil'])
-      }, error2 => this.openDialog("Erro","Sinto muito ocorreu um erro ao atualizar os dados","OK"))
+      }, error2 => this.httpErrorService.verifyErrors(error2, "Sinto muito ocorreu um erro ao atualizar os dados"));
     } else Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
-  }
-
-  private buildForm(): void {
-    this.form = this.formBuilder.group({
-      email: [null, Validators.required],
-      passwordOld: [null],
-      passwordNew: [null],
-      passwordConfirm: [null]
-    })
   }
 
   openDialog(title: string, message: string, confirmBtn: string) {
@@ -62,5 +55,14 @@ export class SharedUserUpdateComponent implements OnInit {
 
     dialog.afterClosed().subscribe(result => {
     });
+  }
+
+  private buildForm(): void {
+    this.form = this.formBuilder.group({
+      email: [null, Validators.required],
+      passwordOld: [null],
+      passwordNew: [null],
+      passwordConfirm: [null]
+    })
   }
 }

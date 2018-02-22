@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SharedUserAddressListComponent } from './shared-user-address-list.component';
+import {SharedUserAddressListComponent} from './shared-user-address-list.component';
 
 describe('SharedUserAddressListComponent', () => {
   let component: SharedUserAddressListComponent;
@@ -8,9 +8,9 @@ describe('SharedUserAddressListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SharedUserAddressListComponent ]
+      declarations: [SharedUserAddressListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -68,6 +68,8 @@ import {AddressComponent} from './components/address/address.component';
 import {DateConverter} from "./util/date-converter";
 import {RgPipe} from './pipes/rg.pipe';
 import {CdkTableModule} from "@angular/cdk/table";
+import {HttpErrorService} from "./services/http-error.service";
+import {SharedUserExamHistoryComponent} from './components/shared-user-exam-history/shared-user-exam-history.component';
 
 @NgModule({
   imports: [
@@ -117,6 +119,7 @@ import {CdkTableModule} from "@angular/cdk/table";
     SharedHelloComponent,
     AddressComponent,
     RgPipe,
+    SharedUserExamHistoryComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -134,6 +137,7 @@ import {CdkTableModule} from "@angular/cdk/table";
     CityService,
     AddressService,
     ExamService,
+    HttpErrorService,
     RequirementService,
     LicenseService,
     AuthAdminGuard,
