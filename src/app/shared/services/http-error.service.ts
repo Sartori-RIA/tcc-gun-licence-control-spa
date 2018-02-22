@@ -17,8 +17,6 @@ export class HttpErrorService {
                message401?: string,
                message500?: string): void {
 
-    console.log(JSON.stringify(error));
-
     let msg404 = message404 != null ? message404 : "Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados";
     let msg401 = message401 != null ? message401 : "Sinto muito sua sessão expirou.\n\t por favor faça novamente o Login";
     let msg500 = message500 != null ? message500 : "Erro no servidor, por favor tente mais tarde";

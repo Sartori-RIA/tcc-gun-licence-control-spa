@@ -1,6 +1,6 @@
 <mat-card>
-  <mat-card-title>Buscar Licença</mat-card-title>
   <mat-card-content>
+    <mat-card-title>Buscar Licença</mat-card-title>
     <form disabled="disable" [formGroup]="form">
       <mat-form-field>
         <span matPrefix>CPF: </span>
@@ -16,8 +16,8 @@
 </mat-card>
 <div *ngIf="model != null">
   <mat-card>
-    <mat-card-title>Dados pessoais</mat-card-title>
     <mat-card-content>
+      <mat-card-title>Dados pessoais</mat-card-title>
       <p> Nome: {{model.name}}</p>
       <p> CPF: {{model.cpf}}</p>
       <p> Sexo: {{model.gender.description}}</p>
@@ -26,9 +26,26 @@
     </mat-card-content>
   </mat-card>
 
+  <div>
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Historico de Exames prestados</mat-card-title>
+        <mat-card *ngFor="let exam of examHistory">
+          <mat-card-content>
+            <mat-card-title>{{exam.examCategory.description}}</mat-card-title>
+            <p>Civil: {{exam.civil.name}}</p>
+            <p>Aplicador: {{exam.examinator.name}}</p>
+            <p>Data de realização: {{formatDate(exam.data)}}</p>
+            <p>Status: {{convertBoolean(exam.status)}}</p>
+            <p>Laudo: {{exam.resultDescription}}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
   <mat-card>
-    <mat-card-title>Dados do exame</mat-card-title>
     <mat-card-content>
+      <mat-card-title>Dados do exame</mat-card-title>
       <form disabled="disable" [formGroup]="examForm">
         <mat-form-field>
           <span matPrefix>Exame: </span>

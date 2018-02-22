@@ -73,16 +73,22 @@ export class SharedExamEvaluateComponent implements OnInit {
   }
 
   searchBySerial() {
-    this.licenseService.findByTwoProperty(
-      "user.cpf", this.form.value.cpf,
-      "serial", this.form.value.serial).subscribe(res => {
-      this.model = res.user;
-      this.license = res;
-    }, error2 => {
-      let message404 = "Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados";
-      let message401 = "Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados"
-      this.httpErrorService.verifyErrors(error2, null, message404, message401)
-    })
+    if(this.form.valid) {
+      this.licenseService.findByTwoProperty(
+        "user.cpf", this.form.value.cpf,
+        "serial", this.form.value.serial).subscribe(res => {
+        this.model = res.user;
+        this.license = res;
+        this.examHistory = res.examList;
+      }, error2 => {
+        let message404 = "Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados";
+        let message401 = "Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados"
+        this.httpErrorService.verifyErrors(error2, null, message404, message401)
+      })
+    }else{
+      this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
+      this.formDirty(this.form);
+    }
   }
 
   sendExam() {
@@ -133,6 +139,9 @@ export class SharedExamEvaluateComponent implements OnInit {
     });
   }
 
+  convertBoolean(status: boolean){
+    return status ? "Deferido" : "Indeferido";
+  }
 
   private formDirty(form: FormGroup): void {
     Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
