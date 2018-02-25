@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LicenseService} from "../../shared/services/license.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LicenseCategoryService} from "../../shared/services/license-category.service";
 import {LicenseCategory} from "../../shared/model/license-category";
 import {License} from "../../shared/model/license";
@@ -12,6 +12,7 @@ import {ExamService} from "../../shared/services/exam.service";
 import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
 import {MatDialog} from "@angular/material";
 import {HttpErrorService} from "../../shared/services/http-error.service";
+import {Address} from "../../shared/model/address";
 
 @Component({
   selector: 'app-client-licence',
@@ -25,8 +26,8 @@ export class ClientLicenceComponent implements OnInit {
   license: License;
   user: User;
   myProgressLicenses: License[] = [];
-  myProgessCategories: LicenseCategory[] = [];
   exams: Exam[];
+  addressList: Address[];
 
   constructor(private licenseService: LicenseService,
               private licenseCategoryService: LicenseCategoryService,
@@ -38,27 +39,25 @@ export class ClientLicenceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.licenseCategoryService.index().subscribe(res => this.licensesCategories = res);
-    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
-      .subscribe(res => {
-        this.user = res;
-        this.licenseService.listByOneProperty("user.cpf", this.user.cpf).subscribe(res => {
-          this.myProgressLicenses = [];
-          for (let license of res)
-            if (license.shelfLife == null && !license.status) {
-              this.myProgressLicenses.push(license)
-            }
-        }, error2 => this.httpErrorService.verifyErrors(error2));
-      }, error2 => this.httpErrorService.verifyErrors(error2));
     this.license = new License();
+    this.mountForm();
+    this.loadLicensesCategory();
+    this.loadLicenses();
+    this.loadAddressList();
   }
 
   initLicense(licenseCategory: LicenseCategory) {
-    this.license.category = licenseCategory;
-    this.license.user = this.user;
-    this.licenseService.save(this.license).subscribe(res => {
-      this.openDialog("Sucesso", "Processo de nova Licença iniciada", "OK");
-    }, error2 => this.httpErrorService.verifyErrors(error2, "Você não possui os requisitos para a licença"));
+    if (this.form.valid) {
+      this.license.category = licenseCategory;
+      this.license.user = this.user;
+      this.licenseService.save(this.license).subscribe(res => {
+        this.myProgressLicenses.push(res);
+        this.openDialog("Sucesso", "Processo de nova Licença iniciada", "OK");
+      }, error2 => this.httpErrorService.verifyErrors(error2, "Você não possui os requisitos para a licença"));
+    } else {
+      this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
+      this.formDirty(this.form)
+    }
   }
 
   licenseExpiration(expiration: Date) {
@@ -75,12 +74,46 @@ export class ClientLicenceComponent implements OnInit {
     this.exams;
   }
 
-  openDialog(title: string, message: string, confirmBtn: string) {
+  private loadLicensesCategory() {
+    this.licenseCategoryService.index().subscribe(res => this.licensesCategories = res);
+  }
+
+  private loadLicenses() {
+    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+      .subscribe(res => {
+        this.user = res;
+        this.licenseService.listByOneProperty("user.cpf", this.user.cpf).subscribe(res => {
+          this.myProgressLicenses = [];
+          for (let license of res)
+            if (license.shelfLife == null && !license.status) {
+              this.myProgressLicenses.push(license)
+            }
+        }, error2 => this.httpErrorService.verifyErrors(error2));
+      }, error2 => this.httpErrorService.verifyErrors(error2));
+  }
+
+  private loadAddressList() {
+    this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => {
+      this.addressList = res.addressList;
+    }, error2 => this.httpErrorService.verifyErrors(error2))
+  }
+
+  private mountForm() {
+    this.form = this.formBuilder.group({
+      address: [null, Validators.required]
+    })
+  }
+
+  private openDialog(title: string, message: string, confirmBtn: string) {
     let dialog = this.dialog.open(SharedDialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });
     dialog.afterClosed().subscribe(result => {
     });
+  }
+
+  private formDirty(form: FormGroup): void {
+    Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
   }
 }

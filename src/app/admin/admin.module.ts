@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {AdminRoutingModule} from './admin-routing.module';
 import {AdminProfileComponent} from './admin-profile/admin-profile.component';
 import {AdminHomeComponent} from "./admin-home/admin-home.component";
-import {AdminSidebarComponent} from "./admin-sidebar/admin-sidebar.component";
 import {AdminRegisterUserComponent} from "./admin-register-user/admin-register-user.component";
 import {AdminReportsComponent} from "./admin-reports/admin-reports.component";
 import {AdminRegisterCountriesComponent} from './admin-register-countries/admin-register-countries.component';
@@ -21,7 +20,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   ],
   declarations: [
     AdminHomeComponent,
-    AdminSidebarComponent,
     AdminRegisterUserComponent,
     AdminReportsComponent,
     AdminProfileComponent,

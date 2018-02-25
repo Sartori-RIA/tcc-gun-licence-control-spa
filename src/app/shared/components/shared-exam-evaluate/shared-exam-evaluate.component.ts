@@ -49,15 +49,8 @@ export class SharedExamEvaluateComponent implements OnInit {
   ngOnInit() {
     this.exam = new Exam();
     this.license = new License();
-    this.form = this.formBuilder.group({
-      cpf: [null, Validators.required],
-      serial: [null, Validators.required]
-    });
-    this.examForm = this.formBuilder.group({
-      examType: [null, Validators.required],
-      status: [null, Validators.required],
-      resultDescription: [null, Validators.required]
-    });
+    this.mountFormSearchUser();
+    this.mountFormExam();
     this.examCategoryService.index().subscribe(res => {
       for (let item of res)
         if (item.role.description == sessionStorage.getItem("currentUserRole"))
@@ -73,7 +66,7 @@ export class SharedExamEvaluateComponent implements OnInit {
   }
 
   searchBySerial() {
-    if(this.form.valid) {
+    if (this.form.valid) {
       this.licenseService.findByTwoProperty(
         "user.cpf", this.form.value.cpf,
         "serial", this.form.value.serial).subscribe(res => {
@@ -85,7 +78,7 @@ export class SharedExamEvaluateComponent implements OnInit {
         let message401 = "Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados"
         this.httpErrorService.verifyErrors(error2, null, message404, message401)
       })
-    }else{
+    } else {
       this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
       this.formDirty(this.form);
     }
@@ -95,29 +88,19 @@ export class SharedExamEvaluateComponent implements OnInit {
     if (this.examForm.valid) {
       this.mountExam();
       this.examService.save(this.exam).subscribe(res => {
-        this.openDialog("Sucesso", "Exame Salvo com Sucesso", "OK");
         if (this.license.examList == null)
           this.license.examList = [];
         this.license.examList.push(res);
         this.licenseService.update(this.license).subscribe(res => {
           this.examHistory = res.examList;
-          this.openDialog("Sucesso", "Exame Adicionado a licença com sucesso", "OK");
-        }, error => this.httpErrorService.verifyErrors(error, "Erro ao Adicionar o exame a licença, por favor repita o processo"));
+          this.openDialog("Sucesso", "Exame Salvo com Sucesso", "OK");
+        }, error => this.httpErrorService.verifyErrors(error, "Erro ao Salvar o Exame"));
         this.onResetForm();
       }, error => this.httpErrorService.verifyErrors(error, "Erro ao Salvar o Exame"));
     } else {
       this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
       this.formDirty(this.form);
     }
-  }
-
-
-  mountExam() {
-    this.exam.examCategory = this.examForm.value.examType;
-    this.exam.resultDescription = this.examForm.value.resultDescription;
-    this.exam.status = this.examForm.value.status;
-    this.exam.civil = this.model;
-    this.exam.examinator = this.examinator;
   }
 
   onResetForm() {
@@ -129,7 +112,11 @@ export class SharedExamEvaluateComponent implements OnInit {
     })
   }
 
-  openDialog(title: string, message: string, confirmBtn: string) {
+  convertBoolean(status: boolean) {
+    return status ? "Deferido" : "Indeferido";
+  }
+
+  private openDialog(title: string, message: string, confirmBtn: string) {
     let dialog = this.dialog.open(SharedDialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
@@ -139,8 +126,27 @@ export class SharedExamEvaluateComponent implements OnInit {
     });
   }
 
-  convertBoolean(status: boolean){
-    return status ? "Deferido" : "Indeferido";
+  private mountFormExam() {
+    this.examForm = this.formBuilder.group({
+      examType: [null, Validators.required],
+      status: [null, Validators.required],
+      resultDescription: [null, Validators.required]
+    });
+  }
+
+  private mountFormSearchUser() {
+    this.form = this.formBuilder.group({
+      cpf: [null, Validators.required],
+      serial: [null, Validators.required]
+    });
+  }
+
+  private mountExam() {
+    this.exam.examCategory = this.examForm.value.examType;
+    this.exam.resultDescription = this.examForm.value.resultDescription;
+    this.exam.status = this.examForm.value.status;
+    this.exam.civil = this.model;
+    this.exam.examinator = this.examinator;
   }
 
   private formDirty(form: FormGroup): void {

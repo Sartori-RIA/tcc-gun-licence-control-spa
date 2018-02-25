@@ -26,4 +26,5 @@ export class ClientAddressComponent implements OnInit {
       this.addressList = res.addressList;
     }, error2 => this.httpErrorService.verifyErrors(error2))
   }
+
 }

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Exam} from "../../model/exam";
+import {DateConverter} from "../../util/date-converter";
 
 @Component({
   selector: 'app-shared-user-exam-history',
@@ -17,4 +18,11 @@ export class SharedUserExamHistoryComponent implements OnInit {
   ngOnInit() {
   }
 
+  convertBoolean(status: boolean){
+    return status ? "Deferido" : "Indeferido";
+  }
+
+  formatDate(date) {
+    return DateConverter.convertDate(date);
+  }
 }

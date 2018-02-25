@@ -70,6 +70,8 @@ import {RgPipe} from './pipes/rg.pipe';
 import {CdkTableModule} from "@angular/cdk/table";
 import {HttpErrorService} from "./services/http-error.service";
 import {SharedUserExamHistoryComponent} from './components/shared-user-exam-history/shared-user-exam-history.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
@@ -98,7 +100,8 @@ import {SharedUserExamHistoryComponent} from './components/shared-user-exam-hist
     MatTableModule,
     NgxDatatableModule,
     MatCheckboxModule,
-    CdkTableModule
+    CdkTableModule,
+    RouterModule,
   ],
   declarations: [
     CamelCasePipe,
@@ -120,6 +123,7 @@ import {SharedUserExamHistoryComponent} from './components/shared-user-exam-hist
     AddressComponent,
     RgPipe,
     SharedUserExamHistoryComponent,
+    SideBarComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -195,7 +199,9 @@ import {SharedUserExamHistoryComponent} from './components/shared-user-exam-hist
     SharedDialogComponent,
     SharedUserExamHistoryComponent,
     AddressComponent,
+    SideBarComponent,
     CdkTableModule,
+    RouterModule,
   ]
 })
 export class SharedModule {

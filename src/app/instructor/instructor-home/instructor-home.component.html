@@ -3,7 +3,7 @@
   <mat-card-content>
     <div fxLayout="row">
       <div fxFlex="20" fxHide.xs="true">
-        <app-instructor-sidebar></app-instructor-sidebar>
+        <app-side-bar [menu]="menu"></app-side-bar>
       </div>
       <div fxFlex="80">
         <router-outlet></router-outlet>

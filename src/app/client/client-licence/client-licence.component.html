@@ -5,18 +5,25 @@
         <mat-grid-list cols="4" rowHeight="30em">
           <div *ngFor="let licenseCategory of licensesCategories">
             <mat-grid-tile [colspan]="2">
-              <mat-card>
-                <mat-card-title>{{licenseCategory.description}}</mat-card-title>
-                <mat-card-content>
-                  <h3>Requisitos:</h3>
-                  <p><strong>Idade Minima: </strong>{{licenseCategory.requirement.minimalAge}}</p>
-                  <p><strong>Exames requeridos: </strong></p>
-                  <ul>
-                    <li *ngFor="let exam of licenseCategory.requirement.exams">{{exam.description}}</li>
-                  </ul>
-                  <button mat-button (click)="initLicense(licenseCategory)" class="green">Iniciar processo</button>
-                </mat-card-content>
-              </mat-card>
+              <form disabled="disable" [formGroup]="form">
+                <mat-card>
+                  <mat-card-title>{{licenseCategory.description}}</mat-card-title>
+                  <mat-card-content>
+                    <h3>Requisitos:</h3>
+                    <p><strong>Idade Minima: </strong>{{licenseCategory.requirement.minimalAge}}</p>
+                    <p><strong>Exames requeridos: </strong></p>
+                    <ul>
+                      <li *ngFor="let exam of licenseCategory.requirement.exams">{{exam.description}}</li>
+                    </ul>
+                    <mat-form-field>
+                      <mat-select placeholder="Endereço para a Licença" formControlName="address" id="address">
+                        <mat-option *ngFor="let address of addressList" [value]="address">{{ address.street }} - N {{ address.addressNumber }}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <button mat-button (click)="initLicense(licenseCategory)" class="green">Iniciar processo</button>
+                  </mat-card-content>
+                </mat-card>
+              </form>
             </mat-grid-tile>
           </div>
         </mat-grid-list>

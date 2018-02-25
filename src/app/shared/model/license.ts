@@ -1,6 +1,7 @@
 import {User} from "./user";
 import {LicenseCategory} from "./license-category";
 import {Exam} from "./exam";
+import {Address} from "./address";
 
 export class License {
 
@@ -11,6 +12,7 @@ export class License {
               public shelfLife?: Date,
               public status?: boolean,
               public user?: User,
-              public examList?: Exam[]) {
+              public examList?: Exam[],
+              public address?: Address) {
   }
 }

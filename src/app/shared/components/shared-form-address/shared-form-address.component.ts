@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Country} from "../../model/country";
 import {City} from "../../model/city";
 import {State} from "../../model/state";
@@ -30,6 +30,7 @@ export class SharedFormAddressComponent implements OnInit {
   cities: City[];
   private address: Address;
   private user: User;
+  @Output() newAddress = new EventEmitter<Address>();
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -59,7 +60,8 @@ export class SharedFormAddressComponent implements OnInit {
         if (this.user.addressList == null)
           this.user.addressList = [];
         this.user.addressList.push(res);
-        this.userService.update(this.user).subscribe(() => {
+        this.userService.update(this.user).subscribe(address => {
+          this.newAddress.emit(res);
           this.openDialog("Sucesso", "Endereço Adicionado com Sucesso", "OK");
           this.resetAddess();
         }, error => this.httpErroService.verifyErrors(error, "Nao foi possivel adicionar o endereco"));

@@ -6,7 +6,6 @@ import {ClientHomeComponent} from './client-home/client-home.component';
 import {ClientProfileComponent} from './client-profile/client-profile.component';
 import {ClientLicenceComponent} from './client-licence/client-licence.component';
 import {ClientExamsComponent} from './client-exams/client-exams.component';
-import {ClientSidebarComponent} from './client-sidebar/client-sidebar.component';
 import {ClientAgendaComponent} from './client-agenda/client-agenda.component';
 import {ClientAddressComponent} from './client-address/client-address.component';
 import {ClientUpdateComponent} from './client-update/client-update.component';
@@ -21,7 +20,6 @@ import {ClientUpdateComponent} from './client-update/client-update.component';
     ClientProfileComponent,
     ClientLicenceComponent,
     ClientExamsComponent,
-    ClientSidebarComponent,
     ClientAgendaComponent,
     ClientAddressComponent,
     ClientUpdateComponent

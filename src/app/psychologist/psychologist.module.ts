@@ -5,7 +5,6 @@ import {PsychologistReportComponent} from './psychologist-report/psychologist-re
 import {PsychologistHomeComponent} from './psychologist-home/psychologist-home.component';
 import {PsychologistEvaluateComponent} from './psychologist-evaluate/psychologist-evaluate.component';
 import {PsychologistProfileComponent} from './psychologist-profile/psychologist-profile.component';
-import {PsychologistSidebarComponent} from './psychologist-sidebar/psychologist-sidebar.component';
 import {SharedModule} from "../shared/shared.module";
 import {PsychologistAddressComponent} from './psychologist-address/psychologist-address.component';
 
@@ -19,8 +18,8 @@ import {PsychologistAddressComponent} from './psychologist-address/psychologist-
     PsychologistHomeComponent,
     PsychologistEvaluateComponent,
     PsychologistProfileComponent,
-    PsychologistSidebarComponent,
-    PsychologistAddressComponent]
+    PsychologistAddressComponent
+  ]
 })
 export class PsychologistModule {
 }

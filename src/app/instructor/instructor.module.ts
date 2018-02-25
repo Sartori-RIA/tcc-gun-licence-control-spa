@@ -5,7 +5,6 @@ import {InstructorEvaluateComponent} from './instructor-evaluate/instructor-eval
 import {InstructorHomeComponent} from './instructor-home/instructor-home.component';
 import {InstructorListComponent} from './instructor-list/instructor-list.component';
 import {InstructorProfileComponent} from './instructor-profile/instructor-profile.component';
-import {InstructorSidebarComponent} from './instructor-sidebar/instructor-sidebar.component';
 import {SharedModule} from "../shared/shared.module";
 import {InstructorAddressComponent} from './instructor-address/instructor-address.component';
 import {InstructorReportComponent} from './instructor-report/instructor-report.component';
@@ -20,7 +19,6 @@ import {InstructorReportComponent} from './instructor-report/instructor-report.c
     InstructorHomeComponent,
     InstructorListComponent,
     InstructorProfileComponent,
-    InstructorSidebarComponent,
     InstructorAddressComponent,
     InstructorReportComponent
   ]
