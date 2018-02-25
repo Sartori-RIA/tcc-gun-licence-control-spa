@@ -72,6 +72,8 @@ import {HttpErrorService} from "./services/http-error.service";
 import {SharedUserExamHistoryComponent} from './components/shared-user-exam-history/shared-user-exam-history.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import {RouterModule} from "@angular/router";
+import { SharedValidLicenseComponent } from './components/shared-valid-license/shared-valid-license.component';
+import { SharedProgressLicenseComponent } from './components/shared-progress-license/shared-progress-license.component';
 
 @NgModule({
   imports: [
@@ -124,6 +126,8 @@ import {RouterModule} from "@angular/router";
     RgPipe,
     SharedUserExamHistoryComponent,
     SideBarComponent,
+    SharedValidLicenseComponent,
+    SharedProgressLicenseComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -202,6 +206,8 @@ import {RouterModule} from "@angular/router";
     SideBarComponent,
     CdkTableModule,
     RouterModule,
+    SharedValidLicenseComponent,
+    SharedProgressLicenseComponent,
   ]
 })
 export class SharedModule {

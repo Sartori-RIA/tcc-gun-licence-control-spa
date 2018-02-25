@@ -50,7 +50,7 @@ export class ValidatorComponent implements OnInit {
     }
   }
 
-  buildReactiveForm(): void {
+  private buildReactiveForm(): void {
     this.form = this.formBuilder.group({
       serial: [null, Validators.required],
     })

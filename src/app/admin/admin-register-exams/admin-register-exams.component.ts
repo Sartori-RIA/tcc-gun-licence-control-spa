@@ -29,10 +29,7 @@ export class AdminRegisterExamsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      description: [null, Validators.required],
-      role: [null, Validators.required]
-    });
+    this.mountFormExam();
     this.model = new ExamCategory();
     this.examCategoryService.index().subscribe(res => this.exams = res, error2 => this.httpErrorService.verifyErrors(error2));
     this.userCategoryService.index().subscribe(res => this.roles = res, error2 => this.httpErrorService.verifyErrors(error2));
@@ -43,10 +40,7 @@ export class AdminRegisterExamsComponent implements OnInit {
       this.model.description = this.form.value.description;
       this.model.role = this.form.value.role;
       this.examCategoryService.save(this.model).subscribe(() => {
-        this.form.patchValue({
-          description: null,
-          role: null
-        });
+        this.resetFormExam();
         this.openDialog("Sucesso", "Exame Salvo com Sucesso", "OK")
       }, error2 => this.httpErrorService.verifyErrors(error2, "Erro ao Salvar"));
     } else {
@@ -54,13 +48,27 @@ export class AdminRegisterExamsComponent implements OnInit {
     }
   }
 
-  openDialog(title: string, message: string, confirmBtn: string) {
+  private resetFormExam() {
+    this.form.patchValue({
+      description: null,
+      role: null
+    });
+  }
+
+  private openDialog(title: string, message: string, confirmBtn: string) {
     let dialog = this.dialog.open(SharedDialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });
 
     dialog.afterClosed().subscribe(result => {
+    });
+  }
+
+  private mountFormExam() {
+    this.form = this.formBuilder.group({
+      description: [null, Validators.required],
+      role: [null, Validators.required]
     });
   }
 }

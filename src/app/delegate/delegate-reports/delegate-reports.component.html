@@ -1,0 +1,23 @@
+<mat-tab-group>
+  <mat-tab label="Licenças Aprovadas">
+    <mat-card>
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item *ngFor="let model of licensesAproved" role="listitem">
+            {{model.category.description}}
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>  <mat-tab label="Licenças em Progresso">
+    <mat-card>
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item *ngFor="let model of licensesProgress" role="listitem">
+            {{model.category.description}}
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

@@ -33,11 +33,7 @@ export class AdminRegisterStatesComponent implements OnInit {
     this.countryService.index().subscribe(res => {
       this.countries = res;
     }, error2 => this.httpErrorService.verifyErrors(error2));
-    this.form = this.formBuilder.group({
-      country: [null, Validators.required],
-      name: [null, Validators.required],
-      abbrev: [null, Validators.required]
-    }, error2 => this.httpErrorService.verifyErrors(error2));
+    this.mountFormState();
   }
 
   onCountryClick(event): void {
@@ -55,11 +51,7 @@ export class AdminRegisterStatesComponent implements OnInit {
         this.model.abbrev = this.form.value.abbrev;
         this.stateService.save(this.model).subscribe(res => {
           this.statesList.push(res);
-          this.form.patchValue({
-            country: null,
-            name: null,
-            abbrev: null
-          });
+          this.resetFormState();
           this.openDialog("Sucesso", "Estado Salvo com Sucesso", "OK")
         }, error => this.httpErrorService.verifyErrors(error, "Erro ao Salvar"));
       }, error2 => this.httpErrorService.verifyErrors(error2));
@@ -67,13 +59,29 @@ export class AdminRegisterStatesComponent implements OnInit {
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }
 
-  openDialog(title: string, message: string, confirmBtn: string) {
+  private resetFormState() {
+    this.form.patchValue({
+      country: null,
+      name: null,
+      abbrev: null
+    });
+  }
+
+  private openDialog(title: string, message: string, confirmBtn: string) {
     let dialog = this.dialog.open(SharedDialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });
 
     dialog.afterClosed().subscribe(result => {
+    });
+  }
+
+  private mountFormState() {
+    this.form = this.formBuilder.group({
+      country: [null, Validators.required],
+      name: [null, Validators.required],
+      abbrev: [null, Validators.required]
     });
   }
 

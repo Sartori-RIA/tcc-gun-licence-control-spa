@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title>{{license.category.description}}</mat-card-title>
+  <mat-card-content>
+    <p><strong>Nome: </strong>{{license.user.name}}</p>
+    <p><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
+    <p><strong>Numero de serie: </strong>{{license.serial}}</p>
+    <p><strong>Descrição: </strong>{{license.description}}</p>
+    <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
+    <mat-card-title>Exames requeridos para a licença</mat-card-title>
+    <div *ngFor="let exam of license.category.requirement.exams">
+      <p>{{exam.description}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

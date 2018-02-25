@@ -28,6 +28,7 @@ export class ClientLicenceComponent implements OnInit {
   myProgressLicenses: License[] = [];
   exams: Exam[];
   addressList: Address[];
+  licenseAproved: License[] = [];
 
   constructor(private licenseService: LicenseService,
               private licenseCategoryService: LicenseCategoryService,
@@ -84,10 +85,12 @@ export class ClientLicenceComponent implements OnInit {
         this.user = res;
         this.licenseService.listByOneProperty("user.cpf", this.user.cpf).subscribe(res => {
           this.myProgressLicenses = [];
-          for (let license of res)
-            if (license.shelfLife == null && !license.status) {
+          for (let license of res) {
+            if (license.shelfLife == null && !license.status)
               this.myProgressLicenses.push(license)
-            }
+            if (license.shelfLife != null && license.status)
+              this.licenseAproved.push(license)
+          }
         }, error2 => this.httpErrorService.verifyErrors(error2));
       }, error2 => this.httpErrorService.verifyErrors(error2));
   }

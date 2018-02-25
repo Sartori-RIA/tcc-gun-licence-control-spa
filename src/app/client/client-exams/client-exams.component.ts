@@ -28,7 +28,6 @@ export class ClientExamsComponent implements OnInit {
     this.licenseService.listByOneProperty("user.cpf", sessionStorage.getItem("currentUserCPF"))
       .subscribe(res => {
         this.licenses = res;
-        console.log(this.licenses)
       }, error2 => this.httpErrorService.verifyErrors(error2))
   }
 

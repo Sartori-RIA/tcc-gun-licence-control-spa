@@ -36,11 +36,7 @@ export class AdminRegisterCititesComponent implements OnInit {
   ngOnInit() {
     this.model = new City();
     this.countryService.index().subscribe(res => this.countries = res);
-    this.form = this.formBuilder.group({
-      country: [null, Validators.required],
-      state: [null, Validators.required],
-      city: [null, Validators.required]
-    })
+    this.mountFormCity();
   }
 
   onSubmit(): void {
@@ -50,11 +46,7 @@ export class AdminRegisterCititesComponent implements OnInit {
         this.model.description = this.form.value.city;
         this.cityService.save(this.model).subscribe(res => {
           this.citiesList.push(res);
-          this.form.patchValue({
-            country: null,
-            state: null,
-            city: null
-          });
+          this.resetFormCity();
           this.openDialog("Sucesso", "Cidade Cadastrada com Sucesso", "OK")
         }, error => this.httpErrorService.verifyErrors(error, "Erro ao Cadastrar"));
       }, error2 => this.httpErrorService.verifyErrors(error2));
@@ -79,7 +71,23 @@ export class AdminRegisterCititesComponent implements OnInit {
         .subscribe(res => this.citiesList = res, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
-  openDialog(title: string, message: string, confirmBtn: string) {
+  private mountFormCity() {
+    this.form = this.formBuilder.group({
+      country: [null, Validators.required],
+      state: [null, Validators.required],
+      city: [null, Validators.required]
+    })
+  }
+
+  private resetFormCity() {
+    this.form.patchValue({
+      country: null,
+      state: null,
+      city: null
+    });
+  }
+
+  private openDialog(title: string, message: string, confirmBtn: string) {
     let dialog = this.dialog.open(SharedDialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}

@@ -32,15 +32,7 @@ export class AdminRegisterLicensesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      description: [null, Validators.required],
-      minimalAge: [null, [Validators.required, Validators.min(1)]],
-      criminalRecors: [null, Validators.required],
-      respondingProcess: [null, Validators.required],
-      exams: this.formBuilder.array([
-        new FormControl()
-      ])
-    });
+    this.mountFormLicense();
     this.model = new LicenseCategory();
     this.requirements = new Requirement();
     this.examCategoryService.index().subscribe(res => {
@@ -73,7 +65,27 @@ export class AdminRegisterLicensesComponent implements OnInit {
     }
   }
 
-  openDialog(title: string, message: string, confirmBtn: string) {
+  respondProcess(licence: LicenseCategory): string {
+    return licence.requirement.respondingProcess == true ? "SIM" : "NÃO";
+  }
+
+  criminalRecords(licence: LicenseCategory): string {
+    return licence.requirement.criminalRecors == true ? "SIM" : "NÃO";
+  }
+
+  private mountFormLicense() {
+    this.form = this.formBuilder.group({
+      description: [null, Validators.required],
+      minimalAge: [null, [Validators.required, Validators.min(1)]],
+      criminalRecors: [null, Validators.required],
+      respondingProcess: [null, Validators.required],
+      exams: this.formBuilder.array([
+        new FormControl()
+      ])
+    });
+  }
+
+  private openDialog(title: string, message: string, confirmBtn: string) {
     let dialog = this.dialog.open(SharedDialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
@@ -81,14 +93,6 @@ export class AdminRegisterLicensesComponent implements OnInit {
 
     dialog.afterClosed().subscribe(result => {
     });
-  }
-
-  respondProcess(licence: LicenseCategory): string {
-    return licence.requirement.respondingProcess == true ? "SIM" : "NÃO";
-  }
-
-  criminalRecords(licence: LicenseCategory): string {
-    return licence.requirement.criminalRecors == true ? "SIM" : "NÃO";
   }
 
   private resetForm() {
