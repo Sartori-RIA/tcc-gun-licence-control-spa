@@ -7,11 +7,13 @@ import {PsychologistEvaluateComponent} from './psychologist-evaluate/psychologis
 import {PsychologistProfileComponent} from './psychologist-profile/psychologist-profile.component';
 import {SharedModule} from "../shared/shared.module";
 import {PsychologistAddressComponent} from './psychologist-address/psychologist-address.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
     SharedModule,
-    PsychologistRoutingModule
+    PsychologistRoutingModule,
+    FlexLayoutModule
   ],
   declarations: [
     PsychologistReportComponent,

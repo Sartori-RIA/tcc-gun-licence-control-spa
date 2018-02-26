@@ -15,20 +15,11 @@ export class ValidatorComponent implements OnInit {
   form: FormGroup;
   model: User;
   license: License;
+  valid: boolean;
 
   constructor(private licenseValidatorService: LicenseValidatorService,
               private formBuilder: FormBuilder,
               private router: Router) {
-  }
-
-  private _valid: boolean;
-
-  get valid(): boolean {
-    return this._valid;
-  }
-
-  set valid(value: boolean) {
-    this._valid = value;
   }
 
   ngOnInit() {
@@ -48,6 +39,10 @@ export class ValidatorComponent implements OnInit {
           this.valid = false;
       });
     }
+  }
+
+  onChange() {
+    this.model = null
   }
 
   private buildReactiveForm(): void {

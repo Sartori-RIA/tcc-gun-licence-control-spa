@@ -1,5 +1,5 @@
 <mat-list *ngFor="let license of licenses">
-  <mat-list-item (click)="onLicenseClick(license)">{{license.description}}</mat-list-item>
+  <mat-list-item (click)="onLicenseClick(license)">{{license.category.description}} - {{license.serial}}</mat-list-item>
 </mat-list>
 
 <div *ngIf="licenseSelected != null">
@@ -12,6 +12,7 @@
       <p><strong>Validade: </strong>{{license.shelfLife}}</p>
       <p><strong>Serial: </strong>{{license.serial}}</p>
       <p><strong>Rua: </strong>{{license.address.street}}</p>
+      <mat-card-title>Historico de Exames</mat-card-title>
       <div *ngFor="let exam of licenseSelected.examList">
         <p><strong>Categora de Licensa: </strong>{{exam.examCategory.description}}</p>
         <p><strong>Aplicador do exame: </strong>{{exam.examinator.name}}</p>

@@ -8,11 +8,13 @@ import {InstructorProfileComponent} from './instructor-profile/instructor-profil
 import {SharedModule} from "../shared/shared.module";
 import {InstructorAddressComponent} from './instructor-address/instructor-address.component';
 import {InstructorReportComponent} from './instructor-report/instructor-report.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
     SharedModule,
-    InstructorRoutingModule
+    InstructorRoutingModule,
+    FlexLayoutModule
   ],
   declarations: [
     InstructorEvaluateComponent,

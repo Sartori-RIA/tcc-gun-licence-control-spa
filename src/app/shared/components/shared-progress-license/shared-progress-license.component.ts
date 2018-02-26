@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {License} from "../../model/license";
+import {DateConverter} from "../../util/date-converter";
 
 @Component({
   selector: 'app-shared-progress-license',
@@ -16,4 +17,11 @@ export class SharedProgressLicenseComponent implements OnInit {
   ngOnInit() {
   }
 
+  licenseExpiration(expiration: Date) {
+    return expiration != null ? DateConverter.convertDate(expiration) : "Licença Pendente";
+  }
+
+  licenseSituation(status: boolean) {
+    return status ? "Deferida" : "Indeferida"
+  }
 }

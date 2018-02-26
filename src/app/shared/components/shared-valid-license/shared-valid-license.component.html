@@ -2,9 +2,11 @@
   <mat-card-title>{{license.category.description}}</mat-card-title>
   <mat-card-content>
     <p><strong>Nome: </strong>{{license.user.name}}</p>
-    <p><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
+    <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
     <p><strong>Numero de serie: </strong>{{license.serial}}</p>
-    <p><strong>Descrição: </strong>{{license.description}}</p>
     <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
+    <p><strong>Rua: </strong>{{license.address.street}} - {{license.address.addressNumber}}</p>
+    <p><strong>Estado: </strong>{{license.address.city.state.description}}</p>
+    <p><strong>Pais: </strong>{{license.address.city.state.country.description}}</p>
   </mat-card-content>
 </mat-card>

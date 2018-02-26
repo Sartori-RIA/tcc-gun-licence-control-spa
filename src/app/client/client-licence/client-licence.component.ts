@@ -49,8 +49,7 @@ export class ClientLicenceComponent implements OnInit {
 
   initLicense(licenseCategory: LicenseCategory) {
     if (this.form.valid) {
-      this.license.category = licenseCategory;
-      this.license.user = this.user;
+      this.mountLicense(licenseCategory);
       this.licenseService.save(this.license).subscribe(res => {
         this.myProgressLicenses.push(res);
         this.openDialog("Sucesso", "Processo de nova Licença iniciada", "OK");
@@ -61,18 +60,10 @@ export class ClientLicenceComponent implements OnInit {
     }
   }
 
-  licenseExpiration(expiration: Date) {
-    return expiration != null ? DateConverter.convertDate(expiration) : "Licença Pendente";
-  }
-
-  licenseSituation(status: boolean) {
-    return status ? "Deferida" : "Indeferida"
-  }
-
-  examResult() {
-    this.user;
-    this.license;
-    this.exams;
+  private mountLicense(licenseCategory: LicenseCategory) {
+    this.license.category = licenseCategory;
+    this.license.user = this.user;
+    this.license.address = this.form.value.address;
   }
 
   private loadLicensesCategory() {
