@@ -74,6 +74,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import {RouterModule} from "@angular/router";
 import { SharedValidLicenseComponent } from './components/shared-valid-license/shared-valid-license.component';
 import { SharedProgressLicenseComponent } from './components/shared-progress-license/shared-progress-license.component';
+import {NgxCarouselModule} from "ngx-carousel";
+import { MenuProfileComponent } from './components/menu-profile/menu-profile.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports: [
@@ -104,6 +107,8 @@ import { SharedProgressLicenseComponent } from './components/shared-progress-lic
     MatCheckboxModule,
     CdkTableModule,
     RouterModule,
+    NgxCarouselModule,
+    FlexLayoutModule,
   ],
   declarations: [
     CamelCasePipe,
@@ -128,6 +133,7 @@ import { SharedProgressLicenseComponent } from './components/shared-progress-lic
     SideBarComponent,
     SharedValidLicenseComponent,
     SharedProgressLicenseComponent,
+    MenuProfileComponent,
   ],
   providers: [
     RoutesClientUtil,
@@ -206,8 +212,11 @@ import { SharedProgressLicenseComponent } from './components/shared-progress-lic
     SideBarComponent,
     CdkTableModule,
     RouterModule,
+    NgxCarouselModule,
     SharedValidLicenseComponent,
     SharedProgressLicenseComponent,
+    MenuProfileComponent,
+    FlexLayoutModule,
   ]
 })
 export class SharedModule {

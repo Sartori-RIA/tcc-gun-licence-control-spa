@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
-  <span routerLink="/">TCC-TSI</span>
+  <span routerLink="/"><img height="55em" width="50em" src="http://www.pf.gov.br/++resource++pf.internet.tema/logo-pf.png" alt="pf"></span>
   <span flex></span>
   <span class="go-to-right"></span>
-  <mat-nav-list>
+  <mat-nav-list fxHide.xs="true">
     <div>
       <span routerLinkActive="active"><a routerLink="/duvidas">Duvidas?</a></span>
       <span routerLinkActive="active"><a routerLink="/validador">Validador</a></span>
@@ -17,4 +17,37 @@
       <span *ngIf="isAdmin()" routerLinkActive="active"><a routerLink="/admin">Minha página</a></span>
     </div>
   </mat-nav-list>
+
+  <div fxHide.xs="false" fxHide="true">
+    <button  type="button" mat-button (click)="drawerMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
 </mat-toolbar>
+
+<!--<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" [opened]="draw">
+    <mat-card>
+      <mat-card-content>
+        <span fxLayout="row" routerLinkActive="active"><a routerLink="/validador">Validador</a></span>
+        <span fxLayout="row" routerLinkActive="active"><a routerLink="/login" (click)="onClick()">
+           {{ authService.checkLogin() ? 'Sair' : 'Entrar'}}</a>
+          </span>
+
+        <span fxLayout="row" *ngIf="isCivil()" routerLinkActive="active"><a
+          routerLink="/civil">Minha página</a></span>
+        <span fxLayout="row" *ngIf="isInstructor()" routerLinkActive="active"><a
+          routerLink="/instrutor">Minha página</a></span>
+        <span fxLayout="row" *ngIf="isPsychologist()" routerLinkActive="active"><a routerLink="/psicologo">Minha página</a></span>
+        <span fxLayout="row" *ngIf="isDelegate()" routerLinkActive="active"><a
+          routerLink="/delegado">Minha página</a></span>
+        <span fxLayout="row" *ngIf="isAdmin()" routerLinkActive="active"><a
+          routerLink="/admin">Minha página</a></span>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-sidenav>
+
+
+</mat-sidenav-container>-->

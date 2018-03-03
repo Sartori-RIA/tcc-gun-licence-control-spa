@@ -1,29 +1,35 @@
 <mat-grid-list cols="12" rowHeight="600">
   <mat-grid-tile colspan="12">
-    <div fxLayout="row">
-      <mat-card fxFlex="100%">
+      <mat-card>
         <mat-card-title>Validador</mat-card-title>
         <mat-card-subtitle>Precisa saber se a licenca é verdadeira ou se ainda está na validade?</mat-card-subtitle>
         <mat-card-content>
           <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
-
-            <mat-input-container class="midle-width">
-              <input matInput type="serial" id="serial" (change)="onChange()" formControlName="serial"
-                     placeholder="Número da licença">
-            </mat-input-container>
-
-            <button mat-raised-button color="primary" type="submit" name="action">
-              Verificar
-            </button>
-
+            <div
+            fxLayoutWrap
+            fxLayout.xs="row"
+            fxLayout="column"
+            fxLayoutAlign="space-around center"
+            >
+            <div fxFlex="100">
+              <mat-input-container class="midle-width">
+                <input matInput type="text" id="serial" (change)="onChange()" formControlName="serial"
+                       placeholder="Número da licença">
+              </mat-input-container>
+            </div>
+            <div fxFlex="100">
+              <button mat-raised-button color="primary" type="submit" name="action">
+                Verificar
+              </button>
+            </div>
+            </div>
           </form>
         </mat-card-content>
       </mat-card>
 
-      <div fxFlex="100%" *ngIf="valid && model != null" class="col s4 offset-s4 center-align truncate">
+      <div *ngIf="valid && model != null">
         <app-shared-valid-license [license]="model"></app-shared-valid-license>
       </div>
-    </div>
   </mat-grid-tile>
 </mat-grid-list>
 

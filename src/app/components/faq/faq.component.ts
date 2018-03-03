@@ -76,6 +76,14 @@ const ELEMENT_DATA: Faq[] = [
   {
     header: 'PL 3.722/2012 ',
     content: '<a href="http://www.defesa.org/pl-37222012/">PL3722/12</a> Projeto de lei formulado pelo deputado <a' +
-    '          class="btn-link" href="http://www.deputadopeninha.com.br/placar-pl-3722"> Rogério Peninha Mendonça</a>'
-  }
+    '          class="btn-link" href="http://www.deputadopeninha.com.br/placar-pl-3722"> Rogério Peninha Mendonça</a>' +
+    '<p>É um projeto de lei que altera a legislação sobre armas e munições no Brasil, flexibilizando as normas em vigor' +
+    ' para que as pessoas de bem possam ter acesso legal aos instrumentos mais eficazes à legítima defesa</p>'
+  },
+  {header: 'Como utilizar o Sistema?', content: ''},
+  {header: 'Porque devo utilizar o sistema?', content: ''},
+  {header: 'Qual a finalidade deste Sistema?', content: ''},
+  {header: 'Quais são as etapas para obter minha Licensa?', content: ''},
+  {header: 'Como Renovo minha Licensa', content: ''},
+  {header: 'Encontrei um problema no Sistema e Agora?', content: ''}
 ];

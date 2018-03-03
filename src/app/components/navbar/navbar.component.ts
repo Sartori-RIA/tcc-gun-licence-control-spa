@@ -10,16 +10,23 @@ export class NavbarComponent implements OnInit {
 
   @Input() showMenu;
 
+  draw: boolean;
+
   constructor(public authService: AuthService) {
   }
 
   ngOnInit() {
     this.showMenu = this.authService.checkLogin();
+    this.draw = false;
   }
 
   onClick() {
     if (this.authService.checkLogin())
       this.authService.logout();
+  }
+
+  drawerMenu(){
+    this.draw = !this.draw;
   }
 
   isCivil(): boolean {

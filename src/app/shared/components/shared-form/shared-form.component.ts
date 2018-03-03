@@ -70,6 +70,14 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
     });
   }
 
+  _keyPressOnlyNumber(event: any): void {
+    const pattern = /[0-9+\-]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
   private resetForm(): void {
     this.form.patchValue({
       name: null,
@@ -106,6 +114,7 @@ export class SharedFormComponent implements OnInit, FormCanDeactivate {
       naturalness: [null, Validators.required],
       role: [null]
     });
+
   }
 
   private converFormBuilderToModel(): void {

@@ -4,11 +4,11 @@
     <form disabled="disable" [formGroup]="form">
       <mat-form-field>
         <span matPrefix>CPF: </span>
-        <input (change)="onResetForm()" formControlName="cpf" matInput type="number" class="example-right-align">
+        <input (change)="onResetForm()" formControlName="cpf" matInput type="text">
       </mat-form-field>
       <mat-form-field>
         <span matPrefix>Licença: </span>
-        <input (change)="onResetForm()" formControlName="serial" matInput type="text" class="example-right-align">
+        <input (change)="onResetForm()" formControlName="serial" matInput type="text">
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="searchBySerial()" type="submit">Buscar</button>
     </form>
