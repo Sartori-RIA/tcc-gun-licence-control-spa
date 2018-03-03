@@ -83,12 +83,15 @@
           <input matInput type="password" formControlName="password" id="password"
                  placeholder="Senha">
         </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput type="password" formControlName="confirmPassword" id="confirmPassword"
+                 placeholder="Confirme a senha">
+        </mat-form-field>
 
         <mat-form-field class="midle-width" fxFlex="100">
           <input matInput type="email" id="email" formControlName="email"
                  placeholder="Email">
         </mat-form-field>
-
 
         <div *ngIf="!isClient">
 

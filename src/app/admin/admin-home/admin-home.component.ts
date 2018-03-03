@@ -15,8 +15,7 @@ export class AdminHomeComponent implements OnInit {
     {route: 'cadastro/cidades', title: 'Cadastro de Cidades'},
     {route: 'cadastro/exames', title: 'Cadastro de Exames'},
     {route: 'cadastro/licencas', title: 'Cadastro de Categorias de Licenças'},
-    {route: 'relatorios', title: 'Relatórios'},
-    {route: 'perfil', title: 'Meus Dados'},
+    {route: 'relatorios', title: 'Relatórios'}
   ];
 
   constructor() {

@@ -1,1 +1,6 @@
-<app-shared-user-detail [model]="model" [gender]="gender"></app-shared-user-detail>
+<div fxLayoutWrap
+     fxLayout="row"
+     fxLayoutAlign="center center">
+  <app-shared-user-detail fxFlex.xs="100" fxFlex="50" [model]="model" [gender]="gender"></app-shared-user-detail>
+  <app-address fxFlex.xs="100" fxFlex="50" [addressList]="model.addressList"></app-address>
+</div>

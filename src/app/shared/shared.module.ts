@@ -62,7 +62,6 @@ import {SharedExamEvaluateComponent} from './components/shared-exam-evaluate/sha
 import {RequirementService} from "./services/requirement.service";
 import {LicenseService} from "./services/license.service";
 import {SharedDialogComponent} from './components/shared-dialog/shared-dialog.component';
-import {SharedHelloComponent} from './components/shared-hello/shared-hello.component';
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {AddressComponent} from './components/address/address.component';
 import {DateConverter} from "./util/date-converter";
@@ -126,7 +125,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     SharedUserUpdateComponent,
     SharedExamEvaluateComponent,
     SharedDialogComponent,
-    SharedHelloComponent,
     AddressComponent,
     RgPipe,
     SharedUserExamHistoryComponent,
@@ -205,7 +203,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     SharedUserAddressListComponent,
     SharedUserUpdateComponent,
     SharedExamEvaluateComponent,
-    SharedHelloComponent,
     SharedDialogComponent,
     SharedUserExamHistoryComponent,
     AddressComponent,
