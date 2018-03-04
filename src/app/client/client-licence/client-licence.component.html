@@ -22,7 +22,8 @@
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
-                    <button mat-raised-button (click)="initLicense(licenseCategory)" color="primary">Iniciar processo</button>
+                    <button mat-raised-button (click)="initLicense(licenseCategory)" color="primary">Iniciar processo
+                    </button>
                   </mat-card-content>
                 </mat-card>
               </form>
@@ -35,7 +36,7 @@
         <mat-grid-list cols="4" rowHeight="30em">
           <div *ngFor="let license of licenseAproved">
             <mat-grid-tile [colspan]="2">
-              <app-shared-valid-license [license]="license"></app-shared-valid-license>
+              <app-valid-license [license]="license"></app-valid-license>
             </mat-grid-tile>
           </div>
         </mat-grid-list>
@@ -45,7 +46,7 @@
         <mat-grid-list cols="4" rowHeight="30em">
           <div *ngFor="let license of myProgressLicenses">
             <mat-grid-tile [colspan]="2">
-              <app-shared-progress-license [license]="license"></app-shared-progress-license>
+              <app-progress-license [license]="license"></app-progress-license>
             </mat-grid-tile>
           </div>
         </mat-grid-list>

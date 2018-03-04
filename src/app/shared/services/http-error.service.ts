@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from "../../auth/auth.service";
 import {ErrorsHttp} from "../util/errors-http";
-import {SharedDialogComponent} from "../components/shared-dialog/shared-dialog.component";
+import {DialogComponent} from "../components/dialog/dialog.component";
 import {MatDialog} from "@angular/material";
 
 @Injectable()
@@ -34,7 +34,7 @@ export class HttpErrorService {
   }
 
   private openDialog(title: string, message: string, confirmBtn: string) {
-    let dialog = this.dialog.open(SharedDialogComponent, {
+    let dialog = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });

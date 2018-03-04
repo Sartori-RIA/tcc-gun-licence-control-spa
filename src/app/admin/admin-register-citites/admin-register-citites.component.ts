@@ -6,7 +6,7 @@ import {City} from "../../shared/model/city";
 import {CountryService} from "../../shared/services/country.service";
 import {StateService} from "../../shared/services/state.service";
 import {CityService} from "../../shared/services/city.service";
-import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {DialogComponent} from "../../shared/components/dialog/dialog.component";
 import {MatDialog} from "@angular/material";
 import {HttpErrorService} from "../../shared/services/http-error.service";
 
@@ -88,7 +88,7 @@ export class AdminRegisterCititesComponent implements OnInit {
   }
 
   private openDialog(title: string, message: string, confirmBtn: string) {
-    let dialog = this.dialog.open(SharedDialogComponent, {
+    let dialog = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });

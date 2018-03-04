@@ -3,7 +3,7 @@ import {User} from "../../shared/model/user";
 import {AuthService} from "../../auth/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {DialogComponent} from "../../shared/components/dialog/dialog.component";
 import {MatDialog} from "@angular/material";
 
 @Component({
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   openDialog(title: string, message: string, confirmBtn: string) {
-    let dialog = this.dialog.open(SharedDialogComponent, {
+    let dialog = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });

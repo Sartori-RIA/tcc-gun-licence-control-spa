@@ -4,7 +4,7 @@ import {ExamCategoryService} from "../../shared/services/exam-category.service";
 import {ExamCategory} from "../../shared/model/exam-category";
 import {UserRole} from "../../shared/model/user-role";
 import {UserCategoryService} from "../../shared/services/user-category.service";
-import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {DialogComponent} from "../../shared/components/dialog/dialog.component";
 import {MatDialog} from "@angular/material";
 import {HttpErrorService} from "../../shared/services/http-error.service";
 
@@ -56,7 +56,7 @@ export class AdminRegisterExamsComponent implements OnInit {
   }
 
   private openDialog(title: string, message: string, confirmBtn: string) {
-    let dialog = this.dialog.open(SharedDialogComponent, {
+    let dialog = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });

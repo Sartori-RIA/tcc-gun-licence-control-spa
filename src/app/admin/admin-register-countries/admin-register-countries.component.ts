@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CountryService} from "../../shared/services/country.service";
 import {Country} from "../../shared/model/country";
 import {MatDialog} from "@angular/material";
-import {SharedDialogComponent} from "../../shared/components/shared-dialog/shared-dialog.component";
+import {DialogComponent} from "../../shared/components/dialog/dialog.component";
 import {HttpErrorService} from "../../shared/services/http-error.service";
 
 @Component({
@@ -53,7 +53,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
   }
 
   private openDialog(title: string, message: string, confirmBtn: string) {
-    let dialog = this.dialog.open(SharedDialogComponent, {
+    let dialog = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });

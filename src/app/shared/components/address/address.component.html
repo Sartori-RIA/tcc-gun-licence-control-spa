@@ -5,13 +5,13 @@
         <mat-grid-list cols="12" rowHeight="30em">
 
           <mat-grid-tile [colspan]="6" *ngFor="let address of addressList">
-            <app-shared-user-address-list [model]="address"></app-shared-user-address-list>
+            <app-user-address-list [model]="address"></app-user-address-list>
           </mat-grid-tile>
         </mat-grid-list>
       </mat-tab>
       <mat-tab label="Adicionar Endereço">
         <mat-grid-list cols="4" rowHeight="30em">
-          <app-shared-form-address (newAddress)="newAddress($event)"></app-shared-form-address>
+          <app-form-address (newAddress)="newAddress($event)"></app-form-address>
         </mat-grid-list>
       </mat-tab>
     </mat-tab-group>
