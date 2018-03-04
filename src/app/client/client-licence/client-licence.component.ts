@@ -6,7 +6,6 @@ import {LicenseCategory} from "../../shared/model/license-category";
 import {License} from "../../shared/model/license";
 import {User} from "../../shared/model/user";
 import {UserService} from "../../shared/services/user.service";
-import {DateConverter} from "../../shared/util/date-converter";
 import {Exam} from "../../shared/model/exam";
 import {ExamService} from "../../shared/services/exam.service";
 import {DialogComponent} from "../../shared/components/dialog/dialog.component";

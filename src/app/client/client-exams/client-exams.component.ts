@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Exam} from "../../shared/model/exam";
 import {ExamService} from "../../shared/services/exam.service";
 import {HttpErrorService} from "../../shared/services/http-error.service";
 import {LicenseService} from "../../shared/services/license.service";

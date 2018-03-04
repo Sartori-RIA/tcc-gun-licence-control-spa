@@ -17,7 +17,7 @@ export class AddressComponent implements OnInit {
   ngOnInit() {
   }
 
-  newAddress(event){
+  newAddress(event) {
     this.addressList.push(event)
   }
 }

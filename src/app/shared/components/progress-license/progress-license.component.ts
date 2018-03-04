@@ -10,9 +10,10 @@ import {DateConverter} from "../../util/date-converter";
 })
 export class ProgressLicenseComponent implements OnInit {
 
-  @Input()license: License;
+  @Input() license: License;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

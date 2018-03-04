@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
     this.draw = !this.draw;
   }
 
-  goToMyProfile(){
+  goToMyProfile() {
     if (this.isCivil())
       this.route.navigate(['/civil/perfil']);
     if (this.isAdmin())
@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
     if (this.isInstructor())
       this.route.navigate(['/instrutor/perfil']);
   }
+
   goToMyPage() {
     if (this.isCivil())
       this.route.navigate(['/civil']);
@@ -58,7 +59,7 @@ export class NavbarComponent implements OnInit {
       this.route.navigate(['/instrutor']);
   }
 
-  goToUpdate(){
+  goToUpdate() {
     this.route.navigate(['/civil/atualizar'])
   }
 

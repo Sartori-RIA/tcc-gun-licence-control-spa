@@ -28,9 +28,9 @@ export class FormAddressComponent implements OnInit {
   countries: Country[];
   states: State[];
   cities: City[];
+  @Output() newAddress = new EventEmitter<Address>();
   private address: Address;
   private user: User;
-  @Output() newAddress = new EventEmitter<Address>();
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,

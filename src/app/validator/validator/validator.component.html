@@ -1,16 +1,16 @@
 <mat-grid-list cols="12" rowHeight="600">
   <mat-grid-tile colspan="12">
-      <mat-card>
-        <mat-card-title>Validador</mat-card-title>
-        <mat-card-subtitle>Precisa saber se a licenca é verdadeira ou se ainda está na validade?</mat-card-subtitle>
-        <mat-card-content>
-          <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div
+    <mat-card>
+      <mat-card-title>Validador</mat-card-title>
+      <mat-card-subtitle>Precisa saber se a licenca é verdadeira ou se ainda está na validade?</mat-card-subtitle>
+      <mat-card-content>
+        <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div
             fxLayoutWrap
             fxLayout.xs="row"
             fxLayout="column"
             fxLayoutAlign="space-around center"
-            >
+          >
             <div fxFlex="100">
               <mat-input-container class="midle-width">
                 <input matInput type="text" id="serial" (change)="onChange()" formControlName="serial"
@@ -22,14 +22,14 @@
                 Verificar
               </button>
             </div>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
 
-      <div *ngIf="valid && model != null">
-        <app-shared-valid-license [license]="model"></app-shared-valid-license>
-      </div>
+    <div *ngIf="valid && model != null">
+      <app-shared-valid-license [license]="model"></app-shared-valid-license>
+    </div>
   </mat-grid-tile>
 </mat-grid-list>
 

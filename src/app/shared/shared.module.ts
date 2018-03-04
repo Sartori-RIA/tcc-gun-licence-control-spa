@@ -68,10 +68,10 @@ import {RgPipe} from './pipes/rg.pipe';
 import {CdkTableModule} from "@angular/cdk/table";
 import {HttpErrorService} from "./services/http-error.service";
 import {UserExamHistoryComponent} from './components/user-exam-history/user-exam-history.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
+import {SideBarComponent} from './components/side-bar/side-bar.component';
 import {RouterModule} from "@angular/router";
-import { ValidLicenseComponent } from './components/valid-license/valid-license.component';
-import { ProgressLicenseComponent } from './components/progress-license/progress-license.component';
+import {ValidLicenseComponent} from './components/valid-license/valid-license.component';
+import {ProgressLicenseComponent} from './components/progress-license/progress-license.component';
 import {NgxCarouselModule} from "ngx-carousel";
 import {FlexLayoutModule} from "@angular/flex-layout";
 

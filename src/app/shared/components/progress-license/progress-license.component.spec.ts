@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProgressLicenseComponent } from './progress-license.component';
+import {ProgressLicenseComponent} from './progress-license.component';
 
 describe('ProgressLicenseComponent', () => {
   let component: ProgressLicenseComponent;
@@ -8,9 +8,9 @@ describe('ProgressLicenseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProgressLicenseComponent ]
+      declarations: [ProgressLicenseComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

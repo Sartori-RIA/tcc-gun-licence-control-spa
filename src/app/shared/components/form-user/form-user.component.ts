@@ -102,7 +102,7 @@ export class FormUserComponent implements OnInit, FormCanDeactivate {
       name: [null, Validators.required],
       gender: [null, Validators.required],
       password: [null, Validators.required],
-      confirmPassword:[null, [Validators.required]],
+      confirmPassword: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       cpf: [null, Validators.required],
       rg: [null, Validators.required],

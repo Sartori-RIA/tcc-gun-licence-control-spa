@@ -18,7 +18,7 @@ export class UserExamHistoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  convertBoolean(status: boolean){
+  convertBoolean(status: boolean) {
     return status ? "Deferido" : "Indeferido";
   }
 

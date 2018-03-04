@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxCarousel} from "ngx-carousel";
 
 @Component({
@@ -10,7 +10,8 @@ import {NgxCarousel} from "ngx-carousel";
 export class CarouselComponent implements OnInit {
   public carouselOne: NgxCarousel;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.carouselOne = {

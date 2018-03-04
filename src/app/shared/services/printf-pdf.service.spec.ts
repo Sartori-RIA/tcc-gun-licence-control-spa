@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { PrintfPdfService } from './printf-pdf.service';
+import {PrintfPdfService} from './printf-pdf.service';
 
 describe('PrintfPdfService', () => {
   beforeEach(() => {

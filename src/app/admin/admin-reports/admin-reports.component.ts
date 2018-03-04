@@ -33,7 +33,7 @@ export class AdminReportsComponent implements OnInit {
     this.loadLicensesAproved();
   }
 
-  private loadLicensesProgress(){
+  private loadLicensesProgress() {
     this.licenseService.listByOneProperty("status", String(false))
       .subscribe(res => {
         this.licensesProgress = res
