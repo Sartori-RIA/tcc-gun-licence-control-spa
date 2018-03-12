@@ -1,13 +1,14 @@
-<mat-toolbar color="primary">
+
+<mat-toolbar color="primary" [ngClass]="{'header-fixed': isFixed}">
   <span routerLink="/"><img height="55em" width="50em"
                             src="http://www.pf.gov.br/++resource++pf.internet.tema/logo-pf.png" alt="pf"></span>
   <span flex></span>
   <span class="go-to-right"></span>
   <mat-nav-list fxHide.xs="true">
     <div>
-      <span routerLinkActive="active"><a routerLink="/duvidas"><mat-icon>help_outline</mat-icon></a></span>
-      <span routerLinkActive="active"><a routerLink="/validador">Validador</a></span>
-      <span routerLinkActive="active"><a routerLink="/login" (click)="onClick()">
+      <span class="nav" routerLinkActive="active"><a routerLink="/duvidas"><mat-icon>help_outline</mat-icon></a></span>
+      <span class="nav" routerLinkActive="active"><a routerLink="/validador">Validador</a></span>
+      <span class="nav" routerLinkActive="active"><a routerLink="/login" (click)="onClick()">
     {{ authService.checkLogin() ? 'Sair' : 'Entrar'}}</a></span>
     </div>
     <div *ngIf="authService.checkLogin()">
@@ -37,7 +38,7 @@
   </mat-nav-list>
 
   <div fxHide.xs="false" fxHide="true">
-    <button type="button" mat-button (click)="drawerMenu()">
+    <button type="button" mat-button (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>

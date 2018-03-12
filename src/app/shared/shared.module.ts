@@ -26,7 +26,6 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {CamelCasePipe} from './pipes/camel-case.pipe';
-import {FormUserComponent} from './components/form-user/form-user.component';
 import {ExaminatorService} from './services/examinator.service';
 import {UserService} from './services/user.service';
 import {RoutesClientUtil} from './routes-api/routes-client.util';
@@ -74,6 +73,9 @@ import {ValidLicenseComponent} from './components/valid-license/valid-license.co
 import {ProgressLicenseComponent} from './components/progress-license/progress-license.component';
 import {NgxCarouselModule} from "ngx-carousel";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {FontSizeDirective} from './directives/font-size.directive';
+import {ScrollToDirective} from './directives/scroll-to.directive';
+import {CustomFormsModule} from "ng2-validation";
 
 @NgModule({
   imports: [
@@ -111,11 +113,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     CamelCasePipe,
     CpfPipe,
     CpfDirective,
+    FontSizeDirective,
+    ScrollToDirective,
     ReversePipe,
     FilterPipe,
     UserDetailComponent,
     FlashMessageComponent,
-    FormUserComponent,
     ReportUsersListComponent,
     FormAddressComponent,
     UserAddressListComponent,
@@ -128,6 +131,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     SideBarComponent,
     ValidLicenseComponent,
     ProgressLicenseComponent,
+    FontSizeDirective,
+    ScrollToDirective,
   ],
   providers: [
     RoutesClientUtil,
@@ -188,11 +193,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     CpfPipe,
     RgPipe,
     CpfDirective,
+    FontSizeDirective,
+    ScrollToDirective,
     ReversePipe,
     FilterPipe,
     UserDetailComponent,
     FlashMessageComponent,
-    FormUserComponent,
     ReportUsersListComponent,
     FormAddressComponent,
     UserAddressListComponent,

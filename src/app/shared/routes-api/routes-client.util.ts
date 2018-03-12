@@ -1,23 +1,24 @@
 /**
  * Created by sartori on 16/03/17.
  */
+import {environment} from "../../../environments/environment";
+
 export class RoutesClientUtil {
-  static URL_API = 'http://localhost:8080/sinarm/api/';
 
-  static USERS = RoutesClientUtil.URL_API + 'users/';
-  static EXAMS = RoutesClientUtil.URL_API + 'exams/';
-  static EXAMS_TYPES = RoutesClientUtil.URL_API + 'exams-types/';
-  static GUNS = RoutesClientUtil.URL_API + 'guns/';
-  static LICENSES = RoutesClientUtil.URL_API + 'licenses/';
-  static LICENSES_TYPES = RoutesClientUtil.URL_API + 'licenses-types/';
-  static LOGIN = RoutesClientUtil.URL_API + 'login/';
-  static LVL_ACCESS = RoutesClientUtil.URL_API + 'users-roles/';
-  static SEX = RoutesClientUtil.URL_API + 'genders/';
-  static VALIDATOR = RoutesClientUtil.URL_API + 'validator/';
+  static USERS = environment.apiURL + 'users/';
+  static EXAMS = environment.apiURL + 'exams/';
+  static EXAMS_TYPES = environment.apiURL + 'exams-types/';
+  static GUNS = environment.apiURL + 'guns/';
+  static LICENSES = environment.apiURL + 'licenses/';
+  static LICENSES_TYPES = environment.apiURL + 'licenses-types/';
+  static LOGIN = environment.apiURL + 'login/';
+  static LVL_ACCESS = environment.apiURL + 'users-roles/';
+  static SEX = environment.apiURL + 'genders/';
+  static VALIDATOR = environment.apiURL + 'validator/';
 
-  static COUNTRIES = RoutesClientUtil.URL_API + 'countries/';
-  static STATES = RoutesClientUtil.URL_API + 'states/';
-  static CITIES = RoutesClientUtil.URL_API + 'cities/';
-  static ADDRESS = RoutesClientUtil.URL_API + 'address/';
-  static REQUIREMENTS = RoutesClientUtil.URL_API + 'requirements/';
+  static COUNTRIES = environment.apiURL + 'countries/';
+  static STATES = environment.apiURL + 'states/';
+  static CITIES = environment.apiURL + 'cities/';
+  static ADDRESS = environment.apiURL + 'address/';
+  static REQUIREMENTS = environment.apiURL + 'requirements/';
 }

@@ -29,8 +29,12 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 
 + **Angular 5.x**
 + **TypeScript 2.4.x**
++ **SASS**
 + **Angular Material 2**
 + **Flex Layout**
 + **ngx-charts**
++ **ngx-masks**
 + **ngx-datatable**
 + **angular2-google-chart**
++ **Gov Icons**
++ **Material Design Icons**

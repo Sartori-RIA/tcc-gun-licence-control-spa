@@ -1,63 +1,106 @@
-<app-carousel></app-carousel>
+<app-header></app-header>
+<section>
+  <div
+    fxLayoutWrap
+    fxLayout="row"
+    fxLayoutAlign="space-around center">
 
-<mat-card>
-  <mat-card-content>
-    <div
-      fxLayoutWrap
-      fxLayout="row"
-      fxLayoutAlign="space-around center"
-    >
-      <div fxFlex.xs="100" fxFlex="30" fxFlexOffset.xs="0">
-        <mat-card-content>
-          <mat-card-title>Validador de licenças</mat-card-title>
+    <div fxFlex="33.33%">
+      <mat-card class="p-0 m-0">
+        <mat-card-content class="my-cards">
+          <mat-card-title routerLink="/validador" class="center">
+            <div class="text-center">
+              <mat-icon mat-card-icon>done_all</mat-icon>
+            </div>
+            <h3 class="m-0 font-light">Validador de licenças</h3>
+          </mat-card-title>
           Deseja saber se a licença ainda esta na validade ou se é
           verdadeira? E ainda caso ela seja verdadeira também saberá sua categoria e portador
-          <a routerLink="/validador">Acessar</a>
+          <div class="card-foooter">
+            <p>
+              <a routerLink="/validador">Acessar</a>
+            </p>
+          </div>
         </mat-card-content>
-
-      </div>
-
-      <div fxFlex.xs="100" fxFlex="30" fxFlexOffset.xs="0" fxFlexOffset="5">
-        <mat-card-content>
-          <mat-card-title>Duvidas?</mat-card-title>
-          Ficou com alguma duvida sobre o sistema, como é o processo para a obtenção das licenças, ou alguma outra
-          duvida relacionada ao assunto?<br/>
-          <a routerLink="/duvidas">Acessar</a>
-        </mat-card-content>
-      </div>
-
-      <div fxFlex.xs="100" fxFlex="30" fxFlexOffset.xs="0" fxFlexOffset="5">
-        <mat-card-content>
-          <mat-card-title>Cadastro</mat-card-title>
-          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
-          <a routerLink="/registre-se">Acessar</a>
-        </mat-card-content>
-      </div>
-
-      <div fxFlex.xs="100" fxFlex="30" fxFlexOffset.xs="0" fxFlexOffset="5">
-        <mat-card-content>
-          <mat-card-title>Estatuto do Desarmamento</mat-card-title>
-          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
-          <a routerLink="/registre-se">Acessar</a>
-        </mat-card-content>
-      </div>
-
-      <div fxFlex.xs="100" fxFlex="30" fxFlexOffset.xs="0" fxFlexOffset="5">
-        <mat-card-content>
-          <mat-card-title>PL 3722 - Revogação do Estatuto do Desarmamento</mat-card-title>
-          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
-          <a routerLink="/registre-se">Acessar</a>
-        </mat-card-content>
-      </div>
-
-      <div fxFlex.xs="100" fxFlex="30" fxFlexOffset.xs="0" fxFlexOffset="5">
-        <mat-card-content>
-          <mat-card-title>Aquisição de Arma de fogo</mat-card-title>
-          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
-          <a routerLink="/registre-se">Acessar</a>
-        </mat-card-content>
-      </div>
+      </mat-card>
     </div>
 
-  </mat-card-content>
-</mat-card>
+    <div fxFlex="33.33%">
+      <mat-card class="p-0 m-0">
+        <mat-card-content class="my-cards">
+          <mat-card-title routerLink="/duvidas" class="center">
+            <div class="text-center">
+              <mat-icon mat-card-icon>question_answer</mat-icon>
+            </div>
+            <h3 class="m-0 font-light">Duvidas?</h3>
+          </mat-card-title>
+          Ficou com alguma duvida sobre o sistema, como é o processo para a obtenção das licenças, ou alguma outra
+          duvida relacionada ao assunto?<br/>
+          <div class="card-foooter">
+            <p>
+              <a routerLink="/duvidas">Acessar</a>
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="33.33%">
+      <mat-card class="p-0 m-0">
+        <mat-card-content class="my-cards">
+          <mat-card-title routerLink="/registre-se" class="center">
+            <div class="text-center">
+              <i class="gi gi-file-contract-o gi-5x"></i>
+            </div>
+            <h3 class="m-0 font-light">Estatuto do Desarmamento</h3>
+          </mat-card-title>
+          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
+          <div class="card-foooter">
+            <p>
+              <a routerLink="/registre-se">Acessar</a>
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="33.33%">
+      <mat-card class="p-0 m-0">
+        <mat-card-content class="my-cards">
+          <mat-card-title routerLink="/registre-se" class="center">
+            <div class="text-center">
+              <i class="gi gi-file-contract-o gi-5x"></i>
+            </div>
+            <h3 class="m-0 font-light">PL 3722 - Revogação do Estatuto do Desarmamento</h3>
+          </mat-card-title>
+          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
+          <div class="card-foooter">
+            <p>
+              <a routerLink="/registre-se">Acessar</a>
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="33.33%">
+      <mat-card class="p-0 m-0">
+        <mat-card-content class="my-cards">
+          <mat-card-title routerLink="/registre-se" class="center">
+            <div class="text-center">
+              <i class="gi gi-gun gi-5x"></i>
+            </div>
+            <h3 class="m-0 font-light">Aquisição de Arma de fogo</h3>
+          </mat-card-title>
+          Deseja obter sua licenca mas ainda não tem canastro no nosso sistema?<br/>
+          <div class="card-foooter">
+            <p>
+              <a routerLink="/registre-se">Acessar</a>
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+</section>

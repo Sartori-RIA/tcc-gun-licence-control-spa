@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {AuthService} from "../../auth/auth.service";
 import {Router} from "@angular/router";
 
@@ -8,6 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  isFixed: boolean;
+  @HostBinding("class.menu-opened") menuOpened = false;
 
   @Input() showMenu;
   currentUserName: string;
@@ -16,6 +18,10 @@ export class NavbarComponent implements OnInit {
 
   constructor(public authService: AuthService,
               private route: Router) {
+  }
+
+  toggleMenu() {
+    this.menuOpened = !this.menuOpened
   }
 
   ngOnInit() {

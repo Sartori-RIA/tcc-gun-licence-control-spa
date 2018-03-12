@@ -8,13 +8,6 @@ import {Address} from "../model/address";
 
 const url = RoutesClientUtil.USERS;
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-type': 'application/json',
-    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
-  })
-};
-
 @Injectable()
 export class UserService extends AbstractService<User> {
 
@@ -23,6 +16,6 @@ export class UserService extends AbstractService<User> {
   }
 
   saveAddress(address: Address): Observable<User> {
-    return this.http1.post(url + 'add-addressList/', JSON.stringify(address), httpOptions)
+    return this.http1.post(`${url}add-addressList/`, JSON.stringify(address))
   }
 }

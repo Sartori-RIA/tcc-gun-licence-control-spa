@@ -17,12 +17,16 @@ import {ValidatorModule} from "./validator/validator.module";
 import {LoginComponent} from './components/login/login.component';
 import {RegisterYourselfComponent} from './components/register-yourself/register-yourself.component';
 import {AuthModule} from "./auth/auth.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InstructorModule} from "./instructor/instructor.module";
 import {PsychologistModule} from "./psychologist/psychologist.module";
 import 'hammerjs';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {CarouselComponent} from './components/carousel/carousel.component';
+import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
+import {WINDOW_PROVIDERS} from "./shared/helpers/window.helper";
+import {HeaderComponent} from './components/header/header.component';
+import {NgxMaskModule} from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import {CarouselComponent} from './components/carousel/carousel.component';
     LoginComponent,
     RegisterYourselfComponent,
     CarouselComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,12 +56,16 @@ import {CarouselComponent} from './components/carousel/carousel.component';
     InstructorModule,
     PsychologistModule,
     FlexLayoutModule,
+    NgxMaskModule.forRoot({})
   ],
   exports: [
     SharedModule,
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'pt-BR'}],
+    {provide: LOCALE_ID, useValue: 'pt-BR'},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    WINDOW_PROVIDERS
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
