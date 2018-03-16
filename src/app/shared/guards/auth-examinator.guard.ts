@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {AuthService} from "../../auth/auth.service";
 
 @Injectable()
-export class AuthPsychologistGuard implements CanActivate {
+export class AuthExaminatorGuard implements CanActivate {
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -14,7 +14,7 @@ export class AuthPsychologistGuard implements CanActivate {
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkLogin()) {
       let role = sessionStorage.getItem("currentUserRole");
-      if (role === 'PSICOLOGO')
+      if (role === 'INSTRUTOR' || role == 'PSICOLOGO')
         return true;
       else {
         this.router.navigate(['/login']);

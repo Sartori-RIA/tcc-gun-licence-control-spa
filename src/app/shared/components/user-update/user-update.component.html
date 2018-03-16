@@ -1,31 +1,35 @@
 <mat-card>
   <mat-card-title>Atualizar Dados Cadastrais</mat-card-title>
   <mat-card-content>
+
     <form disabled="disable" [formGroup]="form" (ngSubmit)="updateUser()">
+      <div fxLayoutWrap
+           fxLayout="row"
+           fxLayoutAlign="center center">
 
-      <mat-form-field>
-        <input matInput type="password" id="password" formControlName="passwordOld"
-               placeholder="Senha Atual">
-      </mat-form-field>
+        <mat-form-field fxFlex.xs="100%">
+          <input matInput type="password" id="password" formControlName="passwordOld"
+                 placeholder="Senha Atual">
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput type="password" id="passwordNew" formControlName="passwordNew"
-               placeholder="Nova Senha">
-      </mat-form-field>
+        <mat-form-field fxFlex.xs="100%">
+          <input matInput type="password" id="passwordNew" formControlName="passwordNew"
+                 placeholder="Nova Senha">
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput type="password" id="passwordConfirm" formControlName="passwordConfirm"
-               placeholder="Confirmar Nova Senha">
-      </mat-form-field>
+        <mat-form-field fxFlex.xs="100%">
+          <input matInput type="password" id="passwordConfirm" formControlName="passwordConfirm"
+                 placeholder="Confirmar Nova Senha">
+        </mat-form-field>
 
 
-      <mat-form-field>
-        <input matInput type="text" id="email" formControlName="email"
-               placeholder="email">
-      </mat-form-field>
+        <mat-form-field fxFlex.xs="100%">
+          <input matInput type="text" id="email" formControlName="email"
+                 placeholder="email">
+        </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Atualizar</button>
-
+        <button fxFlex="100%" mat-raised-button color="primary" type="submit">Atualizar</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

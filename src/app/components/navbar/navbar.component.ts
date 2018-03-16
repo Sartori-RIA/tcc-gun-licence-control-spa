@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  isFixed: boolean;
+  isFixed;
   @HostBinding("class.menu-opened") menuOpened = false;
 
   @Input() showMenu;
@@ -35,10 +35,6 @@ export class NavbarComponent implements OnInit {
       this.authService.logout();
   }
 
-  drawerMenu() {
-    this.draw = !this.draw;
-  }
-
   goToMyProfile() {
     if (this.isCivil())
       this.route.navigate(['/civil/perfil']);
@@ -46,10 +42,8 @@ export class NavbarComponent implements OnInit {
       this.route.navigate(['/admin/perfil']);
     if (this.isDelegate())
       this.route.navigate(['/delegado/perfil']);
-    if (this.isPsychologist())
-      this.route.navigate(['/psicologo/perfil']);
-    if (this.isInstructor())
-      this.route.navigate(['/instrutor/perfil']);
+    if (this.isExaminator())
+      this.route.navigate(['/examinador/perfil']);
   }
 
   goToMyPage() {
@@ -59,14 +53,16 @@ export class NavbarComponent implements OnInit {
       this.route.navigate(['/admin']);
     if (this.isDelegate())
       this.route.navigate(['/delegado']);
-    if (this.isPsychologist())
-      this.route.navigate(['/psicologo']);
-    if (this.isInstructor())
-      this.route.navigate(['/instrutor']);
+    if (this.isExaminator())
+      this.route.navigate(['/examinador/avaliacoes']);
   }
 
   goToUpdate() {
     this.route.navigate(['/civil/atualizar'])
+  }
+
+  goToEvaluate(){
+    this.route.navigate(['/examinador/avaliacoes'])
   }
 
   isCivil(): boolean {
@@ -79,13 +75,8 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  private isPsychologist(): boolean {
-    return (sessionStorage.getItem("currentUserRole") == "PSICOLOGO")
-
-  }
-
-  private isInstructor(): boolean {
-    return (sessionStorage.getItem("currentUserRole") == "INSTRUTOR")
+  private isExaminator(): boolean {
+    return (sessionStorage.getItem("currentUserRole") == "PSICOLOGO") || (sessionStorage.getItem("currentUserRole") == "INSTRUTOR")
 
   }
 

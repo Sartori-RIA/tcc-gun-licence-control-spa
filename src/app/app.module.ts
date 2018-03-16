@@ -18,8 +18,7 @@ import {LoginComponent} from './components/login/login.component';
 import {RegisterYourselfComponent} from './components/register-yourself/register-yourself.component';
 import {AuthModule} from "./auth/auth.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {InstructorModule} from "./instructor/instructor.module";
-import {PsychologistModule} from "./psychologist/psychologist.module";
+import {ExaminatorModule} from "./examinator/examinator.module";
 import 'hammerjs';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {CarouselComponent} from './components/carousel/carousel.component';
@@ -53,8 +52,7 @@ import {NgxMaskModule} from 'ngx-mask'
     DelegateModule,
     ValidatorModule,
     AuthModule,
-    InstructorModule,
-    PsychologistModule,
+    ExaminatorModule,
     FlexLayoutModule,
     NgxMaskModule.forRoot({})
   ],

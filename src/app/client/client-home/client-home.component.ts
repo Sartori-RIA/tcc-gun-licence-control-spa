@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from "@angular/material";
 
 @Component({
   selector: 'app-client-home',
@@ -14,11 +15,18 @@ export class ClientHomeComponent implements OnInit {
     {route: 'exames', title: 'Exames'},
     {route: 'atualizar', title: 'Atualizar meus dados'},
   ];
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  reason = '';
 
   constructor() {
   }
 
   ngOnInit() {
     this.currentUserName = sessionStorage.getItem("currentUserName")
+  }
+
+  close(reason: string) {
+    this.reason = reason;
+    this.sidenav.close();
   }
 }

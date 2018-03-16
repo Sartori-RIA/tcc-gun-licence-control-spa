@@ -43,10 +43,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/admin']);
           if (res.role.description == "DELEGADO")
             this.router.navigate(['/delegado']);
-          if (res.role.description == "INSTRUTOR")
-            this.router.navigate(['/instrutor']);
-          if (res.role.description == "PSICOLOGO")
-            this.router.navigate(['/psicologo']);
+          if (res.role.description == "PSICOLOGO" || res.role.description == "INSTRUTOR")
+            this.router.navigate(['/examinador']);
           if (res.role.description == "CIVIL")
             this.router.navigate(['/civil']);
 

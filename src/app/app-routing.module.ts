@@ -6,10 +6,9 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterYourselfComponent} from './components/register-yourself/register-yourself.component';
 import {AuthClientGuard} from "./shared/guards/auth-client.guard";
-import {AuthInstructorGuard} from "./shared/guards/auth-instructor.guard";
+import {AuthExaminatorGuard} from "./shared/guards/auth-examinator.guard";
 import {AuthDelegateGuard} from "./shared/guards/auth-delegate.guard";
 import {AuthAdminGuard} from "./shared/guards/auth-admin.guard";
-import {AuthPsychologistGuard} from "./shared/guards/auth-psychologist.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,15 +16,10 @@ const routes: Routes = [
     path: 'civil',
     loadChildren: 'app/client/client.module#ClientModule',
     canActivate: [AuthClientGuard]
-  },
-  {
-    path: 'instrutor',
-    loadChildren: 'app/instructor/instructor.module#InstructorModule',
-    canActivate: [AuthInstructorGuard]
   }, {
-    path: 'psicologo',
-    loadChildren: 'app/psychologist/psychologist.module#PsychologistModule',
-    canActivate: [AuthPsychologistGuard]
+    path: 'examinador',
+    loadChildren: 'app/examinator/examinator.module#ExaminatorModule',
+    canActivate: [AuthExaminatorGuard]
   },
   {
     path: 'delegado',

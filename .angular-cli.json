@@ -20,7 +20,6 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/govicons/css/govicons.min.css",
         "assets/styles/indigo.scss",
         "assets/styles/styles.css"

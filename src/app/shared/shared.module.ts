@@ -43,8 +43,7 @@ import {CepService} from "./services/cep.service";
 import {AuthAdminGuard} from "./guards/auth-admin.guard";
 import {AuthClientGuard} from "./guards/auth-client.guard";
 import {AuthDelegateGuard} from "./guards/auth-delegate.guard";
-import {AuthInstructorGuard} from "./guards/auth-instructor.guard";
-import {AuthPsychologistGuard} from "./guards/auth-psychologist.guard";
+import {AuthExaminatorGuard} from "./guards/auth-examinator.guard";
 import {UserDetailComponent} from './components/user-detail/user-detail.component';
 import {LicenseValidatorService} from "./services/license-validator.service";
 import {ReportUsersListComponent} from './components/report-users-list/report-users-list.component';
@@ -156,8 +155,7 @@ import {CustomFormsModule} from "ng2-validation";
     AuthAdminGuard,
     AuthClientGuard,
     AuthDelegateGuard,
-    AuthInstructorGuard,
-    AuthPsychologistGuard,
+    AuthExaminatorGuard,
   ],
   entryComponents: [
     DialogComponent

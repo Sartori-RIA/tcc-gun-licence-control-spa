@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../model/user";
 import {UserService} from "../../services/user.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {DialogComponent} from "../dialog/dialog.component";
 import {MatDialog} from "@angular/material";
 import {HttpErrorService} from "../../services/http-error.service";
+import {CustomValidators} from "ng2-validation";
 
 @Component({
   selector: 'app-user-update',
@@ -58,11 +59,13 @@ export class UserUpdateComponent implements OnInit {
   }
 
   private buildForm(): void {
+    let pwd = new FormControl('', Validators.required);
+    let confirmPwd = new FormControl('', CustomValidators.equalTo(pwd));
     this.form = this.formBuilder.group({
       email: [null, Validators.required],
-      passwordOld: [null],
-      passwordNew: [null],
-      passwordConfirm: [null]
+      passwordOld: null,
+      passwordNew: pwd,
+      passwordConfirm: confirmPwd
     })
   }
 }

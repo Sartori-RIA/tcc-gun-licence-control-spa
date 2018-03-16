@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+
+
 @Injectable()
 export abstract class AbstractService<T> {
 
@@ -34,7 +36,7 @@ export abstract class AbstractService<T> {
   }
 
   findByOneProperty(propert: string, value: string): Observable<T> {
-    return this.http.get<T>( `${this.url}find/property/${propert}/value/${value}`)
+    return this.http.get<T>(`${this.url}find/property/${propert}/value/${value}`)
   }
 
   listByOneProperty(propert: string, value: string): Observable<T[]> {
@@ -43,30 +45,24 @@ export abstract class AbstractService<T> {
 
   findByTwoProperty(propertOne: string, valueOne: string,
                     propertTwo: string, valueTwo: string): Observable<T> {
-    return this.http.get<T>(`${this.url}find/
-    property/${propertOne}/value/${valueOne}/property/${propertTwo}/value/${valueTwo}`)
+    return this.http.get<T>(`${this.url}find/property/${propertOne}/value/${valueOne}/property/${propertTwo}/value/${valueTwo}`)
   }
 
   listByTwoProperty(propertOne: string, valueOne: string,
                     propertTwo: string, valueTwo: string): Observable<T[]> {
-    return this.http.get<T[]>(`${this.url}property/${propertOne}/value/${valueOne}
-    /property/${propertTwo}/value/${valueTwo}`)
+    return this.http.get<T[]>(`${this.url}property/${propertOne}/value/${valueOne}/property/${propertTwo}/value/${valueTwo}`)
   }
 
   findByThreeProperty(propertOne: string, valueOne: string,
                       propertTwo: string, valueTwo: string,
                       propertThree: string, valueThree: string): Observable<T> {
-    return this.http.get<T>(`${this.url}find/property/${propertOne}/value/${valueOne}
-      /property/${propertTwo} /value/${valueTwo}/property/${propertThree}/value/${valueThree}`)
-
+    return this.http.get<T>(`${this.url}find/property/${propertOne}/value/${valueOne}/property/${propertTwo} /value/${valueTwo}/property/${propertThree}/value/${valueThree}`)
   }
 
   listByThreeProperty(propertOne: string, valueOne: string,
                       propertTwo: string, valueTwo: string,
                       propertThree: string, valueThree: string): Observable<T[]> {
-    return this.http.get<T[]>(`${this.url}property/${propertOne}/value/${valueOne}/property/
-    ${propertTwo}/value/${valueTwo}/property/
-    ${propertThree}/value/${valueThree}`)
+    return this.http.get<T[]>(`${this.url}property/${propertOne}/value/${valueOne}/property/${propertTwo}/value/${valueTwo}/property/${propertThree}/value/${valueThree}`)
 
   }
 }

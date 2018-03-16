@@ -6,12 +6,12 @@ import {GenderService} from "../../shared/services/gender.service";
 import {HttpErrorService} from "../../shared/services/http-error.service";
 
 @Component({
-  selector: 'app-instructor-profile',
-  templateUrl: './instructor-profile.component.html',
-  styleUrls: ['./instructor-profile.component.scss'],
+  selector: 'app-examinator-profile',
+  templateUrl: './examinator-profile.component.html',
+  styleUrls: ['./examinator-profile.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class InstructorProfileComponent implements OnInit {
+export class ExaminatorProfileComponent implements OnInit {
 
   model: User = new User();
   gender: Gender = new Gender();

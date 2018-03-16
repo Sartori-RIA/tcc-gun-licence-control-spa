@@ -1,6 +1,5 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {AuthService} from "../../auth/auth.service";
 import {Injectable} from "@angular/core";
 
 @Injectable()
@@ -17,8 +16,21 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private cloneRequest(request: HttpRequest<any>, token: string) {
-    return request.clone({
-      setHeaders: {'Content-type': 'application/json', 'Authorization': `Bearer ${token}`}
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     });
+
+    request.clone({headers});
+    /*request.clone({
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    });*/
+
+    console.log(JSON.stringify(request));
+    return request;
   }
 }
