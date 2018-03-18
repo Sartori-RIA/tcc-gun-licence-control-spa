@@ -2,9 +2,9 @@
  * Created by sartori on 19/04/17.
  */
 
-import {UserRole} from "./user-role";
-import {Gender} from "./gender";
-import {Address} from "./address";
+import {UserRole} from './user-role';
+import {Gender} from './gender';
+import {Address} from './address';
 
 export class User {
 

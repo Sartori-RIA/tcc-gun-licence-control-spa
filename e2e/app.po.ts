@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class Pf.Gov.BrPage {
+export class NgEgretPage {
   navigateTo() {
     return browser.get('/');
   }

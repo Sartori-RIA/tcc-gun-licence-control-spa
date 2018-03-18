@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ExamService} from "../../shared/services/exam.service";
-import {HttpErrorService} from "../../shared/services/http-error.service";
-import {LicenseService} from "../../shared/services/license.service";
-import {License} from "../../shared/model/license";
+import {License} from '../../shared/model/license';
+import {ExamService} from '../../shared/service/exam.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {LicenseService} from '../../shared/service/license.service';
+import {DataService} from '../../shared/auth/data.service';
 
 @Component({
   selector: 'app-client-exams',
@@ -16,7 +17,8 @@ export class ClientExamsComponent implements OnInit {
 
   constructor(private examService: ExamService,
               private httpErrorService: HttpErrorService,
-              private licenseService: LicenseService) {
+              private licenseService: LicenseService,
+              private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -24,7 +26,7 @@ export class ClientExamsComponent implements OnInit {
   }
 
   loadLicenses() {
-    this.licenseService.listByOneProperty("user.cpf", localStorage.getItem("currentUserCPF"))
+    this.licenseService.listByOneProperty('user.cpf', this.dataService.getUserCPF())
       .subscribe(res => {
         this.licenses = res;
       }, error2 => this.httpErrorService.verifyErrors(error2))

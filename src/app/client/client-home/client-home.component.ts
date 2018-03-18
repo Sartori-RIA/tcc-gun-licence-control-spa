@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatSidenav} from "@angular/material";
+import {MatSidenav} from '@angular/material';
+import {DataService} from '../../shared/auth/data.service';
 
 @Component({
   selector: 'app-client-home',
@@ -18,11 +19,11 @@ export class ClientHomeComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
   reason = '';
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.currentUserName = localStorage.getItem("currentUserName")
+    this.currentUserName = this.dataService.getUserName();
   }
 
   close(reason: string) {

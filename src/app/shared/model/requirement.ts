@@ -1,4 +1,4 @@
-import {ExamCategory} from "./exam-category";
+import {ExamCategory} from './exam-category';
 
 export class Requirement {
 

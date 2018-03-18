@@ -1,5 +1,5 @@
-import {ExamCategory} from "./exam-category";
-import {User} from "./user";
+import {ExamCategory} from './exam-category';
+import {User} from './user';
 
 export class Exam {
 

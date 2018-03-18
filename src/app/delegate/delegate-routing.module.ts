@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DelegateHomeComponent} from "./delegate-home/delegate-home.component";
-import {DelegateProfileComponent} from "./delegate-profile/delegate-profile.component";
-import {DelegateReportsComponent} from "./delegate-reports/delegate-reports.component";
+import {DelegateHomeComponent} from './delegate-home/delegate-home.component';
+import {DelegateProfileComponent} from './delegate-profile/delegate-profile.component';
+import {DelegateReportsComponent} from './delegate-reports/delegate-reports.component';
 
 const routes: Routes = [
   {

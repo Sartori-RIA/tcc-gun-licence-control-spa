@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DataService} from '../../shared/auth/data.service';
 
 @Component({
   selector: 'app-delegate-home',
@@ -13,11 +14,11 @@ export class DelegateHomeComponent implements OnInit {
     {route: 'perfil', title: 'Meus Dados'},
   ];
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.currentUserName = localStorage.getItem("currentUserName");
+    this.currentUserName = this.dataService.getUserName();
   }
 
 }

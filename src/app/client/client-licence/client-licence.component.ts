@@ -1,17 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {LicenseService} from "../../shared/services/license.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {LicenseCategoryService} from "../../shared/services/license-category.service";
-import {LicenseCategory} from "../../shared/model/license-category";
-import {License} from "../../shared/model/license";
-import {User} from "../../shared/model/user";
-import {UserService} from "../../shared/services/user.service";
-import {Exam} from "../../shared/model/exam";
-import {ExamService} from "../../shared/services/exam.service";
-import {DialogComponent} from "../../shared/components/dialog/dialog.component";
-import {MatDialog} from "@angular/material";
-import {HttpErrorService} from "../../shared/services/http-error.service";
-import {Address} from "../../shared/model/address";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LicenseCategory} from '../../shared/model/license-category';
+import {License} from '../../shared/model/license';
+import {User} from '../../shared/model/user';
+import {Exam} from '../../shared/model/exam';
+import {MatDialog} from '@angular/material';
+import {Address} from '../../shared/model/address';
+import {LicenseService} from '../../shared/service/license.service';
+import {LicenseCategoryService} from '../../shared/service/license-category.service';
+import {ExamService} from '../../shared/service/exam.service';
+import {UserService} from '../../shared/service/user.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {DialogComponent} from '../../shared/component/dialog/dialog.component';
+import {DataService} from '../../shared/auth/data.service';
 
 @Component({
   selector: 'app-client-licence',
@@ -35,7 +36,8 @@ export class ClientLicenceComponent implements OnInit {
               private examService: ExamService,
               private formBuilder: FormBuilder,
               private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private httpErrorService: HttpErrorService,
+              private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -51,10 +53,10 @@ export class ClientLicenceComponent implements OnInit {
       this.mountLicense(licenseCategory);
       this.licenseService.save(this.license).subscribe(res => {
         this.myProgressLicenses.push(res);
-        this.openDialog("Sucesso", "Processo de nova Licença iniciada", "OK");
-      }, error2 => this.httpErrorService.verifyErrors(error2, "Você não possui os requisitos para a licença"));
+        this.openDialog('Sucesso', 'Processo de nova Licença iniciada', 'OK');
+      }, error2 => this.httpErrorService.verifyErrors(error2, 'Você não possui os requisitos para a licença'));
     } else {
-      this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
+      this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       this.formDirty(this.form)
     }
   }
@@ -70,14 +72,14 @@ export class ClientLicenceComponent implements OnInit {
   }
 
   private loadLicenses() {
-    this.userService.findByOneProperty("cpf", localStorage.getItem("currentUserCPF"))
+    this.userService.findByOneProperty('cpf', this.dataService.getUserCPF())
       .subscribe(res => {
         this.user = res;
-        this.licenseService.listByOneProperty("user.cpf", this.user.cpf).subscribe(res => {
+        this.licenseService.listByOneProperty('user.cpf', this.user.cpf).subscribe(res => {
           this.myProgressLicenses = [];
           for (let license of res) {
             if (license.shelfLife == null && !license.status)
-              this.myProgressLicenses.push(license)
+              this.myProgressLicenses.push(license);
             if (license.shelfLife != null && license.status)
               this.licenseAproved.push(license)
           }
@@ -86,7 +88,7 @@ export class ClientLicenceComponent implements OnInit {
   }
 
   private loadAddressList() {
-    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => {
+    this.userService.getById(this.dataService.getUserID()).subscribe(res => {
       this.addressList = res.addressList;
     }, error2 => this.httpErrorService.verifyErrors(error2))
   }

@@ -1,7 +1,7 @@
-import {User} from "./user";
-import {LicenseCategory} from "./license-category";
-import {Exam} from "./exam";
-import {Address} from "./address";
+import {User} from './user';
+import {LicenseCategory} from './license-category';
+import {Exam} from './exam';
+import {Address} from './address';
 
 export class License {
 

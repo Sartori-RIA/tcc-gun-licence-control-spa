@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../shared/model/user";
-import {UserService} from "../../shared/services/user.service";
-import {GenderService} from "../../shared/services/gender.service";
-import {Gender} from "../../shared/model/gender";
-import {HttpErrorService} from "../../shared/services/http-error.service";
+import {User} from '../../shared/model/user';
+import {Gender} from '../../shared/model/gender';
+import {UserService} from '../../shared/service/user.service';
+import {GenderService} from '../../shared/service/gender.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {DataService} from '../../shared/auth/data.service';
 
 @Component({
   selector: 'app-client-profile',
@@ -17,11 +18,12 @@ export class ClientProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private genderService: GenderService,
-              private httpErrorService: HttpErrorService) {
+              private httpErrorService: HttpErrorService,
+              private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => {
+    this.userService.getById(this.dataService.getUserID()).subscribe(res => {
       this.model = res;
       this.genderService.getById(res.gender.id)
         .subscribe(res => this.gender = res, error2 => this.httpErrorService.verifyErrors(error2));

@@ -1,0 +1,24 @@
+<section id="intro-section" class="home-intro-section">
+  <div class="container" fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap="nowrap" fxLayoutGap="30px">
+
+    <ngu-carousel
+      [inputs]="carouselOptions">
+      <ngu-item NguCarouselItem>
+        <img height="250em" width="100%"
+             src="https://i2.wp.com/advocaciapinheiro.adv.br/wp-content/uploads/2017/10/porte-de-arma-lei.jpg?fit=1024%2C563"/>
+      </ngu-item>
+      <ngu-item NguCarouselItem>
+        <img height="250em" width="100%"
+             src="http://www.deputadopeninha.com.br/images/bg-referendo.jpg"/>
+      </ngu-item>
+
+      <button mat-fab NguCarouselPrev class='carousel-left'>
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <button mat-fab NguCarouselNext class='carousel-right'>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </ngu-carousel>
+
+  </div>
+</section>

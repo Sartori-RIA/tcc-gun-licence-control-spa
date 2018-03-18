@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {State} from "../../shared/model/state";
-import {StateService} from "../../shared/services/state.service";
-import {CountryService} from "../../shared/services/country.service";
-import {Country} from "../../shared/model/country";
-import {DialogComponent} from "../../shared/components/dialog/dialog.component";
-import {MatDialog} from "@angular/material";
-import {HttpErrorService} from "../../shared/services/http-error.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {State} from '../../shared/model/state';
+import {Country} from '../../shared/model/country';
+import {MatDialog} from '@angular/material';
+import {StateService} from '../../shared/service/state.service';
+import {CountryService} from '../../shared/service/country.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin-register-states',
@@ -38,7 +38,7 @@ export class AdminRegisterStatesComponent implements OnInit {
 
   onCountryClick(event): void {
     for (let country of event.selected)
-      this.stateService.listByOneProperty("country.id", String(country.id)).subscribe(res => {
+      this.stateService.listByOneProperty('country.id', String(country.id)).subscribe(res => {
         this.statesList = res;
       }, error2 => this.httpErrorService.verifyErrors(error2));
   }
@@ -52,8 +52,8 @@ export class AdminRegisterStatesComponent implements OnInit {
         this.stateService.save(this.model).subscribe(res => {
           this.statesList.push(res);
           this.resetFormState();
-          this.openDialog("Sucesso", "Estado Salvo com Sucesso", "OK")
-        }, error => this.httpErrorService.verifyErrors(error, "Erro ao Salvar"));
+          this.openDialog('Sucesso', 'Estado Salvo com Sucesso', 'OK')
+        }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Salvar'));
       }, error2 => this.httpErrorService.verifyErrors(error2));
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());

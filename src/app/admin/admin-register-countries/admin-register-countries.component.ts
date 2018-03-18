@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CountryService} from "../../shared/services/country.service";
-import {Country} from "../../shared/model/country";
-import {MatDialog} from "@angular/material";
-import {DialogComponent} from "../../shared/components/dialog/dialog.component";
-import {HttpErrorService} from "../../shared/services/http-error.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Country} from '../../shared/model/country';
+import {MatDialog} from '@angular/material';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {CountryService} from '../../shared/service/country.service';
+import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin-register-countries',
@@ -39,8 +39,8 @@ export class AdminRegisterCountriesComponent implements OnInit {
       this.countryService.save(this.model).subscribe(res => {
         this.countryList.push(res);
         this.resetFormCountry();
-        this.openDialog("Sucesso", "Pais cadastrado com Sucesso", "Ok")
-      }, error => this.httpErrorService.verifyErrors(error, "Não foi possivel efetuar o cadastro"));
+        this.openDialog('Sucesso', 'Pais cadastrado com Sucesso', 'Ok')
+      }, error => this.httpErrorService.verifyErrors(error, 'Não foi possivel efetuar o cadastro'));
     } else {
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }

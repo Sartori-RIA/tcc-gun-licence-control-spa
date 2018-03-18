@@ -9,11 +9,11 @@ export class CpfPipe implements PipeTransform {
     if (value) {
       value = value.toString();
       if (value.length === 11) {
-        return value.substring(0, 3).concat(".")
+        return value.substring(0, 3).concat('.')
           .concat(value.substring(3, 6))
-          .concat(".")
+          .concat('.')
           .concat(value.substring(6, 9))
-          .concat("-")
+          .concat('-')
           .concat(value.substring(9, 11))
       }
     }

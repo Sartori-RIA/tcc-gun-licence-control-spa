@@ -1,14 +1,14 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Country} from "../../shared/model/country";
-import {State} from "../../shared/model/state";
-import {City} from "../../shared/model/city";
-import {CountryService} from "../../shared/services/country.service";
-import {StateService} from "../../shared/services/state.service";
-import {CityService} from "../../shared/services/city.service";
-import {DialogComponent} from "../../shared/components/dialog/dialog.component";
-import {MatDialog} from "@angular/material";
-import {HttpErrorService} from "../../shared/services/http-error.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Country} from '../../shared/model/country';
+import {State} from '../../shared/model/state';
+import {City} from '../../shared/model/city';
+import {MatDialog} from '@angular/material';
+import {CountryService} from '../../shared/service/country.service';
+import {StateService} from '../../shared/service/state.service';
+import {CityService} from '../../shared/service/city.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin-register-citites',
@@ -47,27 +47,27 @@ export class AdminRegisterCititesComponent implements OnInit {
         this.cityService.save(this.model).subscribe(res => {
           this.citiesList.push(res);
           this.resetFormCity();
-          this.openDialog("Sucesso", "Cidade Cadastrada com Sucesso", "OK")
-        }, error => this.httpErrorService.verifyErrors(error, "Erro ao Cadastrar"));
+          this.openDialog('Sucesso', 'Cidade Cadastrada com Sucesso', 'OK')
+        }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Cadastrar'));
       }, error2 => this.httpErrorService.verifyErrors(error2));
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }
 
   onChoseCountry(country): void {
-    this.stateService.listByOneProperty("country.id", country.value.id)
+    this.stateService.listByOneProperty('country.id', country.value.id)
       .subscribe(res => this.states = res, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   onCountryClick(event): void {
     for (let country of event.selected)
-      this.stateService.listByOneProperty("country.id", String(country.id))
+      this.stateService.listByOneProperty('country.id', String(country.id))
         .subscribe(res => this.statesList = res, error2 => this.httpErrorService.verifyErrors(error2));
   }
 
   onStateClick(event): void {
     for (let state of event.selected)
-      this.cityService.listByOneProperty("state.id", String(state.id))
+      this.cityService.listByOneProperty('state.id', String(state.id))
         .subscribe(res => this.citiesList = res, error2 => this.httpErrorService.verifyErrors(error2));
   }
 

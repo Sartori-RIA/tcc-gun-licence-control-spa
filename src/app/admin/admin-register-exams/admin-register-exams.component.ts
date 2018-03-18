@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ExamCategoryService} from "../../shared/services/exam-category.service";
-import {ExamCategory} from "../../shared/model/exam-category";
-import {UserRole} from "../../shared/model/user-role";
-import {UserCategoryService} from "../../shared/services/user-category.service";
-import {DialogComponent} from "../../shared/components/dialog/dialog.component";
-import {MatDialog} from "@angular/material";
-import {HttpErrorService} from "../../shared/services/http-error.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ExamCategory} from '../../shared/model/exam-category';
+import {UserRole} from '../../shared/model/user-role';
+import {MatDialog} from '@angular/material';
+import {ExamCategoryService} from '../../shared/service/exam-category.service';
+import {UserCategoryService} from '../../shared/service/user-category.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin-register-exams',
@@ -41,8 +41,8 @@ export class AdminRegisterExamsComponent implements OnInit {
       this.model.role = this.form.value.role;
       this.examCategoryService.save(this.model).subscribe(() => {
         this.resetFormExam();
-        this.openDialog("Sucesso", "Exame Salvo com Sucesso", "OK")
-      }, error2 => this.httpErrorService.verifyErrors(error2, "Erro ao Salvar"));
+        this.openDialog('Sucesso', 'Exame Salvo com Sucesso', 'OK')
+      }, error2 => this.httpErrorService.verifyErrors(error2, 'Erro ao Salvar'));
     } else {
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }

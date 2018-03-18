@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../shared/model/user";
-import {UserService} from "../../shared/services/user.service";
+import {User} from '../../shared/model/user';
+import {UserService} from '../../shared/service/user.service';
 
 @Component({
   selector: 'app-client-agenda',
@@ -16,8 +16,8 @@ export class ClientAgendaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.listByOneProperty("role.description", "PSICOLOGO").subscribe(res => this.psychologistList = res);
-    this.userService.listByOneProperty("role.description", "INSTRUTOR").subscribe(res => this.instructorList = res);
+    this.userService.listByOneProperty('role.description', 'PSICOLOGO').subscribe(res => this.psychologistList = res);
+    this.userService.listByOneProperty('role.description', 'INSTRUTOR').subscribe(res => this.instructorList = res);
   }
 
 }

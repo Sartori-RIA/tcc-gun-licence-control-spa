@@ -1,14 +1,14 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {LicenseCategoryService} from "../../shared/services/license-category.service";
-import {LicenseCategory} from "../../shared/model/license-category";
-import {Requirement} from "../../shared/model/requirement";
-import {ExamCategoryService} from "../../shared/services/exam-category.service";
-import {ExamCategory} from "../../shared/model/exam-category";
-import {RequirementService} from "../../shared/services/requirement.service";
-import {DialogComponent} from "../../shared/components/dialog/dialog.component";
-import {MatDialog} from "@angular/material";
-import {HttpErrorService} from "../../shared/services/http-error.service";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {LicenseCategory} from '../../shared/model/license-category';
+import {Requirement} from '../../shared/model/requirement';
+import {ExamCategory} from '../../shared/model/exam-category';
+import {MatDialog} from '@angular/material';
+import {ExamCategoryService} from '../../shared/service/exam-category.service';
+import {LicenseCategoryService} from '../../shared/service/license-category.service';
+import {RequirementService} from '../../shared/service/requirement.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin-register-licenses',
@@ -56,21 +56,21 @@ export class AdminRegisterLicensesComponent implements OnInit {
         this.licenseCategoryService.save(this.model).subscribe(
           () => {
             this.resetForm();
-            this.openDialog("Sucesso", "Licença Salva com Sucesso", "OK")
-          }, error => this.httpErrorService.verifyErrors(error, "Erro ao Salvar"))
-      }, error => this.httpErrorService.verifyErrors(error, "Erro nos requisitos da licença"))
+            this.openDialog('Sucesso', 'Licença Salva com Sucesso', 'OK')
+          }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Salvar'))
+      }, error => this.httpErrorService.verifyErrors(error, 'Erro nos requisitos da licença'))
     } else {
-      this.openDialog("Erro", "Os Campos Precisam ser Preenchidos", "OK");
+      this.openDialog('Erro', 'Os Campos Precisam ser Preenchidos', 'OK');
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }
   }
 
   respondProcess(licence: LicenseCategory): string {
-    return licence.requirement.respondingProcess == true ? "SIM" : "NÃO";
+    return licence.requirement.respondingProcess == true ? 'SIM' : 'NÃO';
   }
 
   criminalRecords(licence: LicenseCategory): string {
-    return licence.requirement.criminalRecors == true ? "SIM" : "NÃO";
+    return licence.requirement.criminalRecors == true ? 'SIM' : 'NÃO';
   }
 
   private mountFormLicense() {

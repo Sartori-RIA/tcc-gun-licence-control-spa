@@ -1,22 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "./auth/auth.service";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <app-header></app-header>
+    <section>
+      <router-outlet></router-outlet>
+    </section>
+    <app-footer></app-footer>`
 })
 export class AppComponent implements OnInit {
-  title = 'app';
 
-  showMenu: boolean = false;
-
-
-  constructor(private authService: AuthService) {
+  constructor() {
   }
 
+  ngOnInit() {
 
-  ngOnInit(): void {
-    //this.authService.showMenu.subscribe(res => this.showMenu = res)
   }
+
 }

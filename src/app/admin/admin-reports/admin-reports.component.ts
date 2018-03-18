@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../shared/services/user.service";
-import {LicenseCategoryService} from "../../shared/services/license-category.service";
-import {RequirementService} from "../../shared/services/requirement.service";
-import {LicenseCategory} from "../../shared/model/license-category";
-import {HttpErrorService} from "../../shared/services/http-error.service";
-import {LicenseService} from "../../shared/services/license.service";
-import {License} from "../../shared/model/license";
+import {LicenseCategory} from '../../shared/model/license-category';
+import {License} from '../../shared/model/license';
+import {UserService} from '../../shared/service/user.service';
+import {LicenseCategoryService} from '../../shared/service/license-category.service';
+import {RequirementService} from '../../shared/service/requirement.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {LicenseService} from '../../shared/service/license.service';
 
 @Component({
   selector: 'app-admin-reports',
@@ -34,14 +34,14 @@ export class AdminReportsComponent implements OnInit {
   }
 
   private loadLicensesProgress() {
-    this.licenseService.listByOneProperty("status", String(false))
+    this.licenseService.listByOneProperty('status', String(false))
       .subscribe(res => {
         this.licensesProgress = res
       }, error => this.httpErrorService.verifyErrors(error))
   }
 
   private loadLicensesAproved() {
-    this.licenseService.listByOneProperty("status", String(true))
+    this.licenseService.listByOneProperty('status', String(true))
       .subscribe(res => {
         this.licensesAproved = res
       }, error => this.httpErrorService.verifyErrors(error))

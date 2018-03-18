@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {DataService} from '../../shared/auth/data.service';
 
 @Component({
   selector: 'app-examinator-home',
@@ -11,11 +12,12 @@ export class ExaminatorHomeComponent implements OnInit {
 
   currentUserName: string;
 
-  constructor(private route: Router) {
+  constructor(private route: Router,
+              private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.currentUserName = localStorage.getItem("currentUserName");
+    this.currentUserName = this.dataService.getUserName();
     this.route.navigate(['/examinador/avaliacoes'])
   }
 

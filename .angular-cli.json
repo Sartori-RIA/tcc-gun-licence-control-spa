@@ -19,13 +19,16 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
-        "../node_modules/govicons/css/govicons.min.css",
-        "assets/styles/indigo.scss",
-        "assets/styles/styles.css"
+        "../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.css",
+        "vendor/pace/pace-theme-min.css",
+        "assets/styles/themes/indigo.scss",
+        "assets/styles/styles.css",
+        "../node_modules/govicons/css/govicons.min.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js"
+        "vendor/pace/pace.min.js",
+        "../node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.js",
+        "../node_modules/hammerjs/hammer.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

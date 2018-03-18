@@ -1,14 +1,14 @@
-import { Pf.Gov.BrPage } from './app.po';
+import { NgEgretPage } from './app.po';
 
-describe('pf.gov.br App', () => {
-  let page: Pf.Gov.BrPage;
+describe('ng-egret App', () => {
+  let page: NgEgretPage;
 
   beforeEach(() => {
-    page = new Pf.Gov.BrPage();
+    page = new NgEgretPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });

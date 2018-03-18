@@ -1,25 +1,25 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Gender} from "../../shared/model/gender";
-import {User} from "../../shared/model/user";
-import {Cep} from "../../shared/model/cep";
-import {DialogComponent} from "../../shared/components/dialog/dialog.component";
-import {UserRole} from "../../shared/model/user-role";
-import {UserCategoryService} from "../../shared/services/user-category.service";
-import {HttpErrorService} from "../../shared/services/http-error.service";
-import {UserService} from "../../shared/services/user.service";
-import {GenderService} from "../../shared/services/gender.service";
-import {Router} from "@angular/router";
-import {Address} from "../../shared/model/address";
-import {CountryService} from "../../shared/services/country.service";
-import {StateService} from "../../shared/services/state.service";
-import {Country} from "../../shared/model/country";
-import {City} from "../../shared/model/city";
-import {MatDialog} from "@angular/material";
-import {State} from "../../shared/model/state";
-import {CepService} from "../../shared/services/cep.service";
-import {CityService} from "../../shared/services/city.service";
-import {AddressService} from "../../shared/services/address.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Gender} from '../../shared/model/gender';
+import {User} from '../../shared/model/user';
+import {Cep} from '../../shared/model/cep';
+import {UserRole} from '../../shared/model/user-role';
+import {Router} from '@angular/router';
+import {Address} from '../../shared/model/address';
+import {Country} from '../../shared/model/country';
+import {City} from '../../shared/model/city';
+import {MatDialog} from '@angular/material';
+import {State} from '../../shared/model/state';
+import {UserService} from '../../shared/service/user.service';
+import {GenderService} from '../../shared/service/gender.service';
+import {UserCategoryService} from '../../shared/service/user-category.service';
+import {CepService} from '../../shared/service/cep.service';
+import {CountryService} from '../../shared/service/country.service';
+import {StateService} from '../../shared/service/state.service';
+import {CityService} from '../../shared/service/city.service';
+import {AddressService} from '../../shared/service/address.service';
+import {HttpErrorService} from '../../shared/service/http-error.service';
+import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin-register-user',
@@ -74,10 +74,10 @@ export class AdminRegisterUserComponent implements OnInit {
       this.userService.save(this.model).subscribe(res => {
         console.log(JSON.stringify(res))
         this.resetForm();
-        this.openDialog("Sucesso", "Cadastrado com sucesso", "OK")
-      }, error => this.httpErrorService.verifyErrors(error, "Erro ao Cadastrar Usuario"));
+        this.openDialog('Sucesso', 'Cadastrado com sucesso', 'OK')
+      }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Cadastrar Usuario'));
     } else {
-      this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
+      this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       this.formDirty(this.form);
     }
   }
