@@ -22,7 +22,7 @@ export class ExaminatorProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => {
+    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => {
       this.model = res;
       this.genderService.getById(res.gender.id).subscribe(res => this.gender = res, error2 => this.httpErrorService.verifyErrors(error2));
     }, error2 => this.httpErrorService.verifyErrors(error2));

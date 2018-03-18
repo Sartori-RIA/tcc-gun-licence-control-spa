@@ -53,10 +53,10 @@ export class ExamEvaluateComponent implements OnInit {
     this.mountFormExam();
     this.examCategoryService.index().subscribe(res => {
       for (let item of res)
-        if (item.role.description == sessionStorage.getItem("currentUserRole"))
+        if (item.role.description == localStorage.getItem("currentUserRole"))
           this.examCategories.push(item)
     }, error2 => this.httpErrorService.verifyErrors(error2));
-    this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => {
+    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => {
       this.examinator = res;
     }, error2 => this.httpErrorService.verifyErrors(error2));
   }

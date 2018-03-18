@@ -21,6 +21,6 @@ export class AdminHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUserName = sessionStorage.getItem("currentUserName");
+    this.currentUserName = localStorage.getItem("currentUserName");
   }
 }

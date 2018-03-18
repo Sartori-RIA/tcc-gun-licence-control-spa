@@ -17,7 +17,7 @@ export class DelegateHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUserName = sessionStorage.getItem("currentUserName");
+    this.currentUserName = localStorage.getItem("currentUserName");
   }
 
 }

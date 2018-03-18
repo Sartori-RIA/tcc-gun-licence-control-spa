@@ -10,7 +10,7 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const cloneRequest = this.cloneRequest(req, token);
     return next.handle(cloneRequest);
   }
@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
   private cloneRequest(request: HttpRequest<any>, token: string) {
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer dsads ${token}`,
       'Content-Type': 'application/json'
     });
 

@@ -18,7 +18,7 @@ export class ClientUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+    this.userService.findByOneProperty("cpf", localStorage.getItem("currentUserCPF"))
       .subscribe(res => this.model = res, error2 => this.httpErrorService.verifyErrors(error2))
   }
 

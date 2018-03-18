@@ -38,7 +38,7 @@ import {CpfDirective} from './directives/cpf.directive';
 import {FlashMessageComponent} from './components/flash-message/flash-message.component';
 import {ReversePipe} from './pipes/reverse.pipe';
 import {FilterPipe} from './pipes/filter.pipe';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CepService} from "./services/cep.service";
 import {AuthAdminGuard} from "./guards/auth-admin.guard";
 import {AuthClientGuard} from "./guards/auth-client.guard";
@@ -75,6 +75,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {FontSizeDirective} from './directives/font-size.directive';
 import {ScrollToDirective} from './directives/scroll-to.directive';
 import {CustomFormsModule} from "ng2-validation";
+import {TokenInterceptor} from "./interceptors/token.interceptor";
 
 @NgModule({
   imports: [
@@ -156,6 +157,7 @@ import {CustomFormsModule} from "ng2-validation";
     AuthClientGuard,
     AuthDelegateGuard,
     AuthExaminatorGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],
   entryComponents: [
     DialogComponent

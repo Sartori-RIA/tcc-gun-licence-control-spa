@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.buildReactiveForm();
-    this.currentUserName = sessionStorage.getItem("currentUserName");
+    this.currentUserName = localStorage.getItem("currentUserName");
   }
 
   onSubmit() {
@@ -33,12 +33,12 @@ export class LoginComponent implements OnInit {
     this.model.password = this.form.value.password;
     this.authService.makeLogin(this.model).subscribe(
       res => {
-        sessionStorage.setItem("token", res.token);
+        localStorage.setItem("token", res.token);
         this.authService.getCurrentUser(this.model.cpf).subscribe(res => {
-          sessionStorage.setItem("currentUserName", res.name);
-          sessionStorage.setItem("currentUserID", res.id.toString());
-          sessionStorage.setItem("currentUserCPF", res.cpf);
-          sessionStorage.setItem("currentUserRole", res.role.description);
+          localStorage.setItem("currentUserName", res.name);
+          localStorage.setItem("currentUserID", res.id.toString());
+          localStorage.setItem("currentUserCPF", res.cpf);
+          localStorage.setItem("currentUserRole", res.role.description);
           if (res.role.description == "ADMIN")
             this.router.navigate(['/admin']);
           if (res.role.description == "DELEGADO")

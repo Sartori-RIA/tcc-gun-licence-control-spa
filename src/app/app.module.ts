@@ -61,7 +61,6 @@ import {NgxMaskModule} from 'ngx-mask'
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     WINDOW_PROVIDERS
   ],
   bootstrap: [AppComponent]

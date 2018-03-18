@@ -22,7 +22,7 @@ export class DelegateAddressComponent implements OnInit {
   ngOnInit() {
     this.listAddress = false;
     this.addAddress = false;
-    this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => {
+    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => {
       this.addressList = res.addressList;
     }, error2 => this.httpErrorService.verifyErrors(error2))
   }

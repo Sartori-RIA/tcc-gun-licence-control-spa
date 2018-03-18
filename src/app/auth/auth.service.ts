@@ -15,7 +15,7 @@ const httpOptions = {
 const httpOptionsToken = {
   headers: new HttpHeaders({
     'Content-type': 'application/json',
-    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+    'Authorization': 'Bearer ' + localStorage.getItem("token")
   })
 };
 
@@ -38,11 +38,11 @@ export class AuthService {
   }
 
   logout() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   checkRole(): any {
-    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+    this.userService.findByOneProperty("cpf", localStorage.getItem("currentUserCPF"))
       .subscribe(res => {
         return res.role
       }, () => {
@@ -51,12 +51,12 @@ export class AuthService {
   }
 
   checkLogin(): boolean {
-    return sessionStorage.getItem("currentUserName") != null
-      && sessionStorage.getItem("currentUserName") != ''
-      && sessionStorage.getItem("currentUserCPF") != null
-      && sessionStorage.getItem("currentUserCPF") != ''
-      && sessionStorage.getItem("token") != null
-      && sessionStorage.getItem("token") != '';
+    return localStorage.getItem("currentUserName") != null
+      && localStorage.getItem("currentUserName") != ''
+      && localStorage.getItem("currentUserCPF") != null
+      && localStorage.getItem("currentUserCPF") != ''
+      && localStorage.getItem("token") != null
+      && localStorage.getItem("token") != '';
   }
 
 }

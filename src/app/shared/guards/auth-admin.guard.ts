@@ -13,7 +13,7 @@ export class AuthAdminGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkLogin()) {
-      let role = sessionStorage.getItem("currentUserRole");
+      let role = localStorage.getItem("currentUserRole");
       if (role === 'ADMIN')
         return true;
       else {

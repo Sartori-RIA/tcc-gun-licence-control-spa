@@ -18,12 +18,12 @@
     </span>
     <div *ngIf="authService.checkLogin()">
       <button mat-icon-button [matMenuTriggerFor]="menu" style="width: 10em;">
-        <mat-icon>person_outline</mat-icon>
+        <i class="fas fa-user"></i>
         <span> Olá {{currentUserName}}</span>
       </button>
       <mat-menu #menu="matMenu">
         <button (click)="goToMyProfile()" mat-menu-item>
-          <mat-icon>face</mat-icon>
+          <i class="fas fa-user"></i>
           <span>Dados</span>
         </button>
         <button (click)="goToMyPage()" mat-menu-item>
@@ -46,34 +46,34 @@
     </div>
   </div>
   <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-    <mat-icon>menu</mat-icon>
+    <i class="fas fa-bars"></i>
   </button>
 
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu">
   <button mat-menu-item routerLink="/duvidas">
-    <mat-icon>help_outline</mat-icon>
+    <i class="fas fa-question"></i>
   </button>
   <button mat-menu-item routerLink="/validador">Validador</button>
   <button mat-menu-item (click)="onClick()" routerLink="/login">{{ authService.checkLogin() ? 'Sair' : 'Entrar'}}
   </button>
   <div *ngIf="authService.checkLogin()">
     <button mat-icon-button [matMenuTriggerFor]="menu" style="width: 10em;">
-      <mat-icon>person_outline</mat-icon>
+      <i class="fas fa-user"></i>
       <span> Olá {{currentUserName}}</span>
     </button>
 
     <button (click)="goToMyProfile()" mat-menu-item>
-      <mat-icon>face</mat-icon>
+      <i class="fas fa-user"></i>
       <span>Dados</span>
     </button>
     <button (click)="goToMyPage()" mat-menu-item>
-      <mat-icon>home</mat-icon>
+      <i class="fas fa-sync"></i>
       <span>Minha página</span>
     </button>
     <div *ngIf="isCivil()">
       <button (click)="goToUpdate()" mat-menu-item>
-        <mat-icon>autorenew</mat-icon>
+        <i class="fas fa-history"></i>
         <span>Atualizar Dados</span>
       </button>
     </div>

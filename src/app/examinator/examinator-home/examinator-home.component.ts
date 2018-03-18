@@ -15,7 +15,7 @@ export class ExaminatorHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUserName = sessionStorage.getItem("currentUserName");
+    this.currentUserName = localStorage.getItem("currentUserName");
     this.route.navigate(['/examinador/avaliacoes'])
   }
 

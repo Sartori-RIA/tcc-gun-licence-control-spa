@@ -70,7 +70,7 @@ export class ClientLicenceComponent implements OnInit {
   }
 
   private loadLicenses() {
-    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+    this.userService.findByOneProperty("cpf", localStorage.getItem("currentUserCPF"))
       .subscribe(res => {
         this.user = res;
         this.licenseService.listByOneProperty("user.cpf", this.user.cpf).subscribe(res => {
@@ -86,7 +86,7 @@ export class ClientLicenceComponent implements OnInit {
   }
 
   private loadAddressList() {
-    this.userService.getById(sessionStorage.getItem("currentUserID")).subscribe(res => {
+    this.userService.getById(localStorage.getItem("currentUserID")).subscribe(res => {
       this.addressList = res.addressList;
     }, error2 => this.httpErrorService.verifyErrors(error2))
   }

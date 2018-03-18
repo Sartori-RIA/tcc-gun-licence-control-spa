@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.showMenu = this.authService.checkLogin();
     this.draw = false;
-    this.currentUserName = sessionStorage.getItem("currentUserName");
+    this.currentUserName = localStorage.getItem("currentUserName");
   }
 
   onClick() {
@@ -66,22 +66,22 @@ export class NavbarComponent implements OnInit {
   }
 
   isCivil(): boolean {
-    return (sessionStorage.getItem("currentUserRole") == "CIVIL")
+    return (localStorage.getItem("currentUserRole") == "CIVIL")
 
   }
 
   private isDelegate(): boolean {
-    return (sessionStorage.getItem("currentUserRole") == "DELEGADO")
+    return (localStorage.getItem("currentUserRole") == "DELEGADO")
 
   }
 
   private isExaminator(): boolean {
-    return (sessionStorage.getItem("currentUserRole") == "PSICOLOGO") || (sessionStorage.getItem("currentUserRole") == "INSTRUTOR")
+    return (localStorage.getItem("currentUserRole") == "PSICOLOGO") || (localStorage.getItem("currentUserRole") == "INSTRUTOR")
 
   }
 
   private isAdmin(): boolean {
-    return (sessionStorage.getItem("currentUserRole") == "ADMIN")
+    return (localStorage.getItem("currentUserRole") == "ADMIN")
 
   }
 }

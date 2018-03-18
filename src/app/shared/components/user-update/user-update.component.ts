@@ -27,7 +27,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findByOneProperty("cpf", sessionStorage.getItem("currentUserCPF"))
+    this.userService.findByOneProperty("cpf", localStorage.getItem("currentUserCPF"))
       .subscribe(res => {
         this.model = res;
         this.form.patchValue({
