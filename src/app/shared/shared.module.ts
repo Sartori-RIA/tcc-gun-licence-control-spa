@@ -75,6 +75,7 @@ import {NguCarouselModule} from '@ngu/carousel';
 import {NgxMaskModule} from 'ngx-mask';
 import {DataService} from './auth/data.service';
 import {AppLoaderModule} from "../services/app-loader/app-loader.module";
+import {NgxQRCodeModule} from "ngx-qrcode2";
 
 @NgModule({
   imports: [
@@ -110,6 +111,7 @@ import {AppLoaderModule} from "../services/app-loader/app-loader.module";
     CommonDirectivesModule,
     NguCarouselModule,
     NgxMaskModule.forRoot({}),
+    NgxQRCodeModule,
   ],
   declarations: [
     CamelCasePipe,
@@ -206,7 +208,8 @@ import {AppLoaderModule} from "../services/app-loader/app-loader.module";
     NgxDatatableModule,
     MatSlideToggleModule,
     CommonDirectivesModule,
-    NgxMaskModule
+    NgxMaskModule,
+    NgxQRCodeModule
   ],
   entryComponents: [
     DialogComponent

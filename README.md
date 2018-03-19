@@ -35,6 +35,7 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 + **ngx-charts**
 + **ngx-masks**
 + **ngx-datatable**
++ **ngx-qrcode2**
 + **angular2-google-chart**
 + **Gov Icons**
 + **Material Design Icons**

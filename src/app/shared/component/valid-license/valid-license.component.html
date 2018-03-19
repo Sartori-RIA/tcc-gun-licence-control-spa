@@ -3,7 +3,13 @@
   <mat-card-content>
     <p><strong>Nome: </strong>{{license.user.name}}</p>
     <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
-    <p><strong>Numero de serie: </strong>{{license.serial}}</p>
+    <p><strong>Numero de serie: </strong>{{license.serial}}
+      <ngx-qrcode
+        [qrc-value]="license.serial"
+        qrc-class="aclass"
+        qrc-errorCorrectionLevel="L">
+      </ngx-qrcode>
+    </p>
     <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
     <p><strong>Rua: </strong>{{license.address.street}} - {{license.address.addressNumber}}</p>
     <p><strong>Estado: </strong>{{license.address.city.state.description}}</p>
