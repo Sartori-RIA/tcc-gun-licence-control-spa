@@ -1,15 +1,16 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {MatDialogModule, MatProgressSpinnerModule} from '@angular/material';
 
 import {AppLoaderService} from './app-loader.service';
 import {AppLoaderComponent} from './app-loader.component';
+import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+
   ],
   providers: [AppLoaderService],
   declarations: [AppLoaderComponent],

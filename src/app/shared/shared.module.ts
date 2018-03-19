@@ -30,7 +30,6 @@ import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CamelCasePipe} from './pipes/camel-case.pipe';
 import {CpfPipe} from './pipes/cpf.pipe';
-import {CpfDirective} from './directives/common/cpf.directive';
 import {FilterPipe} from './pipes/filter.pipe';
 import {UserDetailComponent} from './component/user-detail/user-detail.component';
 import {FormAddressComponent} from './component/form-address/form-address.component';
@@ -75,6 +74,7 @@ import {WINDOW_PROVIDERS} from './helpers/window.helper';
 import {NguCarouselModule} from '@ngu/carousel';
 import {NgxMaskModule} from 'ngx-mask';
 import {DataService} from './auth/data.service';
+import {AppLoaderModule} from "../services/app-loader/app-loader.module";
 
 @NgModule({
   imports: [
@@ -109,12 +109,11 @@ import {DataService} from './auth/data.service';
     NgxDatatableModule,
     CommonDirectivesModule,
     NguCarouselModule,
-    NgxMaskModule.forRoot({})
+    NgxMaskModule.forRoot({}),
   ],
   declarations: [
     CamelCasePipe,
     CpfPipe,
-    CpfDirective,
     FilterPipe,
     UserDetailComponent,
     FlashMessageComponent,
@@ -187,7 +186,6 @@ import {DataService} from './auth/data.service';
     MatTableModule,
     MatCheckboxModule,
     CpfPipe,
-    CpfDirective,
     FilterPipe,
     UserDetailComponent,
     FlashMessageComponent,

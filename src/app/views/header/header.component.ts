@@ -12,6 +12,8 @@ import {DataService} from '../../shared/auth/data.service';
 })
 export class HeaderComponent implements OnInit {
   isFixed;
+  currentUserName: string;
+
   @HostBinding('class.menu-opened') menuOpened = false;
 
   constructor(@Inject(DOCUMENT) private document: Document,
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentUserName = this.dataService.getUserName();
   }
 
   @HostListener('window:scroll', [])
@@ -37,6 +40,9 @@ export class HeaderComponent implements OnInit {
   onClick() {
     if (this.authService.checkLogin())
       this.authService.logout();
+
+    this.route.navigate(['/login/entrar'])
+
   }
 
   goToMyProfile() {
@@ -74,17 +80,17 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  private isDelegate(): boolean {
+  isDelegate(): boolean {
     return (this.dataService.getUserRole() == 'DELEGADO')
 
   }
 
-  private isExaminator(): boolean {
+  isExaminator(): boolean {
     return (this.dataService.getUserRole() == 'PSICOLOGO') || (this.dataService.getUserRole() == 'INSTRUTOR')
 
   }
 
-  private isAdmin(): boolean {
+  isAdmin(): boolean {
     return (this.dataService.getUserRole() == 'ADMIN')
 
   }

@@ -41,13 +41,13 @@ export class LoginComponent implements OnInit {
           this.dataService.setUserName(res.name);
           this.dataService.setUserID(res.id.toString());
           this.dataService.setUserRole(res.role.description);
-          if (res.role.description == 'ADMIN')
+          if (this.dataService.getUserRole() == 'ADMIN')
             this.router.navigate(['/admin']);
-          if (res.role.description == 'DELEGADO')
+          if (this.dataService.getUserRole() == 'DELEGADO')
             this.router.navigate(['/delegado']);
-          if (res.role.description == 'PSICOLOGO' || res.role.description == 'INSTRUTOR')
+          if (this.dataService.getUserRole() == 'PSICOLOGO' || this.dataService.getUserRole() == 'INSTRUTOR')
             this.router.navigate(['/examinador']);
-          if (res.role.description == 'CIVIL')
+          if (this.dataService.getUserRole() == 'CIVIL')
             this.router.navigate(['/civil']);
 
         })

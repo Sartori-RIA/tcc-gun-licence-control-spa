@@ -10,7 +10,7 @@ export class AppLoaderService {
   constructor(private dialog: MatDialog) {
   }
 
-  public open(title: string = 'Please wait'): Observable<boolean> {
+  public open(title: string = 'Aguarde...'): Observable<boolean> {
     this.dialogRef = this.dialog.open(AppLoaderComponent, {disableClose: true});
     this.dialogRef.updateSize('200px');
     this.dialogRef.componentInstance.title = title;

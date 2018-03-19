@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Gender} from '../../shared/model/gender';
 import {User} from '../../shared/model/user';
 import {Cep} from '../../shared/model/cep';
@@ -20,6 +20,7 @@ import {CityService} from '../../shared/service/city.service';
 import {AddressService} from '../../shared/service/address.service';
 import {HttpErrorService} from '../../shared/service/http-error.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
+import {CustomValidators} from "ng2-validation";
 
 @Component({
   selector: 'app-admin-register-user',
@@ -70,9 +71,7 @@ export class AdminRegisterUserComponent implements OnInit {
       this.mountAddress();
       this.model.addressList = [];
       this.model.addressList.push(this.address);
-      //alert(JSON.stringify(this.model));
       this.userService.save(this.model).subscribe(res => {
-        console.log(JSON.stringify(res))
         this.resetForm();
         this.openDialog('Sucesso', 'Cadastrado com sucesso', 'OK')
       }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Cadastrar Usuario'));
@@ -170,11 +169,15 @@ export class AdminRegisterUserComponent implements OnInit {
   }
 
   private buildReactiveForm(): void {
+    let pwd = new FormControl('', Validators.required);
+    let certainPassword = new FormControl('', CustomValidators.equalTo(pwd));
+
+
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
       gender: [null, Validators.required],
-      password: [null, Validators.required],
-      confirmPassword: [null, [Validators.required]],
+      password: pwd,
+      confirmPassword: certainPassword,
       email: [null, [Validators.required, Validators.email]],
       cpf: [null, Validators.required],
       rg: [null, Validators.required],

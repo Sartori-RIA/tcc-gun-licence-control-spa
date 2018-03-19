@@ -44,14 +44,14 @@
         <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Documentos</mat-card-title>
 
         <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
-          <input (keypress)="_keyPressOnlyNumber($event)" matInput #cpf minlength="11" type="text" maxlength="11"
+          <input mask="000.000.000-00" matInput #cpf minlength="11" type="text" maxlength="11"
                  id="cpf" formControlName="cpf"
                  placeholder="CPF">
           <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
         </mat-form-field>
 
         <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
-          <input (keypress)="_keyPressOnlyNumber($event)" matInput #rg minlength="8" type="text" maxlength="8" id="rg"
+          <input mask="0.000.000 0" matInput #rg minlength="8" type="text" maxlength="8" id="rg"
                  formControlName="rg"
                  placeholder="RG">
           <mat-hint align="end">{{rg.value.length}} / 8</mat-hint>
@@ -136,7 +136,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput #postalCode maxlength="9" placeholder="CEP" id="cep" formControlName="cep"
+          <input mask="00000-000" matInput #postalCode maxlength="9" placeholder="CEP" id="cep" formControlName="cep"
                  (blur)="getCEP()">
           <mat-hint align="end">{{postalCode.value.length}} / 9</mat-hint>
         </mat-form-field>

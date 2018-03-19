@@ -15,8 +15,7 @@ export class AuthDelegateGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkLogin()) {
-      let role = this.dataService.getUserRole();
-      if (role === 'DELEGADO')
+      if (this.dataService.getUserRole() === 'DELEGADO')
         return true;
       else {
         this.router.navigate(['/login/entrar']);

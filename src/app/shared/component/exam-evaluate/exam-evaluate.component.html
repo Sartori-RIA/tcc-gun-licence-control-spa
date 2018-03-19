@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <mat-card-title>Buscar Licença</mat-card-title>
+    <mat-card-title >Buscar Licença</mat-card-title>
     <form disabled="disable" [formGroup]="form">
       <mat-form-field>
         <span matPrefix>CPF: </span>
@@ -14,57 +14,62 @@
     </form>
   </mat-card-content>
 </mat-card>
+
 <div *ngIf="model != null">
-  <mat-card>
-    <mat-card-content>
-      <mat-card-title>Dados pessoais</mat-card-title>
-      <p> Nome: {{model.name}}</p>
-      <p> CPF: {{model.cpf}}</p>
-      <p> Sexo: {{model.gender.description}}</p>
-      <p> Data de Nascimento: {{formatDate(model.dateOfBirth)}}</p>
-      <p> E-mail: {{model.email}}</p>
-    </mat-card-content>
-  </mat-card>
+  <div fxLayout="row">
+    <div fxFlex="40">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title class="text-center">Dados pessoais</mat-card-title>
+          <p> Nome: {{model.name}}</p>
+          <p> CPF: {{model.cpf}}</p>
+          <p> Sexo: {{model.gender.description}}</p>
+          <p> Data de Nascimento: {{formatDate(model.dateOfBirth)}}</p>
+          <p> E-mail: {{model.email}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex="60">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title class="text-center">Dados do exame</mat-card-title>
+          <form disabled="disable" [formGroup]="examForm">
+            <mat-form-field>
+              <span matPrefix>Exame: </span>
+              <mat-select formControlName="examType" id="exam">
+                <mat-option *ngFor="let exam  of examCategories" [value]="exam">{{ exam?.description }}</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-  <div>
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Historico de Exames prestados</mat-card-title>
-        <mat-card *ngFor="let exam of examHistory">
-          <app-user-exam-history [model]="exam"></app-user-exam-history>
-        </mat-card>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <mat-card>
-    <mat-card-content>
-      <mat-card-title>Dados do exame</mat-card-title>
-      <form disabled="disable" [formGroup]="examForm">
-        <mat-form-field>
-          <span matPrefix>Exame: </span>
-          <mat-select formControlName="examType" id="exam">
-            <mat-option *ngFor="let exam  of examCategories" [value]="exam">{{ exam?.description }}</mat-option>
-          </mat-select>
-        </mat-form-field>
+            <mat-form-field>
+              <span matPrefix>Resultado: </span>
+              <mat-select formControlName="status" id="status">
+                <mat-option *ngFor="let status of examStatusList" [value]="status.value">
+                  {{ status.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-        <mat-form-field>
-          <span matPrefix>Resultado: </span>
-          <mat-select formControlName="status" id="status">
-            <mat-option *ngFor="let status of examStatusList" [value]="status.value">
-              {{ status.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
+            <mat-form-field>
                 <textarea matInput formControlName="resultDescription" placeholder="Laudo do exame"
                           matTextareaAutosize matAutosizeMinRows="2"
                           matAutosizeMaxRows="5">
                 </textarea>
-        </mat-form-field>
+            </mat-form-field>
 
-        <button (click)="sendExam()" mat-raised-button color="primary" type="submit">Finalizar Exame</button>
-      </form>
+            <button (click)="sendExam()" mat-raised-button color="primary" type="submit">Finalizar Exame</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title class="text-center">Historico de Exames prestados</mat-card-title>
+      <mat-card *ngFor="let exam of examHistory">
+        <app-user-exam-history [model]="exam"></app-user-exam-history>
+      </mat-card>
     </mat-card-content>
   </mat-card>
 </div>

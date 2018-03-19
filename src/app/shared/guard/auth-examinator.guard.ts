@@ -15,8 +15,7 @@ export class AuthExaminatorGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkLogin()) {
-      let role = this.dataService.getUserRole();
-      if (role === 'INSTRUTOR' || role == 'PSICOLOGO')
+      if (this.dataService.getUserRole() === 'INSTRUTOR' || this.dataService.getUserRole() == 'PSICOLOGO')
         return true;
       else {
         this.router.navigate(['/login/entrar']);

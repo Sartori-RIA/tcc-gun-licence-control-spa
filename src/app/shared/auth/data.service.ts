@@ -6,7 +6,8 @@ export class DataService {
   private _userName: string = "currentUserName";
   private _userID: string = "currentUserID";
   private _userCPF: string = "currentUserCPF";
-  private _userRole: string = "";
+  private _userRole: string = "currentUserRole";
+
   setToken(value: string) {
     localStorage.setItem(this._token, value);
   }
@@ -47,14 +48,15 @@ export class DataService {
     return localStorage.getItem(this._userRole);
   }
 
-  isEmpty(): boolean{
-    return this.getUserCPF() == null ||
-      this.getUserRole() == null ||
-      this.getUserName() == null ||
-      this.getToken() == null|| this.getUserID() == null;
+  isEmpty(): boolean {
+    return this.getUserCPF() == null || this.getUserCPF() == '' ||
+      this.getUserRole() == null || this.getUserRole() == '' ||
+      this.getUserName() == null || this.getUserName() == '' ||
+      this.getToken() == null || this.getToken() == '' ||
+      this.getUserID() == '' || this.getUserID() == null;
   }
 
-  clear():void{
+  clear(): void {
     localStorage.clear();
   }
 }

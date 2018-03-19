@@ -53,7 +53,7 @@ export class AuthService {
   }
 
   checkLogin(): boolean {
-    return this.dataService.isEmpty();
+    return !this.dataService.isEmpty();
   }
 
 }
