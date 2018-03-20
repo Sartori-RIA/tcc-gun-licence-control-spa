@@ -1,12 +1,39 @@
 <mat-card>
   <mat-card-title>{{license.category.description}}</mat-card-title>
   <mat-card-content>
-    <p><strong>Nome: </strong>{{license.user.name}}</p>
-    <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
-    <p><strong>Numero de serie: </strong>{{license.serial}}</p>
-    <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
-    <p><strong>Rua: </strong>{{license.address.street}} - {{license.address.addressNumber}}</p>
-    <p><strong>Estado: </strong>{{license.address.city.state.description}}</p>
-    <p><strong>Pais: </strong>{{license.address.city.state.country.description}}</p>
+    <div fxLayoutWrap
+         fxLayout.xs="row"
+         fxLayout="column"
+         fxLayoutAlign="space-around center">
+      <div fxFlex="100">
+        <p><strong>Nome: </strong>{{license.user.name}}</p>
+      </div>
+      <div fxFlex="100">
+        <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: </strong>{{licenseSituation(license.status)}}
+        </p>
+      </div>
+      <div fxFlex="50">
+        <ngx-qrcode
+          [qrc-value]="model.se"
+          qrc-class="aclass"
+          qrc-errorCorrectionLevel="L">
+        </ngx-qrcode>
+      </div>
+      <div fxFlex="50">
+        <p><strong>Numero de serie: </strong>{{license.serial}}</p>
+      </div>
+      <div fxFlex="100">
+        <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
+      </div>
+      <div fxFlex="100">
+        <p><strong>Rua: </strong>{{license.address.street}} - {{license.address.addressNumber}}</p>
+      </div>
+      <div fxFlex="100">
+        <p><strong>Estado: </strong>{{license.address.city.state.description}}</p>
+      </div>
+      <div fxFlex="100">
+        <p><strong>Pais: </strong>{{license.address.city.state.country.description}}</p>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>

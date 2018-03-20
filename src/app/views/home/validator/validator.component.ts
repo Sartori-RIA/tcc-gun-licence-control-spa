@@ -4,6 +4,8 @@ import {License} from '../../../shared/model/license';
 import {User} from '../../../shared/model/user';
 import {LicenseValidatorService} from '../../../shared/service/license-validator.service';
 import {Router} from '@angular/router';
+import {DialogComponent} from "../../../shared/component/dialog/dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-validator',
@@ -20,6 +22,7 @@ export class ValidatorComponent implements OnInit {
 
   constructor(private licenseValidatorService: LicenseValidatorService,
               private formBuilder: FormBuilder,
+              private dialog: MatDialog,
               private router: Router) {
   }
 
@@ -36,8 +39,10 @@ export class ValidatorComponent implements OnInit {
         this.model = res;
         this.valid = true;
       }, error2 => {
-        if (error2.status == 404)
+        if (error2.status == 404) {
           this.valid = false;
+          this.openDialog("ATENÇÃO", "Licença incorreda ou falsa, por favor verifique o número de série", "ok");
+        }
       });
     }
   }
@@ -50,5 +55,14 @@ export class ValidatorComponent implements OnInit {
     this.form = this.formBuilder.group({
       serial: [null, Validators.required],
     })
+  }
+
+  openDialog(title: string, message: string, confirmBtn: string) {
+    let dialog = this.dialog.open(DialogComponent, {
+      width: '250px',
+      data: {title: title, message: message, confirmButton: confirmBtn}
+    });
+    dialog.afterClosed().subscribe(() => {
+    });
   }
 }

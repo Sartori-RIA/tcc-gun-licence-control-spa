@@ -1,7 +1,9 @@
 <section id="validator-section" class="portfolio home-section" [ngClass]="{'light-gray': backgroundGray}">
   <div class="container">
-    <mat-grid-list cols="12" rowHeight="600">
-      <mat-grid-tile colspan="12">
+
+
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="nowrap" fxLayoutGap="30px">
+      <div fxFlex="100">
         <mat-card>
           <mat-card-title>Validador</mat-card-title>
           <mat-card-subtitle>Precisa saber se a licenca é verdadeira ou se ainda está na validade?</mat-card-subtitle>
@@ -28,12 +30,11 @@
             </form>
           </mat-card-content>
         </mat-card>
-
-        <div *ngIf="valid && model != null">
-          <app-valid-license [license]="model"></app-valid-license>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
+      </div>
+      <div fxFlex="100" *ngIf="valid && model != null">
+        <app-valid-license [license]="model"></app-valid-license>
+      </div>
+    </div>
   </div>
 </section>
 

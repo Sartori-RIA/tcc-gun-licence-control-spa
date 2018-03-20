@@ -16,7 +16,7 @@ import {LegislationComponent} from './legislation/legislation.component';
   imports: [
     SharedModule,
     NguCarouselModule,
-    HomeRouting
+    HomeRouting,
   ],
   declarations: [
     HomeOneComponent,
