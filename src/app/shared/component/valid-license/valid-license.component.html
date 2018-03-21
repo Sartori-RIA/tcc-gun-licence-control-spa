@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>{{license.category.description}}</mat-card-title>
+  <mat-card-title><strong>{{license.category.description}}</strong></mat-card-title>
   <mat-card-content>
     <div fxLayoutWrap
          fxLayout.xs="row"
@@ -8,13 +8,13 @@
       <div fxFlex="100">
         <p><strong>Nome: </strong>{{license.user.name}}</p>
       </div>
-      <div fxFlex="100">
+      <div fxFlex ="100">
         <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: </strong>{{licenseSituation(license.status)}}
         </p>
       </div>
       <div fxFlex="50">
         <ngx-qrcode
-          [qrc-value]="model.se"
+          [qrc-value]="license.serial"
           qrc-class="aclass"
           qrc-errorCorrectionLevel="L">
         </ngx-qrcode>

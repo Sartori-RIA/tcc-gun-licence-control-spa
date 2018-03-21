@@ -1,19 +1,11 @@
 <section id="tools-section" class="tools home-section" [ngClass]="{'light-gray': backgroundGray}">
   <div class="container">
-    <div class="section-header">
-      <h2>Funcionalidades do Sistema</h2>
-    </div>
-
     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="nowrap" fxLayoutGap="30px">
       <div fxFlex="33.33">
         <mat-card class="p-0 m-0">
           <i class="gi gi-check gi-8x"></i>
           <mat-card-content>
             <h5><strong><a href="">Validador de licenças</a></strong></h5>
-            <p>
-              Deseja saber se a licença ainda esta na validade ou se é
-              verdadeira? E ainda caso ela seja verdadeira também saberá sua categoria e portador
-            </p>
             <mat-divider class="mb-1"></mat-divider>
             <button routerLink="/validador" mat-icon-button>
               <mat-icon class="text-muted">link</mat-icon>

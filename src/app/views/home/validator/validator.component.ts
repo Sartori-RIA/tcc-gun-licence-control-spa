@@ -41,7 +41,7 @@ export class ValidatorComponent implements OnInit {
       }, error2 => {
         if (error2.status == 404) {
           this.valid = false;
-          this.openDialog("ATENÇÃO", "Licença incorreda ou falsa, por favor verifique o número de série", "ok");
+          this.openDialog("ATENÇÃO", "Licença incorreta ou falsa, por favor verifique o número de série", "ok");
         }
       });
     }

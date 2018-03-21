@@ -10,6 +10,7 @@ import {WINDOW_PROVIDERS} from '../../shared/helpers/window.helper';
 import {ValidatorComponent} from './validator/validator.component';
 import {SharedModule} from '../../shared/shared.module';
 import {LegislationComponent} from './legislation/legislation.component';
+import { CtaComponent } from './cta/cta.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {LegislationComponent} from './legislation/legislation.component';
     ToolsComponent,
     ValidatorComponent,
     LegislationComponent,
+    CtaComponent,
   ],
   providers: [WINDOW_PROVIDERS]
 
