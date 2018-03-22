@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -76,6 +76,7 @@ import {NgxMaskModule} from 'ngx-mask';
 import {DataService} from './auth/data.service';
 import {AppLoaderModule} from "../services/app-loader/app-loader.module";
 import {NgxQRCodeModule} from "ngx-qrcode2";
+import {ErrorhandlerInterceptor} from './interceptor/errorhandler.interceptor';
 
 @NgModule({
   imports: [
@@ -157,6 +158,7 @@ import {NgxQRCodeModule} from "ngx-qrcode2";
     AuthService,
     WINDOW_PROVIDERS,
     DataService,
+    {provide: ErrorHandler, useClass: ErrorhandlerInterceptor},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],
   exports: [

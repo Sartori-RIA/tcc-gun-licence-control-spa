@@ -38,11 +38,6 @@ export class ValidatorComponent implements OnInit {
       this.licenseValidatorService.validateLicense(this.license).subscribe(res => {
         this.model = res;
         this.valid = true;
-      }, error2 => {
-        if (error2.status == 404) {
-          this.valid = false;
-          this.openDialog("ATENÇÃO", "Licença incorreta ou falsa, por favor verifique o número de série", "ok");
-        }
       });
     }
   }
