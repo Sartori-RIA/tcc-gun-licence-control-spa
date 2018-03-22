@@ -18,7 +18,6 @@ import {CountryService} from '../../shared/service/country.service';
 import {StateService} from '../../shared/service/state.service';
 import {CityService} from '../../shared/service/city.service';
 import {AddressService} from '../../shared/service/address.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 import {CustomValidators} from "ng2-validation";
 
@@ -51,14 +50,13 @@ export class AdminRegisterUserComponent implements OnInit {
               private stateService: StateService,
               private cityService: CityService,
               private addressService: AddressService,
-              private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.countryService.index().subscribe(res => this.countries = res, error2 => this.httpErrorService.verifyErrors(error2));
-    this.genderService.index().subscribe(res => this.genders = res, error2 => this.httpErrorService.verifyErrors(error2));
-    this.userCategoryService.index().subscribe(res => this.roles = res, error2 => this.httpErrorService.verifyErrors(error2));
+    this.countryService.index().subscribe(res => this.countries = res);
+    this.genderService.index().subscribe(res => this.genders = res);
+    this.userCategoryService.index().subscribe(res => this.roles = res);
     this.address = new Address();
     this.user = new User();
     this.buildReactiveForm();
@@ -74,29 +72,21 @@ export class AdminRegisterUserComponent implements OnInit {
       this.userService.save(this.model).subscribe(res => {
         this.resetForm();
         this.openDialog('Sucesso', 'Cadastrado com sucesso', 'OK')
-      }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Cadastrar Usuario'));
+      });
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       this.formDirty(this.form);
     }
   }
 
-  _keyPressOnlyNumber(event: any): void {
-    const pattern = /[0-9+\-]/;
-    let inputChar = String.fromCharCode(event.charCode);
-    if (!pattern.test(inputChar)) {
-      event.preventDefault();
-    }
-  }
-
   onCountryChose(country) {
     this.stateService.listByOneProperty('country.id',
-      country.value.id).subscribe(res => this.states = res, error2 => this.httpErrorService.verifyErrors(error2));
+      country.value.id).subscribe(res => this.states = res);
   }
 
   onStateChose(state) {
     this.cityService.listByOneProperty('state.id',
-      state.value.id).subscribe(res => this.cities = res, error2 => this.httpErrorService.verifyErrors(error2));
+      state.value.id).subscribe(res => this.cities = res);
   }
 
   onCityChose() {

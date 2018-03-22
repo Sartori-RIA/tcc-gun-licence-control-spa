@@ -2,7 +2,6 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Country} from '../../shared/model/country';
 import {MatDialog} from '@angular/material';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {CountryService} from '../../shared/service/country.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
@@ -20,8 +19,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private countryService: CountryService,
-              private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private dialog: MatDialog) {
   }
 
 
@@ -30,7 +28,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
     this.mountFormCountry();
     this.countryService.index().subscribe(res => {
       this.countryList = res;
-    }, error2 => this.httpErrorService.verifyErrors(error2));
+    });
   }
 
   onSubmit(): void {
@@ -40,7 +38,7 @@ export class AdminRegisterCountriesComponent implements OnInit {
         this.countryList.push(res);
         this.resetFormCountry();
         this.openDialog('Sucesso', 'Pais cadastrado com Sucesso', 'Ok')
-      }, error => this.httpErrorService.verifyErrors(error, 'Não foi possivel efetuar o cadastro'));
+      });
     } else {
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }

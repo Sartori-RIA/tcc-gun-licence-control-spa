@@ -4,7 +4,6 @@ import {License} from '../../shared/model/license';
 import {UserService} from '../../shared/service/user.service';
 import {LicenseCategoryService} from '../../shared/service/license-category.service';
 import {RequirementService} from '../../shared/service/requirement.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {LicenseService} from '../../shared/service/license.service';
 
 @Component({
@@ -24,7 +23,6 @@ export class AdminReportsComponent implements OnInit {
   constructor(private userService: UserService,
               private licenseCategoryService: LicenseCategoryService,
               private requirementService: RequirementService,
-              private httpErrorService: HttpErrorService,
               private licenseService: LicenseService) {
   }
 
@@ -35,22 +33,16 @@ export class AdminReportsComponent implements OnInit {
 
   private loadLicensesProgress() {
     this.licenseService.listByOneProperty('status', String(false))
-      .subscribe(res => {
-        this.licensesProgress = res
-      }, error => this.httpErrorService.verifyErrors(error))
+      .subscribe(res => this.licensesProgress = res)
   }
 
   private loadLicensesAproved() {
     this.licenseService.listByOneProperty('status', String(true))
-      .subscribe(res => {
-        this.licensesAproved = res
-      }, error => this.httpErrorService.verifyErrors(error))
+      .subscribe(res => this.licensesAproved = res)
   }
 
   private loadLicensesCategories() {
     this.licenseCategoryService.index()
-      .subscribe(res => {
-        this.licensesCategories = res
-      }, error => this.httpErrorService.verifyErrors(error));
+      .subscribe(res => this.licensesCategories = res);
   }
 }

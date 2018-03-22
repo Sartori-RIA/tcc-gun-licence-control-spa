@@ -12,7 +12,6 @@ import {ExamCategoryService} from '../../service/exam-category.service';
 import {LicenseService} from '../../service/license.service';
 import {ExamService} from '../../service/exam.service';
 import {AuthService} from '../../auth/auth.service';
-import {HttpErrorService} from '../../service/http-error.service';
 import {DataService} from '../../auth/data.service';
 
 @Component({
@@ -44,7 +43,6 @@ export class ExamEvaluateComponent implements OnInit {
               private examService: ExamService,
               private dialog: MatDialog,
               private authService: AuthService,
-              private httpErrorService: HttpErrorService,
               private dataService: DataService) {
   }
 
@@ -57,10 +55,8 @@ export class ExamEvaluateComponent implements OnInit {
       for (let item of res)
         if (item.role.description == this.dataService.getUserRole())
           this.examCategories.push(item)
-    }, error2 => this.httpErrorService.verifyErrors(error2));
-    this.userService.getById(this.dataService.getUserID()).subscribe(res => {
-      this.examinator = res;
-    }, error2 => this.httpErrorService.verifyErrors(error2));
+    });
+    this.userService.getById(this.dataService.getUserID()).subscribe(res => this.examinator = res);
   }
 
   formatDate(date) {
@@ -75,10 +71,6 @@ export class ExamEvaluateComponent implements OnInit {
         this.model = res.user;
         this.license = res;
         this.examHistory = res.examList;
-      }, error2 => {
-        let message404 = 'Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados';
-        let message401 = 'Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados'
-        this.httpErrorService.verifyErrors(error2, null, message404, message401)
       })
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
@@ -96,9 +88,9 @@ export class ExamEvaluateComponent implements OnInit {
         this.licenseService.update(this.license).subscribe(res => {
           this.examHistory = res.examList;
           this.openDialog('Sucesso', 'Exame Salvo com Sucesso', 'OK');
-        }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Salvar o Exame'));
+        });
         this.onResetForm();
-      }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Salvar o Exame'));
+      });
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       this.formDirty(this.form);

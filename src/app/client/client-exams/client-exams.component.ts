@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {License} from '../../shared/model/license';
 import {ExamService} from '../../shared/service/exam.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {LicenseService} from '../../shared/service/license.service';
 import {DataService} from '../../shared/auth/data.service';
 
@@ -16,7 +15,6 @@ export class ClientExamsComponent implements OnInit {
   licenseSelected: License;
 
   constructor(private examService: ExamService,
-              private httpErrorService: HttpErrorService,
               private licenseService: LicenseService,
               private dataService: DataService) {
   }
@@ -26,10 +24,7 @@ export class ClientExamsComponent implements OnInit {
   }
 
   loadLicenses() {
-    this.licenseService.listByOneProperty('user.cpf', this.dataService.getUserCPF())
-      .subscribe(res => {
-        this.licenses = res;
-      }, error2 => this.httpErrorService.verifyErrors(error2))
+    this.licenseService.listByOneProperty('user.cpf', this.dataService.getUserCPF()).subscribe(res => this.licenses = res)
   }
 
   onLicenseClick(license: License) {

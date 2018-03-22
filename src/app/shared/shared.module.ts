@@ -20,7 +20,8 @@ import {
   MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule, MatSlideToggleModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
@@ -62,7 +63,6 @@ import {AuthClientGuard} from './guard/auth-client.guard';
 import {CepService} from './service/cep.service';
 import {CountryService} from './service/country.service';
 import {CityService} from './service/city.service';
-import {HttpErrorService} from './service/http-error.service';
 import {AuthAdminGuard} from './guard/auth-admin.guard';
 import {AuthDelegateGuard} from './guard/auth-delegate.guard';
 import {TokenInterceptor} from './interceptor/token.interceptor';
@@ -74,7 +74,6 @@ import {WINDOW_PROVIDERS} from './helpers/window.helper';
 import {NguCarouselModule} from '@ngu/carousel';
 import {NgxMaskModule} from 'ngx-mask';
 import {DataService} from './auth/data.service';
-import {AppLoaderModule} from "../services/app-loader/app-loader.module";
 import {NgxQRCodeModule} from "ngx-qrcode2";
 import {ErrorhandlerInterceptor} from './interceptor/errorhandler.interceptor';
 
@@ -148,7 +147,6 @@ import {ErrorhandlerInterceptor} from './interceptor/errorhandler.interceptor';
     CityService,
     AddressService,
     ExamService,
-    HttpErrorService,
     RequirementService,
     LicenseService,
     AuthAdminGuard,

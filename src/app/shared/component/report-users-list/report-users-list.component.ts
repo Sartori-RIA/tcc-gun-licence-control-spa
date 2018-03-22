@@ -1,7 +1,6 @@
 import {Component, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {User} from '../../model/user';
 import {UserService} from '../../service/user.service';
-import {HttpErrorService} from '../../service/http-error.service';
 
 @Component({
   selector: 'app-report-users-list',
@@ -13,12 +12,11 @@ export class ReportUsersListComponent implements OnInit {
   modelList: User[];
   @Output() modelDetail: User;
 
-  constructor(private userService: UserService,
-              private httpErroService: HttpErrorService) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.userService.index().subscribe(res => this.modelList = res, error2 => this.httpErroService.verifyErrors(error2))
+    this.userService.index().subscribe(res => this.modelList = res)
   }
 
   onClickUser(model: User) {

@@ -15,7 +15,6 @@ import {CountryService} from '../../service/country.service';
 import {StateService} from '../../service/state.service';
 import {CityService} from '../../service/city.service';
 import {AddressService} from '../../service/address.service';
-import {HttpErrorService} from '../../service/http-error.service';
 import {DataService} from '../../auth/data.service';
 
 @Component({
@@ -43,7 +42,6 @@ export class FormAddressComponent implements OnInit {
               private cityService: CityService,
               private addressService: AddressService,
               private dialog: MatDialog,
-              private httpErroService: HttpErrorService,
               private dataService: DataService) {
   }
 
@@ -66,8 +64,8 @@ export class FormAddressComponent implements OnInit {
           this.newAddress.emit(res);
           this.openDialog('Sucesso', 'Endereço Adicionado com Sucesso', 'OK');
           this.resetAddess();
-        }, error => this.httpErroService.verifyErrors(error, 'Nao foi possivel adicionar o endereco'));
-      }, error => this.httpErroService.verifyErrors(error, 'Nao foi possivel adicionar o endereco'));
+        });
+      });
     } else {
       this.formDirty(this.form);
     }
@@ -75,12 +73,12 @@ export class FormAddressComponent implements OnInit {
 
   onCountryChose(country) {
     this.stateService.listByOneProperty('country.id',
-      country.value.id).subscribe(res => this.states = res, error2 => this.httpErroService.verifyErrors(error2));
+      country.value.id).subscribe(res => this.states = res);
   }
 
   onStateChose(state) {
     this.cityService.listByOneProperty('state.id',
-      state.value.id).subscribe(res => this.cities = res, error2 => this.httpErroService.verifyErrors(error2));
+      state.value.id).subscribe(res => this.cities = res);
   }
 
   onCityChose() {

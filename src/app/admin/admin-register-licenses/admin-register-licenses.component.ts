@@ -7,7 +7,6 @@ import {MatDialog} from '@angular/material';
 import {ExamCategoryService} from '../../shared/service/exam-category.service';
 import {LicenseCategoryService} from '../../shared/service/license-category.service';
 import {RequirementService} from '../../shared/service/requirement.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
@@ -27,20 +26,15 @@ export class AdminRegisterLicensesComponent implements OnInit {
               private examCategoryService: ExamCategoryService,
               private requirementService: RequirementService,
               private formBuilder: FormBuilder,
-              private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.mountFormLicense();
     this.model = new LicenseCategory();
     this.requirements = new Requirement();
-    this.examCategoryService.index().subscribe(res => {
-      this.examsCategories = res
-    }, error2 => this.httpErrorService.verifyErrors(error2));
-    this.licenseCategoryService.index()
-      .subscribe(res => this.licensesCategoriesList = res,
-        error2 => this.httpErrorService.verifyErrors(error2));
+    this.examCategoryService.index().subscribe(res => this.examsCategories = res);
+    this.licenseCategoryService.index().subscribe(res => this.licensesCategoriesList = res);
   }
 
   onAddExam() {
@@ -57,8 +51,8 @@ export class AdminRegisterLicensesComponent implements OnInit {
           () => {
             this.resetForm();
             this.openDialog('Sucesso', 'Licença Salva com Sucesso', 'OK')
-          }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Salvar'))
-      }, error => this.httpErrorService.verifyErrors(error, 'Erro nos requisitos da licença'))
+          })
+      })
     } else {
       this.openDialog('Erro', 'Os Campos Precisam ser Preenchidos', 'OK');
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());

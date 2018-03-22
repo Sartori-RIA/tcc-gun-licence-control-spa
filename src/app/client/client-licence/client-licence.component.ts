@@ -10,7 +10,6 @@ import {LicenseService} from '../../shared/service/license.service';
 import {LicenseCategoryService} from '../../shared/service/license-category.service';
 import {ExamService} from '../../shared/service/exam.service';
 import {UserService} from '../../shared/service/user.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 import {DataService} from '../../shared/auth/data.service';
 
@@ -36,7 +35,6 @@ export class ClientLicenceComponent implements OnInit {
               private examService: ExamService,
               private formBuilder: FormBuilder,
               private dialog: MatDialog,
-              private httpErrorService: HttpErrorService,
               private dataService: DataService) {
   }
 
@@ -54,7 +52,7 @@ export class ClientLicenceComponent implements OnInit {
       this.licenseService.save(this.license).subscribe(res => {
         this.myProgressLicenses.push(res);
         this.openDialog('Sucesso', 'Processo de nova Licença iniciada', 'OK');
-      }, error2 => this.httpErrorService.verifyErrors(error2, 'Você não possui os requisitos para a licença'));
+      });
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       this.formDirty(this.form)
@@ -83,14 +81,12 @@ export class ClientLicenceComponent implements OnInit {
             if (license.shelfLife != null && license.status)
               this.licenseAproved.push(license)
           }
-        }, error2 => this.httpErrorService.verifyErrors(error2));
-      }, error2 => this.httpErrorService.verifyErrors(error2));
+        });
+      });
   }
 
   private loadAddressList() {
-    this.userService.getById(this.dataService.getUserID()).subscribe(res => {
-      this.addressList = res.addressList;
-    }, error2 => this.httpErrorService.verifyErrors(error2))
+    this.userService.getById(this.dataService.getUserID()).subscribe(res => this.addressList = res.addressList)
   }
 
   private mountForm() {

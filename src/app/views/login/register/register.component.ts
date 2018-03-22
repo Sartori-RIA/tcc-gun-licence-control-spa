@@ -8,7 +8,6 @@ import {UserService} from '../../../shared/service/user.service';
 import {GenderService} from '../../../shared/service/gender.service';
 import {UserCategoryService} from '../../../shared/service/user-category.service';
 import {Router} from '@angular/router';
-import {HttpErrorService} from '../../../shared/service/http-error.service';
 import {MatDialog} from '@angular/material';
 import {DialogComponent} from '../../../shared/component/dialog/dialog.component';
 import {CustomValidators} from 'ng2-validation';
@@ -32,13 +31,12 @@ export class RegisterComponent implements OnInit {
               private genderService: GenderService,
               private userCategoryService: UserCategoryService,
               private route: Router,
-              private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.genderService.index().subscribe(res => this.genders = res, error2 => this.httpErrorService.verifyErrors(error2));
-    this.userCategoryService.index().subscribe(res => this.roles = res, error2 => this.httpErrorService.verifyErrors(error2));
+    this.genderService.index().subscribe(res => this.genders = res);
+    this.userCategoryService.index().subscribe(res => this.roles = res);
     this.buildReactiveForm();
   }
 
@@ -49,7 +47,7 @@ export class RegisterComponent implements OnInit {
         this.route.navigate(['/login/entrar']);
         this.resetForm();
         this.openDialog("Sucesso", "Cadastrado com sucesso", "OK")
-      }, error => this.httpErrorService.verifyErrors(error, "Erro ao Cadastrar Usuario"));
+      });
     } else {
       this.openDialog("Erro", "Alguns campos precisam ser preenchidos", "OK");
       this.formDirty(this.form);

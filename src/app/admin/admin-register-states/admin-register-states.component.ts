@@ -5,7 +5,6 @@ import {Country} from '../../shared/model/country';
 import {MatDialog} from '@angular/material';
 import {StateService} from '../../shared/service/state.service';
 import {CountryService} from '../../shared/service/country.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
@@ -24,15 +23,14 @@ export class AdminRegisterStatesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private stateService: StateService,
               private countryService: CountryService,
-              private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.model = new State();
     this.countryService.index().subscribe(res => {
       this.countries = res;
-    }, error2 => this.httpErrorService.verifyErrors(error2));
+    });
     this.mountFormState();
   }
 
@@ -40,7 +38,7 @@ export class AdminRegisterStatesComponent implements OnInit {
     for (let country of event.selected)
       this.stateService.listByOneProperty('country.id', String(country.id)).subscribe(res => {
         this.statesList = res;
-      }, error2 => this.httpErrorService.verifyErrors(error2));
+      });
   }
 
   onSubmit(): void {
@@ -53,8 +51,8 @@ export class AdminRegisterStatesComponent implements OnInit {
           this.statesList.push(res);
           this.resetFormState();
           this.openDialog('Sucesso', 'Estado Salvo com Sucesso', 'OK')
-        }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Salvar'));
-      }, error2 => this.httpErrorService.verifyErrors(error2));
+        });
+      });
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }

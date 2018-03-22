@@ -6,7 +6,6 @@ import {DialogComponent} from '../dialog/dialog.component';
 import {MatDialog} from '@angular/material';
 import {CustomValidators} from 'ng2-validation';
 import {UserService} from '../../service/user.service';
-import {HttpErrorService} from '../../service/http-error.service';
 import {DataService} from '../../auth/data.service';
 
 @Component({
@@ -24,7 +23,6 @@ export class UserUpdateComponent implements OnInit {
               private userService: UserService,
               private route: Router,
               private dialog: MatDialog,
-              private httpErrorService: HttpErrorService,
               private dataService: DataService) {
   }
 
@@ -46,7 +44,7 @@ export class UserUpdateComponent implements OnInit {
       this.model.email = this.form.value.email;
       this.userService.update(this.model).subscribe(res => {
         this.route.navigate(['/civil/perfil'])
-      }, error2 => this.httpErrorService.verifyErrors(error2, 'Sinto muito ocorreu um erro ao atualizar os dados'));
+      });
     } else Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }
 

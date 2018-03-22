@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {License} from '../../shared/model/license';
 import {LicenseService} from '../../shared/service/license.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 
 @Component({
   selector: 'app-delegate-reports',
@@ -14,8 +13,7 @@ export class DelegateReportsComponent implements OnInit {
   licensesProgress: License[];
   licensesAproved: License[];
 
-  constructor(private licenseService: LicenseService,
-              private httpErrorService: HttpErrorService) {
+  constructor(private licenseService: LicenseService) {
   }
 
   ngOnInit() {
@@ -27,13 +25,13 @@ export class DelegateReportsComponent implements OnInit {
     this.licenseService.listByOneProperty('status', String(false))
       .subscribe(res => {
         this.licensesProgress = res
-      }, error => this.httpErrorService.verifyErrors(error))
+      })
   }
 
   private loadLicensesAproved() {
     this.licenseService.listByOneProperty('status', String(true))
       .subscribe(res => {
         this.licensesAproved = res
-      }, error => this.httpErrorService.verifyErrors(error))
+      })
   }
 }

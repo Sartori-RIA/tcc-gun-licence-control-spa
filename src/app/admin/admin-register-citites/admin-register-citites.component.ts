@@ -7,7 +7,6 @@ import {MatDialog} from '@angular/material';
 import {CountryService} from '../../shared/service/country.service';
 import {StateService} from '../../shared/service/state.service';
 import {CityService} from '../../shared/service/city.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
@@ -29,8 +28,7 @@ export class AdminRegisterCititesComponent implements OnInit {
               private countryService: CountryService,
               private stateService: StateService,
               private cityService: CityService,
-              private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -48,27 +46,27 @@ export class AdminRegisterCititesComponent implements OnInit {
           this.citiesList.push(res);
           this.resetFormCity();
           this.openDialog('Sucesso', 'Cidade Cadastrada com Sucesso', 'OK')
-        }, error => this.httpErrorService.verifyErrors(error, 'Erro ao Cadastrar'));
-      }, error2 => this.httpErrorService.verifyErrors(error2));
+        });
+      });
     else
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
   }
 
   onChoseCountry(country): void {
     this.stateService.listByOneProperty('country.id', country.value.id)
-      .subscribe(res => this.states = res, error2 => this.httpErrorService.verifyErrors(error2));
+      .subscribe(res => this.states = res);
   }
 
   onCountryClick(event): void {
     for (let country of event.selected)
       this.stateService.listByOneProperty('country.id', String(country.id))
-        .subscribe(res => this.statesList = res, error2 => this.httpErrorService.verifyErrors(error2));
+        .subscribe(res => this.statesList = res);
   }
 
   onStateClick(event): void {
     for (let state of event.selected)
       this.cityService.listByOneProperty('state.id', String(state.id))
-        .subscribe(res => this.citiesList = res, error2 => this.httpErrorService.verifyErrors(error2));
+        .subscribe(res => this.citiesList = res);
   }
 
   private mountFormCity() {

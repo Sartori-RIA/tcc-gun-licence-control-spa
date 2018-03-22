@@ -5,7 +5,6 @@ import {UserRole} from '../../shared/model/user-role';
 import {MatDialog} from '@angular/material';
 import {ExamCategoryService} from '../../shared/service/exam-category.service';
 import {UserCategoryService} from '../../shared/service/user-category.service';
-import {HttpErrorService} from '../../shared/service/http-error.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 
 @Component({
@@ -24,15 +23,14 @@ export class AdminRegisterExamsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private examCategoryService: ExamCategoryService,
               private userCategoryService: UserCategoryService,
-              private dialog: MatDialog,
-              private httpErrorService: HttpErrorService) {
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.mountFormExam();
     this.model = new ExamCategory();
-    this.examCategoryService.index().subscribe(res => this.exams = res, error2 => this.httpErrorService.verifyErrors(error2));
-    this.userCategoryService.index().subscribe(res => this.roles = res, error2 => this.httpErrorService.verifyErrors(error2));
+    this.examCategoryService.index().subscribe(res => this.exams = res);
+    this.userCategoryService.index().subscribe(res => this.roles = res);
   }
 
   onSubmit(): void {
@@ -42,7 +40,7 @@ export class AdminRegisterExamsComponent implements OnInit {
       this.examCategoryService.save(this.model).subscribe(() => {
         this.resetFormExam();
         this.openDialog('Sucesso', 'Exame Salvo com Sucesso', 'OK')
-      }, error2 => this.httpErrorService.verifyErrors(error2, 'Erro ao Salvar'));
+      });
     } else {
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }
