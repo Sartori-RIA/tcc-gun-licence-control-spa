@@ -1,13 +1,13 @@
 <section id="validator-section" class="portfolio home-section" [ngClass]="{'light-gray': backgroundGray}">
   <div class="container">
     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="nowrap" fxLayoutGap="30px">
-      <div fxFlex="100">
+      <div fxFlex="50">
         <mat-card>
           <mat-card-title class="text-center"><h5><strong>Validador</strong></h5></mat-card-title>
           <mat-card-content>
             <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div fxLayout="row">
-                  <mat-input-container class="midle-width">
+                  <mat-input-container class="midle-width text-center">
                     <input matInput type="text" id="serial" (change)="onChange()" formControlName="serial"
                            placeholder="Número da licença">
                   </mat-input-container>

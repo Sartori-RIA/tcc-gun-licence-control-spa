@@ -52,7 +52,7 @@ export class ClientLicenceComponent implements OnInit {
       this.licenseService.save(this.license).subscribe(res => {
         this.myProgressLicenses.push(res);
         this.openDialog('Sucesso', 'Processo de nova Licença iniciada', 'OK');
-      });
+      }, () => this.openDialog('Atençao', 'Você não atende aos requisitos desta licença', 'OK'));
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       this.formDirty(this.form)

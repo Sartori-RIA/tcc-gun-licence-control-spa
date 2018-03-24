@@ -4,12 +4,12 @@
     <div fxLayoutWrap
          fxLayout.xs="row"
          fxLayout="column"
-         fxLayoutAlign="space-around center">
+         fxLayoutAlign="space-around">
       <div fxFlex="100">
-        <p><strong>Nome: </strong>{{license.user.name}}</p>
+        <p><strong>Nome: </strong>{{license.user.name | camelCase}}</p>
       </div>
-      <div fxFlex ="100">
-        <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: </strong>{{licenseSituation(license.status)}}
+      <div fxFlex ="100" class="text-center">
+        <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: {{licenseSituation(license.status)}}</strong>
         </p>
       </div>
       <div fxFlex="50">

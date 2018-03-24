@@ -1,5 +1,6 @@
 export class ErrorsHttp {
-  public static ERRO_401 = 401;
-  public static ERRO_404 = 404;
-  public static ERRO_500 = 500;
+  static ERRO_400 = 400 ;
+  static ERRO_401 = 401;
+  static ERRO_404 = 404;
+  static ERRO_500 = 500;
 }
