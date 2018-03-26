@@ -2,25 +2,17 @@
 
 Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
+## pré-requisitos 
++ **NodeJs >= 9.8.0**
++ **npm >= 5.7.1**
++ **Angular-CLI >= 1.7.3**
 
-## Instalar as dependencias
-+ **npm install`**
+## Rodar a aplicação
 
-## Executar o servidor
-`ng serve` para executar o servidor em `localhost:4200`
-
-## Antes de iniciar o servidor
++ **`npm install`**
++ **`ng serve` para executar o servidor em `localhost:4200`**
 + **Database MySQL `sinarm_db` criado**
 + **Iniciar a API Java**
-
-## pré-requisitos 
-+ **NodeJs >= 8.1.1**
-+ **npm >= 5.3.0**
-+ **Angular-CLI >= 1.2.1**
-+ **JDK 1.8**
-
-# Author
-+ **Lucas Antonio Ramos Sartori**
 
 # IDE Utilizada
 + **Intellij IDEA Ultimate**
@@ -30,12 +22,21 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 + **Angular 5.x**
 + **TypeScript 2.4.x**
 + **SASS**
-+ **Angular Material 2**
-+ **Flex Layout**
+
+### Bibliotecas para o Angular
+
 + **ngx-charts**
 + **ngx-masks**
 + **ngx-datatable**
 + **ngx-qrcode2**
 + **angular2-google-chart**
++ **Angular Material 2**
++ **Flex Layout**
+
+### Icones
+
 + **Gov Icons**
 + **Material Design Icons**
+
+# Author
++ **Lucas Antonio Ramos Sartori**
