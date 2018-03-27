@@ -2,11 +2,15 @@
   <mat-list-item (click)="onLicenseClick(license)">{{license.category.description}} - {{license.serial}}</mat-list-item>
 </mat-list>
 
+<div *ngIf="licenseSelected == null">
+  <h1>Sinto Muito você ainda não realizou nenhum exame</h1>
+</div>
+
 <div *ngIf="licenseSelected != null">
   <mat-card>
     <mat-card-content>
       <mat-card-title>
-        {{licenseSelected.description}}
+        {{licenseSelected.category.description}}
       </mat-card-title>
       <p><strong>Status: </strong>{{license.status}}</p>
       <p><strong>Validade: </strong>{{license.shelfLife}}</p>

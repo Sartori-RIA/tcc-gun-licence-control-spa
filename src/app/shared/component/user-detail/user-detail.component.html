@@ -11,11 +11,5 @@
     <p>Nome do Pai: {{model.fathersName}}</p>
     <p>Naturalidade: {{model.naturalness}}</p>
     <p>Nacionalidade: {{model.nationality}}</p>
-    <mat-grid-list cols="2" rowHeight="2:1">
-      <mat-grid-tile *ngFor="let address of model.addressList">
-        <app-user-address-list [model]="address">
-        </app-user-address-list>
-      </mat-grid-tile>
-    </mat-grid-list>
   </mat-card-content>
 </mat-card>

@@ -60,19 +60,19 @@ export class AdminRegisterLicensesComponent implements OnInit {
   }
 
   respondProcess(licence: LicenseCategory): string {
-    return licence.requirement.respondingProcess == true ? 'SIM' : 'NÃO';
+    return licence.requirement.respondingProcess != true ? 'SIM' : 'NÃO';
   }
 
   criminalRecords(licence: LicenseCategory): string {
-    return licence.requirement.criminalRecors == true ? 'SIM' : 'NÃO';
+    return licence.requirement.criminalRecors != true ? 'SIM' : 'NÃO';
   }
 
   private mountFormLicense() {
     this.form = this.formBuilder.group({
       description: [null, Validators.required],
       minimalAge: [null, [Validators.required, Validators.min(1)]],
-      criminalRecors: [null, Validators.required],
-      respondingProcess: [null, Validators.required],
+      criminalRecors: [null],
+      respondingProcess: [null],
       exams: this.formBuilder.array([
         new FormControl()
       ])

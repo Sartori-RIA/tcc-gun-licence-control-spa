@@ -32,8 +32,10 @@ export class ErrorhandlerInterceptor implements ErrorHandler {
     }
     else if (error.status == ErrorsHttp.ERRO_500)
       this.openDialog('Erro', msg500, 'OK', dialogComponent);
-    else
-      this.openDialog('Erro', JSON.stringify(error), 'OK', dialogComponent);
+    else {
+      this.openDialog('Erro', "Erro Desconhecido... Por favor tente mais tarde", 'OK', dialogComponent);
+      console.log(JSON.stringify(error));
+    }
   }
 
   private openDialog(title: string, message: string, confirmBtn: string, dialogCp: MatDialog) {
