@@ -11,7 +11,8 @@ export class CtaComponent implements OnInit {
   @Input() title;
   @Input() content;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

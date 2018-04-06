@@ -18,7 +18,7 @@ export class UserAddressListComponent implements OnInit {
   ngOnInit() {
   }
 
-  remove(){
+  remove() {
     this.addressService.destroy(this.model.id).subscribe(
       res => console.log("REMOVEU")
     );

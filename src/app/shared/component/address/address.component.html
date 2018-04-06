@@ -3,7 +3,6 @@
     <mat-tab-group>
       <mat-tab label="Listar Endereços">
         <mat-grid-list cols="12" rowHeight="30em">
-
           <mat-grid-tile [colspan]="6" *ngFor="let address of addressList">
             <app-user-address-list [model]="address"></app-user-address-list>
           </mat-grid-tile>

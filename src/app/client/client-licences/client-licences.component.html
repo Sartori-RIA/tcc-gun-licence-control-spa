@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-content>
+    <mat-tab-group>
+
+      <mat-tab label="Licenças Aprovadas">
+        <mat-grid-list cols="4" rowHeight="50em">
+          <div *ngIf="licenseAproved.length == 0">
+            <h1>Sinto muito você ainda não possui nenhuma licença aprovada</h1>
+          </div>
+          <div *ngFor="let license of licenseAproved">
+            <mat-grid-tile [colspan]="2">
+              <app-valid-license [license]="license"></app-valid-license>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+      </mat-tab>
+
+      <mat-tab label="Processos de Licença em Andamento">
+        <mat-grid-list cols="4" rowHeight="50em">
+          <div *ngFor="let license of myProgressLicenses">
+            <mat-grid-tile [colspan]="2">
+              <app-progress-license [license]="license"></app-progress-license>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

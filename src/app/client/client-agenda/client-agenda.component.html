@@ -1,9 +1,8 @@
 <div fxFlex="50">
-  <a href="http://www.pf.gov.br/servicos-pf/armas/credenciamento-psicologos/psicologos-crediciados"><i
-    class="fa fa-users fa-2x" aria-hidden="true"></i>Psicologos Credenciados</a>
+  <h2>Psicologos Credenciados</h2>
+  <p *ngFor="let psychologist of psychologistList">{{psychologist.name | camelCase}}</p>
 </div>
 <div fxFlex="50">
-  <a
-    href="http://www.pf.gov.br/servicos-pf/armas/credenciamento-de-instrutores/listagem-de-instrutores-de-armamento-e-tiro"><i
-    class="fa fa-users fa-2x" aria-hidden="true"></i>Instrutores de Armamento e Tiro Credenciados</a>
+  <h2>Instrutores de Tiro Credenciados</h2>
+  <p *ngFor="let instrutor of instructorList">{{instrutor.name | camelCase}}</p>
 </div>

@@ -75,7 +75,7 @@ export class AdminRegisterUserComponent implements OnInit {
       });
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
-      this.formDirty(this.form);
+      Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
     }
   }
 
@@ -127,10 +127,6 @@ export class AdminRegisterUserComponent implements OnInit {
     });
   }
 
-  private formDirty(form: FormGroup): void {
-    Object.keys(form.controls).forEach(field => form.get(field).markAsDirty());
-  }
-
   private resetForm(): void {
     this.form.patchValue({
       name: null,
@@ -161,7 +157,6 @@ export class AdminRegisterUserComponent implements OnInit {
   private buildReactiveForm(): void {
     let pwd = new FormControl('', Validators.required);
     let certainPassword = new FormControl('', CustomValidators.equalTo(pwd));
-
 
     this.form = this.formBuilder.group({
       name: [null, Validators.required],

@@ -4,101 +4,105 @@
       <h2>Novo Usuario</h2>
     </div>
 
-      <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div
-          fxLayoutWrap
-          fxLayout="row"
-          fxLayoutAlign="center center"
-        >
+    <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div
+        fxLayoutWrap
+        fxLayout="row"
+        fxLayoutAlign="center center"
+      >
 
-          <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Dados Pessoais</mat-card-title>
+        <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Dados Pessoais</mat-card-title>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <input matInput type="text" id="name" formControlName="name"
-                   placeholder="Nome Completo">
-          </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput type="text" id="name" formControlName="name"
+                 placeholder="Nome Completo">
+        </mat-form-field>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <mat-select placeholder="Informe o Sexo" formControlName="gender" id="gender">
-              <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender?.description }}</mat-option>
-            </mat-select>
-          </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <mat-select placeholder="Informe o Sexo" formControlName="gender" id="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender?.description }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <input  matInput [matDatepicker]="picker" formControlName="dateOfBirth"
-                   value="{{model.dateOfBirth}}" placeholder="Data de nascimento"
-                   id="dateOfBirth">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth"
+                 value="{{model.dateOfBirth}}" placeholder="Data de nascimento"
+                 id="dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
 
-          <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Filiação</mat-card-title>
+        <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Filiação</mat-card-title>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <input matInput type="text" id="mothersName" formControlName="mothersName"
-                   placeholder="Nome da mãe">
-          </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput type="text" id="mothersName" formControlName="mothersName"
+                 placeholder="Nome da mãe">
+        </mat-form-field>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <input matInput type="text" id="fathersName" formControlName="fathersName"
-                   placeholder="Nome do pai">
-          </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput type="text" id="fathersName" formControlName="fathersName"
+                 placeholder="Nome do pai">
+        </mat-form-field>
 
-          <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Documentos</mat-card-title>
+        <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Documentos</mat-card-title>
 
-          <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
-            <input mask="000.000.000-00" matInput #cpf type="text"
-                   id="cpf" formControlName="cpf"
-                   placeholder="CPF">
-            <mat-hint align="end">{{cpf.value.length}} / 14</mat-hint>
-          </mat-form-field>
+        <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
+          <input mask="000.000.000-00" matInput #cpf type="text"
+                 id="cpf" formControlName="cpf"
+                 placeholder="CPF">
+          <mat-hint align="end">{{cpf.value.length}} / 14</mat-hint>
+        </mat-form-field>
 
-          <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
-            <input  matInput #rg minlength="11" type="text" maxlength="11" id="rg"
-                   formControlName="rg"
-                   placeholder="RG">
-            <mat-hint align="end">{{rg.value.length}} / 12</mat-hint>
-          </mat-form-field>
+        <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
+          <input matInput #rg minlength="8" type="text" maxlength="8" id="rg"
+                 formControlName="rg"
+                 placeholder="RG">
+          <mat-hint align="end">{{rg.value.length}} / 8</mat-hint>
+        </mat-form-field>
 
-          <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
-            <input matInput type="text" id="rgIssuingBody" formControlName="rgIssuingBody"
-                   placeholder="Orgão Emissor do RG">
-          </mat-form-field>
+        <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
+          <input matInput type="text" id="rgIssuingBody" formControlName="rgIssuingBody"
+                 placeholder="Orgão Emissor do RG">
+        </mat-form-field>
 
-          <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
-            <input matInput type="text" id="rgUF" formControlName="rgUF"
-                   placeholder="UF do RG">
-          </mat-form-field>
+        <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
+          <mat-select placeholder="UF do RG" formControlName="rgUF" id="rgUF">
+            <mat-option *ngFor="let state of states" [value]="state">{{ state?.abbrev }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-          <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
-            <input matInput type="text" id="nationality" formControlName="nationality"
-                   placeholder="Nacionalidade">
-          </mat-form-field>
+        <mat-form-field class="two-quarts-width" fxFlex="100" fxFlex="40">
+          <mat-select placeholder="Nacionalidade" formControlName="nationality" id="nationality">
+            <mat-option *ngFor="let country of countries" [value]="country">{{ country?.description }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-          <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
-            <input matInput type="text" id="naturalness" formControlName="naturalness"
-                   placeholder="Naturalidade">
-          </mat-form-field>
 
-          <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Dados de Acesso</mat-card-title>
+        <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
+          <mat-select placeholder="Naturalidade" formControlName="naturalness" id="naturalness">
+            <mat-option *ngFor="let city of cities" [value]="city">{{ city?.description }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <input matInput type="password" formControlName="password" id="password"
-                   placeholder="Senha">
-          </mat-form-field>
+        <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Dados de Acesso</mat-card-title>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <input matInput type="password" formControlName="confirmPassword" id="confirmPassword"
-                   placeholder="Confirme a senha">
-          </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput type="password" formControlName="password" id="password"
+                 placeholder="Senha">
+        </mat-form-field>
 
-          <mat-form-field class="midle-width" fxFlex="100">
-            <input matInput type="email" id="email" formControlName="email"
-                   placeholder="Email">
-          </mat-form-field>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput type="password" formControlName="confirmPassword" id="confirmPassword"
+                 placeholder="Confirme a senha">
+        </mat-form-field>
 
-          <button mat-raised-button color="primary" type="submit">Cadastrar</button>
-        </div>
-      </form>
+        <mat-form-field class="midle-width" fxFlex="100">
+          <input matInput type="email" id="email" formControlName="email"
+                 placeholder="Email">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+      </div>
+    </form>
   </div>
 </section>

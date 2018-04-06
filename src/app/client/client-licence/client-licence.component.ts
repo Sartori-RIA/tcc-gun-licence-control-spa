@@ -24,10 +24,8 @@ export class ClientLicenceComponent implements OnInit {
   licensesCategories: LicenseCategory[] = [];
   license: License;
   user: User;
-  myProgressLicenses: License[] = [];
   exams: Exam[];
   addressList: Address[];
-  licenseAproved: License[] = [];
 
   constructor(private licenseService: LicenseService,
               private licenseCategoryService: LicenseCategoryService,
@@ -42,7 +40,6 @@ export class ClientLicenceComponent implements OnInit {
     this.license = new License();
     this.mountForm();
     this.loadLicensesCategory();
-    this.loadLicenses();
     this.loadAddressList();
   }
 
@@ -50,7 +47,6 @@ export class ClientLicenceComponent implements OnInit {
     if (this.form.valid) {
       this.mountLicense(licenseCategory);
       this.licenseService.save(this.license).subscribe(res => {
-        this.myProgressLicenses.push(res);
         this.openDialog('Sucesso', 'Processo de nova Licença iniciada', 'OK');
       }, () => this.openDialog('Atençao', 'Você não atende aos requisitos desta licença', 'OK'));
     } else {
@@ -67,22 +63,6 @@ export class ClientLicenceComponent implements OnInit {
 
   private loadLicensesCategory() {
     this.licenseCategoryService.index().subscribe(res => this.licensesCategories = res);
-  }
-
-  private loadLicenses() {
-    this.userService.findByOneProperty('cpf', this.dataService.getUserCPF())
-      .subscribe(res => {
-        this.user = res;
-        this.licenseService.listByOneProperty('user.cpf', this.user.cpf).subscribe(res => {
-          this.myProgressLicenses = [];
-          for (let license of res) {
-            if (license.shelfLife == null && !license.status)
-              this.myProgressLicenses.push(license);
-            if (license.shelfLife != null && license.status)
-              this.licenseAproved.push(license)
-          }
-        });
-      });
   }
 
   private loadAddressList() {

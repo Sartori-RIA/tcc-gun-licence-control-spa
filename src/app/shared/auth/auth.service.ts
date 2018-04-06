@@ -1,42 +1,46 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Token} from './token';
 import {UserService} from '../service/user.service';
 import {RoutesClientUtil} from '../util/routes-client.util';
 import {User} from '../model/user';
 import {DataService} from './data.service';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-type': 'application/json'
-  })
-};
-
-const httpOptionsToken = {
-  headers: new HttpHeaders({
-    'Content-type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem('token')
-  })
-};
+import {Gender} from "../model/gender";
+import {State} from "../model/state";
+import {Country} from "../model/country";
+import {City} from "../model/city";
 
 @Injectable()
 export class AuthService {
-
 
   constructor(private http: HttpClient,
               private userService: UserService,
               private dataService: DataService) {
   }
 
+  getGenders(): Observable<Gender[]> {
+    return this.http.get<Gender[]>(RoutesClientUtil.LOGIN_REGISTER_GENDER);
+  }
+
+  getStates(): Observable<State[]> {
+    return this.http.get<State[]>(RoutesClientUtil.LOGIN_REGISTER_STATE);
+  }
+
+  getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(RoutesClientUtil.LOGIN_REGISTER_COUNTRY);
+  }
+
+  getCities(): Observable<City[]> {
+    return this.http.get<City[]>(RoutesClientUtil.LOGIN_REGISTER_CITY);
+  }
+
   makeLogin(model): Observable<Token> {
-    let url = RoutesClientUtil.LOGIN;
-    return this.http.post<Token>(url, JSON.stringify(model), httpOptions)
+    return this.http.post<Token>(RoutesClientUtil.LOGIN, JSON.stringify(model))
   }
 
   getCurrentUser(cpf: string): Observable<User> {
-    let url = RoutesClientUtil.USERS + 'find/property/cpf/value/' + cpf;
-    return this.http.get<User>(url, httpOptionsToken);
+    return this.http.get<User>(`${RoutesClientUtil.USERS}find/property/cpf/value/${cpf}`);
   }
 
   logout() {

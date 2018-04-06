@@ -44,14 +44,14 @@
         <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Documentos</mat-card-title>
 
         <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
-          <input mask="000.000.000-00" matInput #cpf minlength="11" type="text" maxlength="11"
+          <input mask="000.000.000-00" matInput #cpf type="text" minlength="11" maxlength="14"
                  id="cpf" formControlName="cpf"
                  placeholder="CPF">
-          <mat-hint align="end">{{cpf.value.length}} / 11</mat-hint>
+          <mat-hint align="end">{{cpf.value.length}} / 14</mat-hint>
         </mat-form-field>
 
         <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
-          <input mask="0.000.000 0" matInput #rg minlength="8" type="text" maxlength="8" id="rg"
+          <input matInput #rg minlength="8" type="text" maxlength="8" id="rg"
                  formControlName="rg"
                  placeholder="RG">
           <mat-hint align="end">{{rg.value.length}} / 8</mat-hint>

@@ -4,7 +4,7 @@ import {Component, OnInit} from '@angular/core';
   template: `<router-outlet></router-outlet>`,
   selector: 'app-login-home'
 })
-export class LoginHomeComponent implements OnInit{
+export class LoginHomeComponent implements OnInit {
 
   ngOnInit(): void {
   }

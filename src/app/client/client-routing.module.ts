@@ -6,12 +6,14 @@ import {ClientLicenceComponent} from './client-licence/client-licence.component'
 import {ClientExamsComponent} from './client-exams/client-exams.component';
 import {ClientAgendaComponent} from './client-agenda/client-agenda.component';
 import {ClientUpdateComponent} from './client-update/client-update.component';
+import {ClientLicencesComponent} from "./client-licences/client-licences.component";
 
 const routes: Routes = [
   {
     path: '', component: ClientHomeComponent, children: [
       {path: 'perfil', component: ClientProfileComponent},
-      {path: 'licencas', component: ClientLicenceComponent},
+      {path: 'licencas', component: ClientLicencesComponent},
+      {path: 'nova-licenca', component: ClientLicenceComponent},
       {path: 'exames', component: ClientExamsComponent},
       {path: 'agendamento', component: ClientAgendaComponent},
       {path: 'atualizar', component: ClientUpdateComponent}

@@ -6,17 +6,17 @@
           <mat-card-title class="text-center"><h5><strong>Validador</strong></h5></mat-card-title>
           <mat-card-content>
             <form disabled="disable" [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div fxLayout="row">
-                  <mat-input-container class="midle-width text-center">
-                    <input matInput type="text" id="serial" (change)="onChange()" formControlName="serial"
-                           placeholder="Número da licença">
-                  </mat-input-container>
-                </div>
-                <div fxLayout="row" class="btn-verify">
-                  <button mat-raised-button color="primary" type="submit" name="action">
-                    Verificar
-                  </button>
-                </div>
+              <div fxLayout="row">
+                <mat-input-container class="midle-width text-center">
+                  <input matInput type="text" id="serial" (change)="onChange()" formControlName="serial"
+                         placeholder="Número da licença">
+                </mat-input-container>
+              </div>
+              <div fxLayout="row" class="btn-verify">
+                <button mat-raised-button color="primary" type="submit" name="action">
+                  Verificar
+                </button>
+              </div>
             </form>
           </mat-card-content>
         </mat-card>

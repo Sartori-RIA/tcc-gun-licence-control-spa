@@ -11,6 +11,10 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {DialogComponent} from '../../../shared/component/dialog/dialog.component';
 import {CustomValidators} from 'ng2-validation';
+import {State} from "../../../shared/model/state";
+import {City} from "../../../shared/model/city";
+import {Country} from "../../../shared/model/country";
+import {AuthService} from "../../../shared/auth/auth.service";
 
 
 @Component({
@@ -24,18 +28,25 @@ export class RegisterComponent implements OnInit {
   cep: Cep = new Cep();
   genders: Gender[] = [];
   roles: UserRole[] = [];
+  countries: Country[] = [];
+  states: State[] = [];
+  cities: City[] = [];
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private genderService: GenderService,
               private userCategoryService: UserCategoryService,
+              private authService: AuthService,
               private route: Router,
               private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.genderService.index().subscribe(res => this.genders = res);
+    this.authService.getGenders().subscribe(res => this.genders = res);
+    this.authService.getCities().subscribe(res => this.cities = res);
+    this.authService.getStates().subscribe(res => this.states = res);
+    this.authService.getCountries().subscribe(res => this.countries = res);
     this.userCategoryService.index().subscribe(res => this.roles = res);
     this.buildReactiveForm();
   }
@@ -119,7 +130,7 @@ export class RegisterComponent implements OnInit {
     this.model.rgUf = this.form.value.rgUF;
     this.model.mothersName = this.form.value.mothersName;
     this.model.fathersName = this.form.value.fathersName;
-    this.model.nationality = this.form.value.nationality;
+    this.model.nationality = this.form.value.nationality.description;
     this.model.naturalness = this.form.value.naturalness;
   }
 

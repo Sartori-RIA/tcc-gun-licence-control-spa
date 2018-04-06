@@ -7,6 +7,7 @@ import {ClientLicenceComponent} from './client-licence/client-licence.component'
 import {ClientProfileComponent} from './client-profile/client-profile.component';
 import {ClientUpdateComponent} from './client-update/client-update.component';
 import {ClientRoutingModule} from './client-routing.module';
+import {ClientLicencesComponent} from './client-licences/client-licences.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {ClientRoutingModule} from './client-routing.module';
     ClientHomeComponent,
     ClientLicenceComponent,
     ClientProfileComponent,
-    ClientUpdateComponent
+    ClientUpdateComponent,
+    ClientLicencesComponent
   ]
 })
 export class ClientModule {

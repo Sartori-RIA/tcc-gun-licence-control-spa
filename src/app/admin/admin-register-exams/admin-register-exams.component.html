@@ -20,9 +20,9 @@
 <mat-card>
   <mat-card-content>
     <mat-card-title>Exames Cadastrados</mat-card-title>
-    <div class="table">
+<!--    <div class="table">
       <div class="row">
-        <div class="cell">
+        <div class="cell">-->
           <ngx-datatable class="material"
                          [scrollbarV]="true"
                          [scrollbarH]="true"
@@ -56,8 +56,8 @@
               <div *ngFor="let row of exams">{{row.role.description}}</div>
             </ngx-datatable-column>
           </ngx-datatable>
-        </div>
+<!--        </div>
       </div>
-    </div>
+    </div>-->
   </mat-card-content>
 </mat-card>

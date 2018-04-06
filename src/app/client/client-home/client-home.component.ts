@@ -12,6 +12,7 @@ export class ClientHomeComponent implements OnInit {
   currentUserName: string;
   menu = [
     {route: 'licencas', title: 'Minhas Licenças'},
+    {route: 'nova-licenca', title: 'Nova Licença'},
     {route: 'agendamento', title: 'Agendamentos'},
     {route: 'exames', title: 'Exames'},
     {route: 'atualizar', title: 'Atualizar meus dados'},

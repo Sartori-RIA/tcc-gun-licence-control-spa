@@ -14,7 +14,7 @@ export class ClientUpdateComponent implements OnInit {
   model: User;
 
   constructor(private userService: UserService,
-              private dataService:DataService) {
+              private dataService: DataService) {
   }
 
   ngOnInit() {

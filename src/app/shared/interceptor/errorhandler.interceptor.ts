@@ -1,5 +1,4 @@
 import {ErrorHandler, Injectable, Injector} from '@angular/core';
-import {ErrorsHttp} from "../util/errors-http";
 import {DialogComponent} from "../component/dialog/dialog.component";
 import {AuthService} from "../auth/auth.service";
 import {MatDialog} from "@angular/material";
@@ -23,18 +22,23 @@ export class ErrorhandlerInterceptor implements ErrorHandler {
     let msg404 = 'Não foi possivel encontrar com os dados fornecidos.\n\t Por Favor verifique os dados informados';
     let msg401 = 'Sinto muito sua sessão expirou.\n\t por favor faça novamente o Login';
     let msg500 = 'Erro no servidor, por favor tente mais tarde';
+    let msg400 = 'Você não possui permissão para esta ação';
 
-    if (error.status == ErrorsHttp.ERRO_404)
-      this.openDialog('Alerta', msg404, 'OK', dialogComponent);
-    else if (error.status == ErrorsHttp.ERRO_401 || error.status == ErrorsHttp.ERRO_400) {
+    if (error.status == 400) {
+      this.openDialog('Atenção', msg400, 'OK', dialogComponent);
+    }
+    else if (error.status == 401) {
       this.openDialog('Atenção', msg401, 'OK', dialogComponent);
       this.authService.logout();
     }
-    else if (error.status == ErrorsHttp.ERRO_500)
+    else if (error.status == 404) {
+      this.openDialog('Alerta', msg404, 'OK', dialogComponent);
+    }
+    else if (error.status == 500 || error.status == 503) {
       this.openDialog('Erro', msg500, 'OK', dialogComponent);
+    }
     else {
-      this.openDialog('Erro', "Erro Desconhecido... Por favor tente mais tarde", 'OK', dialogComponent);
-      console.log(JSON.stringify(error));
+      console.log(error)
     }
   }
 
