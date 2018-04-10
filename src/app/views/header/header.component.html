@@ -9,19 +9,24 @@
       </button>
     </div>
     <div fxFlex class="top-menu">
+      <span fxFlex></span>
+
+      <button mat-button id="dashboard-topbtn" class="hometop-btn" scrollTo="legislation-section">
+        <strong>Legislação</strong></button>
+
       <button mat-button id="dashboard-topbtn" class="hometop-btn" [routerLink]="'/faq'"><i class="fas fa-question"></i>
       </button>
+
       <button mat-button id="dashboard-topbtn" class="hometop-btn" scrollTo="tools-section">
         <strong>Ferramentas</strong>
       </button>
-      <button mat-button id="dashboard-topbtn" class="hometop-btn" scrollTo="legislation-section">
-        <strong>Legislação</strong></button>
+
       <button mat-button id="dashboard-topbtn" class="hometop-btn" scrollTo="validator-section">
         <strong>Validador</strong></button>
-      <span fxFlex></span>
-      <button (click)="onClick()" mat-button id="dashboard-topbtn" class="hometop-btn icon-button">
+
+      <button (click)="makeLogin()" *ngIf="!authService.checkLogin()" mat-button id="dashboard-topbtn" class="hometop-btn icon-button">
         <mat-icon>person</mat-icon>
-        <strong>{{ authService.checkLogin() ? 'Sair' : 'Entrar'}}</strong></button>
+        <strong>Entrar</strong></button>
 
       <div *ngIf="authService.checkLogin()">
         <button mat-icon-button [matMenuTriggerFor]="menu" style="width: 10em;">
@@ -47,6 +52,12 @@
             <button (click)="goToEvaluate()" mat-menu-item>
               <i class="fas fa-history"></i>
               <span>Avaliações</span>
+            </button>
+          </div>
+          <div>
+            <button (click)="loggout()" mat-menu-item>
+              <i class="fas fa-history"></i>
+              <span>Sair</span>
             </button>
           </div>
         </mat-menu>

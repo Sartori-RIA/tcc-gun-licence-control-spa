@@ -3,7 +3,7 @@
     <mat-tab-group>
 
       <mat-tab label="Licenças Aprovadas">
-        <mat-grid-list cols="4" rowHeight="50em">
+        <mat-grid-list cols="6" rowHeight="50em">
           <div *ngIf="licenseAproved.length == 0">
             <h1>Sinto muito você ainda não possui nenhuma licença aprovada</h1>
           </div>
@@ -16,7 +16,7 @@
       </mat-tab>
 
       <mat-tab label="Processos de Licença em Andamento">
-        <mat-grid-list cols="4" rowHeight="50em">
+        <mat-grid-list cols="2" rowHeight="50em">
           <div *ngFor="let license of myProgressLicenses">
             <mat-grid-tile [colspan]="2">
               <app-progress-license [license]="license"></app-progress-license>

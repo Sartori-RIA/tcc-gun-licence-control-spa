@@ -1,6 +1,25 @@
 <mat-card>
   <mat-card-title>{{license.category.description}}</mat-card-title>
   <mat-card-content>
+
+
+    <mat-horizontal-stepper
+      linear="false"
+      #stepper="matHorizontalStepper"
+      interacted="false">
+      <mat-step [cdkStepperNext]="steppInit(stepper)" >
+        <ng-template matStepLabel>Processo Iniciado</ng-template>
+      </mat-step>
+      <mat-step [cdkStepperNext]="steppApproved(stepper)">
+        <ng-template matStepLabel>Realizando Exames</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Licença Autorizada</ng-template>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+
+
     <p><strong>Nome: </strong>{{license.user.name}}</p>
     <p><strong>Situação: </strong>{{licenseSituation(license.status)}}</p>
     <p><strong>Numero de serie: </strong>{{license.serial}}</p>

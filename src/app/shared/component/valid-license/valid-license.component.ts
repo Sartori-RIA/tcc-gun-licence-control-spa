@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {License} from '../../model/license';
 import {DateConverter} from '../../util/date-converter';
+import {RoutesClientUtil} from "../../util/routes-client.util";
 
 @Component({
   selector: 'app-valid-license',
@@ -28,5 +29,9 @@ export class ValidLicenseComponent implements OnInit {
 
   isValid(): boolean {
     return this.license.status;
+  }
+
+  licenseSerialUrl():string{
+    return `${RoutesClientUtil.VALIDATOR}find/serial/${this.license.serial}`
   }
 }

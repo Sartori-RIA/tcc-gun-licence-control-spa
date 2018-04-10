@@ -12,6 +12,9 @@ import {ExamService} from '../../shared/service/exam.service';
 import {UserService} from '../../shared/service/user.service';
 import {DialogComponent} from '../../shared/component/dialog/dialog.component';
 import {DataService} from '../../shared/auth/data.service';
+import {Constants} from "../../shared/util/constants";
+
+
 
 @Component({
   selector: 'app-client-licence',
@@ -37,6 +40,7 @@ export class ClientLicenceComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.findByOneProperty('cpf', this.dataService.getUserCPF()).subscribe(res => this.user = res);
     this.license = new License();
     this.mountForm();
     this.loadLicensesCategory();
@@ -47,10 +51,10 @@ export class ClientLicenceComponent implements OnInit {
     if (this.form.valid) {
       this.mountLicense(licenseCategory);
       this.licenseService.save(this.license).subscribe(res => {
-        this.openDialog('Sucesso', 'Processo de nova Licença iniciada', 'OK');
-      }, () => this.openDialog('Atençao', 'Você não atende aos requisitos desta licença', 'OK'));
+        this.openDialog(Constants.SUCSSESS, Constants.LICENCA_INIT, Constants.OK_BTN);
+      }, () => this.openDialog(Constants.WARNING, Constants.LICENCA_REQUIREMENTS, Constants.OK_BTN));
     } else {
-      this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
+      this.openDialog(Constants.ERROR, Constants.EMPTY_FIELDS, Constants.OK_BTN);
       this.formDirty(this.form)
     }
   }

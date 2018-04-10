@@ -54,7 +54,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
-      this.userService.save(this.model).subscribe(() => {
+      console.log(JSON.stringify(this.model, null, 3))
+      this.userService.register(this.model).subscribe(() => {
         this.route.navigate(['/login/entrar']);
         this.resetForm();
         this.openDialog("Sucesso", "Cadastrado com sucesso", "OK")
@@ -127,11 +128,11 @@ export class RegisterComponent implements OnInit {
     this.model.role = this.form.value.role;
     this.model.rg = this.form.value.rg;
     this.model.rgIssuingBody = this.form.value.rgIssuingBody;
-    this.model.rgUf = this.form.value.rgUF;
+    this.model.rgUf = this.form.value.rgUF.description;
     this.model.mothersName = this.form.value.mothersName;
     this.model.fathersName = this.form.value.fathersName;
     this.model.nationality = this.form.value.nationality.description;
-    this.model.naturalness = this.form.value.naturalness;
+    this.model.naturalness = this.form.value.naturalness.description;
   }
 
   private formDirty(form: FormGroup): void {

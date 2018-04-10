@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DialogComponent} from "../../shared/component/dialog/dialog.component";
 import {LicenseCategoryService} from "../../shared/service/license-category.service";
 import {Address} from "../../shared/model/address";
 import {Exam} from "../../shared/model/exam";

@@ -54,74 +54,84 @@
 <mat-card>
   <mat-card-content>
     <mat-card-title>Cidades cadastrados</mat-card-title>
-    <div class="table">
-      <div class="row">
-        <div class="cell">
-          <ngx-datatable class="material"
-                         [scrollbarV]="true"
-                         [scrollbarH]="true"
-                         [rows]="countries"
-                         [selectionType]="'single'"
-                         (select)="onCountryClick($event)"
-          >
-            <ngx-datatable-column
-              name="Descrição"
-              prop="description"
-              [draggable]="true"
-              [resizeable]="true"
-              [canAutoResize]="true"
-              [sortable]="true">
-              <div *ngFor="let row of countries">{{row.description}}</div>
-            </ngx-datatable-column>
-          </ngx-datatable>
-        </div>
-        <div class="cell">
-          <ngx-datatable class="material"
-                         [scrollbarV]="true"
-                         [scrollbarH]="true"
-                         [rows]="statesList"
-                         [selectionType]="'single'"
-                         (select)="onStateClick($event)"
-          >
+    <div
+      fxLayoutWrap
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      <div fxFlex="33.33" fxFlex.xs="100">
+        <ngx-datatable class="material"
+                       [columnMode]="flex"
+                       [scrollbarV]="true"
+                       [scrollbarH]="true"
+                       [rows]="countries"
+                       [rowHeight]="20"
+                       [selectionType]="'single'"
+                       (select)="onCountryClick($event)"
+        >
+          <ngx-datatable-column
+            name="Descrição"
+            prop="description"
+            [draggable]="true"
+            [resizeable]="true"
+            [canAutoResize]="true"
+            [sortable]="true">
+            <div *ngFor="let row of countries">{{row.description}}</div>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+      <div fxFlex="33.33" fxFlex.xs="100">
 
-            <ngx-datatable-column
-              name="Sigla"
-              prop="abbrev"
-              [draggable]="true"
-              [resizeable]="true"
-              [canAutoResize]="true"
-              [sortable]="true">
-              <div *ngFor="let row of statesList">{{row.abbrev}}</div>
-            </ngx-datatable-column>
-            <ngx-datatable-column
-              name="Descrição"
-              prop="description"
-              [draggable]="true"
-              [resizeable]="true"
-              [canAutoResize]="true"
-              [sortable]="true">
-              <div *ngFor="let row of statesList">{{row.description}}</div>
-            </ngx-datatable-column>
-          </ngx-datatable>
-        </div>
-        <div class="cell">
-          <ngx-datatable class="material"
-                         [scrollbarV]="true"
-                         [scrollbarH]="true"
-                         [rows]="citiesList"
-          >
+        <ngx-datatable class="material"
+                       [scrollbarV]="true"
+                       [scrollbarH]="true"
+                       [rowHeight]="40"
+                       [columnMode]="flex"
+                       [rows]="statesList"
+                       [selectionType]="'single'"
+                       (select)="onStateClick($event)"
+        >
 
-            <ngx-datatable-column
-              name="Descrição"
-              prop="description"
-              [draggable]="true"
-              [resizeable]="true"
-              [canAutoResize]="true"
-              [sortable]="true">
-              <div *ngFor="let row of statesList">{{row.description}}</div>
-            </ngx-datatable-column>
-          </ngx-datatable>
-        </div>
+          <ngx-datatable-column
+            name="Sigla"
+            prop="abbrev"
+            [draggable]="true"
+            [resizeable]="true"
+            [canAutoResize]="true"
+            [sortable]="true">
+            <div *ngFor="let row of statesList">{{row.abbrev}}</div>
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            name="Descrição"
+            prop="description"
+            [draggable]="true"
+            [resizeable]="true"
+            [canAutoResize]="true"
+            [sortable]="true">
+            <div *ngFor="let row of statesList">{{row.description}}</div>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+      <div fxFlex="33.33" fxFlex.xs="100">
+
+        <ngx-datatable class="material"
+                       [columnMode]="flex"
+                       [scrollbarV]="true"
+                       [scrollbarH]="true"
+                       [rows]="citiesList"
+                       [rowHeight]="40"
+        >
+
+          <ngx-datatable-column
+            name="Descrição"
+            prop="description"
+            [draggable]="true"
+            [resizeable]="true"
+            [canAutoResize]="true"
+            [sortable]="true">
+            <div *ngFor="let row of statesList">{{row.description}}</div>
+          </ngx-datatable-column>
+        </ngx-datatable>
       </div>
     </div>
   </mat-card-content>

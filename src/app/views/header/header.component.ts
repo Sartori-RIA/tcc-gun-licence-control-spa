@@ -37,33 +37,34 @@ export class HeaderComponent implements OnInit {
     this.menuOpened = !this.menuOpened
   }
 
-  onClick() {
-    if (this.authService.checkLogin())
-      this.authService.logout();
+  loggout(){
+    this.authService.logout();
+    this.route.navigate(['/login/entrar']);
+  }
 
+  makeLogin() {
     this.route.navigate(['/login/entrar'])
-
   }
 
   goToMyProfile() {
     if (this.isCivil())
       this.route.navigate(['/civil/perfil']);
-    if (this.isAdmin())
+    else if (this.isAdmin())
       this.route.navigate(['/admin/perfil']);
-    if (this.isDelegate())
+    else if (this.isDelegate())
       this.route.navigate(['/delegado/perfil']);
-    if (this.isExaminator())
+    else if (this.isExaminator())
       this.route.navigate(['/examinador/perfil']);
   }
 
   goToMyPage() {
     if (this.isCivil())
       this.route.navigate(['/civil']);
-    if (this.isAdmin())
+    else if (this.isAdmin())
       this.route.navigate(['/admin']);
-    if (this.isDelegate())
+    else if (this.isDelegate())
       this.route.navigate(['/delegado']);
-    if (this.isExaminator())
+    else if (this.isExaminator())
       this.route.navigate(['/examinador/avaliacoes']);
   }
 
@@ -77,22 +78,18 @@ export class HeaderComponent implements OnInit {
 
   isCivil(): boolean {
     return (this.dataService.getUserRole() == 'CIVIL')
-
   }
 
   isDelegate(): boolean {
     return (this.dataService.getUserRole() == 'DELEGADO')
-
   }
 
   isExaminator(): boolean {
     return (this.dataService.getUserRole() == 'PSICOLOGO') || (this.dataService.getUserRole() == 'INSTRUTOR')
-
   }
 
   isAdmin(): boolean {
     return (this.dataService.getUserRole() == 'ADMIN')
-
   }
 
 }

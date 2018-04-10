@@ -1,4 +1,4 @@
-import {ErrorHandler, NgModule} from '@angular/core';
+import {ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -21,7 +21,7 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatSidenavModule,
-  MatSlideToggleModule,
+  MatSlideToggleModule, MatStepperModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
@@ -112,6 +112,7 @@ import {ErrorhandlerInterceptor} from './interceptor/errorhandler.interceptor';
     NguCarouselModule,
     NgxMaskModule.forRoot({}),
     NgxQRCodeModule,
+    MatStepperModule,
   ],
   declarations: [
     CamelCasePipe,
@@ -209,11 +210,15 @@ import {ErrorhandlerInterceptor} from './interceptor/errorhandler.interceptor';
     MatSlideToggleModule,
     CommonDirectivesModule,
     NgxMaskModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    MatStepperModule,
   ],
   entryComponents: [
     DialogComponent
   ],
+  schemas:[
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class SharedModule {
 }

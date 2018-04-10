@@ -15,6 +15,10 @@ export class UserService extends AbstractService<User> {
     super(http, url);
   }
 
+  register(model: User): Observable<User> {
+    return this.http1.post(`${RoutesClientUtil.REGISTER}`, JSON.stringify(model))
+  }
+
   saveAddress(address: Address): Observable<User> {
     return this.http1.post(`${url}add-addressList/`, JSON.stringify(address))
   }
