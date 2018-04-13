@@ -58,15 +58,15 @@ export class ValidLicenseComponent implements OnInit {
                  <div class="card-title center-align"><strong>Portador: </strong>${this.formatCamelCase(this.license.user.name)}</div>
                      <div class="card-content">
                          <div><p><strong>Numero de serie: </strong>${this.license.serial}</p></div>
-                         <div><p><strong>Categoria: </strong>${this.license.category.description}</p> </div>
-                         <div><p><strong>Situação: </strong>${this.licenseSituation(this.license.status)}</p></div>
+                         <div><p><strong>Categoria: </strong>${this.formatCamelCase(this.license.category.description)}</p> </div>
+                         <div><p><strong>Situação: </strong>${this.formatCamelCase(this.licenseSituation(this.license.status))}</p></div>
                          <div><p><strong>Validade até: </strong>${this.licenseExpiration(this.license.shelfLife)}</p></div>
                          <div><p><strong>CPF: </strong>${this.formatCPF(this.license.user.cpf)}</p></div>
                          <div><p><strong>RG: </strong>${this.license.user.rg}</p></div>
-                         <div><p><strong>Rua: </strong>${this.license.address.street} - ${this.license.address.addressNumber}</p></div>
-                         <div><p><strong>Cidade: </strong>${this.license.address.city.description}</p></div>
-                         <div><p><strong>Estado: </strong>${this.license.address.city.state.description}</p></div>                       
-                         <div><p><strong>Pais: </strong>${this.license.address.city.state.country.description}</p>
+                         <div><p><strong>Rua: </strong>${this.formatCamelCase(this.license.address.street}) - ${this.license.address.addressNumber}</p></div>
+                         <div><p><strong>Cidade: </strong>${this.formatCamelCase(this.license.address.city.description)}</p></div>
+                         <div><p><strong>Estado: </strong>${this.formatCamelCase(this.license.address.city.state.description)}</p></div>                       
+                         <div><p><strong>Pais: </strong>${this.formatCamelCase(this.license.address.city.state.country.description)}</p>
                          <canvas id="qr"></canvas> 
                          <div hidden id="serialUrl">${this.licenseSerialUrl()}</div>
                      </div>
