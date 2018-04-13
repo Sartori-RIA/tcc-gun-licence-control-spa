@@ -34,6 +34,9 @@
       <div fxFlex="100">
         <p><strong>Pais: </strong>{{license.address.city.state.country.description}}</p>
       </div>
+      <div *ngIf="isValid()" fxFlex="100" class="text-right">
+        <button mat-fab (click)="printLicense()" color="primary"><i class=" fas fa-print"></i></button>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>
