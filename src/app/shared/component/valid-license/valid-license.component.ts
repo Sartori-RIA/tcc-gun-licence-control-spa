@@ -41,13 +41,16 @@ export class ValidLicenseComponent implements OnInit {
           <meta charset="utf-8" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
       </head>`;
+
     let licenseStyle =
       `<style>
            .max-license-width{
             width: 500px;
            }
        </style>`;
+
     let licenceBody = `<body>
       <div class="row">
           <div class="col s12 m7">
@@ -62,12 +65,23 @@ export class ValidLicenseComponent implements OnInit {
                          <div><p><strong>RG: </strong>${this.license.user.rg}</p></div>
                          <div><p><strong>Rua: </strong>${this.license.address.street} - ${this.license.address.addressNumber}</p></div>
                          <div><p><strong>Cidade: </strong>${this.license.address.city.description}</p></div>
-                         <div><p><strong>Estado: </strong>${this.license.address.city.state.description}</p></div>
+                         <div><p><strong>Estado: </strong>${this.license.address.city.state.description}</p></div>                       
                          <div><p><strong>Pais: </strong>${this.license.address.city.state.country.description}</p>
+                         <canvas id="qr"></canvas> 
+                         <div hidden id="serialUrl">${this.licenseSerialUrl()}</div>
                      </div>
                  </div>
              </div>
          </div>
+         <script type="text/javascript">
+            (function() {
+        var qr = new QRious({
+            element: document.getElementById('qr'),
+            value: document.getElementById('serialUrl'),
+            level: 'L',
+        });
+      })();
+        </script>
       </body>`;
 
     window.document.write(licenceHeader + licenseStyle + licenceBody);
