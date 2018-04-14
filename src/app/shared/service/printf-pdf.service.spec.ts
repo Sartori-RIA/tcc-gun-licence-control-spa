@@ -1,15 +1,15 @@
 import {inject, TestBed} from '@angular/core/testing';
 
-import {PrintfPdfService} from './printf-pdf.service';
+import {PrintPdfService} from './print-pdf.service';
 
-describe('PrintfPdfService', () => {
+describe('PrintPdfService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PrintfPdfService]
+      providers: [PrintPdfService]
     });
   });
 
-  it('should be created', inject([PrintfPdfService], (service: PrintfPdfService) => {
+  it('should be created', inject([PrintPdfService], (service: PrintPdfService) => {
     expect(service).toBeTruthy();
   }));
 });

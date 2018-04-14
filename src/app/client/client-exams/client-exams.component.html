@@ -1,29 +1,33 @@
-<mat-list *ngFor="let license of licenses">
+<mat-list *ngFor="let license of models">
   <mat-list-item (click)="onLicenseClick(license)">{{license.category.description}} - {{license.serial}}</mat-list-item>
 </mat-list>
 
-<div *ngIf="licenseSelected == null">
+<div *ngIf="modelSelected == null">
   <h1>Sinto Muito você ainda não realizou nenhum exame</h1>
 </div>
 
-<div *ngIf="licenseSelected != null">
+<div *ngIf="modelSelected != null">
   <mat-card>
     <mat-card-content>
       <mat-card-title>
-        {{licenseSelected.category.description}}
+        {{modelSelected.category.description}}
       </mat-card-title>
-      <p><strong>Status: </strong>{{license.status}}</p>
-      <p><strong>Validade: </strong>{{license.shelfLife}}</p>
-      <p><strong>Serial: </strong>{{license.serial}}</p>
-      <p><strong>Rua: </strong>{{license.address.street}}</p>
-      <mat-card-title>Historico de Exames</mat-card-title>
-      <div *ngFor="let exam of licenseSelected.examList">
-        <p><strong>Categora de Licensa: </strong>{{exam.examCategory.description}}</p>
-        <p><strong>Aplicador do exame: </strong>{{exam.examinator.name}}</p>
-        <p><strong>Examinado: </strong>{{exam.civil.name}}</p>
-        <p><strong>Laudo: </strong>{{exam.resultDescription}}</p>
-        <p *ngIf="!exam.status"><strong>Resultado Final: </strong> Indeferido</p>
-        <p *ngIf="exam.status"><strong>Resultado Final: </strong>Deferido</p>
+      <p><strong>Status: </strong>{{licenseSituation(modelSelected.status)}}</p>
+      <p><strong>Validade: </strong>{{modelSelected.shelfLife}}</p>
+      <p><strong>Serial: </strong>{{modelSelected.serial}}</p>
+      <p><strong>Rua: </strong>{{modelSelected.address.street}}</p>
+      <mat-card-title><strong>Historico de Exames</strong></mat-card-title>
+      <div *ngFor="let exam of modelSelected.examList">
+        <mat-card>
+          <mat-card-content>
+            <p><strong>Categora de Licensa: </strong>{{exam.examCategory.description}}</p>
+            <p><strong>Aplicador do exame: </strong>{{exam.examinator.name}}</p>
+            <p><strong>Examinado: </strong>{{exam.civil.name}}</p>
+            <p><strong>Laudo: </strong>{{exam.resultDescription}}</p>
+            <p [ngClass]="isValid(exam) ? 'valid' : 'invalid'"><strong>Situação: {{licenseSituation(exam.status)}}</strong>
+            </p>
+          </mat-card-content>
+        </mat-card>
       </div>
     </mat-card-content>
   </mat-card>

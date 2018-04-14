@@ -37,6 +37,9 @@ export class AdminRegisterUserComponent implements OnInit {
   countries: Country[];
   states: State[];
   cities: City[];
+  docCountries: Country[];
+  docStates: State[];
+  docCities: State[];
   private address: Address;
   private user: User;
 
@@ -54,7 +57,16 @@ export class AdminRegisterUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.countryService.index().subscribe(res => this.countries = res);
+    this.countryService.index().subscribe(res => {
+      this.countries = res;
+      this.docCountries = res
+    });
+    this.stateService.index().subscribe(res => {
+      this.docStates = res
+    });
+    this.cityService.index().subscribe(res => {
+      this.docCities = res
+    });
     this.genderService.index().subscribe(res => this.genders = res);
     this.userCategoryService.index().subscribe(res => this.roles = res);
     this.address = new Address();
@@ -69,10 +81,11 @@ export class AdminRegisterUserComponent implements OnInit {
       this.mountAddress();
       this.model.addressList = [];
       this.model.addressList.push(this.address);
-      this.userService.save(this.model).subscribe(res => {
+      console.log(JSON.stringify(this.model, null, 3))
+     /* this.userService.save(this.model).subscribe(res => {
         this.resetForm();
         this.openDialog('Sucesso', 'Cadastrado com sucesso', 'OK')
-      });
+      });*/
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());

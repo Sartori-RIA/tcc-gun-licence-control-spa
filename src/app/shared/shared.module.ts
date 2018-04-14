@@ -76,6 +76,7 @@ import {NgxMaskModule} from 'ngx-mask';
 import {DataService} from './auth/data.service';
 import {NgxQRCodeModule} from "ngx-qrcode2";
 import {ErrorhandlerInterceptor} from './interceptor/errorhandler.interceptor';
+import {PrintPdfService} from "./service/print-pdf.service";
 
 @NgModule({
   imports: [
@@ -157,6 +158,7 @@ import {ErrorhandlerInterceptor} from './interceptor/errorhandler.interceptor';
     AuthService,
     WINDOW_PROVIDERS,
     DataService,
+    PrintPdfService,
     {provide: ErrorHandler, useClass: ErrorhandlerInterceptor},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],

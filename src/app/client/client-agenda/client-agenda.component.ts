@@ -8,7 +8,6 @@ import {UserService} from '../../shared/service/user.service';
   styleUrls: ['./client-agenda.component.scss']
 })
 export class ClientAgendaComponent implements OnInit {
-
   psychologistList: User[];
   instructorList: User[];
 
@@ -16,8 +15,11 @@ export class ClientAgendaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.listByOneProperty('role.description', 'PSICOLOGO').subscribe(res => this.psychologistList = res);
-    this.userService.listByOneProperty('role.description', 'INSTRUTOR').subscribe(res => this.instructorList = res);
+    this.userService.listByOneProperty('role.description', 'PSICOLOGO').subscribe(res => {
+      this.psychologistList = res
+    });
+    this.userService.listByOneProperty('role.description', 'INSTRUTOR').subscribe(res => {
+      this.instructorList = res
+    });
   }
-
 }

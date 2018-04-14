@@ -3,6 +3,7 @@ import {License} from '../../shared/model/license';
 import {ExamService} from '../../shared/service/exam.service';
 import {LicenseService} from '../../shared/service/license.service';
 import {DataService} from '../../shared/auth/data.service';
+import {Exam} from "../../shared/model/exam";
 
 @Component({
   selector: 'app-client-exams',
@@ -11,8 +12,8 @@ import {DataService} from '../../shared/auth/data.service';
 })
 export class ClientExamsComponent implements OnInit {
 
-  licenses: License[];
-  licenseSelected: License;
+  models: License[];
+  modelSelected: License;
 
   constructor(private examService: ExamService,
               private licenseService: LicenseService,
@@ -24,10 +25,18 @@ export class ClientExamsComponent implements OnInit {
   }
 
   loadLicenses() {
-    this.licenseService.listByOneProperty('user.cpf', this.dataService.getUserCPF()).subscribe(res => this.licenses = res)
+    this.licenseService.listByOneProperty('user.cpf', this.dataService.getUserCPF()).subscribe(res => this.models = res)
   }
 
-  onLicenseClick(license: License) {
-    this.licenseSelected = license
+  onLicenseClick(model: License) {
+    this.modelSelected = model
+  }
+
+  licenseSituation(status: boolean) {
+    return status ? 'Deferida' : 'Indeferida'
+  }
+
+  isValid(model: Exam): boolean {
+    return model.status;
   }
 }

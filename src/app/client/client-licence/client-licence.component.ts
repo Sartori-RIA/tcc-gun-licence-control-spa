@@ -81,7 +81,7 @@ export class ClientLicenceComponent implements OnInit {
 
   private openDialog(title: string, message: string, confirmBtn: string) {
     let dialog = this.dialog.open(DialogComponent, {
-      width: '250px',
+      width: '400px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });
     dialog.afterClosed().subscribe(result => {

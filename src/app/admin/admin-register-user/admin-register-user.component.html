@@ -15,18 +15,16 @@
                  placeholder="Nome Completo">
         </mat-form-field>
 
-        <mat-form-field class="midle-width" fxFlex="100">
+        <mat-form-field class="midle-width" fxFlex.xs="100" fxFlex="40">
           <mat-select placeholder="Informe o Sexo" formControlName="gender" id="gender">
             <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender?.description }}</mat-option>
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="midle-width" fxFlex="100">
-          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth"
-                 value="{{model.dateOfBirth}}" placeholder="Data de nascimento"
-                 id="dateOfBirth">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+        <mat-form-field class="midle-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
+          <input mask="00/00/0000" matInput type="text"
+                 id="dateOfBirth" formControlName="dateOfBirth"
+                 placeholder="DIA/MES/ANO">
         </mat-form-field>
 
         <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Filiação</mat-card-title>
@@ -63,18 +61,22 @@
         </mat-form-field>
 
         <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
-          <input matInput type="text" id="rgUF" formControlName="rgUF"
-                 placeholder="UF do RG">
+          <mat-select placeholder="UF do RG" formControlName="rgUF" id="rgUF">
+            <mat-option *ngFor="let state of docStates" [value]="state">{{ state?.abbrev }}</mat-option>
+          </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlex="40">
-          <input matInput type="text" id="nationality" formControlName="nationality"
-                 placeholder="Nacionalidade">
+        <mat-form-field class="two-quarts-width" fxFlex="100" fxFlex="40">
+          <mat-select placeholder="Nacionalidade" formControlName="nationality" id="nationality">
+            <mat-option *ngFor="let country of docCountries" [value]="country">{{ country?.description }}</mat-option>
+          </mat-select>
         </mat-form-field>
+
 
         <mat-form-field class="two-quarts-width" fxFlex.xs="100" fxFlexOffset.xs="0" fxFlexOffset="10" fxFlex="40">
-          <input matInput type="text" id="naturalness" formControlName="naturalness"
-                 placeholder="Naturalidade">
+          <mat-select placeholder="Naturalidade" formControlName="naturalness" id="naturalness">
+            <mat-option *ngFor="let city of docCities" [value]="city">{{ city?.description }}</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-card-title fxFlex="50" fxFlexOffset.xs="25" fxFlexOffset="40">Dados de Acesso</mat-card-title>

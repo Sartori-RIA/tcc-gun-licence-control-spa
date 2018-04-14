@@ -1,15 +1,15 @@
 <mat-card>
-  <mat-card-title><strong>{{license.category.description}}</strong></mat-card-title>
+  <mat-card-title><strong>{{model.category.description}}</strong></mat-card-title>
   <mat-card-content>
     <div fxLayoutWrap
          fxLayout.xs="row"
          fxLayout="column"
          fxLayoutAlign="space-around">
       <div fxFlex="100">
-        <p><strong>Nome: </strong>{{license.user.name | camelCase}}</p>
+        <p><strong>Nome: </strong>{{model.user.name | camelCase}}</p>
       </div>
       <div fxFlex="100" class="text-center">
-        <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: {{licenseSituation(license.status)}}</strong>
+        <p [ngClass]="isValid() ? 'valid' : 'invalid'"><strong>Situação: {{licenseSituation(model.status)}}</strong>
         </p>
       </div>
       <div fxFlex="50">
@@ -20,21 +20,21 @@
         </ngx-qrcode>
       </div>
       <div fxFlex="50">
-        <p><strong>Numero de serie: </strong>{{license.serial}}</p>
+        <p><strong>Numero de serie: </strong>{{model.serial}}</p>
       </div>
       <div fxFlex="100">
-        <p><strong>Validade até: </strong>{{licenseExpiration(license.shelfLife)}}</p>
+        <p><strong>Validade até: </strong>{{licenseExpiration(model.shelfLife)}}</p>
       </div>
       <div fxFlex="100">
-        <p><strong>Rua: </strong>{{license.address.street}} - {{license.address.addressNumber}}</p>
+        <p><strong>Rua: </strong>{{model.address.street}} - {{model.address.addressNumber}}</p>
       </div>
       <div fxFlex="100">
-        <p><strong>Estado: </strong>{{license.address.city.state.description}}</p>
+        <p><strong>Estado: </strong>{{model.address.city.state.description}}</p>
       </div>
       <div fxFlex="100">
-        <p><strong>Pais: </strong>{{license.address.city.state.country.description}}</p>
+        <p><strong>Pais: </strong>{{model.address.city.state.country.description}}</p>
       </div>
-      <div *ngIf="isValid()" fxFlex="100" class="text-right">
+      <div fxFlex="100" class="text-right">
         <button mat-fab (click)="printLicense()" color="primary"><i class=" fas fa-print"></i></button>
       </div>
     </div>

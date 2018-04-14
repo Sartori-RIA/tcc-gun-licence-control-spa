@@ -1,9 +1,9 @@
 {
-  "name": "ng-landing",
+  "name": "Gerenciamento de licenças de armas de fogo",
   "version": "1.0.0",
   "license": "MIT",
   "author": {
-    "name": "DevEgret"
+    "name": "Lucas Antonio Ramos Sartori"
   },
   "scripts": {
     "ng": "ng",

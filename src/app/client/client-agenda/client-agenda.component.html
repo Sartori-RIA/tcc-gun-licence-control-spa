@@ -1,8 +1,30 @@
 <div fxFlex="50">
   <h2>Psicologos Credenciados</h2>
-  <p *ngFor="let psychologist of psychologistList">{{psychologist.name | camelCase}}</p>
+  <div *ngFor="let model of psychologistList">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>{{model.name | camelCase}}</mat-card-title>
+        <div *ngFor="let modelAddress of model.addressList">
+          <p>Cidade: {{modelAddress.city.description}}/{{modelAddress.city.state.abbrev}}</p>
+          <p>Rua: {{modelAddress.street}} - {{modelAddress.addressNumber}}</p>
+          <p>Bairro: {{modelAddress.neighborhood}} - {{modelAddress.cep}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
 <div fxFlex="50">
   <h2>Instrutores de Tiro Credenciados</h2>
-  <p *ngFor="let instrutor of instructorList">{{instrutor.name | camelCase}}</p>
+  <div *ngFor="let model of instructorList">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>{{model.name | camelCase}}</mat-card-title>
+        <div *ngFor="let modelAddress of model.addressList">
+          <p>Cidade: {{modelAddress.city.description}}/{{modelAddress.city.state.abbrev}}</p>
+          <p>Rua: {{modelAddress.street}} - {{modelAddress.addressNumber}}</p>
+          <p>Bairro: {{modelAddress.neighborhood}} - {{modelAddress.cep}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

@@ -22,7 +22,7 @@ export class AdminProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getById(this.dataService.getToken()).subscribe(res => {
+    this.userService.getById(this.dataService.getUserID()).subscribe(res => {
       this.model = res;
       this.genderService.getById(res.gender.id).subscribe(res => this.gender = res)
     });

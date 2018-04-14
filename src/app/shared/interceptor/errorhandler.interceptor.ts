@@ -46,7 +46,7 @@ export class ErrorhandlerInterceptor implements ErrorHandler {
 
   private openDialog(title: string, message: string, confirmBtn: string, dialogCp: MatDialog) {
     let dialog = dialogCp.open(DialogComponent, {
-      width: '250px',
+      width: '350px',
       data: {title: title, message: message, confirmButton: confirmBtn}
     });
 
