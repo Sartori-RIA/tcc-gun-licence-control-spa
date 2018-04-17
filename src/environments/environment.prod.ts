@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: "http://localhost:8080/sinarm/api/",
+  apiURL: "https://api.lucassartori.com/sinarm/api/",
 };
