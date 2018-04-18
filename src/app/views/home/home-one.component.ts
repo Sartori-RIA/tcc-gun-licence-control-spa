@@ -14,10 +14,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeOneComponent implements OnInit {
 
-  title1: string = "Funcionalidades no Sistema";
+  title1: string = "Gerenciamento de Licenças de posse e porte de armas de fogo";
   title2: string = "Legislação";
   title3: string = "Checagem de Licenças";
-  content1: string = "Conheça as funcionalidades do sistema";
+  content1: string = "Funcionalidades no Sistema";
   content2: string = "\n" +
     "Informe-se some a legislação vigente";
   content3: string = "\n" +
