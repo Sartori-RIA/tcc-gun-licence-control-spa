@@ -61,7 +61,7 @@
     >
       <div fxFlex="33.33" fxFlex.xs="100">
         <ngx-datatable class="material"
-                       [columnMode]="flex"
+                       columnMode="flex"
                        [scrollbarV]="true"
                        [scrollbarH]="true"
                        [rows]="countries"
@@ -86,7 +86,7 @@
                        [scrollbarV]="true"
                        [scrollbarH]="true"
                        [rowHeight]="40"
-                       [columnMode]="flex"
+                       columnMode="flex"
                        [rows]="statesList"
                        [selectionType]="'single'"
                        (select)="onStateClick($event)"
@@ -115,7 +115,7 @@
       <div fxFlex="33.33" fxFlex.xs="100">
 
         <ngx-datatable class="material"
-                       [columnMode]="flex"
+                       columnMode="flex"
                        [scrollbarV]="true"
                        [scrollbarH]="true"
                        [rows]="citiesList"

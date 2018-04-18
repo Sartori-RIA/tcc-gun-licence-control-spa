@@ -27,7 +27,7 @@
         </mat-checkbox>
 
         <div formArrayName="exams" fxFlex="50" fxFlex.xs="100">
-          <div *ngFor="let exam of form.controls.exams.controls; let i = index">
+          <div *ngFor="let exam of form.get('exams'); let i = index">
             <mat-form-field>
               <span matPrefix>Exame: </span>
               <mat-select formControlName="{{i}}" id="exam_{{i}}">

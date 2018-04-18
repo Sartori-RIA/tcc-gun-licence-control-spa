@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {License} from '../../../shared/model/license';
 import {User} from '../../../shared/model/user';
@@ -14,7 +14,7 @@ import {MatDialog} from "@angular/material";
 })
 export class ValidatorComponent implements OnInit {
 
-
+  @Input('backgroundGray') public backgroundGray;
   form: FormGroup;
   model: User;
   license: License;
