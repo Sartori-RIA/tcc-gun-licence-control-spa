@@ -81,7 +81,7 @@ export class AdminRegisterUserComponent implements OnInit {
       this.mountAddress();
       this.model.addressList = [];
       this.model.addressList.push(this.address);
-      console.log(JSON.stringify(this.model, null, 3))
+      console.log(JSON.stringify(this.model, null, 3))//todo aqui
      /* this.userService.save(this.model).subscribe(res => {
         this.resetForm();
         this.openDialog('Sucesso', 'Cadastrado com sucesso', 'OK')

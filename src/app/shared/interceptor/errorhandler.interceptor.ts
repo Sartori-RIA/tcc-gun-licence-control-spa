@@ -39,9 +39,9 @@ export class ErrorhandlerInterceptor implements ErrorHandler {
     else if (error.status == 500 || error.status == 503) {
       this.openDialog('Erro', msg500, 'OK', dialogComponent);
     }
-    else {
-      console.log(error)
-    }
+    // else {
+    //     //   console.log(error)
+    //     // }
   }
 
   private openDialog(title: string, message: string, confirmBtn: string, dialogCp: MatDialog) {
