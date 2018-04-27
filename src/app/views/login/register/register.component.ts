@@ -54,7 +54,6 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.converFormBuilderToModel();
-      console.log(JSON.stringify(this.model, null, 3))
       this.userService.register(this.model).subscribe(() => {
         this.route.navigate(['/login/entrar']);
         this.resetForm();

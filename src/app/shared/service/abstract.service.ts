@@ -1,13 +1,11 @@
-import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 
 
-@Injectable()
 export abstract class AbstractService<T> {
 
 
-  constructor(private http: HttpClient, private url: string) {
+  protected constructor(private http: HttpClient, private url: string) {
   }
 
   private static getUrl(url: any, id: any) {
@@ -26,8 +24,8 @@ export abstract class AbstractService<T> {
     return this.http.get<T>(AbstractService.getUrl(this.url, id));
   }
 
-  update(model: any): Observable<any> {
-    return this.http.put<any>(this.url, JSON.stringify(model));
+  update(model: T): Observable<T> {
+    return this.http.put<T>(this.url, JSON.stringify(model));
   }
 
   destroy(id: any) {
