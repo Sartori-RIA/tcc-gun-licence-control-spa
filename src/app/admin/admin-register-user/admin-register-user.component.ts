@@ -81,11 +81,10 @@ export class AdminRegisterUserComponent implements OnInit {
       this.mountAddress();
       this.model.addressList = [];
       this.model.addressList.push(this.address);
-      console.log(JSON.stringify(this.model, null, 3))//todo aqui
-     /* this.userService.save(this.model).subscribe(res => {
+      this.userService.save(this.model).subscribe(res => {
         this.resetForm();
         this.openDialog('Sucesso', 'Cadastrado com sucesso', 'OK')
-      });*/
+      });
     } else {
       this.openDialog('Erro', 'Alguns campos precisam ser preenchidos', 'OK');
       Object.keys(this.form.controls).forEach(field => this.form.get(field).markAsDirty());
@@ -209,11 +208,11 @@ export class AdminRegisterUserComponent implements OnInit {
     this.model.role = this.form.value.role;
     this.model.rg = this.form.value.rg;
     this.model.rgIssuingBody = this.form.value.rgIssuingBody;
-    this.model.rgUf = this.form.value.rgUF;
+    this.model.rgUf = this.form.value.rgUF.abbrev;
     this.model.mothersName = this.form.value.mothersName;
     this.model.fathersName = this.form.value.fathersName;
-    this.model.nationality = this.form.value.nationality;
-    this.model.naturalness = this.form.value.naturalness;
+    this.model.nationality = this.form.value.nationality.description;
+    this.model.naturalness = this.form.value.naturalness.description;
   }
 
   private mountAddress() {
