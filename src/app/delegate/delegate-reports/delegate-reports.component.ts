@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {License} from '../../shared/model/license';
 import {LicenseService} from '../../shared/service/license.service';
+import {DateConverter} from "../../shared/util/date-converter";
 
 @Component({
   selector: 'app-delegate-reports',
@@ -33,5 +34,13 @@ export class DelegateReportsComponent implements OnInit {
       .subscribe(res => {
         this.licensesAproved = res
       })
+  }
+
+  licenseExpiration(expiration: Date) {
+    return expiration != null ? DateConverter.convertDate(expiration) : 'Licença Pendente';
+  }
+
+  licenseSituation(status: boolean) {
+    return status ? 'Deferida' : 'Indeferida'
   }
 }

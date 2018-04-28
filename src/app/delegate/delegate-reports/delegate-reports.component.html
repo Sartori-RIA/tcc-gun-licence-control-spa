@@ -1,24 +1,36 @@
 <mat-tab-group>
   <mat-tab label="Licenças Aprovadas">
-    <mat-card>
-      <mat-card-content>
-        <mat-list role="list">
-          <mat-list-item *ngFor="let model of licensesAproved" role="listitem">
-            {{model.category.description}}
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+    <mat-list role="list">
+      <mat-list-item  *ngFor="let model of licensesAproved" role="listitem">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Usuário: {{model.user.name | camelCase}}</mat-card-title>
+          <div>
+            <p>Categoria: {{model.category.description}}</p>
+            <p>Validade: {{licenseExpiration(model.shelfLife)}}</p>
+            <p>Numero de série: {{model.serial}}</p>
+            <p>Situação: {{licenseSituation(model.status)}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      </mat-list-item>
+    </mat-list>
   </mat-tab>
   <mat-tab label="Licenças em Progresso">
-    <mat-card>
-      <mat-card-content>
-        <mat-list role="list">
-          <mat-list-item *ngFor="let model of licensesProgress" role="listitem">
-            {{model.category.description}}
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+    <mat-list role="list">
+      <div *ngFor="let model of licensesProgress" role="listitem">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title>Usuário: {{model.user.name | camelCase}}</mat-card-title>
+            <div>
+              <p>Categoria: {{model.category.description}}</p>
+              <p>Validade: {{licenseExpiration(model.shelfLife)}}</p>
+              <p>Numero de série: {{model.serial}}</p>
+              <p>Situação: {{licenseSituation(model.status)}}</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-list>
   </mat-tab>
 </mat-tab-group>
