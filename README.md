@@ -1,4 +1,4 @@
-# Sistema para o gerenciamento de Licenças de posse e porte de armas de fogo
+# Sistema para o gerenciamento de Licenças de posse e porte de armas de fogo (SPA - Angular)
 
 Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
