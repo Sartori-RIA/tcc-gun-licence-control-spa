@@ -1,4 +1,4 @@
-# Pf.Gov.Br
+# Sistema para o gerenciamento de Licenças de posse e porte de armas de fogo
 
 Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
@@ -6,6 +6,7 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 + **NodeJs >= 9.8.0**
 + **npm >= 5.7.1**
 + **Angular-CLI >= 1.7.3**
++ **API Java: git clone https://github.com/Sartori-RIA/tcc-gun-licence-control-api.git**
 
 ## Rodar a aplicação
 
@@ -15,6 +16,7 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 + **Iniciar a API Java**
 
 # IDE Utilizada
+
 + **Intellij IDEA Ultimate**
 
 # Ferramentas utilizadas
@@ -39,4 +41,5 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 + **Material Design Icons**
 
 # Author
-+ **Lucas Antonio Ramos Sartori**
+[<img alt="Lucas Antonio Ramos Sartori" src="https://avatars1.githubusercontent.com/u/15223764?s=460&v=4" width="117">](https://github.com/sartori-ria)
+
