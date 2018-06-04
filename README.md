@@ -15,11 +15,11 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 + **Database MySQL `sinarm_db` criado**
 + **Iniciar a API Java**
 
-# IDE Utilizada
+### IDE Utilizada
 
 + **Intellij IDEA Ultimate**
 
-# Ferramentas utilizadas
+### Ferramentas utilizadas
 
 + **Angular 5.x**
 + **TypeScript 2.4.x**
