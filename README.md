@@ -42,21 +42,21 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 
 ## Screenshots
 
-![Cadastrar Usuario](/src/assets/scrrenshot/CadastroUsuario.png)
+![Cadastrar Usuario](/src/assets/screenshot/CadastroUsuario.png)
 
-![Bucar licença para avaliação](/src/assets/scrrenshot/BuscarLicencaParaAvaliacao.png)
+![Bucar licença para avaliação](/src/assets/screenshot/BuscarLicencaParaAvaliacao.png)
 
-![Login](/src/assets/scrrenshot/Login.png)
+![Login](/src/assets/screenshot/Login.png)
 
-![Emitir Licença](/src/assets/scrrenshot/EmitirLicencaValidar.png)
+![Emitir Licença](/src/assets/screenshot/EmitirLicencaValidar.png)
 
-![Iniciar Licença](/src/assets/scrrenshot/IniciarLicenca.png)
+![Iniciar Licença](/src/assets/screenshot/IniciarLicenca.png)
 
-![Laudo Exame](/src/assets/scrrenshot/LaudoExame.png)
+![Laudo Exame](/src/assets/screenshot/LaudoExame.png)
 
-![Relatorio](/src/assets/scrrenshot/Relatorio.png)
+![Relatorio](/src/assets/screenshot/Relatorio.png)
 
-![Validar Licença](/src/assets/scrrenshot/ValidarLicenca.png)
+![Validar Licença](/src/assets/screenshot/ValidarLicenca.png)
 
 # Author
 [<img alt="Lucas Antonio Ramos Sartori" src="https://avatars1.githubusercontent.com/u/15223764?s=460&v=4" width="117">](https://github.com/sartori-ria)
