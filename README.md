@@ -1,7 +1,7 @@
 # Sistema para o gerenciamento de Licenças de posse e porte de armas de fogo (SPA - Angular)
 
 Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
-
+[Monografia - PDF](/src/assets/monografia/gerenciamento-de-licencas.pdf)
 ## pré-requisitos 
 + **NodeJs >= 9.8.0**
 + **npm >= 5.7.1**
@@ -66,9 +66,6 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 #### Validar Licença
 ![Validar Licença](/src/assets/screenshot/ValidarLicenca.png)
 
-
-## Monografia
-[Monografia - PDF](/src/assets/monografia/gerenciamento-de-licencas.pdf)
 # Author
 [<img alt="Lucas Antonio Ramos Sartori" src="https://avatars1.githubusercontent.com/u/15223764?s=460&v=4" width="117">](https://github.com/sartori-ria)
 
