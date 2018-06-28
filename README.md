@@ -42,22 +42,33 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 
 ## Screenshots
 
+#### Cadastro de usuarios
 ![Cadastrar Usuario](/src/assets/screenshot/CadastroUsuario.png)
 
+#### Busca de licenças para avaliação
 ![Bucar licença para avaliação](/src/assets/screenshot/BuscarLicencaParaAvaliacao.png)
 
+#### Login
 ![Login](/src/assets/screenshot/Login.png)
 
+#### Emitir 
 ![Emitir Licença](/src/assets/screenshot/EmitirLicencaValidar.png)
 
+#### Iniciar Licença
 ![Iniciar Licença](/src/assets/screenshot/IniciarLicenca.png)
 
+#### Laudo do Exame
 ![Laudo Exame](/src/assets/screenshot/LaudoExame.png)
 
+#### Relatorio
 ![Relatorio](/src/assets/screenshot/Relatorio.png)
 
+#### Validar Licença
 ![Validar Licença](/src/assets/screenshot/ValidarLicenca.png)
 
+
+## Monografia
+[Monografia - PDF](/src/assets/monografia/gerenciamento-de-licencas.pdf)
 # Author
 [<img alt="Lucas Antonio Ramos Sartori" src="https://avatars1.githubusercontent.com/u/15223764?s=460&v=4" width="117">](https://github.com/sartori-ria)
 
