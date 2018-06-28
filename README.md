@@ -40,6 +40,24 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version
 + **Gov Icons**
 + **Material Design Icons**
 
+## Screenshots
+
+![Cadastrar Usuario](/src/assets/scrrenshot/CadastroUsuario.png)
+
+![Bucar licença para avaliação](/src/assets/scrrenshot/BuscarLicencaParaAvaliacao.png)
+
+![Login](/src/assets/scrrenshot/Login.png)
+
+![Emitir Licença](/src/assets/scrrenshot/EmitirLicencaValidar.png)
+
+![Iniciar Licença](/src/assets/scrrenshot/IniciarLicenca.png)
+
+![Laudo Exame](/src/assets/scrrenshot/LaudoExame.png)
+
+![Relatorio](/src/assets/scrrenshot/Relatorio.png)
+
+![Validar Licença](/src/assets/scrrenshot/ValidarLicenca.png)
+
 # Author
 [<img alt="Lucas Antonio Ramos Sartori" src="https://avatars1.githubusercontent.com/u/15223764?s=460&v=4" width="117">](https://github.com/sartori-ria)
 
